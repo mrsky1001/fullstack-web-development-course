@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flexbox и Grid — пример</title>
+  <style>
+    /* ====== FLEXBOX ====== */
+
+    .flex-container {
+      display: flex; /* превращаем контейнер в Flexbox */
+      flex-direction: row; /* элементы расположены по основной оси — горизонтально */
+      flex-wrap: wrap; /* разрешаем перенос элементов на новую строку */
+      justify-content: space-between; /* равномерно распределяем элементы по основной оси */
+      align-items: center; /* выравниваем элементы по поперечной оси (вертикали) */
+      gap: 10px; /* зазор между элементами */
+      background: #e3f2fd;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+
+    .flex-item {
+      flex: 1 1 150px; 
+      /* 
+      flex-grow:1 (может расти);
+      flex-shrink:1 (может сжиматься);
+      flex-basis:150px (базовый размер)
+      */
+      background: #90caf9;
+      color: #000;
+      text-align: center;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .flex-item.special {
+      order: -1; /* изменяем порядок элемента — он появится первым */
+      align-self: flex-end; /* переопределяем выравнивание для одного элемента */
+      background: #64b5f6;
+    }
+
+    /* ====== GRID LAYOUT ====== */
+
+    .grid-container {
+      display: grid; /* превращаем контейнер в Grid */
+      grid-template-columns: repeat(3, 1fr); 
+      /* 3 колонки одинаковой ширины */
+      grid-auto-rows: 150px; /* автоматическая высота строк */
+      gap: 15px; /* отступы между ячейками */
+      background: #f1f8e9;
+      padding: 10px;
+    }
+
+    .grid-item {
+      background: #aed581;
+      color: #000;
+      display: flex; /* внутри Grid используем Flexbox для выравнивания текста */
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+    }
+
+    .grid-item.big {
+      grid-column: span 2; /* растянуть элемент на две колонки */
+      grid-row: span 2; /* растянуть элемент на две строки */
+      background: #9ccc65;
+    }
+
+    /* Для адаптивности: при узком экране — 1 колонка */
+    @media (max-width: 600px) {
+      .grid-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: #fafafa;
+    }
+
+    h1 {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Flexbox и Grid Layout — пример</h1>
+
+  <!-- FLEXBOX -->
+  <h2>Flexbox контейнер</h2>
+  <div class="flex-container">
+    <!-- flex: 1 1 150px -->
+    <div class="flex-item">Элемент 1</div>
+    <div class="flex-item special">
+        Элемент 2 (order -1, align-self)
+    </div>
+    <div class="flex-item">Элемент 3</div>
+    <div class="flex-item">Элемент 4</div>
+  </div>
+
+  <!-- GRID -->
+  <h2>Grid контейнер</h2>
+  <div class="grid-container">
+    <!-- стандартный элемент сетки -->
+    <div class="grid-item">1</div>
+    <div class="grid-item">2</div>
+    <!-- элемент, растянутый на 2 колонки и 2 строки -->
+    <div class="grid-item big">Большой блок</div>
+    <div class="grid-item">4</div>
+    <div class="grid-item">5</div>
+    <div class="grid-item">6</div>
+  </div>
+</body>
+</html>

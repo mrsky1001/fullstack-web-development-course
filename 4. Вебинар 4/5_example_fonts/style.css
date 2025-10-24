@@ -1,0 +1,38 @@
+/* Системный шрифт */
+.system-font {
+    font-family: Arial, sans-serif; /* Стандартный */
+}
+
+/* Google Fonts */
+.google-font {
+    font-family: 'Roboto', sans-serif; /* Google Fonts */
+}
+
+/* Локальный шрифт */
+@font-face {
+    font-family: 'MyFont';
+    src: url('fonts/MyFont.woff2') format('woff2');
+}
+.local-font {
+    font-family: 'MyFont', sans-serif; /* Подключённый локально */
+}
+
+
+/*@font-face {*/
+/*    font-family: 'MyFont'; !* Имя шрифта, которым мы будем пользоваться *!*/
+/*    src: url('fonts/MyFont.woff2') format('woff2'),*/
+/*    url('fonts/MyFont.woff') format('woff'); !* Форматы шрифтов *!*/
+/*    font-weight: normal;*/
+/*    font-style: normal;*/
+/*}*/
+
+/*p {*/
+/*    font-family: 'MyFont', sans-serif; !* Применяем к параграфу *!*/
+/*}*/
+
+
+/*@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');*/
+
+/*body {*/
+/*    font-family: 'Montserrat', sans-serif;*/
+/*}*/

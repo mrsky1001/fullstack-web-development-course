@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Визитка студента</title>
+</head>
+<body>
+
+<header>
+    <h1>Иван Иванов</h1>-->
+    <p>Начинающий веб-разработчик</p>
+</header>
+
+<nav>
+    <a href="#about">Обо мне</a>
+    <a href="#interests">Интересы</a>
+    <a href="#contacts">Контакты</a>
+</nav>
+<main>
+    <section id="about">
+        <article style="flex: 1;">
+            <h2>Обо мне</h2>
+            <p>Я изучаю HTML и хочу стать frontend-разработчиком.</p>
+        </article>
+        <img src="imgs/photo.jpg" alt="Фото студента" width="300px">
+    </section>
+
+    <section id="interests">
+        <h2>Интересы</h2>
+        <ul>
+            <li>Программирование</li>
+            <li>Музыка</li>
+            <li>Футбол</li>
+        </ul>
+    </section>
+
+    <section id="contacts">
+        <h2>Контакты</h2>
+        <p>Email: <a href="mailto:ivan@example.com">ivan@example.com</a></p>
+
+        <h3>Расписание дня</h3>
+        <table>
+            <tr style="background-color: #ddd;">
+                <th>Время</th>
+                <th>Занятие</th>
+            </tr>
+            <tr>
+                <td>Утро</td>
+                <td>Учёба</td>
+            </tr>
+            <tr>
+                <td>Вечер</td>
+                <td>Отдых</td>
+            </tr>
+        </table>
+
+        <h3>Форма обратной связи</h3>
+        <form>
+            <label>Имя:<br>
+                <input type="text" name="name">
+            </label><br>
+
+            <label>Email:<br>
+                <input type="email" name="email">
+            </label><br>
+
+            <label>Сообщение:<br>
+                <textarea name="message" rows="4" cols="40"></textarea>
+            </label><br>
+
+            <input type="submit" value="Отправить">
+        </form>
+    </section>
+</main>
+
+<footer>
+    &copy; 2025 Иван Иванов
+</footer>
+</body>
+</html>

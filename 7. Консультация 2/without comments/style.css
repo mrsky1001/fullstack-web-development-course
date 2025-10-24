@@ -1,0 +1,155 @@
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    background-color: #f3f4f6;
+    color: #111827;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background-color: #1e40af;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    border-radius: 0 0 12px 12px;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    background-color: #e0e7ff;
+    padding: 15px 0;
+}
+
+nav a {
+    color: #1e3a8a;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+section {
+    background-color: white;
+    border-radius: 12px;
+    padding: 30px;
+    margin-top: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.about {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.about img {
+    width: 280px;
+    border: 3px solid #cbd5e1;
+    border-radius: 10px;
+}
+
+.interests ul {
+    padding-left: 20px;
+}
+
+.interests li {
+    margin-bottom: 8px;
+}
+
+.highlight {
+    color: #10b981;
+    font-weight: bold;
+}
+
+.portfolio h2 {
+    margin-bottom: 20px;
+}
+
+.projects {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.project-card {
+    flex: 1 1 260px;
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+    transition: transform 0.2s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+}
+
+.project-card h3 {
+    margin-top: 0;
+    color: #1d4ed8;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table, th, td {
+    border: 1px solid #d1d5db;
+}
+
+th {
+    background-color: #f3f4f6;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+form {
+    margin-top: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+}
+
+input[type="submit"] {
+    background-color: #2563eb;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+input[type="submit"]:hover {
+    background-color: #1d4ed8;
+}
+
+footer {
+    text-align: center;
+    margin: 40px 0 20px;
+    color: #6b7280;
+    font-size: 0.9em;
+}

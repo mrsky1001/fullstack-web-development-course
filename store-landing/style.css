@@ -1,0 +1,279 @@
+/* Сброс стандартных стилей и базовые настройки: убираем отступы, упрощаем расчёт размеров */
+* {
+    margin: 0; /* Сбрасываем внешние отступы */
+    padding: 0; /* Сбрасываем внутренние отступы */
+    box-sizing: border-box; /* Размеры включают padding и border */
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* Базовый шрифт */
+    line-height: 1.6; /* Удобочитаемость текста */
+    color: #333; /* Основной цвет текста */
+    background-color: #fff; /* Цвет фона страницы */
+}
+
+
+/* Шапка сайта: чёрный фон, фиксируется сверху при прокрутке */
+header {
+    background-color: #000;
+    color: #fff;
+
+    padding: 20px 40px;
+
+    display: flex; /* Горизонтальное выравнивание содержимого */
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Лёгкая тень под шапкой */
+
+    position: sticky; /* Прилипает к верхней части окна */
+    top: 0; /* Отступ от верха */
+
+    z-index: 100; /* Поверх контента */
+}
+
+.logo {
+    display: flex; /* Картинка и заголовок в одну строку */
+    align-items: center;
+    gap: 15px;
+}
+
+.logo img {
+    width: 60px;
+    height: auto;
+    filter: grayscale(100%); /* Ч/б логотип */
+}
+
+.logo h1 {
+    font-size: 28.8px;
+    font-weight: bold;
+    color: #ffc107; /* Жёлтый для акцента */
+}
+
+
+nav {
+    display: flex; /* Горизонтальное меню */
+    gap: 25px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.3s ease; /* Плавное наведение */
+}
+
+nav a:hover {
+    color: #ffc107;
+}
+
+
+/* Главный баннер: полноэкранная фонова картинка с заголовком */
+.banner {
+    background-image: url('imgs/bg.jpg'); /* Фоновое изображение */
+    background-size: cover; /* Растягиваем, сохраняя пропорции */
+    background-position: center;
+    background-repeat: no-repeat;
+
+    height: 400px;
+
+    display: flex; /* Центрирование текста */
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    color: #ffffff;
+    background-color: darkolivegreen;
+    margin-bottom: 40px;
+}
+
+
+.banner h2 {
+    padding: 10px 15px;
+
+    border: 3px solid rgba(208, 154, 47, 0.8); /* Обводка для контраста */
+    border-radius: 15px;
+
+    font-size: 48px;
+    text-transform: uppercase;
+    letter-spacing: 10px; /* Разреженные буквы для стилистики */
+    font-weight: 600;
+
+
+    background-color: #363636; /* Тёмный фон под текстом */
+
+    color: #e0af53; /* Жёлтый текст */
+    /*text-shadow: 2px 2px 2px rgba(255, 168, 0, 0.8);*/
+}
+
+
+/* Секция товаров: сетка карточек */
+.products {
+    padding: 40px;
+
+    display: grid; /* Включаем CSS Grid */
+    grid-template-columns: repeat(4, 1fr); /* 4 столбца равной ширины */
+    gap: 30px;
+
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    /*text-align: center;*/
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Объёмная тень */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Анимация наведения */
+}
+
+.product-text{
+}
+
+.product-btn-container{
+    text-align: right;
+}
+
+
+.product-card:hover {
+    transform: translateY(-5px); /* Лёгкий подъём карточки */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Увеличенная тень */
+}
+
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    filter: grayscale(100%); /* Ч/б фото по умолчанию */
+    transition: filter 0.3s ease; /* Плавное проявление цвета */
+}
+
+.product-card:hover img {
+    filter: grayscale(0%); /* Цветное фото при наведении */
+}
+
+
+.product-card h3 {
+    font-size: 20.8px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+.product-card p {
+    color: #666;
+    margin-bottom: 15px;
+    font-size: 14.4px;
+}
+
+.product-card button {
+    background-color: #ffc107; /* Акцентная кнопка */
+    color: #000; /* Тёмный текст на жёлтом фоне */
+    border: none;
+    padding: 12px 20px;
+
+    cursor: pointer;
+
+    border-radius: 25px;
+    font-weight: 600;
+    transition: background-color 0.3s ease; /* Плавное наведение */
+}
+
+.product-card button:hover {
+    background-color: #e0a800; /* Чуть темнее при наведении */
+}
+
+
+/* Секция "О нас": текстовый блок с тенью */
+.about {
+    padding: 40px;
+    text-align: center;
+    background-color: #fff;
+    margin: 40px 0;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px; /* Скруглённые углы */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Тень блока */
+}
+
+.about h2 {
+    font-size: 32px; /* Крупный подзаголовок */
+    margin-bottom: 20px;
+    color: #ffc107; /* Жёлтый акцент */
+}
+
+.about p {
+    max-width: 600px;
+    margin: 0 auto;
+    color: #666;
+}
+
+/* Подвал сайта: контакты и копирайт */
+footer {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 30px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3); /* Тень сверху */
+}
+
+footer p {
+    margin: 8px 0;
+    font-size: 14.4px;
+}
+
+footer p a {
+    color: #ffc107; /* Цвет ссылок в подвале */
+    text-decoration: none;
+    transition: color 0.3s ease; /* Плавное наведение */
+}
+
+footer p a:hover {
+    color: #e0a800; /* Темнее при наведении */
+}
+
+/* Адаптивность: перестраиваем сетку и размеры на меньших экранах */
+@media (max-width: 1024px) {
+    .products {
+        grid-template-columns: repeat(2, 1fr); /* 2 столбца на планшетах */
+    }
+
+    .banner h2 {
+        font-size: 32px; /* Меньше заголовок на баннере */
+    }
+}
+
+@media (max-width: 480px) {
+    .products {
+        grid-template-columns: 1fr; /* Одна колонка на телефонах */
+    }
+
+    header {
+        flex-direction: column; /* Шапка в столбик */
+        gap: 15px;
+        padding: 20px;
+    }
+
+    nav {
+        flex-direction: column; /* Вертикальное меню */
+        align-items: center;
+        gap: 15px;
+    }
+
+    .banner {
+        height: 300px; /* Компактнее на мобильных */
+    }
+
+    .banner h2 {
+        font-size: 24px; /* Ещё меньше заголовок */
+    }
+}

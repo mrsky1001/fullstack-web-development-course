@@ -1,0 +1,114 @@
+/* Подключение шрифта */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* Сброс отступов */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Базовые стили для всего документа */
+body {
+    font-family: 'Roboto', sans-serif; /* Используем подключенный шрифт */
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Класс .container для основных блоков: центрирует и ограничивает ширину */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* HEADER: Шапка сайта */
+header {
+    background-color: #3498db;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* Стили навигации */
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Основной контент */
+main {
+    padding: 20px 0;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #2c3e50;
+}
+
+article {
+    background-color: #f9f9f9;
+    border-left: 4px solid #3498db;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+/* ASIDE: Боковая панель */
+aside {
+    background-color: #f1f1f1;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+/* FOOTER: Подвал */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+}
+
+/* Класс .highlight — выделение текста курсивом */
+.highlight {
+    font-style: italic;
+    color: #3498db;
+}
+
+/* Пример CSS-селектора по id */
+#contacts ul {
+    list-style: none;
+}
+
+#contacts li {
+    padding: 5px 0;
+}
+
+/* Медиа-запрос: перестраиваем навигацию и aside */
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    aside {
+        background-color: #dbeafe; /* Меняем цвет боковой панели на маленьких экранах */
+    }
+}

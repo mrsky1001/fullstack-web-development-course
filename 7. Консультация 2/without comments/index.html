@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Визитка студента</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h1>Иван Иванов</h1>
+    <p>Начинающий веб-разработчик</p>
+</header>
+
+<nav>
+    <a href="#about">Обо мне</a>
+    <a href="#interests">Интересы</a>
+    <a href="#portfolio">Проекты</a>
+    <a href="#contacts">Контакты</a>
+</nav>
+
+<main class="container">
+
+    <section id="about" class="about">
+        <article>
+            <h2>Обо мне</h2>
+            <p>Я изучаю HTML и CSS и мечтаю стать фронтенд-разработчиком. Люблю создавать красивые и понятные интерфейсы.</p>
+        </article>
+        <img src="imgs/photo.jpg" alt="Фото студента">
+    </section>
+
+    <section id="interests" class="interests">
+        <h2>Интересы</h2>
+        <ul>
+            <li class="highlight">Программирование</li>
+            <li>Музыка</li>
+            <li>Футбол</li>
+        </ul>
+    </section>
+
+    <section id="portfolio" class="portfolio">
+        <h2>Мои проекты</h2>
+        <div class="projects">
+            <div class="project-card">
+                <h3>Лендинг для кафе</h3>
+                <p>Простой одностраничный сайт для местного кафе с адаптивным дизайном и плавной прокруткой.</p>
+            </div>
+            <div class="project-card">
+                <h3>Сайт-портфолио</h3>
+                <p>Персональный сайт с информацией обо мне, моими навыками и формой обратной связи.</p>
+            </div>
+            <div class="project-card">
+                <h3>Онлайн-резюме</h3>
+                <p>Интерактивное резюме с использованием Flexbox и Grid Layout.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacts" class="contacts">
+        <h2>Контакты</h2>
+        <p>Email: <a href="mailto:ivan@example.com">ivan@example.com</a></p>
+
+        <h3>Расписание дня</h3>
+        <table>
+            <tr>
+                <th>Время</th>
+                <th>Занятие</th>
+            </tr>
+            <tr>
+                <td>Утро</td>
+                <td>Учёба</td>
+            </tr>
+            <tr>
+                <td>День</td>
+                <td>Практика</td>
+            </tr>
+            <tr>
+                <td>Вечер</td>
+                <td>Отдых</td>
+            </tr>
+        </table>
+
+        <h3>Форма обратной связи</h3>
+        <form>
+            <label>Имя:
+                <input type="text" name="name" required>
+            </label>
+
+            <label>Email:
+                <input type="email" name="email" required>
+            </label>
+
+            <label>Сообщение:
+                <textarea name="message" rows="4" required></textarea>
+            </label>
+
+            <input type="submit" value="Отправить">
+        </form>
+    </section>
+
+</main>
+
+<footer>
+    &copy; 2025 Иван Иванов
+</footer>
+</body>
+</html>

@@ -1,0 +1,195 @@
+/* ========== ОБЩИЕ СТИЛИ ========== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+    background-color: #f3f4f6;
+    color: #374151;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: #1D4ED8;
+}
+
+/* ========== КОНТЕЙНЕР ========== */
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ========== ШАПКА САЙТА ========== */
+
+header {
+    background-color: #ffffff;
+    text-align: center;
+    padding: 40px 20px;
+    border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+/* Заголовок первого уровня в шапке */
+header h1 {
+    font-size: 2rem; /* Размер шрифта */
+    margin: 0 0 10px; /* Отступы: сверху и снизу 0, снизу 10px */
+    color: #1D4ED8; /* Синий цвет */
+}
+
+/* ========== НАВИГАЦИЯ ========== */
+
+nav {
+    background-color: #ffffff;
+    text-align: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* Ссылки в навигации */
+nav a {
+    margin: 0 15px; /* Отступы слева и справа между ссылками */
+    font-weight: 500; /* Полужирный шрифт */
+    color: #1F2937; /* Темно-серый цвет */
+}
+
+/* ========== ОСНОВНОЕ СОДЕРЖИМОЕ ========== */
+
+main section {
+    margin-bottom: 40px;
+}
+
+/* ========== СЕКЦИЯ "О СЕБЕ" ========== */
+
+.about {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: center;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Текстовый блок в секции "О себе" */
+.about article {
+    flex: 1; /* Занимает доступное пространство */
+}
+
+/* Фотография в секции "О себе" */
+.about img {
+    max-width: 280px; /* Максимальная ширина */
+    border-radius: 10px; /* Скругленные углы */
+    border: 1px solid #e5e7eb; /* Тонкая серая рамка */
+}
+
+/* ========== СЕКЦИЯ "ИНТЕРЕСЫ" ========== */
+
+.interests {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Список интересов */
+.interests ul {
+    padding-left: 20px; /* Отступ слева для маркеров списка */
+}
+
+/* Элементы списка интересов */
+.interests li {
+    margin-bottom: 5px; /* Отступ снизу между элементами */
+}
+
+/* Первый элемент списка (выделенный) */
+.interests li:first-child {
+    color: #1D4ED8; /* Синий цвет */
+    font-weight: bold; /* Жирный шрифт */
+}
+
+/* ========== СЕКЦИЯ "КОНТАКТЫ" ========== */
+
+.contacts {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* ========== ТАБЛИЦА ========== */
+
+/* Таблица с расписанием */
+table {
+    border-collapse: collapse; /* Объединяет границы ячеек */
+    width: 100%; /* Ширина на всю доступную область */
+    max-width: 500px; /* Максимальная ширина */
+    margin-bottom: 20px; /* Отступ снизу */
+}
+
+/* Ячейки таблицы (заголовки и данные) */
+th,
+td {
+    border: 1px solid #e5e7eb; /* Тонкая серая рамка */
+    padding: 10px; /* Внутренние отступы */
+    text-align: left; /* Выравнивание текста по левому краю */
+}
+
+/* Заголовки таблицы */
+th {
+    background-color: #f9fafb; /* Светло-серый фон */
+    font-weight: 600; /* Полужирный шрифт */
+}
+
+/* ========== ФОРМА ========== */
+
+.form {
+    max-width: 500px;
+}
+
+/* Подписи полей формы */
+.form label {
+    display: block; /* Блочный элемент (занимает всю ширину) */
+    margin-bottom: 10px; /* Отступ снизу */
+}
+
+/* Поля ввода и текстовые области */
+.form input,
+.form textarea {
+    width: 100%; /* Ширина на всю доступную область */
+    padding: 10px; /* Внутренние отступы */
+    border: 1px solid #d1d5db; /* Тонкая серая рамка */
+    border-radius: 6px; /* Скругленные углы */
+    margin-top: 4px; /* Отступ сверху */
+    margin-bottom: 16px; /* Отступ снизу */
+    font-size: 1rem; /* Размер шрифта */
+}
+
+/* Кнопка отправки формы */
+.form input[type="submit"] {
+    background-color: #1D4ED8; /* Синий фон */
+    color: white; /* Белый текст */
+    border: none; /* Убираем рамку */
+    cursor: pointer; /* Курсор-указатель при наведении */
+    transition: background-color 0.3s ease; /* Плавное изменение цвета */
+}
+
+/* Кнопка при наведении мыши */
+.form input[type="submit"]:hover {
+    background-color: #1e40af; /* Темно-синий фон */
+}
+
+/* ========== ПОДВАЛ ========== */
+
+footer {
+    text-align: center;
+    color: #6b7280;
+    padding: 20px 0;
+    font-size: 0.9rem;
+}
