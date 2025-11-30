@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- Мета-теги и настройки страницы -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интернет-магазин - Черно-белый с желтым</title>
+    <!-- Подключение шрифта Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Подключение файла стилей -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- Шапка сайта с навигацией -->
+<header id="home">
+    <div class="logo">
+        <img src="resources/lobzik2.jpg" alt="Логотип магазина">
+        <h1>Интернет-магазин LBZ</h1>
+    </div>
+    <nav>
+        <a href="#home">Главная</a>
+        <a href="#catalog">Каталог</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#about">О нас</a>
+        <a href="#contacts">Контакты</a>
+        <!-- Счетчик товаров в корзине -->
+        <span class="order-counter">В корзине: <span id="order-count">0</span></span>
+    </nav>
+</header>
+
+<!-- Баннер с акцией -->
+<section class="banner">
+    <h2>Скидки до 50% на все товары!</h2>
+</section>
+
+<main>
+    <!-- Секция каталога товаров -->
+    <section id="catalog" class="products">
+        <!-- Форма фильтрации товаров -->
+        <div class="filter">
+            <input type="text" id="name-filter" placeholder="Название товара">
+            <input type="number" id="min-price" placeholder="Мин. цена">
+            <input type="number" id="max-price" placeholder="Макс. цена">
+            <input type="number" id="min-power" placeholder="Мин. мощность (Вт)">
+            <input type="number" id="max-power" placeholder="Макс. мощность (Вт)">
+            <input type="number" id="min-speed" placeholder="Мин. скорость (об/мин)">
+            <input type="number" id="max-speed" placeholder="Макс. скорость (об/мин)">
+            <input type="number" id="min-cut-depth" placeholder="Мин. глубина реза (мм)">
+            <input type="number" id="max-cut-depth" placeholder="Макс. глубина реза (мм)">
+            <input type="number" id="min-weight" placeholder="Мин. вес (кг)">
+            <input type="number" id="max-weight" placeholder="Макс. вес (кг)">
+            <div class="btn-container">
+                <button onclick="filterProducts()">Фильтровать</button>
+            </div>
+        </div>
+        <!-- Сетка карточек товаров -->
+        <div class="product-grid">
+            <!-- Карточка товара с данными для фильтрации и модального окна -->
+            <article class="product-card" data-price="1000" data-name="Товар 1"
+                     data-description="Компактный лобзик для домашнего использования"
+                     data-specs="Мощность: 500 Вт, Скорость: 3000 об/мин, Глубина реза: 55 мм, Вес: 1.5 кг">
+                <img src="resources/lobzik.webp" alt="Лобзик метабо">
+                <div class="content">
+                    <h3> metabo 1100</h3>
+                    <p><strong>Цена:</strong> 1000 руб.</p>
+                    <p>Компактный лобзик для домашнего использования</p>
+                    <ul>
+                        <li>Мощность: 500 Вт</li>
+                        <li>Скорость: 3000 об/мин</li>
+                        <li>Глубина реза: 55 мм</li>
+                        <li>Вес: 1.5 кг</li>
+                    </ul>
+                </div>
+                <div class="buttons">
+                    <button onclick="addToOrder(event)">В корзину</button>
+                </div>
+            </article>
+            <article class="product-card" data-price="1500" data-name="Товар 2"
+                     data-description="Улучшенная модель для точных работ"
+                     data-specs="Мощность: 600 Вт, Скорость: 3200 об/мин, Глубина реза: 65 мм, Вес: 1.7 кг">
+                <img src="resources/lobzik2.jpg" alt="Товар 2">
+                <div class="content">
+                    <h3> makita 2100</h3>
+                    <p><strong>Цена:</strong> 1500 руб.</p>
+                    <p>Улучшенная модель для точных работ</p>
+                    <ul>
+                        <li>Мощность: 600 Вт</li>
+                        <li>Скорость: 3200 об/мин</li>
+                        <li>Глубина реза: 65 мм</li>
+                        <li>Вес: 1.7 кг</li>
+                    </ul>
+                </div>
+                <div class="buttons">
+                    <button onclick="addToOrder(event)">В корзину</button>
+                </div>
+            </article>
+            <article class="product-card" data-price="2000" data-name="Товар 3"
+                     data-description="Профессиональный лобзик для интенсивного использования"
+                     data-specs="Мощность: 700 Вт, Скорость: 3500 об/мин, Глубина реза: 80 мм, Вес: 2.0 кг">
+                <img src="resources/lobzik 3.webp" alt="Товар 3">
+                <div class="content">
+                    <h3> dewolt 3200</h3>
+                    <p><strong>Цена:</strong> 2000 руб.</p>
+                    <p>Профессиональный лобзик для интенсивного использования</p>
+                    <ul>
+                        <li>Мощность: 700 Вт</li>
+                        <li>Скорость: 3500 об/мин</li>
+                        <li>Глубина реза: 80 мм</li>
+                        <li>Вес: 2.0 кг</li>
+                    </ul>
+                </div>
+                <div class="buttons">
+                    <button onclick="addToOrder(event)">В корзину</button>
+                </div>
+            </article>
+            <article class="product-card" data-price="2500" data-name="Товар 4"
+                     data-description="Премиум лобзик с эргономичным дизайном"
+                     data-specs="Мощность: 800 Вт, Скорость: 3600 об/мин, Глубина реза: 100 мм, Вес: 2.2 кг">
+                <img src="resources/lobzik4.jpeg" alt="Товар 4">
+                <div class="content">
+                    <h3> metabo 3200</h3>
+                    <p><strong>Цена:</strong> 2500 руб.</p>
+                    <p>Премиум лобзик с эргономичным дизайном</p>
+                    <ul>
+                        <li>Мощность: 800 Вт</li>
+                        <li>Скорость: 3600 об/мин</li>
+                        <li>Глубина реза: 100 мм</li>
+                        <li>Вес: 2.2 кг</li>
+                    </ul>
+                </div>
+                <div class="buttons">
+                    <button onclick="addToOrder(event)">В корзину</button>
+                </div>
+            </article>
+            <article class="product-card" data-price="1200" data-name="Товар 5"
+                     data-description="Компактный лобзик для мелких работ"
+                     data-specs="Мощность: 450 Вт, Скорость: 2800 об/мин, Глубина реза: 50 мм, Вес: 1.4 кг">
+                <img src="resources/lobzik.webp" alt="Товар 5">
+                <div class="content">
+                    <h3> metabo 3500</h3>
+                    <p><strong>Цена:</strong> 1200 руб.</p>
+                    <p>Компактный лобзик для мелких работ</p>
+                    <ul>
+                        <li>Мощность: 450 Вт</li>
+                        <li>Скорость: 2800 об/мин</li>
+                        <li>Глубина реза: 50 мм</li>
+                        <li>Вес: 1.4 кг</li>
+                    </ul>
+                </div>
+                <div class="buttons">
+                    <button onclick="addToOrder(event)">В корзину</button>
+                </div>
+            </article>
+            <article class="product-card" data-price="1800" data-name="Товар 6"
+                     data-description="Надежный лобзик для хобби"
+                     data-specs="Мощность: 550 Вт, Скорость: 3100 об/мин, Глубина реза: 60 мм, Вес: 1.6 кг">
+                <img src="resources/lobzik2.jpg" alt="Товар 6">
+                <div class="content">
+                    <h3> makita 3200</h3>
+                    <p><strong>Цена:</strong> 1800 руб.</p>
+                    <p>Надежный лобзик для хобби</p>
+                    <ul>
+                        <li>Мощность: 550 Вт</li>
+                        <li>Скорость: 3100 об/мин</li>
+                        <li>Глубина реза: 60 мм</li>
+                        <li>Вес: 1.6 кг</li>
+                    </ul>
+                </div>
+                <div class="buttons">
+                    <button onclick="addToOrder(event)">В корзину</button>
+                </div>
+            </article>
+            <article class="product-card" data-price="2200" data-name="Товар 7"
+                     data-description="Лобзик для профессиональных задач"
+                     data-specs="Мощность: 750 Вт, Скорость: 3400 об/мин, Глубина реза: 85 мм, Вес: 2.1 кг">
+                <img src="resources/lobzik 3.webp" alt="Товар 7">
+                <div class="content">
+                    <h3>makita 700</h3>
+                    <p><strong>Цена:</strong> 2200 руб.</p>
+                    <p>Лобзик для профессиональных задач</p>
+                    <ul>
+                        <li>Мощность: 750 Вт</li>
+                        <li>Скорость: 3400 об/мин</li>
+                        <li>Глубина реза: 85 мм</li>
+                        <li>Вес: 2.1 кг</li>
+                    </ul>
+                </div>
+                <div class="buttons">
+                    <button onclick="addToOrder(event)">В корзину</button>
+                </div>
+            </article>
+            <article class="product-card" data-price="2700" data-name="Товар 8"
+                     data-description="Премиум лобзик с улучшенной эргономикой"
+                     data-specs="Мощность: 850 Вт, Скорость: 3700 об/мин, Глубина реза: 110 мм, Вес: 2.3 кг">
+                <img src="resources/lobzik4.jpeg" alt="Товар 8">
+                <div class="content">
+                    <h3>metabo 800</h3>
+                    <p><strong>Цена:</strong> 2700 руб.</p>
+                    <p>Премиум лобзик с улучшенной эргономикой</p>
+                    <ul>
+                        <li>Мощность: 850 Вт</li>
+                        <li>Скорость: 3700 об/мин</li>
+                        <li>Глубина реза: 110 мм</li>
+                        <li>Вес: 2.3 кг</li>
+                    </ul>
+                </div>
+                <div class="buttons">
+                    <button onclick="addToOrder(event)">В корзину</button>
+                </div>
+            </article>
+            <article class="product-card" data-price="1400" data-name="Товар 9"
+                     data-description="Универсальный лобзик для различных материалов"
+                     data-specs="Мощность: 520 Вт, Скорость: 2900 об/мин, Глубина реза: 58 мм, Вес: 1.55 кг">
+                <img src="resources/lobzik.webp" alt="Товар 9">
+                <div class="content">
+                    <h3>dewolt 900</h3>
+                    <p><strong>Цена:</strong> 1400 руб.</p>
+                    <p>Универсальный лобзик для различных материалов</p>
+                    <ul>
+                        <li>Мощность: 520 Вт</li>
+                        <li>Скорость: 2900 об/мин</li>
+                        <li>Глубина реза: 58 мм</li>
+                        <li>Вес: 1.55 кг</li>
+                    </ul>
+                </div>
+                <div class="buttons">
+                    <button onclick="addToOrder(event)">В корзину</button>
+                </div>
+            </article>
+            <article class="product-card" data-price="1600" data-name="Товар 10"
+                     data-description="Экономичный лобзик для бытовых нужд"
+                     data-specs="Мощность: 480 Вт, Скорость: 3000 об/мин, Глубина реза: 52 мм, Вес: 1.45 кг">
+                <img src="resources/lobzik2.jpg" alt="Товар 10">
+                <div class="content">
+                    <h3>dewolt 100</h3>
+                    <p><strong>Цена:</strong> 1600 руб.</p>
+                    <p>Экономичный лобзик для бытовых нужд</p>
+                    <ul>
+                        <li>Мощность: 480 Вт</li>
+                        <li>Скорость: 3000 об/мин</li>
+                        <li>Глубина реза: 52 мм</li>
+                        <li>Вес: 1.45 кг</li>
+                    </ul>
+                </div>
+                <div class="buttons">
+                    <button onclick="addToOrder(event)">В корзину</button>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Секция отзывов со слайдером -->
+    <section id="reviews" class="reviews">
+        <h2>Отзывы</h2>
+        <div class="review-slider-container">
+            <div class="review-slider">
+                <!-- Карточки отзывов -->
+                <article class="review-card">
+                    <p>Отличный магазин! Быстрая доставка и качественные товары.</p>
+                    <h4>Анна</h4>
+                </article>
+                <article class="review-card">
+                    <p>Покупал инструмент, все работает отлично, рекомендую!</p>
+                    <h4>Иван</h4>
+                </article>
+                <article class="review-card">
+                    <p>Хорошие цены и отличное обслуживание.</p>
+                    <h4>Мария</h4>
+                </article>
+                <article class="review-card">
+                    <p>Очень доволен покупкой, буду заказывать еще!</p>
+                    <h4>Сергей</h4>
+                </article>
+            </div>
+        </div>
+        <!-- Кнопки навигации слайдера -->
+        <button class="review-arrow left">&lt;</button>
+        <button class="review-arrow right">&gt;</button>
+        <!-- Точки навигации слайдера (создаются динамически через JS) -->
+        <div class="review-dots"></div>
+    </section>
+
+    <!-- Секция "О нас" -->
+    <section id="about" class="about">
+        <h2>О нас</h2>
+        <p>Мы - современный интернет-магазин, предлагающий качественные товары по доступным ценам. Наша цель - сделать
+            ваши покупки удобными и приятными. Доставка по всей стране!</p>
+    </section>
+</main>
+
+<!-- Подвал сайта с контактами и формой обратной связи -->
+<footer id="contacts">
+    <p>Email: <a href="mailto:info@shop.ru">info@shop.ru</a></p>
+    <p>Телефон: <a href="tel:+79991234567">+7 (999) 123-45-67</a></p>
+    <!-- Форма обратной связи -->
+    <form class="contact-form" id="contact-form">
+        <input type="text" id="name" placeholder="Ваше имя" required>
+        <div id="name-error" class="error-message"></div>
+        <input type="email" id="email" placeholder="Ваш email" required>
+        <div id="email-error" class="error-message"></div>
+        <textarea id="message" placeholder="Ваше сообщение" required></textarea>
+        <div id="message-error" class="error-message"></div>
+        <button type="submit">Отправить</button>
+    </form>
+    <p>&copy; 2025 Интернет-магазин. Все права защищены.</p>
+</footer>
+
+<!-- Модальное окно подтверждения отправки формы -->
+<div id="form-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h3>Сообщение отправлено!</h3>
+        <p>Спасибо за ваш запрос. Мы свяжемся с вами в ближайшее время.</p>
+    </div>
+</div>
+
+<!-- Модальное окно с детальной информацией о товаре -->
+<div id="product-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h3 id="modal-title"></h3>
+        <img id="modal-image" src="" alt="Товар">
+        <p id="modal-price"></p>
+        <p id="modal-description"></p>
+        <ul id="modal-specs"></ul>
+    </div>
+</div>
+
+<!-- Подключение JavaScript файла -->
+<script src="script.js"></script>
+</body>
+</html>

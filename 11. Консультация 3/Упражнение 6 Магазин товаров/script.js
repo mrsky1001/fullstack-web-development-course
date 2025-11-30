@@ -17,12 +17,12 @@ for (let i = 0; i < products.length; i++) {
     }
 }
 
-// 2. Считаем общую стоимость всех товаров
+// 2. Добавляем только html + css. Считаем общую стоимость всех товаров
 let totalValue = 0
 for (let i = 0; i < products.length; i++) {
     totalValue += products[i].price * products[i].quantity
 }
-console.log("// 2. Общая стоимость всех товаров:", totalValue, "руб.")
+console.log("// 2. Добавляем только html + css. Общая стоимость всех товаров:", totalValue, "руб.")
 
 // 3. Находим самый дорогой товар
 let maxPrice = products[0].price

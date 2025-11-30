@@ -1,0 +1,559 @@
+/* Сброс стилей по умолчанию для всех элементов */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Основные стили для body */
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+}
+
+/* Стили шапки сайта */
+header {
+    background-color: #000;
+    color: #fff;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* Стили логотипа */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo img {
+    width: 60px;
+    height: auto;
+    filter: grayscale(100%);
+}
+
+.logo h1 {
+    font-size: 1.8em;
+    font-weight: 600;
+    color: #ffc107;
+}
+
+/* Стили навигации */
+nav {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #ffc107;
+}
+
+/* Стили счетчика корзины */
+.order-counter {
+    background-color: #ffc107;
+    color: #000;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+/* Стили баннера с акцией */
+.banner {
+    background-image: url('resources/bg.jpg');
+    background-size: cover; /* или contain */
+    background-position: center;
+    background-repeat: no-repeat;
+
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 40px;
+}
+
+/* Стили заголовка баннера */
+.banner h2 {
+    padding: 10px 15px;
+
+    border: 3px solid rgba(208, 154, 47, 0.8);
+    border-radius: 15px;
+
+    font-size: 48px;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    font-weight: 600;
+
+
+    background-color: #363636;
+
+    color: #e0af53;
+    /*text-shadow: 2px 2px 2px rgba(255, 168, 0, 0.8);*/
+}
+
+/* Стили секции каталога товаров */
+.products {
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Стили формы фильтрации */
+.filter {
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.filter input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    width:200px;
+}
+
+.filter .btn-container{
+    padding: 10px;
+
+    display: flex;
+    justify-content: end;
+    width:100%;
+
+}
+
+.filter button {
+    background-color: #ffc107;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 25px;
+    font-weight: 600;
+}
+
+.filter button:hover {
+    background-color: #e0a800;
+}
+
+/* Сетка карточек товаров */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+/* Стили карточки товара */
+.product-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Стили изображения в карточке товара */
+.product-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+}
+
+.product-card:hover img {
+    filter: grayscale(0%);
+}
+
+/* Стили контента карточки */
+.product-card .content {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.product-card h3 {
+    font-size: 1.3em;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+.product-card p {
+    color: #666;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+}
+
+.product-card ul {
+    color: #666;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+/* Стили кнопок в карточке товара */
+.product-card .buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.product-card button {
+    background-color: #ffc107;
+    color: #000;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.product-card button:hover {
+    background-color: #e0a800;
+}
+
+/* Стили секции отзывов */
+.reviews {
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.reviews h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #ffc107;
+    text-align: center;
+}
+
+/* Контейнер слайдера отзывов */
+.review-slider-container {
+    overflow: hidden;
+    position: relative;
+    margin: 0 20px;
+}
+
+/* Слайдер отзывов */
+.review-slider {
+    padding: 20px;
+
+    display: flex;
+    transition: transform 0.5s ease;
+    gap: 20px;
+}
+
+/* Стили карточки отзыва */
+.review-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
+}
+
+.review-card p {
+    color: #666;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+.review-card h4 {
+    color: #000;
+    font-weight: 600;
+}
+
+/* Стили кнопок навигации слайдера */
+.review-arrow {
+    position: absolute;
+    top: 50%;
+    /*transform: translateY(-50%);*/
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+    z-index: 10;
+}
+
+.review-arrow.left {
+    left: 0;
+}
+
+.review-arrow.right {
+    right: 0;
+}
+
+.review-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Контейнер точек навигации */
+.review-dots {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Стили точек навигации слайдера */
+.review-dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.review-dot.active {
+    background-color: #ffc107;
+}
+
+/* Стили секции "О нас" */
+.about {
+    padding: 40px;
+    text-align: center;
+    background-color: #fff;
+    margin: 40px 0;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.about h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #ffc107;
+}
+
+.about p {
+    max-width: 600px;
+    margin: 0 auto;
+    color: #666;
+}
+
+/* Стили подвала сайта */
+footer {
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 30px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
+}
+
+footer p {
+    margin: 8px 0;
+    font-size: 0.9em;
+}
+
+footer p a {
+    color: #ffc107;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer p a:hover {
+    color: #e0a800;
+}
+
+/*!* Стили формы обратной связи *!*/
+/*.contact-form {*/
+/*    max-width: 600px;*/
+/*    margin: 20px auto;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    gap: 15px;*/
+/*}*/
+
+/*.contact-form input,*/
+/*.contact-form textarea {*/
+/*    padding: 10px;*/
+/*    border: 1px solid #ccc;*/
+/*    border-radius: 5px;*/
+/*    font-family: 'Poppins', sans-serif;*/
+/*}*/
+
+/*.contact-form textarea {*/
+/*    resize: vertical;*/
+/*    min-height: 100px;*/
+/*}*/
+
+/*.contact-form button {*/
+/*    background-color: #ffc107;*/
+/*    color: #000;*/
+/*    border: none;*/
+/*    padding: 12px 20px;*/
+/*    cursor: pointer;*/
+/*    border-radius: 25px;*/
+/*    font-weight: 600;*/
+/*}*/
+
+/*.contact-form button:hover {*/
+/*    background-color: #e0a800;*/
+/*}*/
+
+/* Стили для полей с ошибками валидации */
+.error {
+    border-color: red !important;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.8em;
+    margin-top: -10px;
+}
+
+/*!* Стили модального окна *!*/
+/*.modal {*/
+/*    display: none;*/
+/*    position: fixed;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    background-color: rgba(0, 0, 0, 0.5);*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    z-index: 1000;*/
+/*}*/
+
+/*!* Стили содержимого модального окна *!*/
+/*.modal-content {*/
+/*    background-color: #fff;*/
+/*    padding: 20px;*/
+/*    border-radius: 10px;*/
+/*    max-width: 500px;*/
+/*    width: 90%;*/
+/*    text-align: center;*/
+/*    position: relative;*/
+/*}*/
+
+/*.modal-content h3 {*/
+/*    color: #ffc107;*/
+/*    margin-bottom: 15px;*/
+/*}*/
+
+/*.modal-content img {*/
+/*    max-width: 100%;*/
+/*    border-radius: 8px;*/
+/*    margin-bottom: 15px;*/
+/*}*/
+
+/*.modal-content ul {*/
+/*    text-align: left;*/
+/*    color: #666;*/
+/*    font-size: 0.9em;*/
+/*    margin-bottom: 15px;*/
+/*    padding-left: 20px;*/
+/*    list-style-type: disc;*/
+/*}*/
+
+/*!* Стили кнопки закрытия модального окна *!*/
+/*.close-modal {*/
+/*    position: absolute;*/
+/*    top: 10px;*/
+/*    right: 10px;*/
+/*    font-size: 24px;*/
+/*    cursor: pointer;*/
+/*    color: #000;*/
+/*}*/
+
+/* Адаптивные стили для планшетов */
+@media (max-width: 1024px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .review-card {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .banner h2 {
+        font-size: 2em;
+    }
+}
+
+/* Адаптивные стили для мобильных устройств */
+@media (max-width: 480px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .review-card {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .banner {
+        height: 300px;
+    }
+
+    .banner h2 {
+        font-size: 1.5em;
+    }
+
+    .filter {
+        width: 100%;
+    }
+
+    .review-arrow {
+        padding: 4px 8px;
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<!-- 
+    ============================================
+    ОСНОВНАЯ СТРУКТУРА HTML-ДОКУМЕНТА
+    ============================================
+    
+     HTML5 и семантическая разметка
+    - DOCTYPE html - объявление типа документа (HTML5)
+    - lang="ru" - указание языка страницы для поисковых систем и скринридеров
+    - meta charset="UTF-8" - кодировка символов (поддержка кириллицы)
+    - viewport - настройка отображения на мобильных устройствах
+    - Семантические теги (header, nav, section, footer) улучшают SEO и доступность
+-->
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <!-- 
+        Viewport meta tag - критически важен для адаптивного дизайна
+        width=device-width - ширина страницы равна ширине экрана устройства
+        initial-scale=1.0 - начальный масштаб 100%
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интернет-магазин - Черно-белый с желтым</title>
+    <!-- Подключение шрифта Google Fonts для улучшения типографики -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Подключение внешнего файла стилей -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- 
+    ============================================
+    ШАПКА САЙТА (HEADER)
+    ============================================
+    
+     Семантические теги и якорные ссылки
+    - <header> - семантический тег для шапки сайта
+    - id="home" - уникальный идентификатор для якорной ссылки
+    - <nav> - семантический тег для навигации
+    - href="#section" - якорная ссылка, прокручивает к элементу с id="section"
+    - id="order-count" - элемент, который будет обновляться JavaScript
+-->
+<header id="home">
+    <div class="logo">
+        <img src="resources/lobzik2.jpg" alt="Логотип магазина">
+        <h1>Интернет-магазин LBZ</h1>
+    </div>
+    <nav>
+        <a href="#home">Главная</a>
+        <a href="#catalog">Каталог</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#about">О нас</a>
+        <a href="#contacts">Контакты</a>
+        <!-- Счетчик товаров в корзине - динамически обновляется через JavaScript -->
+        <span class="order-counter">В корзине: <span id="order-count">0</span></span>
+    </nav>
+</header>
+
+<!-- 
+    ============================================
+    БАННЕР С ПРОМО-ИНФОРМАЦИЕЙ
+    ============================================
+    
+     Секции и фоновые изображения
+    - <section> - семантический тег для логических разделов страницы
+    - Фоновое изображение задается через CSS (background-image)
+-->
+<section class="banner">
+    <h2>Скидки до 50% на все товары!</h2>
+</section>
+
+<main>
+    <!-- 
+        ============================================
+        СЕКЦИЯ КАТАЛОГА ТОВАРОВ
+        ============================================
+        
+         Формы и data-атрибуты
+        - <input> - элементы формы для ввода данных
+        - type="text" - текстовое поле
+        - type="number" - поле для чисел (на мобильных открывает цифровую клавиатуру)
+        - placeholder - подсказка внутри поля
+        - onclick="function()" - обработчик события клика (inline JavaScript)
+        - data-* атрибуты - способ хранения дополнительных данных в HTML-элементах
+          (доступны через JavaScript через свойство dataset)
+    -->
+    <section id="catalog" class="products">
+        <!-- Панель фильтрации товаров -->
+        <div class="filter">
+            <!-- Поле поиска по названию -->
+            <input type="text" id="name-filter" placeholder="Название товара">
+            <!-- Поля для фильтрации по диапазону цены -->
+            <input type="number" id="min-price" placeholder="Мин. цена">
+            <input type="number" id="max-price" placeholder="Макс. цена">
+            <!-- Поля для фильтрации по характеристикам товара -->
+            <input type="number" id="min-power" placeholder="Мин. мощность (Вт)">
+            <input type="number" id="max-power" placeholder="Макс. мощность (Вт)">
+            <input type="number" id="min-speed" placeholder="Мин. скорость (об/мин)">
+            <input type="number" id="max-speed" placeholder="Макс. скорость (об/мин)">
+            <input type="number" id="min-cut-depth" placeholder="Мин. глубина реза (мм)">
+            <input type="number" id="max-cut-depth" placeholder="Макс. глубина реза (мм)">
+            <input type="number" id="min-weight" placeholder="Мин. вес (кг)">
+            <input type="number" id="max-weight" placeholder="Макс. вес (кг)">
+            <div class="btn-container">
+                <!-- Кнопка запуска фильтрации - вызывает функцию filterProducts() из script.js -->
+                <button onclick="filterProducts()">Фильтровать</button>
+            </div>
+        </div>
+        <div class="product-grid">
+            <!-- 
+                ============================================
+                КАРТОЧКА ТОВАРА
+                ============================================
+                
+                 Data-атрибуты и семантика
+                - <article> - семантический тег для самостоятельного контента (товар)
+                - data-price, data-name, data-description, data-specs - кастомные атрибуты
+                  для хранения данных о товаре (доступны через card.dataset.price в JS)
+                - Эти данные используются для фильтрации и отображения в модальном окне
+            -->
+            <article class="product-card" data-price="1000" data-name="Товар 1"
+                     data-description="Компактный лобзик для домашнего использования"
+                     data-specs="Мощность: 500 Вт, Скорость: 3000 об/мин, Глубина реза: 55 мм, Вес: 1.5 кг">
+                <img src="resources/lobzik.webp" alt="Лобзик метабо">
+                <div class="content">
+                    <h3> metabo 1100</h3>
+                    <p><strong>Цена:</strong> 1000 руб.</p>
+                    <p>Компактный лобзик для домашнего использования</p>
+                    <ul>
+                        <li>Мощность: 500 Вт</li>
+                        <li>Скорость: 3000 об/мин</li>
+                        <li>Глубина реза: 55 мм</li>
+                        <li>Вес: 1.5 кг</li>
+                    </ul>
+                </div>
+                <div class="buttons">
+                    <!-- 
+                        Кнопка добавления в корзину
+                        event - объект события, передается автоматически
+                        stopPropagation() в функции предотвращает открытие модального окна
+                    -->
+                    <button onclick="addToOrder(event)">В корзину</button>
+                </div>
+            </article>
+            <article class="product-card" data-price="1500" data-name="Товар 2"
+                     data-description="Улучшенная модель для точных работ"
+                     data-specs="Мощность: 600 Вт, Скорость: 3200 об/мин, Глубина реза: 65 мм, Вес: 1.7 кг">
+                <img src="resources/lobzik2.jpg" alt="Товар 2">
+                <div class="content">
+                    <h3> makita 2100</h3>
+                    <p><strong>Цена:</strong> 1500 руб.</p>
+                    <p>Улучшенная модель для точных работ</p>
+                    <ul>
+                        <li>Мощность: 600 Вт</li>
+                        <li>Скорость: 3200 об/мин</li>
+                        <li>Глубина реза: 65 мм</li>
+                        <li>Вес: 1.7 кг</li>
+                    </ul>
+                </div>
+                <div class="buttons">
+                    <button onclick="addToOrder(event)">В корзину</button>
+                </div>
+            </article>
+            <article class="product-card" data-price="2000" data-name="Товар 3"
+                     data-description="Профессиональный лобзик для интенсивного использования"
+                     data-specs="Мощность: 700 Вт, Скорость: 3500 об/мин, Глубина реза: 80 мм, Вес: 2.0 кг">
+                <img src="resources/lobzik 3.webp" alt="Товар 3">
+                <div class="content">
+                    <h3> dewolt 3200</h3>
+                    <p><strong>Цена:</strong> 2000 руб.</p>
+                    <p>Профессиональный лобзик для интенсивного использования</p>
+                    <ul>
+                        <li>Мощность: 700 Вт</li>
+                        <li>Скорость: 3500 об/мин</li>
+                        <li>Глубина реза: 80 мм</li>
+                        <li>Вес: 2.0 кг</li>
+                    </ul>
+                </div>
+                <div class="buttons">
+                    <button onclick="addToOrder(event)">В корзину</button>
+                </div>
+            </article>
+            <article class="product-card" data-price="2500" data-name="Товар 4"
+                     data-description="Премиум лобзик с эргономичным дизайном"
+                     data-specs="Мощность: 800 Вт, Скорость: 3600 об/мин, Глубина реза: 100 мм, Вес: 2.2 кг">
+                <img src="resources/lobzik4.jpeg" alt="Товар 4">
+                <div class="content">
+                    <h3> metabo 3200</h3>
+                    <p><strong>Цена:</strong> 2500 руб.</p>
+                    <p>Премиум лобзик с эргономичным дизайном</p>
+                    <ul>
+                        <li>Мощность: 800 Вт</li>
+                        <li>Скорость: 3600 об/мин</li>
+                        <li>Глубина реза: 100 мм</li>
+                        <li>Вес: 2.2 кг</li>
+                    </ul>
+                </div>
+                <div class="buttons">
+                    <button onclick="addToOrder(event)">В корзину</button>
+                </div>
+            </article>
+            <article class="product-card" data-price="1200" data-name="Товар 5"
+                     data-description="Компактный лобзик для мелких работ"
+                     data-specs="Мощность: 450 Вт, Скорость: 2800 об/мин, Глубина реза: 50 мм, Вес: 1.4 кг">
+                <img src="resources/lobzik.webp" alt="Товар 5">
+                <div class="content">
+                    <h3> metabo 3500</h3>
+                    <p><strong>Цена:</strong> 1200 руб.</p>
+                    <p>Компактный лобзик для мелких работ</p>
+                    <ul>
+                        <li>Мощность: 450 Вт</li>
+                        <li>Скорость: 2800 об/мин</li>
+                        <li>Глубина реза: 50 мм</li>
+                        <li>Вес: 1.4 кг</li>
+                    </ul>
+                </div>
+                <div class="buttons">
+                    <button onclick="addToOrder(event)">В корзину</button>
+                </div>
+            </article>
+            <article class="product-card" data-price="1800" data-name="Товар 6"
+                     data-description="Надежный лобзик для хобби"
+                     data-specs="Мощность: 550 Вт, Скорость: 3100 об/мин, Глубина реза: 60 мм, Вес: 1.6 кг">
+                <img src="resources/lobzik2.jpg" alt="Товар 6">
+                <div class="content">
+                    <h3> makita 3200</h3>
+                    <p><strong>Цена:</strong> 1800 руб.</p>
+                    <p>Надежный лобзик для хобби</p>
+                    <ul>
+                        <li>Мощность: 550 Вт</li>
+                        <li>Скорость: 3100 об/мин</li>
+                        <li>Глубина реза: 60 мм</li>
+                        <li>Вес: 1.6 кг</li>
+                    </ul>
+                </div>
+                <div class="buttons">
+                    <button onclick="addToOrder(event)">В корзину</button>
+                </div>
+            </article>
+            <article class="product-card" data-price="2200" data-name="Товар 7"
+                     data-description="Лобзик для профессиональных задач"
+                     data-specs="Мощность: 750 Вт, Скорость: 3400 об/мин, Глубина реза: 85 мм, Вес: 2.1 кг">
+                <img src="resources/lobzik 3.webp" alt="Товар 7">
+                <div class="content">
+                    <h3>makita 700</h3>
+                    <p><strong>Цена:</strong> 2200 руб.</p>
+                    <p>Лобзик для профессиональных задач</p>
+                    <ul>
+                        <li>Мощность: 750 Вт</li>
+                        <li>Скорость: 3400 об/мин</li>
+                        <li>Глубина реза: 85 мм</li>
+                        <li>Вес: 2.1 кг</li>
+                    </ul>
+                </div>
+                <div class="buttons">
+                    <button onclick="addToOrder(event)">В корзину</button>
+                </div>
+            </article>
+            <article class="product-card" data-price="2700" data-name="Товар 8"
+                     data-description="Премиум лобзик с улучшенной эргономикой"
+                     data-specs="Мощность: 850 Вт, Скорость: 3700 об/мин, Глубина реза: 110 мм, Вес: 2.3 кг">
+                <img src="resources/lobzik4.jpeg" alt="Товар 8">
+                <div class="content">
+                    <h3>metabo 800</h3>
+                    <p><strong>Цена:</strong> 2700 руб.</p>
+                    <p>Премиум лобзик с улучшенной эргономикой</p>
+                    <ul>
+                        <li>Мощность: 850 Вт</li>
+                        <li>Скорость: 3700 об/мин</li>
+                        <li>Глубина реза: 110 мм</li>
+                        <li>Вес: 2.3 кг</li>
+                    </ul>
+                </div>
+                <div class="buttons">
+                    <button onclick="addToOrder(event)">В корзину</button>
+                </div>
+            </article>
+            <article class="product-card" data-price="1400" data-name="Товар 9"
+                     data-description="Универсальный лобзик для различных материалов"
+                     data-specs="Мощность: 520 Вт, Скорость: 2900 об/мин, Глубина реза: 58 мм, Вес: 1.55 кг">
+                <img src="resources/lobzik.webp" alt="Товар 9">
+                <div class="content">
+                    <h3>dewolt 900</h3>
+                    <p><strong>Цена:</strong> 1400 руб.</p>
+                    <p>Универсальный лобзик для различных материалов</p>
+                    <ul>
+                        <li>Мощность: 520 Вт</li>
+                        <li>Скорость: 2900 об/мин</li>
+                        <li>Глубина реза: 58 мм</li>
+                        <li>Вес: 1.55 кг</li>
+                    </ul>
+                </div>
+                <div class="buttons">
+                    <button onclick="addToOrder(event)">В корзину</button>
+                </div>
+            </article>
+            <article class="product-card" data-price="1600" data-name="Товар 10"
+                     data-description="Экономичный лобзик для бытовых нужд"
+                     data-specs="Мощность: 480 Вт, Скорость: 3000 об/мин, Глубина реза: 52 мм, Вес: 1.45 кг">
+                <img src="resources/lobzik2.jpg" alt="Товар 10">
+                <div class="content">
+                    <h3>dewolt 100</h3>
+                    <p><strong>Цена:</strong> 1600 руб.</p>
+                    <p>Экономичный лобзик для бытовых нужд</p>
+                    <ul>
+                        <li>Мощность: 480 Вт</li>
+                        <li>Скорость: 3000 об/мин</li>
+                        <li>Глубина реза: 52 мм</li>
+                        <li>Вес: 1.45 кг</li>
+                    </ul>
+                </div>
+                <div class="buttons">
+                    <button onclick="addToOrder(event)">В корзину</button>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- 
+        ============================================
+        СЕКЦИЯ ОТЗЫВОВ СО СЛАЙДЕРОМ
+        ============================================
+        
+         Структура слайдера (карусели)
+        - review-slider-container - контейнер с overflow: hidden (скрывает невидимые слайды)
+        - review-slider - внутренний контейнер со всеми слайдами (сдвигается через transform)
+        - review-card - отдельный слайд (отзыв)
+        - review-arrow - кнопки навигации (влево/вправо)
+        - review-dots - контейнер для точек навигации (создаются динамически через JS)
+        
+        Принцип работы:
+        Все слайды расположены в ряд. JavaScript сдвигает контейнер влево/вправо,
+        создавая эффект прокрутки. Точки навигации создаются автоматически.
+    -->
+    <section id="reviews" class="reviews">
+        <h2>Отзывы</h2>
+        <!-- Контейнер с overflow: hidden для скрытия невидимых слайдов -->
+        <div class="review-slider-container">
+            <!-- Внутренний контейнер со всеми слайдами - сдвигается через CSS transform -->
+            <div class="review-slider">
+                <article class="review-card">
+                    <p>Отличный магазин! Быстрая доставка и качественные товары.</p>
+                    <h4>Анна</h4>
+                </article>
+                <article class="review-card">
+                    <p>Покупал инструмент, все работает отлично, рекомендую!</p>
+                    <h4>Иван</h4>
+                </article>
+                <article class="review-card">
+                    <p>Хорошие цены и отличное обслуживание.</p>
+                    <h4>Мария</h4>
+                </article>
+                <article class="review-card">
+                    <p>Очень доволен покупкой, буду заказывать еще!</p>
+                    <h4>Сергей</h4>
+                </article>
+            </div>
+        </div>
+        <!-- Кнопки навигации слайдера -->
+        <button class="review-arrow left">&lt;</button>
+        <button class="review-arrow right">&gt;</button>
+        <!-- Контейнер для точек навигации - заполняется динамически через JavaScript -->
+        <div class="review-dots"></div>
+    </section>
+
+    <section id="about" class="about">
+        <h2>О нас</h2>
+        <p>Мы - современный интернет-магазин, предлагающий качественные товары по доступным ценам. Наша цель - сделать
+            ваши покупки удобными и приятными. Доставка по всей стране!</p>
+    </section>
+</main>
+
+<footer id="contacts">
+    <p>Email: <a href="mailto:info@shop.ru">info@shop.ru</a></p>
+    <p>Телефон: <a href="tel:+79991234567">+7 (999) 123-45-67</a></p>
+    <!-- 
+        ============================================
+        ФОРМА ОБРАТНОЙ СВЯЗИ
+        ============================================
+        
+         Валидация форм
+        - required - HTML5 атрибут для обязательных полей (браузерная валидация)
+        - type="email" - специальный тип для email (включает базовую валидацию)
+        - <textarea> - многострочное текстовое поле
+        - type="submit" - кнопка отправки формы
+        - error-message - контейнеры для вывода ошибок валидации (заполняются через JS)
+        
+        Двойная валидация:
+        1. HTML5 валидация (required, type="email") - базовая проверка браузером
+        2. Добавляем только html + css. JavaScript валидация - более детальная проверка с кастомными сообщениями
+    -->
+    <form class="contact-form" id="contact-form">
+        <input type="text" id="name" placeholder="Ваше имя" required>
+        <!-- Контейнер для отображения ошибки валидации имени -->
+        <div id="name-error" class="error-message"></div>
+        <input type="email" id="email" placeholder="Ваш email" required>
+        <!-- Контейнер для отображения ошибки валидации email -->
+        <div id="email-error" class="error-message"></div>
+        <textarea id="message" placeholder="Ваше сообщение" required></textarea>
+        <!-- Контейнер для отображения ошибки валидации сообщения -->
+        <div id="message-error" class="error-message"></div>
+        <button type="submit">Отправить</button>
+    </form>
+    <p>&copy; 2025 Интернет-магазин. Все права защищены.</p>
+</footer>
+
+<!-- 
+    ============================================
+    МОДАЛЬНЫЕ ОКНА
+    ============================================
+    
+     Модальные окна (Modal Windows)
+    Модальное окно - элемент интерфейса, который:
+    - Отображается поверх основного контента
+    - Блокирует взаимодействие с остальной страницей
+    - Требует действия пользователя для закрытия
+    
+    Структура:
+    - .modal - затемненный фон (overlay) с position: fixed
+    - .modal-content - само окно с контентом
+    - .close-modal - кнопка закрытия (крестик)
+    
+    По умолчанию скрыты (display: none), показываются через JavaScript
+-->
+
+<!-- Модальное окно успешной отправки формы -->
+<div id="form-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h3>Сообщение отправлено!</h3>
+        <p>Спасибо за ваш запрос. Мы свяжемся с вами в ближайшее время.</p>
+    </div>
+</div>
+
+<!-- Модальное окно для детального просмотра товара -->
+<!-- Содержимое заполняется динамически через JavaScript при клике на карточку товара -->
+<div id="product-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <!-- Эти элементы заполняются JavaScript из данных карточки товара -->
+        <h3 id="modal-title"></h3>
+        <img id="modal-image" src="" alt="Товар">
+        <p id="modal-price"></p>
+        <p id="modal-description"></p>
+        <ul id="modal-specs"></ul>
+    </div>
+</div>
+
+<!-- 
+    Подключение JavaScript файла в конце body
+    Это гарантирует, что все HTML-элементы уже загружены,
+    когда скрипт начнет выполняться
+-->
+<script src="script.js"></script>
+</body>
+</html>

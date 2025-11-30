@@ -40,7 +40,7 @@ const person = {
 console.log(person.name)
 console.log(person);
 
-//  Способ 2: Через конструктор new Object()
+//  Способ 2. Добавляем только html + css: Через конструктор new Object()
 const car = new Object();
 car.brand = "Toyota";
 car.model = "Camry";
@@ -55,7 +55,7 @@ console.log(car);
 
 
 /*---------------------------------------------------
-  2. Доступ к свойствам объекта
+  2. Добавляем только html + css. Доступ к свойствам объекта
 ---------------------------------------------------*/
 
 // Через точку (dot notation)

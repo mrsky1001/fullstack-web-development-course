@@ -31,7 +31,7 @@ if (условие) {
 const user = {
     name: "Ivan",
     age:19,
-    isSmallAccess: false
+    isSmallAccess: false,
     isAccess: false
 }
 
@@ -54,7 +54,7 @@ if(user.isAccess === true){
 
 
 /*---------------------------------------------------
-  2. Оператор if...else
+  2. Добавляем только html + css. Оператор if...else
 ---------------------------------------------------
 
  else (иначе) выполняется, когда условие ложно.

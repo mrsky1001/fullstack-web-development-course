@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- Мета-теги и настройки страницы -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интернет-магазин - Черно-белый с желтым</title>
+    <!-- Подключение шрифта Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Подключение файла стилей -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- Шапка сайта с навигацией -->
+<header id="home">
+    <div class="logo">
+        <img src="resources/lobzik2.jpg" alt="Логотип магазина">
+        <h1>Интернет-магазин LBZ</h1>
+    </div>
+    <nav>
+        <a href="#home">Главная</a>
+        <a href="#catalog">Каталог</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#about">О нас</a>
+        <a href="#contacts">Контакты</a>
+        <!-- Счетчик товаров в корзине -->
+        <span class="order-counter">В корзине:
+            <span id="order-count">0</span>
+        </span>
+    </nav>
+</header>
+
+<!-- Баннер с акцией -->
+<section class="banner">
+    <h2>Скидки до 50% на все товары!</h2>
+</section>
+
+<main>
+    <!-- Секция каталога товаров -->
+    <section id="catalog" class="products">
+        <!-- Форма фильтрации товаров -->
+        <div class="filter">
+            <input type="text" id="name-filter" placeholder="Название товара">
+            <input type="number" id="min-price" placeholder="Мин. цена">
+            <input type="number" id="max-price" placeholder="Макс. цена">
+            <input type="number" id="min-power" placeholder="Мин. мощность (Вт)">
+            <input type="number" id="max-power" placeholder="Макс. мощность (Вт)">
+            <input type="number" id="min-speed" placeholder="Мин. скорость (об/мин)">
+            <input type="number" id="max-speed" placeholder="Макс. скорость (об/мин)">
+            <input type="number" id="min-cut-depth" placeholder="Мин. глубина реза (мм)">
+            <input type="number" id="max-cut-depth" placeholder="Макс. глубина реза (мм)">
+            <input type="number" id="min-weight" placeholder="Мин. вес (кг)">
+            <input type="number" id="max-weight" placeholder="Макс. вес (кг)">
+            <div class="btn-container">
+                <button onclick="filterProducts()">Фильтровать</button>
+            </div>
+        </div>
+        <!-- Сетка карточек товаров -->
+        <div class="product-grid">
+            <!-- Карточка товара с данными для фильтрации и модального окна -->
+        </div>
+    </section>
+
+    <!-- Секция отзывов со слайдером -->
+    <section id="reviews" class="reviews">
+        <h2>Отзывы</h2>
+        <div class="review-slider-container">
+            <div class="review-slider">
+                <!-- Карточки отзывов -->
+                <article class="review-card">
+                    <p>Отличный магазин! Быстрая доставка и качественные товары.</p>
+                    <h4>Анна</h4>
+                </article>
+                <article class="review-card">
+                    <p>Покупал инструмент, все работает отлично, рекомендую!</p>
+                    <h4>Иван</h4>
+                </article>
+                <article class="review-card">
+                    <p>Хорошие цены и отличное обслуживание.</p>
+                    <h4>Мария</h4>
+                </article>
+                <article class="review-card">
+                    <p>Очень доволен покупкой, буду заказывать еще!</p>
+                    <h4>Сергей</h4>
+                </article>
+            </div>
+        </div>
+
+        <!-- Кнопки навигации слайдера -->
+        <button class="review-arrow left">&lt;</button>
+        <button class="review-arrow right">&gt;</button>
+
+        <!-- Точки навигации слайдера (создаются динамически через JS) -->
+        <div class="review-dots"></div>
+    </section>
+
+    <!-- Секция "О нас" -->
+    <section id="about" class="about">
+        <h2>О нас</h2>
+        <p>Мы - современный интернет-магазин, предлагающий качественные товары по доступным ценам. Наша цель - сделать
+            ваши покупки удобными и приятными. Доставка по всей стране!</p>
+    </section>
+</main>
+
+<!-- Подвал сайта с контактами и формой обратной связи -->
+<footer id="contacts">
+    <p>Email: <a href="mailto:info@shop.ru">info@shop.ru</a></p>
+    <p>Телефон: <a href="tel:+79991234567">+7 (999) 123-45-67</a></p>
+    <p>&copy; 2025 Интернет-магазин. Все права защищены.</p>
+</footer>
+
+<template id="card-template">
+    <article class="product-card">
+        <img id="card-img" src="" alt="">
+        <div class="content">
+            <h3 id="card-title"></h3>
+            <p><strong>Цена:</strong> <span id="card-price"></span> руб.</p>
+            <p id="card-description"></p>
+            <ul>
+                <li>Мощность: <span id="card-power"></span> Вт</li>
+            </ul>
+        </div>
+        <div class="buttons">
+            <button onclick="addToOrder()">В корзину</button>
+        </div>
+    </article>
+</template>
+
+<!-- Подключение JavaScript файла -->
+<script src="script.js"></script>
+</body>
+</html>

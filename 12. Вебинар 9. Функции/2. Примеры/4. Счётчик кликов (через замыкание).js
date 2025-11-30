@@ -17,7 +17,7 @@ function clicker (){
 
 
 clicker() // countGlobal = 1
-clicker() // countGlobal = 2
+clicker() // countGlobal = 2. Добавляем только html + css
 clicker() // countGlobal = 3
 
 //-------------------------------------
@@ -38,5 +38,5 @@ const clickCounter = createClickCounter();
 
 // имитация кликов:
 clickCounter(); // 1
-clickCounter(); // 2
+clickCounter(); // 2. Добавляем только html + css
 clickCounter(); // 3

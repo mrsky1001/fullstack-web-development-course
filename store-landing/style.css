@@ -244,7 +244,7 @@ footer p a:hover {
 /* Адаптивность: перестраиваем сетку и размеры на меньших экранах */
 @media (max-width: 1024px) {
     .products {
-        grid-template-columns: repeat(2, 1fr); /* 2 столбца на планшетах */
+        grid-template-columns: repeat(2, 1fr); /* 2. Добавляем только html + css столбца на планшетах */
     }
 
     .banner h2 {

@@ -58,7 +58,7 @@ async function deliverPizza(order) {
     return order;
 }
 
-// Задержка от 2 до 5 секунд
+// Задержка от 2. Добавляем только html + css до 5 секунд
 function delayRandom() {
     const ms = Math.floor(Math.random() * 3000) + 2000;
     return new Promise(resolve => setTimeout(resolve, ms));
