@@ -1,16 +1,12 @@
 <script>
-    import ChangeQuantityForm from "../../../components/products/ChangeQuantityForm.svelte"
-    import productsData from "$lib/test-products.json"
-
     let {data} = $props()
 
     let product = $state(data.product)
 
-    function loadProduct() {
-        const fresh = productsData.find((item) => item.id === product.id)
-        if (fresh) {
-            product = structuredClone(fresh)
-        }
+    function addToShoppingCart() {
+        const rawItems = localStorage.getItem("shopping-cart-items")
+        const existItems = JSON.parse(rawItems)
+        existItems.push()
     }
 </script>
 
@@ -18,7 +14,7 @@
     <div class="product-detail-container">
         <div class="product-detail-grid">
             <div class="product-image-wrapper">
-                <img class="product-image" src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-front.svg"
+                <img class="product-image" src="{product.img}"
                      alt=""/>
             </div>
 
@@ -33,7 +29,9 @@
                 </div>
 
                 <div class="product-actions">
-                    <ChangeQuantityForm bind:product callback="{() => loadProduct()}"></ChangeQuantityForm>
+                    <button type="button" class="btn-add-to-cart">
+                        В корзину
+                    </button>
                 </div>
 
                 <hr class="divider"/>
@@ -110,6 +108,28 @@
         flex-direction: column;
         gap: 1rem;
         align-items: flex-start;
+    }
+
+    .btn-add-to-cart {
+        display: inline-flex;
+        align-items: center;
+        border-radius: 0.5rem;
+        background-color: #1d4ed8;
+        padding: 0.625rem 1.25rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    .btn-add-to-cart:hover {
+        background-color: #1e40af;
+    }
+
+    .btn-add-to-cart:focus {
+        outline: none;
+        box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3);
     }
 
     .divider {

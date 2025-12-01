@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1",
+    "name": "Монитор HP",
+    "price": 1200,
+    "category": "Мониторы",
+    "img": "/products/1_monitor_hks.jpg"
+  },
+  {
+    "id": "2",
+    "name": "Клавиатура Logitech",
+    "price": 650,
+    "category": "Клавиатуры",
+    "img": "/products/1_keyboard.webp"
+  },
+  {
+    "id": "3",
+    "name": "Наушники Sony",
+    "price": 870,
+    "category": "Наушники",
+    "img": "/products/1_headphones.webp"
+  }
+]

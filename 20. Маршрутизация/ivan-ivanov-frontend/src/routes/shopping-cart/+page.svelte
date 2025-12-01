@@ -1,13 +1,13 @@
 <script>
     import {onMount} from "svelte"
-    import ProductItem from "../../components/shopping-cart/ProductItem.svelte"
-
-    import cartData from "$lib/test-cart.json"
+    import ShoppingCartProductItem from "../../components/ShoppingCartProductItem.svelte"
 
     let products = []
 
     function loadRows() {
-        products = cartData
+        const rawItems = localStorage.getItem("shopping-cart-items")
+        products = JSON.parse(rawItems)
+        console.log(products)
     }
 
     onMount(() => {
@@ -23,7 +23,7 @@
             <div class="cart-items">
                 <div class="items-list">
                     {#each products as product}
-                        <ProductItem {product} {loadRows}></ProductItem>
+                        <ShoppingCartProductItem {product} {loadRows}></ShoppingCartProductItem>
                     {/each}
                 </div>
             </div>

@@ -131,12 +131,6 @@
         background-color: #4b5563;
     }
 
-    .quantity-icon {
-        color: white;
-        width: 0.75rem;
-        height: 0.75rem;
-    }
-
     .quantity-input {
         width: 3rem;
         text-align: center;
@@ -175,10 +169,4 @@
         box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.3);
     }
 
-    .btn-icon {
-        margin-left: -0.5rem;
-        margin-right: 0.5rem;
-        width: 1.25rem;
-        height: 1.25rem;
-    }
 </style>
