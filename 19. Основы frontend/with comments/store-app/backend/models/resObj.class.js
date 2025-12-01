@@ -14,7 +14,7 @@ class ResObj {
      * @param {Object} [obj] - Объект с данными ответа
      * @param {string} [obj.text] - Текст сообщения (по умолчанию 'SUCCESS')
      * @param {number} [obj.status] - HTTP статус (по умолчанию 200)
-     * @param {*} [obj.data] - Данные ответа (по умолчанию null)
+     * @param {*} [obj.lib] - Данные ответа (по умолчанию null)
      */
     constructor(obj) {
         this.text = obj.text ?? 'SUCCESS'

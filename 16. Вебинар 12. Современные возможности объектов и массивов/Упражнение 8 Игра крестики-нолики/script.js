@@ -62,8 +62,8 @@ function cellClick(event) {
     if (gameOver) return
 
     const target = event.target
-    const row = parseInt(target.getAttribute('data-row'))
-    const col = parseInt(target.getAttribute('data-col'))
+    const row = parseInt(target.getAttribute('lib-row'))
+    const col = parseInt(target.getAttribute('lib-col'))
 
     // Проверяем, пустая ли ячейка
     if (gameState[row][col] !== '') {

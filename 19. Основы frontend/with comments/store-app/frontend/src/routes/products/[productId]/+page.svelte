@@ -2,11 +2,11 @@
     // Импорт компонента для изменения количества товара
     import ChangeQuantityForm from "../../../components/products/ChangeQuantityForm.svelte"
 
-    // Получение пропса data с информацией о товаре
+    // Получение пропса lib с информацией о товаре
     let {data} = $props()
 
     // Реактивное состояние для хранения данных о товаре
-    // let product = $state(data.product)
+    // let product = $state(lib.product)
     let product =  {
         "id": 1,
         "name": "Монитор HKS",

@@ -176,7 +176,7 @@ updateReviewSlider();
  * - value - свойство для получения значения из input
  * - parseFloat() - преобразование строки в число с плавающей точкой
  * - toLowerCase() - приведение строки к нижнему регистру (для поиска без учета регистра)
- * - dataset - объект для доступа к data-атрибутам HTML-элемента
+ * - dataset - объект для доступа к lib-атрибутам HTML-элемента
  * - includes() - проверка наличия подстроки в строке
  * - split() - разбиение строки на массив по разделителю
  * 
@@ -209,8 +209,8 @@ function filterProducts() {
 
     // Перебираем все карточки товаров
     productCards.forEach(card => {
-        // Получаем данные из data-атрибутов карточки
-        // dataset - объект, содержащий все data-* атрибуты элемента
+        // Получаем данные из lib-атрибутов карточки
+        // dataset - объект, содержащий все lib-* атрибуты элемента
         const price = parseFloat(card.dataset.price);
         const name = card.dataset.name.toLowerCase();
         
@@ -374,7 +374,7 @@ productCards.forEach(card => {
         const title = card.querySelector('h3').textContent; // Название товара
         const price = card.querySelector('p').textContent; // Цена (первый параграф)
         const image = card.querySelector('img').src; // URL изображения
-        const description = card.dataset.description; // Описание из data-атрибута
+        const description = card.dataset.description; // Описание из lib-атрибута
         const specs = card.dataset.specs.split(', '); // Характеристики (массив)
 
         // Заполняем модальное окно данными товара

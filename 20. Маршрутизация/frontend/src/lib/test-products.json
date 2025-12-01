@@ -1,0 +1,34 @@
+[{
+  "id": "1",
+  "name": "Монитор HP",
+  "price": 12000,
+  "category": "Мониторы",
+  "img": "https://via.placeholder.com/400x300?text=Monitor",
+  "isExistInShoppingCart": true,
+  "quantity": 1,
+  "rowId": "row-1",
+  "userId": "user-1",
+  "productId": "1"
+}, {
+  "id": "2",
+  "name": "Клавиатура Logitech",
+  "price": 6500,
+  "category": "Клавиатуры",
+  "img": "https://via.placeholder.com/400x300?text=Keyboard",
+  "isExistInShoppingCart": false,
+  "quantity": 0,
+  "rowId": "row-2",
+  "userId": "user-1",
+  "productId": "2"
+}, {
+  "id": "3",
+  "name": "Наушники Sony",
+  "price": 8700,
+  "category": "Мониторы",
+  "img": "https://via.placeholder.com/400x300?text=Headphones",
+  "isExistInShoppingCart": false,
+  "quantity": 0,
+  "rowId": "row-3",
+  "userId": "user-1",
+  "productId": "3"
+}]
