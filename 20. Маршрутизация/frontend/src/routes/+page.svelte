@@ -1,14 +1,8 @@
-<script>
-    import BadgeArrowIcon from "../components/svg/BadgeArrowIcon.svelte"
-    import ArrowForwardIcon from "../components/svg/ArrowForwardIcon.svelte"
-</script>
-
 <section class="hero">
     <div class="hero-container">
-        <a href="/products" class="announcement-badge" role="alert">
+        <a href="/products" class="announcement-badge">
             <span class="badge-label">Новинка</span>
             <span class="badge-text">Ознакомьтесь с нашими новыми гаджетами!</span>
-            <BadgeArrowIcon className="badge-icon"></BadgeArrowIcon>
         </a>
         <h1 class="hero-title">
             ТехноТренд
@@ -20,7 +14,6 @@
         <div class="hero-actions">
             <a href="/products" class="btn btn-primary">
                 Купить сейчас
-                <ArrowForwardIcon className="btn-icon"></ArrowForwardIcon>
             </a>
             <a href="/auth/login" class="btn btn-secondary">
                 Авторизоваться

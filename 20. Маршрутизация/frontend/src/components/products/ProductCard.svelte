@@ -1,10 +1,10 @@
 <script>
     import ChangeQuantityForm from "./ChangeQuantityForm.svelte"
-    import EyeIcon from "../svg/EyeIcon.svelte"
-    import HeartIcon from "../svg/HeartIcon.svelte"
-    import StarIcon from "../svg/StarIcon.svelte"
-    import TruckIcon from "../svg/TruckIcon.svelte"
-    import WalletIcon from "../svg/WalletIcon.svelte"
+
+
+
+
+
 
     let {product, callback} = $props()
 </script>
@@ -17,45 +17,7 @@
         </a>
     </div>
     <div class="product-content">
-        <div class="product-header">
-            <span class="product-badge"> Up to 35% off </span>
-            <div class="product-actions">
-                <button type="button" class="action-btn" title="Quick look">
-                    <span class="sr-only"> Quick look </span>
-                    <EyeIcon className="action-icon"></EyeIcon>
-                </button>
-                <button type="button" class="action-btn" title="Add to Favorites">
-                    <span class="sr-only"> Add to Favorites </span>
-                    <HeartIcon className="action-icon"></HeartIcon>
-                </button>
-            </div>
-        </div>
-
         <a href="#" class="product-name">{product.name}</a>
-
-        <div class="product-rating">
-            <div class="stars">
-                <StarIcon className="star"></StarIcon>
-                <StarIcon className="star"></StarIcon>
-                <StarIcon className="star"></StarIcon>
-                <StarIcon className="star"></StarIcon>
-                <StarIcon className="star"></StarIcon>
-            </div>
-            <p class="rating-text">5.0</p>
-            <p class="rating-count">(455)</p>
-        </div>
-
-        <ul class="product-features">
-            <li class="feature-item">
-                <TruckIcon className="feature-icon"></TruckIcon>
-                <p class="feature-text">Fast Delivery</p>
-            </li>
-            <li class="feature-item">
-                <WalletIcon className="feature-icon"></WalletIcon>
-                <p class="feature-text">Best Price</p>
-            </li>
-        </ul>
-
         <div class="product-footer">
             <p class="product-price">${product.price}</p>
             <ChangeQuantityForm {product} {callback}></ChangeQuantityForm>

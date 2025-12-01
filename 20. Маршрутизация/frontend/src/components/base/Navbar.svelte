@@ -1,5 +1,5 @@
 <script>
-    import MenuIcon from "../svg/MenuIcon.svelte"
+
 </script>
 
 <nav>
@@ -9,7 +9,7 @@
         </a>
         <button type="button" class="menu-toggle" aria-controls="navbar-default" aria-expanded="false">
             <span class="sr-only">Open main menu</span>
-            <MenuIcon className="menu-icon"></MenuIcon>
+
         </button>
         <div class="navbar-menu" id="navbar-default">
             <ul class="nav-list">

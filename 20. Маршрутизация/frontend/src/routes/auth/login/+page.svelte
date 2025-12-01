@@ -39,11 +39,11 @@
         <div class="login-card">
             <div class="login-card-content">
                 <h1 class="login-title">
-                    Sign in to your account
+                    Авторизация
                 </h1>
                 <form class="login-form" action="#" onsubmit="{onSubmit}">
                     <div class="form-group">
-                        <label for="email" class="form-label">Your email</label>
+                        <label for="email" class="form-label">Email</label>
                         <input type="email" name="email" id="email"
                                class="form-input"
                                placeholder="name@company.com" required="" bind:value={user.email}/>
@@ -55,7 +55,7 @@
                                required="" bind:value={user.password}/>
                     </div>
                     <button type="submit" class="btn-submit">
-                        Sign in
+                        Войти
                     </button>
                 </form>
             </div>

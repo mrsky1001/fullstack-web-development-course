@@ -1,7 +1,7 @@
 <script>
     import {onMount} from "svelte"
     import ProductItem from "../../components/shopping-cart/ProductItem.svelte"
-    import ArrowBackIcon from "../../components/svg/ArrowBackIcon.svelte"
+
     import cartData from "$lib/test-cart.json"
 
     let products = []
@@ -69,7 +69,7 @@
                         <span class="summary-footer-text"> or </span>
                         <a href="#" class="summary-footer-link">
                             Continue Shopping
-                            <ArrowBackIcon className="footer-link-icon"></ArrowBackIcon>
+
                         </a>
                     </div>
                 </div>

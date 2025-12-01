@@ -29,17 +29,17 @@
         <div class="registration-card">
             <div class="registration-card-content">
                 <h1 class="registration-title">
-                    Create an account
+                   Регистрация
                 </h1>
                 <form id="registrationForm" class="registration-form" action="#" onsubmit="{onSubmit}">
                     <div class="form-group">
-                        <label for="name" class="form-label">Your name</label>
+                        <label for="name" class="form-label">Name</label>
                         <input name="name" id="name"
                                class="form-input"
                                placeholder="Ivan Ivanov" required="" bind:value={user.name}>
                     </div>
                     <div class="form-group">
-                        <label for="email" class="form-label">Your email</label>
+                        <label for="email" class="form-label">Email</label>
                         <input type="email" name="email" id="email"
                                class="form-input"
                                placeholder="name@company.com" required="" bind:value={user.email}>
@@ -51,7 +51,7 @@
                                required="" bind:value={user.password}>
                     </div>
                     <button type="submit" class="btn-submit">
-                        Create an account
+                        Регистрация
                     </button>
                     <p class="form-footer">
                         Already have an account? <a href="#" class="form-link">Login here</a>

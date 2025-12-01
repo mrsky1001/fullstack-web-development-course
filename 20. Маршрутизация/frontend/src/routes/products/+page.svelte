@@ -1,11 +1,11 @@
 <script>
     import {onMount} from "svelte"
     import ProductCard from "../../components/products/ProductCard.svelte"
-    import HomeIcon from "../../components/svg/HomeIcon.svelte"
-    import ChevronRightIcon from "../../components/svg/ChevronRightIcon.svelte"
-    import FilterIcon from "../../components/svg/FilterIcon.svelte"
-    import ChevronDownIcon from "../../components/svg/ChevronDownIcon.svelte"
-    import CloseIcon from "../../components/svg/CloseIcon.svelte"
+
+
+
+
+
     import productsData from "$lib/test-products.json"
 
     let loadedProducts = []
@@ -68,13 +68,12 @@
                     <ol class="breadcrumb-list">
                         <li class="breadcrumb-item">
                             <a href="/" class="breadcrumb-link">
-                                <HomeIcon className="breadcrumb-icon"></HomeIcon>
                                 Главная
                             </a>
                         </li>
                         <li class="breadcrumb-item">
                             <div class="breadcrumb-separator">
-                                <ChevronRightIcon className="breadcrumb-arrow"></ChevronRightIcon>
+                                &blacktriangleright;
                                 <a href="/products" class="breadcrumb-link">Товары</a>
                             </div>
                         </li>
@@ -84,9 +83,7 @@
             </div>
             <div class="header-actions">
                 <button type="button" onclick="{()=>toggleFilter()}" class="btn-filter">
-                    <FilterIcon className="btn-icon"></FilterIcon>
                     Фильтр
-                    <ChevronDownIcon className="btn-icon"></ChevronDownIcon>
                 </button>
             </div>
         </div>
@@ -105,7 +102,7 @@
                 <div class="modal-header">
                     <h3 class="modal-title">Filters</h3>
                     <button type="button" onclick="{()=>toggleFilter()}" class="modal-close">
-                        <CloseIcon className="close-icon"></CloseIcon>
+
                         <span class="sr-only">Close modal</span>
                     </button>
                 </div>

@@ -1,9 +1,9 @@
 <script>
     import {goto} from "$app/navigation"
-    import HeartIcon from "../svg/HeartIcon.svelte"
-    import CloseIcon from "../svg/CloseIcon.svelte"
-    import MinusIcon from "../svg/MinusIcon.svelte"
-    import PlusIcon from "../svg/PlusIcon.svelte"
+
+
+
+
 
     let {product, loadRows} = $props()
 
@@ -80,12 +80,12 @@
 
             <div class="item-actions">
                 <button type="button" class="action-link">
-                    <HeartIcon className="action-icon"></HeartIcon>
+
                     Add to Favorites
                 </button>
 
                 <button type="button" onclick="{removeProduct}" class="action-link action-link-danger">
-                    <CloseIcon className="action-icon"></CloseIcon>
+
                     Удалить
                 </button>
             </div>
@@ -96,7 +96,7 @@
                 <button type="button" id="decrement-button"
                         onclick="{decrement}"
                         class="quantity-btn quantity-btn-left">
-                    <MinusIcon className="quantity-icon"></MinusIcon>
+
                 </button>
                 <input type="text" id="counter-input"
                        class="quantity-input"
@@ -104,7 +104,7 @@
                 <button type="button" id="increment-button"
                         onclick="{increment}"
                         class="quantity-btn quantity-btn-right">
-                    <PlusIcon className="quantity-icon"></PlusIcon>
+
                 </button>
             </div>
             <div class="item-price">

@@ -1,7 +1,5 @@
 <script>
     import ChangeQuantityForm from "../../../components/products/ChangeQuantityForm.svelte"
-    import StarIcon from "../../../components/svg/StarIcon.svelte"
-    import HeartIcon from "../../../components/svg/HeartIcon.svelte"
     import productsData from "$lib/test-products.json"
 
     let {data} = $props()
@@ -32,30 +30,9 @@
                     <p class="product-price">
                         ${product.price}
                     </p>
-
-                    <div class="rating-group">
-                        <div class="stars">
-                            <StarIcon className="star"></StarIcon>
-                            <StarIcon className="star"></StarIcon>
-                            <StarIcon className="star"></StarIcon>
-                            <StarIcon className="star"></StarIcon>
-                            <StarIcon className="star"></StarIcon>
-                        </div>
-                        <p class="rating-text">
-                            (5.0)
-                        </p>
-                        <a href="#" class="reviews-link">
-                            345 Reviews
-                        </a>
-                    </div>
                 </div>
 
                 <div class="product-actions">
-                    <a href="#" class="btn-favorite">
-                        <HeartIcon className="btn-icon"></HeartIcon>
-                        Add to favorites
-                    </a>
-
                     <ChangeQuantityForm bind:product callback="{() => loadProduct()}"></ChangeQuantityForm>
                 </div>
 

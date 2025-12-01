@@ -1,8 +1,5 @@
 <script>
     import {goto} from "$app/navigation"
-    import MinusIcon from "../svg/MinusIcon.svelte"
-    import PlusIcon from "../svg/PlusIcon.svelte"
-    import CartIcon from "../svg/CartIcon.svelte"
 
     let {product, callback} = $props()
 
@@ -81,21 +78,20 @@
     <div class="quantity-control">
         <button onclick="{()=> decrement()}" type="button" id="decrement-button"
                 class="quantity-btn quantity-btn-left">
-            <MinusIcon className="quantity-icon"></MinusIcon>
+            -
         </button>
         <input type="text" id="quantity-input-1"
                class="quantity-input"
                placeholder="99" bind:value="{product.quantity}" required="">
         <button onclick="{()=> increment()}" type="button" id="increment-button"
                 class="quantity-btn quantity-btn-right">
-            <PlusIcon className="quantity-icon"></PlusIcon>
+            +
         </button>
     </div>
 {:else}
     <button type="button"
             onclick={() => addProductToShoppingCart(product)}
             class="btn-add-to-cart">
-        <CartIcon className="btn-icon"></CartIcon>
         В корзину
     </button>
 {/if}
@@ -114,13 +110,20 @@
         background-color: #374151;
         border: none;
         cursor: pointer;
+
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .quantity-btn-left {
         border-radius: 0.5rem 0 0 0.5rem;
+
     }
 
     .quantity-btn-right {
+        color: white;
         border-radius: 0 0.5rem 0.5rem 0;
     }
 

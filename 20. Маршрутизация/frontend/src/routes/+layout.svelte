@@ -1,5 +1,4 @@
 <script>
-    import '../app.css'
     import Navbar from "../components/base/Navbar.svelte"
     import Footer from "../components/base/Footer.svelte"
 
@@ -16,6 +15,7 @@
 
 <style>
     .app {
+        font-family: 'Calibri', 'sans-serif';
         min-height: 100vh;
         display: flex;
         flex-direction: column;
