@@ -94,12 +94,13 @@ function renderCart() {
                     <div class="cart-item">
                         <div class="cart-item-image">
                             <!-- Если есть картинка - показываем, иначе заглушку -->
-                            ${item.img ? `<img src="${item.img}" alt="${item.name}">` : '🖥️'}
+                            <!-- ⚠️ escapeHtml защищает от XSS-атак -->
+                            ${item.img ? `<img src="${escapeHtml(item.img)}" alt="${escapeHtml(item.name)}">` : '🖥️'}
                         </div>
                         <div class="cart-item-details">
                             <div>
-                                <h3 class="cart-item-name">${item.name}</h3>
-                                <p class="cart-item-category">${item.category || 'Комплектующие'}</p>
+                                <h3 class="cart-item-name">${escapeHtml(item.name)}</h3>
+                                <p class="cart-item-category">${escapeHtml(item.category) || 'Комплектующие'}</p>
                             </div>
                             <div class="cart-item-bottom">
                                 <!-- Кнопки + и - -->

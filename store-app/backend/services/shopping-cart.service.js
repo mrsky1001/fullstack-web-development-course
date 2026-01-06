@@ -71,14 +71,19 @@ exports.insertRow = async (row) => {
 /**
  * Обновляет количество товара в существующей записи корзины.
  * 
+ * ВАЖНО: Добавлена проверка user_id для безопасности!
+ * Без неё злоумышленник мог бы изменить чужую корзину, зная item_id.
+ * 
  * @param {Object} row - Объект с обновленными данными
  * @param {number} row.quantity - Новое количество
  * @param {number} row.id - ID записи в корзине (item_id)
+ * @param {number} userId - ID текущего пользователя (для проверки владельца)
  */
-exports.updateQuantityRow = async (row) => {
+exports.updateQuantityRow = async (row, userId) => {
+    // Добавлена проверка AND user_id = ? для безопасности
     const result = await db.execute(
-        "UPDATE shopping_cart SET item_quantity = ? WHERE item_id = ?",
-        [row.quantity, row.id]
+        "UPDATE shopping_cart SET item_quantity = ? WHERE item_id = ? AND user_id = ?",
+        [row.quantity, row.id, userId]
     );
 
     return result;
@@ -87,12 +92,17 @@ exports.updateQuantityRow = async (row) => {
 /**
  * Удаляет запись из корзины по её ID.
  * 
+ * ВАЖНО: Добавлена проверка user_id для безопасности!
+ * Это предотвращает возможность удаления чужих товаров.
+ * 
  * @param {number} rowId - ID записи в корзине (item_id)
+ * @param {number} userId - ID текущего пользователя (для проверки владельца)
  */
-exports.deleteRow = async (rowId) => {
+exports.deleteRow = async (rowId, userId) => {
+    // Добавлена проверка AND user_id = ? для безопасности
     const result = await db.execute(
-        "DELETE FROM shopping_cart WHERE item_id = ?",
-        [rowId]
+        "DELETE FROM shopping_cart WHERE item_id = ? AND user_id = ?",
+        [rowId, userId]
     );
 
     return result;

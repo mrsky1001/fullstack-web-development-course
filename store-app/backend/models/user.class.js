@@ -32,6 +32,23 @@ class User {
 
         return this;
     }
+
+    /**
+     * Преобразование в JSON для отправки клиенту.
+     * ВАЖНО: Пароль (даже хэш) НИКОГДА не отправляется клиенту!
+     * Это защита от утечки данных.
+     * 
+     * Метод toJSON() автоматически вызывается при JSON.stringify() и res.json().
+     */
+    toJSON() {
+        return {
+            id: this.id,
+            name: this.name,
+            email: this.email,
+            role: this.role
+            // password НЕ включен - это критически важно для безопасности!
+        };
+    }
 }
 
 module.exports = User;

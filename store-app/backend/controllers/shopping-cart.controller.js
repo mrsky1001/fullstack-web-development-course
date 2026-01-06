@@ -91,10 +91,12 @@ exports.changeQuantityShoppingCartRow = async (req, res) => {
         const rowId = req.params.id; // ID записи корзины из URL
         const rawData = req.body;    // { quantity: ... }
         const newQuantity = rawData.quantity;
+        const user = req.user;       // Текущий пользователь (из сессии)
 
         if (newQuantity <= 0) {
             // Если количество <= 0, то удаляем товар из корзины совсем
-            await deleteRow(rowId);
+            // ВАЖНО: Передаем user.id для проверки владельца!
+            await deleteRow(rowId, user.id);
         } else {
             // Иначе обновляем значение
             const shoppingCartRow = new ShoppingCartRow({
@@ -102,7 +104,8 @@ exports.changeQuantityShoppingCartRow = async (req, res) => {
                 quantity: newQuantity
             });
 
-            await updateQuantityRow(shoppingCartRow);
+            // ВАЖНО: Передаем user.id для проверки владельца!
+            await updateQuantityRow(shoppingCartRow, user.id);
         }
 
         res.json(new ResObj({
@@ -123,8 +126,11 @@ exports.changeQuantityShoppingCartRow = async (req, res) => {
 exports.removeShoppingCartRow = async (req, res) => {
     try {
         const rowId = req.params.id; // ID записи корзины
+        const user = req.user;       // Текущий пользователь (из сессии)
 
-        await deleteRow(rowId);
+        // ВАЖНО: Передаем user.id для проверки владельца!
+        // Это предотвращает удаление чужих товаров.
+        await deleteRow(rowId, user.id);
 
         res.json(new ResObj({
             text: msgs.SUCCESS_OPERATION,

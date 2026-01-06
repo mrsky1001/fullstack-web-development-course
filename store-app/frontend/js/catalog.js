@@ -111,14 +111,15 @@ function renderProducts(products) {
     }
 
     // Генерируем HTML для каждого товара
+    // ⚠️ ВАЖНО: escapeHtml() защищает от XSS-атак!
     container.innerHTML = products.map(product => `
         <div class="product-card">
             <div class="product-image">
-                ${product.img ? `<img src="${product.img}" alt="${product.name}">` : '🖥️'}
+                ${product.img ? `<img src="${escapeHtml(product.img)}" alt="${escapeHtml(product.name)}">` : '🖥️'}
             </div>
             <div class="product-info">
-                <div class="product-category">${product.category || 'Компоненты'}</div>
-                <h3 class="product-name">${product.name}</h3>
+                <div class="product-category">${escapeHtml(product.category) || 'Компоненты'}</div>
+                <h3 class="product-name">${escapeHtml(product.name)}</h3>
                 <div class="product-price">${formatPrice(product.price)} ₽</div>
                 
                 <div class="product-actions">

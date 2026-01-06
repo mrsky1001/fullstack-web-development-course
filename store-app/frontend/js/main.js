@@ -38,15 +38,18 @@ async function loadFeaturedProducts() {
                 return;
             }
 
+
             // Генерируем HTML карточек
+            // ⚠️ ВАЖНО: Используем escapeHtml() для данных из БД!
+            // Это защита от XSS-атак (если кто-то добавит <script> в название товара)
             container.innerHTML = featuredProducts.map(product => `
                 <div class="product-card" onclick="viewProduct(${product.id})">
                     <div class="product-image">
-                        ${product.img ? `<img src="${product.img}" alt="${product.name}">` : '🖥️'}
+                        ${product.img ? `<img src="${escapeHtml(product.img)}" alt="${escapeHtml(product.name)}">` : '🖥️'}
                     </div>
                     <div class="product-info">
-                        <div class="product-category">${product.category || 'Компоненты'}</div>
-                        <h3 class="product-name">${product.name}</h3>
+                        <div class="product-category">${escapeHtml(product.category) || 'Компоненты'}</div>
+                        <h3 class="product-name">${escapeHtml(product.name)}</h3>
                         <div class="product-price">${formatPrice(product.price)} ₽</div>
                         <div class="product-actions">
                             <!-- preventDefault / stopPropagation нужны, чтобы клик по кнопке не 
