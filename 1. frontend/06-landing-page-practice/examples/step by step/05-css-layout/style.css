@@ -1,0 +1,174 @@
+/* 
+  ШАГ 4: БАЗОВЫЕ СТИЛИ (BASE STYLES)
+*/
+
+:root {
+    --color-bg: #0b0c15;
+    --color-surface: #161822;
+    --color-text: #ffffff;
+    --color-text-muted: #9496a1;
+    --color-primary: #6e56cf;
+    --color-secondary: #2c2e3b;
+    --color-border: #2c2e3b;
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --container-width: 1200px;
+    --header-height: 80px;
+    --hero-gradient: radial-gradient(circle at 50% 0%, rgba(110, 86, 207, 0.15) 0%, transparent 50%);
+    --text-gradient: linear-gradient(to right, #fff, #9496a1);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.5;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    color: var(--color-text-muted);
+    font-size: 1.125rem;
+}
+
+/* 
+  ШАГ 5: РАСКЛАДКА (LAYOUT)
+  На этом шаге мы расставляем элементы по местам, используя Flexbox и Grid.
+*/
+
+/* 
+  1. ШАПКА (NAVBAR) - FLEXBOX
+*/
+.navbar {
+    height: var(--header-height);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(11, 12, 21, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.nav-content {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-links,
+.nav-actions {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+/* 
+  2. ГЛАВНЫЙ ЭКРАН (HERO)
+*/
+.hero {
+    padding-top: calc(var(--header-height) + 8rem);
+    padding-bottom: 8rem;
+    text-align: center;
+    background: var(--hero-gradient);
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+/* 
+  3. СЕТКИ (GRID) ДЛЯ КАРТОЧЕК
+*/
+.features-grid,
+.steps-grid,
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* 
+  4. ОТСТУПЫ СЕКЦИЙ
+*/
+.social-proof,
+.features,
+.how-it-works,
+.value-prop,
+.testimonials {
+    padding: 6rem 0;
+}
+
+.logos-grid {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+    opacity: 0.5;
+    margin-top: 2rem;
+}
+
+/* 
+  5. ПОДВАЛ (FOOTER) - GRID
+*/
+footer {
+    padding: 4rem 0;
+    border-top: 1px solid var(--color-border);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 4rem;
+}

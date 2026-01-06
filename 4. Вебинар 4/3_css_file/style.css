@@ -1,8 +1,0 @@
-.box {
-    width: 200px;
-    height: 100px;
-    background-color: lightblue;
-    border: 5px solid navy;   /* рамка */
-    padding: 20px;            /* отступ внутри */
-    margin: 15px;             /* отступ снаружи */
-}

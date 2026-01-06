@@ -1,0 +1,107 @@
+/* 
+  ШАГ 4: БАЗОВЫЕ СТИЛИ (BASE STYLES)
+  На этом шаге мы создаем фундамент для наших стилей.
+*/
+
+/* 
+  1. CSS ПЕРЕМЕННЫЕ (:root)
+  Мы сохраняем все цвета, шрифты и отступы в переменных.
+  Это позволяет очень легко менять дизайн: изменил значение в одном месте — поменялось везде.
+  Здесь мы определяем цвета для Темной Темы (по умолчанию).
+*/
+:root {
+    --color-bg: #0b0c15;
+    --color-surface: #161822;
+    /* Цвет карточек */
+    --color-text: #ffffff;
+    --color-text-muted: #9496a1;
+    /* Серый текст */
+    --color-primary: #6e56cf;
+    /* Акцентный цвет (фиолетовый) */
+    --color-secondary: #2c2e3b;
+    --color-border: #2c2e3b;
+
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+    --container-width: 1200px;
+    --header-height: 80px;
+
+    /* Градиенты для фона и текста */
+    --hero-gradient: radial-gradient(circle at 50% 0%, rgba(110, 86, 207, 0.15) 0%, transparent 50%);
+    --text-gradient: linear-gradient(to right, #fff, #9496a1);
+}
+
+/* 
+  2. СБРОС (RESET)
+  Браузеры по умолчанию добавляют отступы (margin/padding) разным элементам.
+  Мы убираем их, чтобы иметь полный контроль над дизайном.
+  box-sizing: border-box означает, что padding не будет расширять размер элемента.
+*/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* 
+  3. ОСНОВНЫЕ СТИЛИ (BODY)
+  Применяем фон, цвет текста и шрифт ко всей странице.
+*/
+body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.5;
+}
+
+/* Убираем подчеркивание у ссылок */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Убираем точки у списков */
+ul {
+    list-style: none;
+}
+
+/* 
+  4. КОНТЕЙНЕР
+  Этот класс ограничивает ширину содержимого (напр. 1200px) и центрирует его (margin: 0 auto).
+  Без него контент растягивался бы на весь огромный монитор.
+*/
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* 
+  5. ТИПОГРАФИКА
+  Настраиваем размеры и жирность заголовков (h1-h3) и обычного текста (p).
+*/
+h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    color: var(--color-text-muted);
+    font-size: 1.125rem;
+}

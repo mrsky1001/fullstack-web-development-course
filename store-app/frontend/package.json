@@ -1,0 +1,16 @@
+{
+    "name": "techparts-store-frontend",
+    "version": "1.0.0",
+    "description": "TechParts E-commerce Store Frontend",
+    "scripts": {
+        "start": "npx http-server -p 8000 -c-1",
+        "dev": "npx http-server -p 8000 -c-1 -o"
+    },
+    "keywords": [
+        "ecommerce",
+        "store",
+        "frontend"
+    ],
+    "author": "IEEU Student",
+    "license": "MIT"
+}
