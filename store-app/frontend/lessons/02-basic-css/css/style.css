@@ -1,0 +1,288 @@
+/* 
+   УРОК 2: ВВЕДЕНИЕ В CSS
+   =========================================
+   
+   CSS (Cascading Style Sheets) - каскадные таблицы стилей.
+   Используется для оформления внешнего вида HTML-элементов.
+   
+   В этом файле мы изучим:
+   1. CSS Reset (сброс стилей браузера)
+   2. CSS-переменные (Custom Properties)
+   3. Базовую типографику
+   4. Создание простых компонентов (кнопки, карточки)
+*/
+
+/* =========================================
+   CSS ПЕРЕМЕННЫЕ (CUSTOM PROPERTIES)
+   =========================================
+   
+   Переменные объявляются в :root (псевдокласс для <html>).
+   Это позволяет легко менять цвета во всём проекте.
+   
+   Синтаксис:
+   --имя-переменной: значение;
+   
+   Использование:
+   color: var(--имя-переменной);
+*/
+:root {
+    /* === ЦВЕТОВАЯ ПАЛИТРА === */
+    
+    /* Основные цвета фона */
+    --color-bg: #0b0c15;           /* Темный фон страницы */
+    --color-surface: #161822;      /* Фон карточек и панелей */
+    --color-surface-hover: #1f212e; /* Фон при наведении */
+    
+    /* Цвета текста */
+    --color-text: #ffffff;         /* Основной текст (белый) */
+    --color-text-muted: #9496a1;   /* Приглушенный текст (серый) */
+    
+    /* Акцентный цвет (фиолетовый) */
+    --color-primary: #6e56cf;      /* Основной */
+    --color-primary-hover: #8367f5; /* При наведении (светлее) */
+    
+    /* Границы и разделители */
+    --color-border: #2c2e3b;
+    
+    /* === ТИПОГРАФИКА === */
+    --font-sans: system-ui, -apple-system, sans-serif;
+    
+    /* === ОТСТУПЫ (SPACING) === */
+    /* Используем систему кратных значений */
+    --spacing-xs: 0.5rem;   /* 8px */
+    --spacing-sm: 1rem;     /* 16px */
+    --spacing-md: 2rem;     /* 32px */
+    --spacing-lg: 4rem;     /* 64px */
+    
+    /* === РАЗМЕРЫ === */
+    --container-width: 1200px;
+}
+
+/* =========================================
+   CSS RESET (СБРОС СТИЛЕЙ)
+   =========================================
+   
+   Браузеры имеют встроенные стили (отступы, шрифты).
+   Reset убирает их для единообразия во всех браузерах.
+*/
+
+/* Универсальный селектор (*) выбирает ВСЕ элементы */
+*,
+*::before,  /* Псевдоэлемент "до" */
+*::after {  /* Псевдоэлемент "после" */
+    /* box-sizing: border-box означает, что padding и border
+       включаются в общую ширину элемента */
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* =========================================
+   БАЗОВЫЕ СТИЛИ ТЕЛА СТРАНИЦЫ
+   =========================================
+*/
+body {
+    /* Применяем наш шрифт */
+    font-family: var(--font-sans);
+    
+    /* Фон и цвет текста из переменных */
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    
+    /* Высота строки для читабельности */
+    line-height: 1.5;
+}
+
+/* Стили для ссылок */
+a {
+    text-decoration: none;  /* Убираем подчеркивание */
+    color: inherit;         /* Цвет наследуется от родителя */
+}
+
+/* =========================================
+   КОНТЕЙНЕР (ОГРАНИЧИТЕЛЬ ШИРИНЫ)
+   =========================================
+   
+   Контейнер центрирует контент и ограничивает его ширину.
+   Это стандартный паттерн в веб-дизайне.
+*/
+.container {
+    /* Максимальная ширина контента */
+    max-width: var(--container-width);
+    /* Автоматические отступы слева и справа = центрирование */
+    margin: 0 auto;
+    /* Отступы по бокам на мобильных устройствах */
+    padding: 0 var(--spacing-sm);
+}
+
+/* =========================================
+   ТИПОГРАФИКА (ЗАГОЛОВКИ И ТЕКСТ)
+   =========================================
+*/
+h1 {
+    font-size: 3rem;        /* Большой заголовок */
+    font-weight: 800;       /* Жирный */
+    line-height: 1.1;       /* Плотный интерлиньяж */
+    margin-bottom: var(--spacing-sm);
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+}
+
+h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+}
+
+p {
+    color: var(--color-text-muted);
+    font-size: 1.125rem;
+}
+
+/* =========================================
+   КОМПОНЕНТ: КНОПКА
+   =========================================
+   
+   Кнопки - важный элемент интерфейса.
+   Создаем переиспользуемый класс .btn
+*/
+.btn {
+    /* Inline-flex позволяет центрировать содержимое */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Отступы внутри кнопки */
+    padding: 0.75rem 1.5rem;
+    
+    /* Скругленные углы */
+    border-radius: 8px;
+    
+    /* Текст */
+    font-weight: 600;
+    font-size: 1rem;
+    
+    /* Убираем стандартную рамку */
+    border: none;
+    
+    /* Курсор "рука" при наведении */
+    cursor: pointer;
+}
+
+/* Модификатор: основная кнопка (яркая) */
+.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+/* Состояние при наведении */
+.btn-primary:hover {
+    background-color: var(--color-primary-hover);
+}
+
+/* =========================================
+   КОМПОНЕНТ: ШАПКА САЙТА (HEADER)
+   =========================================
+*/
+.header {
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.header .container {
+    /* Flexbox для горизонтального выравнивания */
+    display: flex;
+    justify-content: space-between; /* Элементы по краям */
+    align-items: center;            /* Вертикально по центру */
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.nav {
+    display: flex;
+    gap: var(--spacing-md); /* Промежуток между ссылками */
+}
+
+.nav a {
+    color: var(--color-text-muted);
+}
+
+.nav a:hover {
+    color: var(--color-text);
+}
+
+/* =========================================
+   СЕКЦИЯ: HERO (ПЕРВЫЙ ЭКРАН)
+   =========================================
+*/
+.hero {
+    padding: var(--spacing-lg) 0;
+    text-align: center;
+}
+
+.hero-text {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-md);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* =========================================
+   СЕКЦИЯ: ПРЕИМУЩЕСТВА (FEATURES)
+   =========================================
+*/
+.features {
+    padding: var(--spacing-lg) 0;
+}
+
+.features h2 {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+/* CSS Grid для сетки карточек */
+.features-grid {
+    display: grid;
+    /* auto-fit создает столько колонок, сколько помещается */
+    /* minmax(300px, 1fr) - мин. 300px, макс. равные доли */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+}
+
+/* =========================================
+   КОМПОНЕНТ: КАРТОЧКА ПРЕИМУЩЕСТВА
+   =========================================
+*/
+.feature-card {
+    background: var(--color-surface);
+    padding: var(--spacing-md);
+    border-radius: 16px;
+    border: 1px solid var(--color-border);
+}
+
+.feature-icon {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+/* =========================================
+   КОМПОНЕНТ: ПОДВАЛ (FOOTER)
+   =========================================
+*/
+.footer {
+    padding: var(--spacing-md) 0;
+    border-top: 1px solid var(--color-border);
+    text-align: center;
+}
+
+.footer p {
+    font-size: 0.875rem;
+}

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <!-- УРОК 3: АДАПТИВНАЯ ВЕРСТКА И НАВИГАЦИЯ
+         ==================================================
+         В этом уроке добавляем:
+         - Фиксированную шапку (navbar)
+         - Мобильное меню (гамбургер)
+         - Адаптивные стили (media queries)
+         
+         ЦЕЛИ УРОКА:
+         - Понять принцип Mobile First
+         - Научиться использовать media queries
+         - Создать адаптивную навигацию
+    -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TechParts | Главная</title>
+
+    <!-- STEP 3: Подключаем Google Fonts
+         Профессиональные шрифты улучшают внешний вид сайта
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div class="app-container">
+
+        <!-- STEP 3: Улучшенная навигация (Navbar)
+             - Фиксированная позиция
+             - Эффект "стекла" (backdrop-filter)
+             - Мобильное меню
+        -->
+        <nav class="navbar">
+            <div class="container nav-content">
+                <!-- Логотип -->
+                <a href="./index.html" class="logo">TechParts</a>
+
+                <!-- Ссылки навигации (скрываются на мобильных) -->
+                <div class="nav-links">
+                    <a href="#">Каталог</a>
+                    <a href="#">Конфигуратор</a>
+                    <a href="#features">Акции</a>
+                </div>
+
+                <!-- Правая часть меню -->
+                <div class="nav-actions">
+                    <a href="#" class="nav-link">Войти</a>
+                    <a href="#" class="btn btn-primary small">Корзина</a>
+
+                    <!-- STEP 3: Кнопка мобильного меню (гамбургер)
+                         Три полоски, которые превращаются в крестик
+                    -->
+                    <button class="mobile-menu-btn" aria-label="Открыть меню">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Основной контент -->
+        <main>
+            <!-- Hero секция -->
+            <section class="hero">
+                <div class="container hero-content">
+                    <!-- STEP 3: Добавляем бейдж с новинкой -->
+                    <div class="hero-badge">
+                        <span class="new-pill">NEW</span>
+                        <span class="badge-text">Серия RTX 5000 уже в наличии</span>
+                    </div>
+
+                    <h1>Собери ПК своей мечты</h1>
+                    <p class="hero-subtext">
+                        Лучшие цены на процессоры, видеокарты и периферию.
+                        Профессиональная сборка и гарантия качества.
+                    </p>
+
+                    <!-- STEP 3: Группа кнопок -->
+                    <div class="hero-buttons">
+                        <a href="#" class="btn btn-primary">В каталог</a>
+                        <a href="#" class="btn btn-secondary">
+                            <span class="play-icon">⚙️</span> Конфигуратор
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- STEP 3: Блок "Партнеры" -->
+            <section class="social-proof">
+                <div class="container">
+                    <p class="trusted-text">Официальные партнеры</p>
+                    <div class="logos-grid">
+                        <div class="logo-item">ASUS</div>
+                        <div class="logo-item">NVIDIA</div>
+                        <div class="logo-item">INTEL</div>
+                        <div class="logo-item">AMD</div>
+                        <div class="logo-item">MSI</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Секция преимуществ -->
+            <section class="features" id="features">
+                <div class="container">
+                    <div class="features-grid">
+                        <article class="feature-card">
+                            <div class="feature-icon">⚡</div>
+                            <h3>Топовая производительность</h3>
+                            <p>Только оригинальные комплектующие от ведущих производителей с официальной гарантией.</p>
+                        </article>
+
+                        <article class="feature-card">
+                            <div class="feature-icon">🛠️</div>
+                            <h3>Умный конфигуратор</h3>
+                            <p>Онлайн-инструмент автоматически проверит совместимость выбранных компонентов.</p>
+                        </article>
+
+                        <article class="feature-card">
+                            <div class="feature-icon">🚀</div>
+                            <h3>Быстрая доставка</h3>
+                            <p>Доставляем заказы день в день. Бережная упаковка хрупких комплектующих.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- STEP 3: Призыв к действию (CTA) -->
+            <section class="value-prop">
+                <div class="container">
+                    <h2>Сердце твоей системы</h2>
+                    <p>Игровая станция, сервер для рендеринга или офисный ПК — у нас есть всё необходимое.</p>
+                    <div class="cta-box">
+                        <a href="#" class="btn btn-primary large">Начать покупки</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- STEP 3: Улучшенный подвал с колонками -->
+        <footer>
+            <div class="container footer-content">
+                <div class="footer-col">
+                    <h4>TechParts</h4>
+                    <p>Твой надежный поставщик железа</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Каталог</h4>
+                    <a href="#">Процессоры</a>
+                    <a href="#">Видеокарты</a>
+                    <a href="#">Материнские платы</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Покупателям</h4>
+                    <a href="#">Доставка</a>
+                    <a href="#">Гарантия</a>
+                    <a href="#">Возврат</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Контакты</h4>
+                    <a href="#">О нас</a>
+                    <a href="#">Магазины</a>
+                    <a href="#">Поддержка</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- STEP 3: Подключаем JavaScript для мобильного меню -->
+    <script src="./js/menu.js"></script>
+</body>
+
+</html>

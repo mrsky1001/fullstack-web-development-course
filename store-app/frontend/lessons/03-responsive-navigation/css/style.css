@@ -1,0 +1,515 @@
+/* 
+   УРОК 3: АДАПТИВНАЯ ВЕРСТКА И НАВИГАЦИЯ
+   =========================================
+   
+   В этом уроке добавляем:
+   1. Фиксированную навигацию с эффектом "стекла"
+   2. Мобильное меню (hamburger)
+   3. Media queries для адаптивности
+   4. Улучшенную типографику с Google Fonts
+*/
+
+/* =========================================
+   CSS ПЕРЕМЕННЫЕ
+   =========================================
+*/
+:root {
+    /* Цвета */
+    --color-bg: #0b0c15;
+    --color-surface: #161822;
+    --color-surface-hover: #1f212e;
+    --color-text: #ffffff;
+    --color-text-muted: #9496a1;
+    --color-primary: #6e56cf;
+    --color-primary-hover: #8367f5;
+    --color-secondary: #2c2e3b;
+    --color-border: #2c2e3b;
+
+    /* STEP 3: Специальные переменные для эффектов */
+    --navbar-bg: rgba(11, 12, 21, 0.8);
+    /* Полупрозрачный фон */
+    --hero-gradient: radial-gradient(circle at 50% 0%, rgba(110, 86, 207, 0.15) 0%, transparent 50%);
+    --text-gradient: linear-gradient(to right, #fff, #9496a1);
+    --button-secondary-bg: rgba(255, 255, 255, 0.05);
+    --button-secondary-border: rgba(255, 255, 255, 0.1);
+
+    /* STEP 3: Шрифт Inter из Google Fonts */
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+    /* Отступы */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+    --spacing-xl: 8rem;
+
+    /* Размеры */
+    --container-width: 1200px;
+    --header-height: 80px;
+    /* STEP 3: Высота шапки для расчетов */
+}
+
+/* =========================================
+   CSS RESET
+   =========================================
+*/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* =========================================
+   БАЗОВЫЕ СТИЛИ
+   =========================================
+*/
+body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.5;
+    /* STEP 3: Сглаживание шрифтов для MacOS */
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    /* STEP 3: Плавный переход цвета */
+    transition: color 0.2s;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Контейнер */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+}
+
+/* =========================================
+   ТИПОГРАФИКА
+   =========================================
+*/
+h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    /* Негативный трекинг для больших заголовков */
+    line-height: 1.1;
+    margin-bottom: var(--spacing-sm);
+
+    /* STEP 3: Градиентный текст */
+    background: var(--text-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: var(--spacing-sm);
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+}
+
+p {
+    color: var(--color-text-muted);
+    font-size: 1.125rem;
+}
+
+/* =========================================
+   КНОПКИ
+   =========================================
+*/
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 1rem;
+    border: none;
+}
+
+/* Модификатор размера: маленькая */
+.btn.small {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+}
+
+/* Модификатор размера: большая */
+.btn.large {
+    padding: 1rem 2rem;
+    font-size: 1.25rem;
+}
+
+/* Основная кнопка */
+.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+    border: 1px solid var(--color-primary);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-hover);
+    border-color: var(--color-primary-hover);
+    /* STEP 3: Свечение при наведении */
+    box-shadow: 0 0 20px rgba(110, 86, 207, 0.4);
+}
+
+/* STEP 3: Вторичная кнопка (прозрачная) */
+.btn-secondary {
+    background-color: var(--button-secondary-bg);
+    color: var(--color-text);
+    border: 1px solid var(--button-secondary-border);
+    /* STEP 3: Эффект матового стекла */
+    backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* =========================================
+   НАВИГАЦИЯ (NAVBAR)
+   =========================================
+   
+   STEP 3: Фиксированная навигация с эффектом стекла
+*/
+.navbar {
+    height: var(--header-height);
+
+    /* Фиксируем шапку при скролле */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    /* Выше остального контента */
+
+    /* Полупрозрачный фон с размытием */
+    background: var(--navbar-bg);
+    backdrop-filter: blur(12px);
+
+    border-bottom: 1px solid var(--color-border);
+}
+
+.nav-content {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+}
+
+.nav-links {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.nav-links a {
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+}
+
+.nav-links a:hover {
+    color: var(--color-text);
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.nav-link {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+/* =========================================
+   HERO СЕКЦИЯ
+   =========================================
+*/
+.hero {
+    /* STEP 3: Учитываем высоту фиксированной шапки */
+    padding-top: calc(var(--header-height) + var(--spacing-xl));
+    padding-bottom: var(--spacing-xl);
+    text-align: center;
+
+    /* STEP 3: Градиентный фон */
+    background: var(--hero-gradient);
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+/* STEP 3: Бейдж с новинкой */
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.25rem 0.5rem 0.25rem 0.25rem;
+    background: var(--button-secondary-bg);
+    border: 1px solid var(--button-secondary-border);
+    border-radius: 100px;
+    margin-bottom: var(--spacing-md);
+    font-size: 0.875rem;
+}
+
+.new-pill {
+    background: var(--color-primary);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 12px;
+    text-transform: uppercase;
+}
+
+.badge-text {
+    color: var(--color-text-muted);
+}
+
+.hero-subtext {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-md);
+    margin-top: var(--spacing-xs);
+    line-height: 1.6;
+}
+
+.hero-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+}
+
+.play-icon {
+    margin-right: 0.5rem;
+    font-size: 0.8rem;
+}
+
+/* =========================================
+   СЕКЦИЯ: ПАРТНЕРЫ
+   =========================================
+*/
+.social-proof {
+    padding: var(--spacing-lg) 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.trusted-text {
+    text-align: center;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--spacing-md);
+    opacity: 0.6;
+    color: var(--color-text-muted);
+}
+
+.logos-grid {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+    opacity: 0.5;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+/* =========================================
+   СЕКЦИЯ: ПРЕИМУЩЕСТВА
+   =========================================
+*/
+.features {
+    padding: var(--spacing-xl) 0;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.feature-card {
+    background: var(--color-surface);
+    padding: var(--spacing-md);
+    border-radius: 16px;
+    border: 1px solid var(--color-border);
+    /* STEP 3: Анимация при наведении */
+    transition: transform 0.2s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    /* Приподнимается */
+}
+
+.feature-icon {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+/* =========================================
+   СЕКЦИЯ: ПРИЗЫВ К ДЕЙСТВИЮ
+   =========================================
+*/
+.value-prop {
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+    /* STEP 3: Градиентный фон */
+    background: radial-gradient(circle at 50% 50%, rgba(110, 86, 207, 0.1) 0%, transparent 70%);
+}
+
+.cta-box {
+    margin-top: var(--spacing-md);
+}
+
+/* =========================================
+   ПОДВАЛ (FOOTER)
+   =========================================
+*/
+footer {
+    padding: var(--spacing-xl) 0 var(--spacing-lg);
+    border-top: 1px solid var(--color-border);
+}
+
+/* STEP 3: Сетка колонок в подвале */
+.footer-content {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: var(--spacing-lg);
+}
+
+.footer-col h4 {
+    margin-bottom: var(--spacing-sm);
+    font-size: 1rem;
+}
+
+.footer-col a {
+    display: block;
+    color: var(--color-text-muted);
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.footer-col a:hover {
+    color: var(--color-primary);
+}
+
+/* =========================================
+   МОБИЛЬНОЕ МЕНЮ (HAMBURGER)
+   =========================================
+   
+   STEP 3: Кнопка-гамбургер для мобильных устройств
+*/
+.mobile-menu-btn {
+    display: none;
+    /* Скрыто на десктопе */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-left: var(--spacing-sm);
+    z-index: 1001;
+}
+
+/* Три полоски гамбургера */
+.mobile-menu-btn span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-text);
+    margin: 5px 0;
+    transition: 0.3s;
+}
+
+/* =========================================
+   MEDIA QUERIES (АДАПТИВНОСТЬ)
+   =========================================
+   
+   STEP 3: Изменяем стили для экранов <= 768px
+   Это типичный breakpoint для планшетов/телефонов
+*/
+@media (max-width: 768px) {
+
+    /* Уменьшаем заголовок */
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    /* Показываем кнопку гамбургера */
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    /* Меню превращается в выезжающую панель */
+    .nav-links {
+        display: flex;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        /* Скрыто за правым краем экрана */
+        width: 250px;
+        height: 100vh;
+        background: var(--color-surface);
+        flex-direction: column;
+        padding: 100px 2rem 2rem;
+        transition: 0.3s ease-in-out;
+        border-left: 1px solid var(--color-border);
+    }
+
+    /* Когда меню активно - выезжает на экран */
+    .nav-links.active {
+        right: 0;
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Анимация гамбургера в крестик */
+    .mobile-menu-btn.active span:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .mobile-menu-btn.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .mobile-menu-btn.active span:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    /* Кнопки в Hero - вертикально на мобильных */
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    /* Footer - одна колонка */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+}
