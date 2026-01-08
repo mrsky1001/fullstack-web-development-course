@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend + Backend Demo</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, #00d9ff, #9d4edd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .card h2 {
+            margin-bottom: 15px;
+            color: #00d9ff;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #aaa;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            font-size: 16px;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, #00d9ff, #9d4edd);
+            color: #fff;
+        }
+        
+        .btn-danger {
+            background: #dc3545;
+            color: #fff;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 217, 255, 0.3);
+        }
+        
+        .status {
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .status.success {
+            background: rgba(46, 204, 113, 0.2);
+            border: 1px solid #2ecc71;
+        }
+        
+        .status.error {
+            background: rgba(231, 76, 60, 0.2);
+            border: 1px solid #e74c3c;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .product-card {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .product-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .product-price {
+            color: #00d9ff;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        #log {
+            background: #000;
+            border-radius: 8px;
+            padding: 15px;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 200px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Frontend + Backend Demo</h1>
+        
+        <!-- Auth Section -->
+        <div class="card">
+            <h2>🔐 Аутентификация</h2>
+            
+            <div id="auth-status" class="status"></div>
+            
+            <div id="login-form">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="email" value="demo@test.com">
+                </div>
+                <div class="form-group">
+                    <label>Пароль</label>
+                    <input type="password" id="password" value="demo123">
+                </div>
+                <button class="btn btn-primary" onclick="login()">Войти</button>
+            </div>
+            
+            <div id="logout-section" class="hidden">
+                <p>Вы вошли как: <strong id="user-name"></strong></p>
+                <button class="btn btn-danger" onclick="logout()">Выйти</button>
+            </div>
+        </div>
+        
+        <!-- Products Section -->
+        <div class="card">
+            <h2>📦 Товары</h2>
+            <button class="btn btn-primary" onclick="loadProducts()">Загрузить товары</button>
+            <div id="products" class="products-grid"></div>
+        </div>
+        
+        <!-- Cart Section -->
+        <div class="card">
+            <h2>🛒 Корзина</h2>
+            <button class="btn btn-primary" onclick="loadCart()">Загрузить корзину</button>
+            <div id="cart"></div>
+        </div>
+        
+        <!-- Log -->
+        <div class="card">
+            <h2>📋 Лог запросов</h2>
+            <div id="log"></div>
+        </div>
+    </div>
+    
+    <script>
+        const API_URL = 'http://localhost:3000';
+        
+        // ==========================================
+        // LOGGING
+        // ==========================================
+        
+        function log(message, type = 'info') {
+            const logEl = document.getElementById('log');
+            const time = new Date().toLocaleTimeString();
+            const prefix = type === 'error' ? '❌' : type === 'success' ? '✅' : '→';
+            logEl.innerHTML += `[${time}] ${prefix} ${message}\n`;
+            logEl.scrollTop = logEl.scrollHeight;
+        }
+        
+        // ==========================================
+        // API HELPER
+        // ==========================================
+        
+        async function apiRequest(endpoint, options = {}) {
+            const url = `${API_URL}${endpoint}`;
+            
+            log(`${options.method || 'GET'} ${endpoint}`);
+            
+            try {
+                const response = await fetch(url, {
+                    ...options,
+                    credentials: 'include',  // ВАЖНО для cookies!
+                    headers: {
+                        'Content-Type': 'application/json',
+                        ...options.headers
+                    }
+                });
+                
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(data.error || 'Request failed');
+                }
+                
+                log(`Response: ${JSON.stringify(data).slice(0, 100)}...`, 'success');
+                return data;
+                
+            } catch (error) {
+                log(`Error: ${error.message}`, 'error');
+                throw error;
+            }
+        }
+        
+        // ==========================================
+        // AUTH
+        // ==========================================
+        
+        async function checkAuthStatus() {
+            try {
+                const data = await apiRequest('/auth/status');
+                updateAuthUI(data.isAuthenticated, data.user);
+            } catch (error) {
+                updateAuthUI(false, null);
+            }
+        }
+        
+        function updateAuthUI(isAuthenticated, user) {
+            const statusEl = document.getElementById('auth-status');
+            const loginForm = document.getElementById('login-form');
+            const logoutSection = document.getElementById('logout-section');
+            
+            if (isAuthenticated && user) {
+                statusEl.className = 'status success';
+                statusEl.textContent = `✅ Авторизован: ${user.email}`;
+                loginForm.classList.add('hidden');
+                logoutSection.classList.remove('hidden');
+                document.getElementById('user-name').textContent = user.name || user.email;
+            } else {
+                statusEl.className = 'status error';
+                statusEl.textContent = '❌ Не авторизован';
+                loginForm.classList.remove('hidden');
+                logoutSection.classList.add('hidden');
+            }
+        }
+        
+        async function login() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            try {
+                const data = await apiRequest('/auth/login', {
+                    method: 'POST',
+                    body: JSON.stringify({ email, password })
+                });
+                
+                updateAuthUI(true, data.user);
+                alert('Вход выполнен!');
+            } catch (error) {
+                alert('Ошибка: ' + error.message);
+            }
+        }
+        
+        async function logout() {
+            try {
+                await apiRequest('/auth/logout', { method: 'POST' });
+                updateAuthUI(false, null);
+                alert('Выход выполнен');
+            } catch (error) {
+                alert('Ошибка: ' + error.message);
+            }
+        }
+        
+        // ==========================================
+        // PRODUCTS
+        // ==========================================
+        
+        async function loadProducts() {
+            try {
+                const data = await apiRequest('/api/products');
+                renderProducts(data.data);
+            } catch (error) {
+                alert('Ошибка загрузки товаров');
+            }
+        }
+        
+        function renderProducts(products) {
+            const container = document.getElementById('products');
+            
+            container.innerHTML = products.map(p => `
+                <div class="product-card">
+                    <div class="product-name">${p.name}</div>
+                    <div class="product-price">${formatPrice(p.price)}</div>
+                    <button class="btn btn-primary" onclick="addToCart(${p.id})">
+                        В корзину
+                    </button>
+                </div>
+            `).join('');
+        }
+        
+        function formatPrice(price) {
+            return new Intl.NumberFormat('ru-RU', {
+                style: 'currency',
+                currency: 'RUB',
+                maximumFractionDigits: 0
+            }).format(price);
+        }
+        
+        // ==========================================
+        // CART
+        // ==========================================
+        
+        async function addToCart(productId) {
+            try {
+                await apiRequest('/api/cart/add', {
+                    method: 'POST',
+                    body: JSON.stringify({ productId, quantity: 1 })
+                });
+                alert('Добавлено в корзину!');
+                loadCart();
+            } catch (error) {
+                alert('Ошибка: ' + error.message);
+            }
+        }
+        
+        async function loadCart() {
+            try {
+                const data = await apiRequest('/api/cart');
+                renderCart(data.data);
+            } catch (error) {
+                document.getElementById('cart').innerHTML = 
+                    '<p style="color:#e74c3c">Требуется авторизация</p>';
+            }
+        }
+        
+        function renderCart(cart) {
+            const container = document.getElementById('cart');
+            
+            if (cart.items.length === 0) {
+                container.innerHTML = '<p>Корзина пуста</p>';
+                return;
+            }
+            
+            container.innerHTML = `
+                <ul style="list-style:none; margin-top:15px">
+                    ${cart.items.map(item => `
+                        <li style="padding:10px; border-bottom:1px solid #333">
+                            ${item.product.name} × ${item.quantity} = 
+                            <strong>${formatPrice(item.totalPrice)}</strong>
+                        </li>
+                    `).join('')}
+                </ul>
+                <p style="margin-top:15px; font-size:1.2em">
+                    <strong>Итого: ${formatPrice(cart.totalPrice)}</strong>
+                </p>
+            `;
+        }
+        
+        // ==========================================
+        // INIT
+        // ==========================================
+        
+        log('Приложение запущено');
+        log(`API URL: ${API_URL}`);
+        checkAuthStatus();
+    </script>
+</body>
+</html>

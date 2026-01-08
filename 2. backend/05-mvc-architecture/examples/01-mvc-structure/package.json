@@ -1,0 +1,12 @@
+{
+    "name": "05-mvc-structure",
+    "version": "1.0.0",
+    "description": "Пример MVC архитектуры",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "dependencies": {
+        "express": "^4.18.2"
+    }
+}

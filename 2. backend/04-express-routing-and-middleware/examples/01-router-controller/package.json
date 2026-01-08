@@ -1,0 +1,12 @@
+{
+    "name": "04-router-controller",
+    "version": "1.0.0",
+    "description": "Пример Router и Controller в Express",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "dependencies": {
+        "express": "^4.18.2"
+    }
+}

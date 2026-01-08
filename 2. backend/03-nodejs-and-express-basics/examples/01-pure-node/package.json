@@ -1,0 +1,12 @@
+{
+    "name": "01-pure-node",
+    "version": "1.0.0",
+    "description": "Пример HTTP-сервера на чистом Node.js (без Express)",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "keywords": ["node", "http", "server", "example"],
+    "author": "IEEU Fullstack Course",
+    "license": "MIT"
+}
