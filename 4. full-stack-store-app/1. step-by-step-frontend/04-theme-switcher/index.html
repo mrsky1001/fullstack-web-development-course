@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<!-- STEP 4: Добавляем атрибут data-theme для управления темой -->
+
+<head>
+    <!-- УРОК 4: ПЕРЕКЛЮЧЕНИЕ ТЕМЫ (СВЕТЛАЯ/ТЕМНАЯ)
+         ==================================================
+         В этом уроке добавляем:
+         - Переключатель темы
+         - CSS-переменные для светлой темы
+         - Сохранение выбора в localStorage
+         
+         ЦЕЛИ УРОКА:
+         - Понять работу data-атрибутов
+         - Изучить localStorage
+         - Научиться создавать темы через CSS-переменные
+    -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TechParts | Главная</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="app-container">
+
+        <nav class="navbar">
+            <div class="container nav-content">
+                <a href="./index.html" class="logo">TechParts</a>
+
+                <div class="nav-links">
+                    <a href="#">Каталог</a>
+                    <a href="#">Конфигуратор</a>
+                    <a href="#features">Акции</a>
+                </div>
+
+                <div class="nav-actions">
+                    <a href="#" class="nav-link">Войти</a>
+                    <a href="#" class="btn btn-primary small">Корзина</a>
+
+                    <!-- STEP 4: Кнопка переключения темы
+                         Содержит две SVG-иконки: солнце и луна
+                         CSS показывает только одну в зависимости от темы
+                    -->
+                    <button class="theme-toggle" aria-label="Переключить тему">
+                        <!-- Иконка Солнца (для светлой темы) -->
+                        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                        <!-- Иконка Луны (для темной темы) -->
+                        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </button>
+
+                    <button class="mobile-menu-btn" aria-label="Открыть меню">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <main>
+            <section class="hero">
+                <div class="container hero-content">
+                    <div class="hero-badge">
+                        <span class="new-pill">NEW</span>
+                        <span class="badge-text">Серия RTX 5000 уже в наличии</span>
+                    </div>
+
+                    <h1>Собери ПК своей мечты</h1>
+                    <p class="hero-subtext">
+                        Лучшие цены на процессоры, видеокарты и периферию.
+                        Профессиональная сборка и гарантия качества.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="#" class="btn btn-primary">В каталог</a>
+                        <a href="#" class="btn btn-secondary">
+                            <span class="play-icon">⚙️</span> Конфигуратор
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="social-proof">
+                <div class="container">
+                    <p class="trusted-text">Официальные партнеры</p>
+                    <div class="logos-grid">
+                        <div class="logo-item">ASUS</div>
+                        <div class="logo-item">NVIDIA</div>
+                        <div class="logo-item">INTEL</div>
+                        <div class="logo-item">AMD</div>
+                        <div class="logo-item">MSI</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="features" id="features">
+                <div class="container">
+                    <div class="features-grid">
+                        <article class="feature-card">
+                            <div class="feature-icon">⚡</div>
+                            <h3>Топовая производительность</h3>
+                            <p>Только оригинальные комплектующие от ведущих производителей с официальной гарантией.</p>
+                        </article>
+
+                        <article class="feature-card">
+                            <div class="feature-icon">🛠️</div>
+                            <h3>Умный конфигуратор</h3>
+                            <p>Онлайн-инструмент автоматически проверит совместимость выбранных компонентов.</p>
+                        </article>
+
+                        <article class="feature-card">
+                            <div class="feature-icon">🚀</div>
+                            <h3>Быстрая доставка</h3>
+                            <p>Доставляем заказы день в день. Бережная упаковка хрупких комплектующих.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="value-prop">
+                <div class="container">
+                    <h2>Сердце твоей системы</h2>
+                    <p>Игровая станция, сервер для рендеринга или офисный ПК — у нас есть всё необходимое.</p>
+                    <div class="cta-box">
+                        <a href="#" class="btn btn-primary large">Начать покупки</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="container footer-content">
+                <div class="footer-col">
+                    <h4>TechParts</h4>
+                    <p>Твой надежный поставщик железа</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Каталог</h4>
+                    <a href="#">Процессоры</a>
+                    <a href="#">Видеокарты</a>
+                    <a href="#">Материнские платы</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Покупателям</h4>
+                    <a href="#">Доставка</a>
+                    <a href="#">Гарантия</a>
+                    <a href="#">Возврат</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Контакты</h4>
+                    <a href="#">О нас</a>
+                    <a href="#">Магазины</a>
+                    <a href="#">Поддержка</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- STEP 4: Порядок скриптов важен! Сначала тема, потом меню -->
+    <script src="js/theme.js"></script>
+    <script src="js/menu.js"></script>
+</body>
+
+</html>

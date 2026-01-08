@@ -1,94 +1,335 @@
-﻿# Databases and DBMS Introduction
+﻿# Урок 02: Базы данных и СУБД
 
-## Overview
+## 🎯 Цели урока
 
-Understanding databases, Database Management Systems, and different database types.
+После завершения этого урока вы сможете:
 
-## Learning Objectives
-
-By the end of this lesson, you will be able to:
-
-- Understand the core concepts covered in this module
-- Apply the learned techniques in practical scenarios
-- Build upon this knowledge in subsequent lessons
-
-## Topics Covered
-
-- What is a database
-- DBMS overview
-- Relational vs NoSQL
-- Database use cases
-
-## Estimated Duration
-
-**2 hours**
-
-## Structure
-
-This lesson is organized as follows:
-
-- **README.md** (this file) - Theory and concepts
-- **examples/** - Code demonstrations and samples
-- **practice/** - Hands-on exercises and assignments
-- **assets/** - Images, diagrams, and other resources
-
-## Getting Started
-
-### Prerequisites
-
-Before starting this lesson, make sure you have:
-
-- Completed all previous lessons in the course
-- Set up your development environment
-- Reviewed the course prerequisites
-
-### How to Use This Lesson
-
-1. **Read the theory** - Start by reading this README thoroughly
-2. **Explore examples** - Check the examples/ folder for code demonstrations
-3. **Practice** - Complete the exercises in the practice/ folder
-4. **Review** - Revisit concepts and examples as needed
-
-## Theory
-
-<!-- Add detailed theory content here -->
-
-### Introduction
-
-<!-- Lesson introduction -->
-
-### Key Concepts
-
-<!-- Main concepts and explanations -->
-
-### Best Practices
-
-<!-- Industry best practices and recommendations -->
-
-## Examples
-
-See the examples/ directory for practical code demonstrations.
-
-## Practice Exercises
-
-Check the practice/ directory for hands-on assignments and projects.
-
-## Additional Resources
-
-- [MDN Web Docs](https://developer.mozilla.org/)
-- [W3Schools](https://www.w3schools.com/)
-- [Stack Overflow](https://stackoverflow.com/)
-
-## Key Takeaways
-
-- <!-- Key point 1 -->
-- <!-- Key point 2 -->
-- <!-- Key point 3 -->
-
-## Next Steps
-
-After completing this lesson, proceed to the next module to continue your learning journey.
+- Понимать **архитектуру реляционных БД**
+- Различать понятия **база данных** и **СУБД**
+- Сравнивать популярные СУБД
+- Понимать модель **клиент-сервер**
 
 ---
 
-**Course:** databases | **Lesson:** 02-databases-and-dbms-introduction
+## 📚 Теоретическая часть
+
+### База данных vs СУБД
+
+| Термин | Что это | Аналогия |
+|--------|---------|----------|
+| **База данных (БД)** | Организованное хранилище данных | Библиотека (книги) |
+| **СУБД** | Программа для управления БД | Библиотекарь |
+
+**СУБД** (Система Управления Базами Данных) — это программное обеспечение, которое:
+- Создаёт базы данных
+- Хранит данные на диске
+- Выполняет запросы
+- Управляет доступом
+- Обеспечивает целостность данных
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                         СУБД                            │
+│  ┌─────────────────────────────────────────────────┐   │
+│  │              Механизм запросов                  │   │
+│  │         (Query Engine / Parser)                 │   │
+│  └─────────────────────────────────────────────────┘   │
+│  ┌─────────────────────────────────────────────────┐   │
+│  │           Управление транзакциями               │   │
+│  │         (Transaction Manager)                   │   │
+│  └─────────────────────────────────────────────────┘   │
+│  ┌─────────────────────────────────────────────────┐   │
+│  │              Хранилище данных                   │   │
+│  │            (Storage Engine)                     │   │
+│  └─────────────────────────────────────────────────┘   │
+│                         ↓                              │
+│  ┌─────────────────────────────────────────────────┐   │
+│  │               База данных                       │   │
+│  │    ┌─────────┐ ┌─────────┐ ┌─────────┐         │   │
+│  │    │ users   │ │products │ │ orders  │         │   │
+│  │    └─────────┘ └─────────┘ └─────────┘         │   │
+│  └─────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 🔗 Реляционная модель данных
+
+### Основные понятия
+
+**Реляция** (relation) = **Таблица**
+
+```
+Таблица "users" (реляция):
+
+┌─────────────┬──────────────┬─────────────────────┬──────────────┐
+│  user_id    │  user_name   │     user_email      │  user_role   │
+│  (INT)      │  (VARCHAR)   │     (VARCHAR)       │  (VARCHAR)   │
+├─────────────┼──────────────┼─────────────────────┼──────────────┤
+│      1      │    Иван      │   ivan@mail.ru      │    admin     │  ← Кортеж (строка)
+│      2      │    Мария     │   maria@mail.ru     │    user      │
+│      3      │    Пётр      │   petr@mail.ru      │    user      │
+└─────────────┴──────────────┴─────────────────────┴──────────────┘
+        ↑             ↑              ↑                   ↑
+     Атрибуты (столбцы, поля)
+```
+
+### Терминология
+
+| Формальный термин | Практический термин | Описание |
+|-------------------|---------------------|----------|
+| Реляция | Таблица | Структура данных |
+| Кортеж | Строка (Row) | Одна запись |
+| Атрибут | Столбец (Column) | Поле данных |
+| Домен | Тип данных | INT, VARCHAR, DATE |
+| Первичный ключ | Primary Key (PK) | Уникальный ID |
+| Внешний ключ | Foreign Key (FK) | Ссылка на другую таблицу |
+
+---
+
+## 🔑 Ключи
+
+### Primary Key (Первичный ключ)
+
+**Primary Key** — уникальный идентификатор каждой записи.
+
+Требования:
+- **Уникальность** — не может повторяться
+- **NOT NULL** — не может быть пустым
+- **Неизменяемость** — не должен меняться
+
+```sql
+CREATE TABLE users (
+    user_id INT PRIMARY KEY AUTO_INCREMENT,  -- ← Primary Key
+    user_name VARCHAR(100),
+    user_email VARCHAR(255)
+);
+```
+
+### Foreign Key (Внешний ключ)
+
+**Foreign Key** — ссылка на Primary Key другой таблицы.
+
+```sql
+CREATE TABLE orders (
+    order_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT,                             -- ← Foreign Key
+    total DECIMAL(10, 2),
+    
+    FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+```
+
+### Связи между таблицами
+
+```
+users                          orders
+┌─────────┐                    ┌─────────────┐
+│ user_id │──────────────────►│ user_id (FK)│
+│ name    │     "один ко      │ order_id    │
+│ email   │      многим"      │ total       │
+└─────────┘       (1:N)       └─────────────┘
+
+Один пользователь может иметь много заказов.
+```
+
+---
+
+## 🏢 Архитектура клиент-сервер
+
+```
+┌─────────────────┐         ┌─────────────────┐
+│     Клиент      │         │     Сервер      │
+│  (Приложение)   │  SQL    │  (MySQL Server) │
+│                 │ ─────►  │                 │
+│  Node.js        │         │  Обработка      │
+│  Python         │ ◄─────  │  запросов       │
+│  PHP            │ Данные  │                 │
+│  MySQL Workbench│         │  База данных    │
+└─────────────────┘         └─────────────────┘
+     Порт: любой               Порт: 3306
+```
+
+### Как это работает
+
+1. **Клиент** отправляет SQL-запрос
+2. **Сервер** принимает и парсит запрос
+3. **Сервер** выполняет запрос (читает/пишет данные)
+4. **Сервер** возвращает результат клиенту
+
+```
+Клиент: SELECT * FROM users WHERE user_id = 1;
+   │
+   ▼
+Сервер MySQL:
+   1. Парсинг SQL
+   2. Проверка прав доступа
+   3. Поиск данных на диске
+   4. Возврат результата
+   │
+   ▼
+Клиент: { user_id: 1, name: "Иван", email: "ivan@mail.ru" }
+```
+
+---
+
+## 📊 Сравнение популярных СУБД
+
+### Реляционные СУБД
+
+| СУБД | Особенности | Когда использовать |
+|------|-------------|-------------------|
+| **MySQL** | Популярная, бесплатная, хорошая производительность | Веб-приложения, стартапы |
+| **PostgreSQL** | Мощная, поддержка JSON, расширяемая | Сложные проекты, аналитика |
+| **SQLite** | Встраиваемая, файл-база, без сервера | Мобильные приложения, тесты |
+| **MariaDB** | Форк MySQL, совместимая | Замена MySQL |
+| **Oracle** | Enterprise, надёжная, дорогая | Крупные корпорации |
+| **MS SQL Server** | Microsoft, интеграция с .NET | Windows-экосистема |
+
+### MySQL vs PostgreSQL
+
+| Критерий | MySQL | PostgreSQL |
+|----------|-------|------------|
+| Производительность | Быстрее на чтение | Быстрее на сложных запросах |
+| Стандарт SQL | Частичная поддержка | Полная поддержка |
+| JSON | Поддерживает | Лучшая поддержка |
+| Репликация | Master-Slave | Более гибкая |
+| Сложность | Проще для начала | Мощнее, но сложнее |
+| Популярность | Очень высокая | Высокая |
+
+**Для этого курса мы используем MySQL** — это стандарт для веб-разработки.
+
+---
+
+## 🗄️ Структура MySQL
+
+```
+MySQL Server
+│
+├── База данных: storedb
+│   ├── Таблица: users
+│   ├── Таблица: products
+│   └── Таблица: orders
+│
+├── База данных: blog
+│   ├── Таблица: posts
+│   └── Таблица: comments
+│
+└── База данных: mysql (системная)
+    └── (системные таблицы)
+```
+
+### Иерархия
+
+```
+Сервер MySQL
+    └── База данных (Database / Schema)
+            └── Таблица (Table)
+                    ├── Столбец (Column)
+                    └── Строка (Row)
+```
+
+---
+
+## 📝 SQL — Язык запросов
+
+**SQL** (Structured Query Language) — язык для работы с реляционными БД.
+
+### Категории SQL-команд
+
+| Категория | Назначение | Команды |
+|-----------|------------|---------|
+| **DDL** | Data Definition Language | CREATE, ALTER, DROP |
+| **DML** | Data Manipulation Language | SELECT, INSERT, UPDATE, DELETE |
+| **DCL** | Data Control Language | GRANT, REVOKE |
+| **TCL** | Transaction Control Language | COMMIT, ROLLBACK |
+
+### Примеры
+
+```sql
+-- DDL: Создание таблицы
+CREATE TABLE users (
+    user_id INT PRIMARY KEY,
+    user_name VARCHAR(100)
+);
+
+-- DML: Добавление данных
+INSERT INTO users (user_id, user_name) VALUES (1, 'Иван');
+
+-- DML: Чтение данных
+SELECT * FROM users;
+
+-- DML: Обновление
+UPDATE users SET user_name = 'Иван Иванов' WHERE user_id = 1;
+
+-- DML: Удаление
+DELETE FROM users WHERE user_id = 1;
+
+-- DDL: Удаление таблицы
+DROP TABLE users;
+```
+
+---
+
+## 🔐 ACID — Свойства транзакций
+
+**ACID** — гарантии надёжности транзакций.
+
+| Свойство | Описание | Пример |
+|----------|----------|--------|
+| **A**tomicity | Атомарность — всё или ничего | Перевод денег: либо списание и зачисление, либо ничего |
+| **C**onsistency | Согласованность | Данные всегда корректны |
+| **I**solation | Изоляция | Транзакции не мешают друг другу |
+| **D**urability | Долговечность | После commit данные не потеряются |
+
+### Пример: Банковский перевод
+
+```sql
+START TRANSACTION;
+
+-- Списать со счёта отправителя
+UPDATE accounts SET balance = balance - 1000 WHERE user_id = 1;
+
+-- Зачислить на счёт получателя
+UPDATE accounts SET balance = balance + 1000 WHERE user_id = 2;
+
+-- Если всё ОК — подтвердить
+COMMIT;
+
+-- Если ошибка — откатить
+-- ROLLBACK;
+```
+
+Без транзакции: могут списаться деньги, но не зачислиться (ошибка посередине).
+С транзакцией: либо оба действия выполнятся, либо ни одно.
+
+---
+
+## 📖 Глоссарий
+
+| Термин | Определение |
+|--------|-------------|
+| **СУБД** | Система управления базами данных |
+| **SQL** | Structured Query Language |
+| **Реляция** | Таблица в реляционной модели |
+| **Кортеж** | Строка (запись) в таблице |
+| **Атрибут** | Столбец (поле) в таблице |
+| **Primary Key** | Уникальный идентификатор записи |
+| **Foreign Key** | Ссылка на запись в другой таблице |
+| **ACID** | Свойства надёжных транзакций |
+| **DDL** | Data Definition Language (CREATE, DROP) |
+| **DML** | Data Manipulation Language (SELECT, INSERT) |
+
+---
+
+## ➡️ Что дальше?
+
+В следующем уроке мы:
+- Установим **MySQL Server**
+- Настроим **MySQL Workbench**
+- Выполним первые SQL-команды
+
+---
+
+**Курс:** Databases | **Урок:** 02-databases-and-dbms-introduction

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Каталог | TechParts</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/shop-styles.css">
+    <link rel="stylesheet" href="../css/toast.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <nav class="navbar">
+            <div class="container nav-content">
+                <a href="../index.html" class="logo">TechParts</a>
+
+                <div class="nav-links">
+                    <a href="./catalog.html">Каталог</a>
+                    <a href="./catalog.html">Конфигуратор</a>
+                    <a href="../index.html#features">Акции</a>
+                </div>
+
+                <div class="nav-actions">
+                    <a href="login.html" class="nav-link" id="auth-link">Войти</a>
+                    <a href="cart.html" class="btn btn-primary small">
+                        Корзина <span id="cart-count" class="cart-count">0</span>
+                    </a>
+
+                    <button class="theme-toggle" aria-label="Переключить тему">
+                        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <line x1="12" y1="1" x2="12" y2="3"></line>
+                            <line x1="12" y1="21" x2="12" y2="23"></line>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                            <line x1="1" y1="12" x2="3" y2="12"></line>
+                            <line x1="21" y1="12" x2="23" y2="12"></line>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                        </svg>
+                        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                        </svg>
+                    </button>
+
+                    <button class="mobile-menu-btn" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <main class="catalog-page">
+            <div class="container">
+                <div class="catalog-header">
+                    <h1 class="catalog-title">Каталог товаров</h1>
+                    <p style="color: var(--color-text-muted);">Выберите нужные комплектующие для вашего ПК</p>
+                </div>
+
+                <div class="catalog-filters" id="category-filters">
+                    <button class="filter-btn active" data-category="all">Все товары</button>
+                    <!-- Категории подгрузятся динамически -->
+                </div>
+
+                <div id="products-container" class="products-grid">
+                    <div class="loading">Загрузка товаров...</div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="container footer-content">
+                <div class="footer-col">
+                    <h4>TechParts</h4>
+                    <p>Твой надежный поставщик железа</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Каталог</h4>
+                    <a href="./catalog.html">Процессоры</a>
+                    <a href="./catalog.html">Видеокарты</a>
+                    <a href="./catalog.html">Материнские платы</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Покупателям</h4>
+                    <a href="#">Доставка</a>
+                    <a href="#">Гарантия</a>
+                    <a href="#">Возврат</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Контакты</h4>
+                    <a href="#">О нас</a>
+                    <a href="#">Магазины</a>
+                    <a href="#">Поддержка</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="../js/toast.js"></script>
+    <script src="../js/security.js"></script>
+    <script src="../js/config.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/catalog.js"></script>
+</body>
+
+</html>

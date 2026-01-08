@@ -1,94 +1,296 @@
-﻿# Backend Development Course Introduction
+﻿# Урок 01: Введение в Backend-разработку
 
-## Overview
+## 🎯 Цели урока
 
-Introduction to backend development, server-side programming, and the Node.js ecosystem.
+После завершения этого урока вы сможете:
 
-## Learning Objectives
-
-By the end of this lesson, you will be able to:
-
-- Understand the core concepts covered in this module
-- Apply the learned techniques in practical scenarios
-- Build upon this knowledge in subsequent lessons
-
-## Topics Covered
-
-- Backend development overview
-- Node.js introduction
-- Course structure
-- Prerequisites
-
-## Estimated Duration
-
-**1 hour**
-
-## Structure
-
-This lesson is organized as follows:
-
-- **README.md** (this file) - Theory and concepts
-- **examples/** - Code demonstrations and samples
-- **practice/** - Hands-on exercises and assignments
-- **assets/** - Images, diagrams, and other resources
-
-## Getting Started
-
-### Prerequisites
-
-Before starting this lesson, make sure you have:
-
-- Completed all previous lessons in the course
-- Set up your development environment
-- Reviewed the course prerequisites
-
-### How to Use This Lesson
-
-1. **Read the theory** - Start by reading this README thoroughly
-2. **Explore examples** - Check the examples/ folder for code demonstrations
-3. **Practice** - Complete the exercises in the practice/ folder
-4. **Review** - Revisit concepts and examples as needed
-
-## Theory
-
-<!-- Add detailed theory content here -->
-
-### Introduction
-
-<!-- Lesson introduction -->
-
-### Key Concepts
-
-<!-- Main concepts and explanations -->
-
-### Best Practices
-
-<!-- Industry best practices and recommendations -->
-
-## Examples
-
-See the examples/ directory for practical code demonstrations.
-
-## Practice Exercises
-
-Check the practice/ directory for hands-on assignments and projects.
-
-## Additional Resources
-
-- [MDN Web Docs](https://developer.mozilla.org/)
-- [W3Schools](https://www.w3schools.com/)
-- [Stack Overflow](https://stackoverflow.com/)
-
-## Key Takeaways
-
-- <!-- Key point 1 -->
-- <!-- Key point 2 -->
-- <!-- Key point 3 -->
-
-## Next Steps
-
-After completing this lesson, proceed to the next module to continue your learning journey.
+- Объяснить, что такое **Backend** и чем он отличается от Frontend
+- Понять роль **сервера** в веб-приложении
+- Познакомиться с **Node.js** и его экосистемой
+- Понять структуру курса и необходимые инструменты
 
 ---
 
-**Course:** backend | **Lesson:** 01-course-introduction
+## 📚 Теоретическая часть
+
+### Что такое Backend?
+
+**Backend** (серверная часть) — это "невидимая" часть веб-приложения, которая работает на сервере. Пользователь никогда не видит backend-код напрямую, но именно он обеспечивает работу всего приложения.
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                        ВЕБ-ПРИЛОЖЕНИЕ                           │
+├─────────────────────────────┬───────────────────────────────────┤
+│         FRONTEND            │            BACKEND                │
+│      (Клиентская часть)     │        (Серверная часть)          │
+├─────────────────────────────┼───────────────────────────────────┤
+│  • HTML, CSS, JavaScript    │  • Node.js, Python, PHP, Java     │
+│  • Работает в браузере      │  • Работает на сервере            │
+│  • Видит пользователь       │  • Скрыт от пользователя          │
+│  • Интерфейс и дизайн       │  • Логика и данные                │
+│  • Отправляет запросы       │  • Обрабатывает запросы           │
+└─────────────────────────────┴───────────────────────────────────┘
+```
+
+### Зачем нужен Backend?
+
+| Задача | Почему нужен сервер |
+|--------|---------------------|
+| **Хранение данных** | База данных находится на сервере, а не в браузере |
+| **Безопасность** | Секретные операции (пароли, платежи) нельзя доверять браузеру |
+| **Общие данные** | Все пользователи должны видеть одни и те же товары/статьи |
+| **Вычисления** | Сложные операции лучше выполнять на мощном сервере |
+| **Контроль доступа** | Сервер решает, кто что может делать |
+
+### Пример: Интернет-магазин
+
+```
+Что делает Frontend:                Что делает Backend:
+─────────────────────               ─────────────────────
+• Показывает карточки товаров       • Хранит каталог товаров в БД
+• Красивая кнопка "Купить"          • Проверяет, есть ли товар в наличии
+• Форма ввода данных карты          • Обрабатывает платёж (безопасно!)
+• Показывает "Спасибо за покупку"   • Сохраняет заказ в базу данных
+```
+
+---
+
+## 🛠️ Что такое Node.js?
+
+**Node.js** — это платформа, которая позволяет выполнять JavaScript вне браузера. До появления Node.js (2009 год) JavaScript работал только в браузере.
+
+### История JavaScript
+
+```
+1995: JavaScript создан для браузеров
+       ↓
+2009: Node.js позволил использовать JS на сервере
+       ↓
+2024: JavaScript — самый популярный язык в мире
+```
+
+### Особенности Node.js
+
+| Характеристика | Описание |
+|----------------|----------|
+| **Язык** | JavaScript (тот же, что в браузере!) |
+| **Движок** | V8 (тот же, что в Chrome) |
+| **Асинхронность** | Обрабатывает тысячи запросов одновременно |
+| **NPM** | Миллионы готовых библиотек |
+| **Кроссплатформенность** | Windows, macOS, Linux |
+
+### Почему Node.js?
+
+1. **Один язык везде** — JavaScript и на клиенте, и на сервере
+2. **Скорость разработки** — огромная экосистема готовых решений
+3. **Активное сообщество** — легко найти ответы на вопросы
+4. **Востребованность** — Node.js используют Netflix, Uber, PayPal, LinkedIn
+
+---
+
+## 📊 Архитектура веб-приложения
+
+### Трёхуровневая архитектура
+
+```
+┌───────────────────────────────────────────────────────────────┐
+│                        ПОЛЬЗОВАТЕЛЬ                           │
+│                    (Браузер, телефон)                         │
+└───────────────────────────┬───────────────────────────────────┘
+                            │
+                            │ HTTP запросы/ответы
+                            ↓
+┌───────────────────────────────────────────────────────────────┐
+│                         FRONTEND                              │
+│               (HTML, CSS, JavaScript)                         │
+│                                                               │
+│   • Отображение интерфейса                                    │
+│   • Взаимодействие с пользователем                            │
+│   • Отправка запросов на сервер                               │
+└───────────────────────────┬───────────────────────────────────┘
+                            │
+                            │ HTTP запросы (REST API)
+                            ↓
+┌───────────────────────────────────────────────────────────────┐
+│                         BACKEND                               │
+│                  (Node.js + Express)                          │
+│                                                               │
+│   • Обработка запросов                                        │
+│   • Бизнес-логика                                             │
+│   • Аутентификация                                            │
+│   • Работа с базой данных                                     │
+└───────────────────────────┬───────────────────────────────────┘
+                            │
+                            │ SQL запросы
+                            ↓
+┌───────────────────────────────────────────────────────────────┐
+│                        DATABASE                               │
+│                         (MySQL)                               │
+│                                                               │
+│   • Хранение данных                                           │
+│   • Пользователи, товары, заказы                              │
+└───────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 🧰 Инструменты для Backend-разработки
+
+### Обязательные инструменты
+
+| Инструмент | Назначение | Установка |
+|------------|------------|-----------|
+| **Node.js** | Платформа для запуска JS | [nodejs.org](https://nodejs.org/) |
+| **VS Code** | Редактор кода | [code.visualstudio.com](https://code.visualstudio.com/) |
+| **Git** | Контроль версий | [git-scm.com](https://git-scm.com/) |
+
+### Рекомендуемые инструменты
+
+| Инструмент | Назначение |
+|------------|------------|
+| **Postman** | Тестирование API без браузера |
+| **MySQL Workbench** | Визуальное управление базой данных |
+| **Nodemon** | Автоматический перезапуск сервера |
+
+### Расширения VS Code для Backend
+
+| Расширение | Назначение |
+|------------|------------|
+| **ESLint** | Проверка качества кода |
+| **Prettier** | Автоформатирование |
+| **REST Client** | Тестирование API прямо в VS Code |
+| **Thunder Client** | Альтернатива Postman |
+
+---
+
+## 📦 NPM — Менеджер пакетов
+
+**NPM** (Node Package Manager) — это менеджер библиотек для Node.js. Он позволяет устанавливать готовые решения одной командой.
+
+### Основные команды NPM
+
+```bash
+# Инициализация нового проекта (создаёт package.json)
+npm init -y
+
+# Установка библиотеки
+npm install express
+
+# Установка библиотеки для разработки
+npm install --save-dev nodemon
+
+# Установка всех зависимостей из package.json
+npm install
+
+# Запуск скрипта из package.json
+npm start
+npm run dev
+```
+
+### Файл package.json
+
+```json
+{
+  "name": "my-server",
+  "version": "1.0.0",
+  "description": "Мой первый сервер",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
+```
+
+| Поле | Описание |
+|------|----------|
+| `name` | Название проекта |
+| `scripts` | Команды для запуска (`npm start`, `npm run dev`) |
+| `dependencies` | Библиотеки, нужные для работы приложения |
+| `devDependencies` | Библиотеки только для разработки |
+
+---
+
+## 🗺️ План курса
+
+### Что мы построим
+
+К концу курса вы создадите **полноценный REST API** для интернет-магазина:
+
+```
+✅ Сервер на Node.js + Express
+✅ Маршруты для товаров, пользователей, корзины
+✅ Подключение к MySQL
+✅ Регистрация и авторизация
+✅ Защита маршрутов (только для авторизованных)
+✅ Интеграция с frontend
+```
+
+### Темы уроков
+
+| Урок | Тема | Вы научитесь |
+|------|------|--------------|
+| 01 | Введение | Понимать архитектуру веб-приложений |
+| 02 | HTTP и REST | Работать с HTTP-методами и JSON |
+| 03 | Node.js + Express | Создавать серверы и обрабатывать запросы |
+| 04 | Routing + Middleware | Организовывать код и обрабатывать запросы |
+| 05 | MVC | Разделять код на слои |
+| 06 | MySQL | Работать с базой данных |
+| 07 | Passport.js | Делать регистрацию и вход |
+| 08 | Интеграция | Связывать frontend и backend |
+| 09 | Тестирование | Проверять работу приложения |
+
+---
+
+## 📁 Структура урока
+
+```
+01-course-introduction/
+│
+├── README.md              # Этот файл (теория)
+│
+├── examples/              # Примеры кода
+│   └── 01-hello-node/
+│       └── index.js       # Первая программа на Node.js
+│
+├── practice/              # Задания
+│   └── 01-node-basics/
+│       └── task.md        # Практическое задание
+│
+└── assets/                # Изображения и диаграммы
+```
+
+---
+
+## 📖 Глоссарий
+
+| Термин | Определение |
+|--------|-------------|
+| **Backend** | Серверная часть приложения, обрабатывает данные и логику |
+| **Frontend** | Клиентская часть, то что видит пользователь в браузере |
+| **Node.js** | Платформа для выполнения JavaScript на сервере |
+| **NPM** | Менеджер пакетов (библиотек) для Node.js |
+| **package.json** | Файл с настройками проекта и списком зависимостей |
+| **Сервер** | Компьютер (или программа), который обрабатывает запросы |
+| **API** | Application Programming Interface — способ общения программ |
+| **REST** | Архитектурный стиль для веб-API |
+
+---
+
+## ➡️ Что дальше?
+
+В следующем уроке мы подробно изучим **клиент-серверную архитектуру**:
+- Как работает протокол HTTP
+- Что такое REST API
+- Методы GET, POST, PUT, DELETE
+- Формат данных JSON
+
+---
+
+**Курс:** Backend | **Урок:** 01-course-introduction
