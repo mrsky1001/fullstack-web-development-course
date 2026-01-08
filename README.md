@@ -8,228 +8,230 @@
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
 
-**Полный образовательный курс по веб-разработке**
+**Complete Web Development Educational Course**
 
-*От первой HTML-страницы до fullstack веб-приложения*
+*From your first HTML page to a fullstack web application*
 
-[![Language](https://img.shields.io/badge/Язык-Русский-green?style=flat-square)]()
-[![Level](https://img.shields.io/badge/Уровень-Beginner-orange?style=flat-square)]()
+[![Language](https://img.shields.io/badge/Language-English-blue?style=flat-square)]()
+[![Level](https://img.shields.io/badge/Level-Beginner-orange?style=flat-square)]()
+
+🌐 [Русская версия](./README.md)
 
 </div>
 
 ---
 
-## 📖 О курсе
+## 📖 About the Course
 
-Этот репозиторий — **комплексный образовательный курс** по fullstack веб-разработке. Курс разработан для **первокурсников и начинающих разработчиков**, не имеющих предыдущего опыта программирования.
+This repository is a **comprehensive educational course** in fullstack web development. The course is designed for **first-year students and beginner developers** with no prior programming experience.
 
-Курс охватывает все аспекты современной веб-разработки: от создания первой HTML-страницы до развёртывания полноценного интернет-магазина с сервером и базой данных.
+The course covers all aspects of modern web development: from creating your first HTML page to deploying a fully functional online store with a server and database.
 
-### 🎯 Цели курса
+### 🎯 Course Objectives
 
-После прохождения курса вы сможете:
+After completing the course, you will be able to:
 
-- ✅ Создавать современные **адаптивные веб-страницы** (HTML5, CSS3)
-- ✅ Писать интерактивные скрипты на **Vanilla JavaScript**
-- ✅ Разрабатывать **REST API** на Node.js и Express
-- ✅ Работать с **реляционными базами данных** (MySQL)
-- ✅ Реализовывать **аутентификацию** пользователей
-- ✅ Понимать **клиент-серверную архитектуру**
-- ✅ Собрать **портфолио** из готовых проектов
+- ✅ Create modern **responsive web pages** (HTML5, CSS3)
+- ✅ Write interactive scripts in **Vanilla JavaScript**
+- ✅ Develop **REST APIs** with Node.js and Express
+- ✅ Work with **relational databases** (MySQL)
+- ✅ Implement user **authentication**
+- ✅ Understand **client-server architecture**
+- ✅ Build a **portfolio** of completed projects
 
-### 👥 Для кого этот курс
+### 👥 Who This Course Is For
 
-| Аудитория | Подходит? |
-|-----------|-----------|
-| Студенты IT-специальностей | ✅ Идеально |
-| Начинающие веб-разработчики | ✅ Идеально |
-| Переходящие из других областей | ✅ Да |
-| Преподаватели | ✅ Готовые материалы |
-
----
-
-## 📚 Структура курса
-
-Курс состоит из **4 основных модулей**, каждый из которых углубляет знания от базового уровня к продвинутому.
-
-### 1️⃣ Frontend — Клиентская разработка
-
-📁 **Путь:** [`1. frontend/`](./1.%20frontend/)
-
-| Раздел | Описание | Уроков |
-|--------|----------|--------|
-| [HTML, CSS, JS](./1.%20frontend/1.%20html-css-js/) | Полный курс веб-программирования с нуля | 22 |
-| [Вебинары](./1.%20frontend/2.%20webinars-lessons/) | Дополнительные занятия и разборы | — |
-| [Пример лендинга](./1.%20frontend/3.%20example-landing/) | Готовый пример посадочной страницы | — |
-
-**Ключевые темы:**
-- 📄 HTML5: структура, семантика, формы
-- 🎨 CSS3: Flexbox, Grid, адаптивность, анимации
-- ⚡ JavaScript: DOM, события, LocalStorage
-- 🎮 6 практических проектов для портфолио
+| Audience | Suitable? |
+|----------|-----------|
+| IT students | ✅ Perfect |
+| Beginner web developers | ✅ Perfect |
+| Career changers | ✅ Yes |
+| Instructors | ✅ Ready-made materials |
 
 ---
 
-### 2️⃣ Backend — Серверная разработка
+## 📚 Course Structure
 
-📁 **Путь:** [`2. backend/`](./2.%20backend/)
+The course consists of **4 main modules**, each deepening knowledge from basic to advanced level.
 
-| # | Урок | Тема |
-|---|------|------|
-| 01 | Введение в курс | Обзор серверной разработки |
-| 02 | Клиент-серверная архитектура | HTTP, REST, API |
-| 03 | Node.js и Express | Создание первого сервера |
-| 04 | Маршрутизация и Middleware | Роутинг, обработка запросов |
-| 05 | Архитектура MVC | Model-View-Controller |
-| 06 | Интеграция с MySQL | Подключение к базе данных |
-| 07 | Аутентификация (Passport.js) | Вход, регистрация, сессии |
-| 08 | Интеграция Frontend + Backend | Связывание всех частей |
-| 09 | Тестирование | Основы тестирования приложений |
+### 1️⃣ Frontend — Client-Side Development
 
-**Ключевые темы:**
-- 🖥 Node.js и Express.js
-- 🔐 Аутентификация и сессии
-- 📡 REST API дизайн
-- 🏗 Архитектурные паттерны
+📁 **Path:** [`1. frontend/`](./1.%20frontend/)
+
+| Section | Description | Lessons |
+|---------|-------------|---------|
+| [HTML, CSS, JS](./1.%20frontend/1.%20html-css-js/) | Complete web programming course from scratch | 22 |
+| [Webinars](./1.%20frontend/2.%20webinars-lessons/) | Additional sessions and code reviews | — |
+| [Landing Example](./1.%20frontend/3.%20example-landing/) | Ready-made landing page example | — |
+
+**Key Topics:**
+- 📄 HTML5: structure, semantics, forms
+- 🎨 CSS3: Flexbox, Grid, responsiveness, animations
+- ⚡ JavaScript: DOM, events, LocalStorage
+- 🎮 6 practical portfolio projects
 
 ---
 
-### 3️⃣ Databases — Базы данных
+### 2️⃣ Backend — Server-Side Development
 
-📁 **Путь:** [`3. databases/`](./3.%20databases/)
+📁 **Path:** [`2. backend/`](./2.%20backend/)
 
-| # | Урок | Тема |
-|---|------|------|
-| 01 | Введение в курс | Обзор баз данных |
-| 02 | СУБД и их виды | Реляционные и нереляционные БД |
-| 03 | Установка MySQL | Настройка окружения |
-| 04 | Проектирование БД | ER-диаграммы, нормализация |
-| 05 | Основы SQL (CREATE) | Создание таблиц |
-| 06 | CRUD операции | SELECT, INSERT, UPDATE, DELETE |
-| 07 | JOIN и агрегация | Объединение таблиц, группировка |
+| # | Lesson | Topic |
+|---|--------|-------|
+| 01 | Course Introduction | Overview of server-side development |
+| 02 | Client-Server Architecture | HTTP, REST, API |
+| 03 | Node.js and Express | Creating your first server |
+| 04 | Routing and Middleware | Request handling |
+| 05 | MVC Architecture | Model-View-Controller |
+| 06 | MySQL Integration | Database connection |
+| 07 | Authentication (Passport.js) | Login, registration, sessions |
+| 08 | Frontend + Backend Integration | Connecting all parts |
+| 09 | Testing | Application testing basics |
 
-**Ключевые темы:**
-- 🗄 Реляционная модель данных
-- 📊 SQL запросы
-- 🔗 Связи между таблицами
-- 📐 Проектирование схемы БД
-
----
-
-### 4️⃣ Full-stack Store App — Итоговый проект
-
-📁 **Путь:** [`4. full-stack-store-app/`](./4.%20full-stack-store-app/)
-
-**Полноценный интернет-магазин** — финальный проект, объединяющий все полученные знания.
-
-| Компонент | Технологии | Описание |
-|-----------|------------|----------|
-| Frontend | HTML, CSS, JS | Интерфейс магазина |
-| Backend | Node.js, Express | API сервер |
-| Database | MySQL | Хранение данных |
-| Auth | Passport.js | Регистрация и вход |
-
-**Функционал:**
-- 🛒 Каталог товаров
-- 🛍 Корзина покупок
-- 👤 Регистрация и авторизация
-- 🔄 REST API для всех операций
-- 💾 Сохранение данных в MySQL
-
-➡️ [Подробная документация проекта](./4.%20full-stack-store-app/README.md)
+**Key Topics:**
+- 🖥 Node.js and Express.js
+- 🔐 Authentication and sessions
+- 📡 REST API design
+- 🏗 Architectural patterns
 
 ---
 
-## 🚀 Как начать
+### 3️⃣ Databases — Data Management
 
-### Предварительные требования
+📁 **Path:** [`3. databases/`](./3.%20databases/)
 
-| Инструмент | Описание | Ссылка |
-|------------|----------|--------|
-| **VS Code** | Редактор кода | [Скачать](https://code.visualstudio.com/) |
-| **Node.js** | Платформа JavaScript | [Скачать](https://nodejs.org/) (LTS) |
-| **Git** | Система контроля версий | [Скачать](https://git-scm.com/) |
-| **MySQL** | База данных (опционально) | [Скачать](https://dev.mysql.com/downloads/) |
+| # | Lesson | Topic |
+|---|--------|-------|
+| 01 | Course Introduction | Database overview |
+| 02 | DBMS Types | Relational and non-relational databases |
+| 03 | MySQL Installation | Environment setup |
+| 04 | Database Design | ER diagrams, normalization |
+| 05 | SQL Basics (CREATE) | Creating tables |
+| 06 | CRUD Operations | SELECT, INSERT, UPDATE, DELETE |
+| 07 | JOIN and Aggregation | Table joins, grouping |
 
-### Шаг 1: Клонируйте репозиторий
+**Key Topics:**
+- 🗄 Relational data model
+- 📊 SQL queries
+- 🔗 Table relationships
+- 📐 Database schema design
+
+---
+
+### 4️⃣ Full-stack Store App — Final Project
+
+📁 **Path:** [`4. full-stack-store-app/`](./4.%20full-stack-store-app/)
+
+**A complete online store** — the final project combining all acquired knowledge.
+
+| Component | Technologies | Description |
+|-----------|--------------|-------------|
+| Frontend | HTML, CSS, JS | Store interface |
+| Backend | Node.js, Express | API server |
+| Database | MySQL | Data storage |
+| Auth | Passport.js | Registration and login |
+
+**Features:**
+- 🛒 Product catalog
+- 🛍 Shopping cart
+- 👤 Registration and authorization
+- 🔄 REST API for all operations
+- 💾 Data storage in MySQL
+
+➡️ [Detailed project documentation](./4.%20full-stack-store-app/README.md)
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+| Tool | Description | Link |
+|------|-------------|------|
+| **VS Code** | Code editor | [Download](https://code.visualstudio.com/) |
+| **Node.js** | JavaScript platform | [Download](https://nodejs.org/) (LTS) |
+| **Git** | Version control system | [Download](https://git-scm.com/) |
+| **MySQL** | Database (optional) | [Download](https://dev.mysql.com/downloads/) |
+
+### Step 1: Clone the Repository
 
 ```bash
 git clone https://github.com/mrsky1001/fullstack-web-development-course.git
 cd fullstack-web-development-course
 ```
 
-### Шаг 2: Выберите модуль
+### Step 2: Choose a Module
 
-Рекомендуемый порядок прохождения:
+Recommended learning path:
 
-1. **Frontend** → Начните с [`1. frontend/1. html-css-js/`](./1.%20frontend/1.%20html-css-js/)
-2. **Databases** → Продолжите с [`3. databases/`](./3.%20databases/)
-3. **Backend** → Затем [`2. backend/`](./2.%20backend/)
-4. **Full-stack** → Финальный проект [`4. full-stack-store-app/`](./4.%20full-stack-store-app/)
+1. **Frontend** → Start with [`1. frontend/1. html-css-js/`](./1.%20frontend/1.%20html-css-js/)
+2. **Databases** → Continue with [`3. databases/`](./3.%20databases/)
+3. **Backend** → Then [`2. backend/`](./2.%20backend/)
+4. **Full-stack** → Final project [`4. full-stack-store-app/`](./4.%20full-stack-store-app/)
 
-### Шаг 3: Следуйте урокам
+### Step 3: Follow the Lessons
 
-Каждый урок содержит:
-- 📖 **README.md** — теоретический материал
-- 💻 **examples/** — готовые примеры кода
-- ✏️ **practice/** — задания для самостоятельной работы
-
----
-
-## ⏱ Рекомендуемый темп
-
-| Модуль | Время | Результат |
-|--------|-------|-----------|
-| Frontend (HTML/CSS/JS) | 10-12 недель | Современные веб-страницы |
-| Databases | 3-4 недели | Работа с MySQL |
-| Backend | 4-5 недель | REST API на Node.js |
-| Full-stack проект | 2-3 недели | Готовое приложение |
-
-**Общая длительность:** ~20-24 недели (при 8-10 часах в неделю)
+Each lesson contains:
+- 📖 **README.md** — theoretical material
+- 💻 **examples/** — ready-made code examples
+- ✏️ **practice/** — self-study assignments
 
 ---
 
-## 📂 Общие ресурсы
+## ⏱ Recommended Pace
 
-📁 **Путь:** [`0. shared/`](./0.%20shared/)
+| Module | Time | Outcome |
+|--------|------|---------|
+| Frontend (HTML/CSS/JS) | 10-12 weeks | Modern web pages |
+| Databases | 3-4 weeks | MySQL proficiency |
+| Backend | 4-5 weeks | REST API with Node.js |
+| Full-stack project | 2-3 weeks | Complete application |
 
-| Ресурс | Описание |
-|--------|----------|
-| `assets/` | Общие изображения и файлы |
-| `glossary/` | Словарь терминов |
-| `setup-guides/` | Инструкции по настройке окружения |
+**Total duration:** ~20-24 weeks (at 8-10 hours per week)
 
 ---
 
-## 📜 Принципы курса
+## 📂 Shared Resources
 
-### 🍦 Vanilla-first подход
+📁 **Path:** [`0. shared/`](./0.%20shared/)
 
-Никаких сложных фреймворков на старте — только чистые технологии:
+| Resource | Description |
+|----------|-------------|
+| `assets/` | Common images and files |
+| `glossary/` | Glossary of terms |
+| `setup-guides/` | Environment setup instructions |
+
+---
+
+## 📜 Course Principles
+
+### 🍦 Vanilla-First Approach
+
+No complex frameworks at the start — only pure technologies:
 - HTML5, CSS3, JavaScript (ES6+)
-- Node.js без дополнительных абстракций
-- Чистый SQL без ORM
+- Node.js without additional abstractions
+- Pure SQL without ORM
 
-### 💬 Подробные комментарии
+### 💬 Detailed Comments
 
-Весь код содержит комментарии на **русском языке**, объясняющие:
-- **Что** делает код
-- **Почему** именно так
-- **Как** это работает
+All code contains comments in **Russian** explaining:
+- **What** the code does
+- **Why** it's done this way
+- **How** it works
 
-### 🎯 Практико-ориентированность
+### 🎯 Practice-Oriented
 
-- После каждого урока — практические задания
-- Реальные проекты для портфолио
-- Все примеры можно запустить локально
+- Practical assignments after each lesson
+- Real projects for your portfolio
+- All examples can be run locally
 
-### 📚 Прогрессивная сложность
+### 📚 Progressive Complexity
 
-Уроки построены от простого к сложному, каждый базируется на предыдущих знаниях.
+Lessons are structured from simple to complex, each building on previous knowledge.
 
 ---
 
-## 🗺 Карта навыков
+## 🗺 Skills Map
 
 ```
                     ┌─────────────────────────────────────┐
@@ -241,43 +243,52 @@ cd fullstack-web-development-course
          │                         │                         │
     ┌────▼────┐              ┌─────▼─────┐            ┌──────▼──────┐
     │FRONTEND │              │ DATABASE  │            │   BACKEND   │
-    │  Модуль │              │  Модуль   │            │   Модуль    │
+    │ Module  │              │  Module   │            │   Module    │
     │    1    │              │    3      │            │     2       │
     └────┬────┘              └─────┬─────┘            └──────┬──────┘
          │                         │                         │
          │  • HTML5               │  • SQL                  │  • Node.js
          │  • CSS3                │  • MySQL                │  • Express
-         │  • JavaScript          │  • Проектирование       │  • REST API
-         │  • DOM / Events        │  • Связи таблиц         │  • Auth
+         │  • JavaScript          │  • Design               │  • REST API
+         │  • DOM / Events        │  • Table Relations      │  • Auth
          │                         │                         │
          └─────────────────────────┼─────────────────────────┘
                                    │
                     ┌──────────────▼──────────────┐
                     │    FULL-STACK STORE APP     │
-                    │      (Итоговый проект)      │
+                    │      (Final Project)        │
                     └─────────────────────────────┘
 ```
 
 ---
 
-## 🤝 Вклад в проект
+## 🤝 Contributing
 
-Если вы нашли ошибку или хотите предложить улучшение:
+If you find a bug or want to suggest an improvement:
 
-1. 🐛 Создайте **Issue** с описанием проблемы
-2. 🔧 Или отправьте **Pull Request** с исправлением
-3. 💡 Предложите новые примеры или задания
+1. 🐛 Create an **Issue** describing the problem
+2. 🔧 Or submit a **Pull Request** with a fix
+3. 💡 Suggest new examples or assignments
+
+---
+
+## 👨‍🏫 From the Author
+
+<div align="center">
+⭐ I'd appreciate it if you give this repo a star ⭐
+
+</div>
 
 ---
 
 <div align="center">
 
-### 🚀 Удачи в изучении веб-разработки!
+### 🚀 Good luck learning web development!
 
-*Создавайте, экспериментируйте, не бойтесь ошибаться!*
+*Create, experiment, don't be afraid to make mistakes!*
 
 ---
 
-**[⬆ Наверх](#-fullstack-web-development-course)**
+**[⬆ Back to Top](#-fullstack-web-development-course)**
 
 </div>
