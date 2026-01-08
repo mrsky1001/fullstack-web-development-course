@@ -1,0 +1,246 @@
+/* ================================================
+   УРОК 08: АДАПТИВНЫЙ ДИЗАЙН — MOBILE FIRST
+   ================================================
+   
+   Mobile First означает:
+   1. Сначала пишем стили для мобильных
+   2. Затем добавляем стили для бОльших экранов через @media
+*/
+
+/* ================================================
+   БАЗОВЫЕ СТИЛИ (МОБИЛЬНЫЕ)
+   ================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+.container {
+    width: 100%;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+/* ================================================
+   HEADER — МОБИЛЬНЫЕ
+   ================================================ */
+
+.header {
+    background: #2c3e50;
+    padding: 15px 0;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.nav-list {
+    display: none;
+    /* Скрыто на мобильных */
+    list-style: none;
+}
+
+/* ================================================
+   HERO — МОБИЛЬНЫЕ
+   ================================================ */
+
+.hero {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+/* ================================================
+   FEATURES — МОБИЛЬНЫЕ
+   ================================================ */
+
+.features {
+    padding: 40px 0;
+}
+
+.features h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.features-grid {
+    display: grid;
+    gap: 20px;
+}
+
+.feature-card {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.feature-card h3 {
+    margin-bottom: 10px;
+}
+
+/* ================================================
+   BREAKPOINTS INDICATOR
+   ================================================ */
+
+.breakpoints {
+    background: #34495e;
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+}
+
+.current-bp::after {
+    content: "📱 МОБИЛЬНЫЙ (< 576px)";
+    display: block;
+    font-size: 1.5rem;
+    margin-top: 10px;
+    color: #3498db;
+}
+
+/* ================================================
+   FOOTER
+   ================================================ */
+
+.footer {
+    background: #2c3e50;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* ================================================
+   МЕДИА-ЗАПРОСЫ — ПЛАНШЕТЫ (≥576px)
+   ================================================ */
+
+@media (min-width: 576px) {
+    .container {
+        max-width: 540px;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .current-bp::after {
+        content: "📱 ПЛАНШЕТ (≥576px)";
+        color: #2ecc71;
+    }
+}
+
+/* ================================================
+   МЕДИА-ЗАПРОСЫ — ПЛАНШЕТЫ ЛАНДШАФТ (≥768px)
+   ================================================ */
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+
+    /* Показываем навигацию десктопную */
+    .nav-toggle {
+        display: none;
+    }
+
+    .nav-list {
+        display: flex;
+        gap: 20px;
+    }
+
+    .nav-list a {
+        color: white;
+        text-decoration: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        transition: background 0.3s;
+    }
+
+    .nav-list a:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .hero {
+        padding: 100px 0;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .current-bp::after {
+        content: "💻 ПЛАНШЕТ ЛАНДШАФТ (≥768px)";
+        color: #f39c12;
+    }
+}
+
+/* ================================================
+   МЕДИА-ЗАПРОСЫ — ДЕСКТОП (≥992px)
+   ================================================ */
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+
+    .features-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .current-bp::after {
+        content: "🖥 ДЕСКТОП (≥992px)";
+        color: #9b59b6;
+    }
+}
+
+/* ================================================
+   МЕДИА-ЗАПРОСЫ — БОЛЬШОЙ ДЕСКТОП (≥1200px)
+   ================================================ */
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+
+    .hero h1 {
+        font-size: 4rem;
+    }
+
+    .current-bp::after {
+        content: "🖥 БОЛЬШОЙ ДЕСКТОП (≥1200px)";
+        color: #e74c3c;
+    }
+}

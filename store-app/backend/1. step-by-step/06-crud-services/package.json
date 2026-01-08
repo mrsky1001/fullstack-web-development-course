@@ -1,0 +1,27 @@
+{
+    "name": "lesson-06-crud-services",
+    "version": "1.0.0",
+    "description": "Урок 6: CRUD операции и сервисный слой",
+    "author": "IEEU - International East-European University",
+    "license": "MIT",
+    "main": "src/server.js",
+    "scripts": {
+        "start": "node src/server.js",
+        "dev": "node --watch src/server.js"
+    },
+    "dependencies": {
+        "dotenv": "^17.2.3",
+        "express": "^4.21.2",
+        "mysql2": "^3.12.0"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    },
+    "keywords": [
+        "education",
+        "express",
+        "mysql",
+        "crud",
+        "rest-api"
+    ]
+}

@@ -1,0 +1,25 @@
+{
+    "name": "lesson-03-routing-and-controllers",
+    "version": "1.0.0",
+    "description": "Урок 3: Организация маршрутов и паттерн Controller",
+    "author": "IEEU - International East-European University",
+    "license": "MIT",
+    "main": "src/server.js",
+    "scripts": {
+        "start": "node src/server.js",
+        "dev": "node --watch src/server.js"
+    },
+    "dependencies": {
+        "express": "^4.21.2"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    },
+    "keywords": [
+        "education",
+        "express",
+        "routing",
+        "mvc",
+        "controllers"
+    ]
+}

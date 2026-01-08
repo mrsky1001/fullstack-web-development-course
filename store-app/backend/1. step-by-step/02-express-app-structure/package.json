@@ -1,0 +1,25 @@
+{
+    "name": "lesson-02-express-app-structure",
+    "version": "1.0.0",
+    "description": "Урок 2: Установка Express.js и базовая структура приложения",
+    "author": "IEEU - International East-European University",
+    "license": "MIT",
+    "main": "src/server.js",
+    "scripts": {
+        "start": "node src/server.js",
+        "dev": "node --watch src/server.js"
+    },
+    "dependencies": {
+        "express": "^4.21.2"
+    },
+    "devDependencies": {},
+    "engines": {
+        "node": ">=18.0.0"
+    },
+    "keywords": [
+        "education",
+        "nodejs",
+        "express",
+        "web-server"
+    ]
+}

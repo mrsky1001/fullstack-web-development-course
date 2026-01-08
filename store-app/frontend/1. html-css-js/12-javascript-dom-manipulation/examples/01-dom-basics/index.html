@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM манипуляции | Урок 12</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .demo-box {
+            padding: 20px;
+            margin: 10px 0;
+            background: #f0f0f0;
+            border-radius: 8px;
+        }
+
+        .highlight {
+            background: yellow;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        #item-list li {
+            padding: 10px;
+            margin: 5px 0;
+            background: #e0e0e0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>DOM манипуляции</h1>
+
+    <!-- Пример 1: Изменение содержимого -->
+    <section class="demo-box">
+        <h2>1. Изменение текста</h2>
+        <p id="demo-text">Исходный текст параграфа</p>
+        <button onclick="changeText()">Изменить текст</button>
+    </section>
+
+    <!-- Пример 2: Работа с классами -->
+    <section class="demo-box">
+        <h2>2. Работа с классами</h2>
+        <p id="class-demo">Этот текст может быть выделен</p>
+        <button onclick="toggleHighlight()">Переключить выделение</button>
+    </section>
+
+    <!-- Пример 3: Создание элементов -->
+    <section class="demo-box">
+        <h2>3. Создание элементов</h2>
+        <ul id="item-list">
+            <li>Элемент 1</li>
+            <li>Элемент 2</li>
+        </ul>
+        <button onclick="addItem()">Добавить элемент</button>
+        <button onclick="removeLastItem()">Удалить последний</button>
+    </section>
+
+    <!-- Пример 4: Атрибуты -->
+    <section class="demo-box">
+        <h2>4. Атрибуты</h2>
+        <img id="demo-image" src="https://via.placeholder.com/200" alt="Демо">
+        <br><br>
+        <button onclick="changeImage()">Изменить изображение</button>
+    </section>
+
+    <!-- Подключаем внешний JavaScript файл -->
+    <script src="script.js"></script>
+</body>
+
+</html>

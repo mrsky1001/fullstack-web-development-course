@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Адаптивный дизайн | Урок 08</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- ================================================
+         УРОК 08: АДАПТИВНЫЙ ДИЗАЙН
+         ================================================
+         
+         Откройте DevTools (F12) и измените ширину окна,
+         чтобы увидеть, как меняется дизайн.
+    -->
+
+    <header class="header">
+        <div class="container">
+            <div class="logo">Логотип</div>
+            <nav class="nav">
+                <button class="nav-toggle" aria-label="Меню">☰</button>
+                <ul class="nav-list">
+                    <li><a href="#">Главная</a></li>
+                    <li><a href="#">О нас</a></li>
+                    <li><a href="#">Услуги</a></li>
+                    <li><a href="#">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="hero">
+            <div class="container">
+                <h1>Адаптивный дизайн</h1>
+                <p>Измените размер окна браузера, чтобы увидеть изменения</p>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <h2>Особенности</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>📱 Mobile First</h3>
+                        <p>Сначала стили для мобильных, затем для больших экранов</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📐 Гибкие единицы</h3>
+                        <p>Используем %, rem, vw, vh вместо px</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🖼 Адаптивные изображения</h3>
+                        <p>max-width: 100% для масштабирования</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="breakpoints">
+            <div class="container">
+                <h2>Текущий брейкпоинт</h2>
+                <p class="current-bp">Измените размер окна</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>© 2024 Адаптивный дизайн</p>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Типы input | Урок 03</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 8px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        input,
+        select,
+        textarea {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        input:focus {
+            outline: 2px solid #007bff;
+            border-color: #007bff;
+        }
+
+        .code {
+            background: #e0e0e0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Типы полей ввода (input)</h1>
+
+    <!-- ================================================
+         ТЕКСТОВЫЕ ПОЛЯ
+         ================================================ -->
+
+    <h2>Текстовые поля</h2>
+
+    <div class="form-group">
+        <label for="text-simple">type="text" — обычный текст</label>
+        <input type="text" id="text-simple" placeholder="Введите текст">
+    </div>
+
+    <div class="form-group">
+        <label for="email-input">type="email" — электронная почта</label>
+        <input type="email" id="email-input" placeholder="user@example.com">
+        <p><small>Браузер проверит формат email при отправке</small></p>
+    </div>
+
+    <div class="form-group">
+        <label for="password-input">type="password" — пароль</label>
+        <input type="password" id="password-input" placeholder="Введите пароль">
+        <p><small>Символы скрыты точками</small></p>
+    </div>
+
+    <div class="form-group">
+        <label for="tel-input">type="tel" — телефон</label>
+        <input type="tel" id="tel-input" placeholder="+7 (999) 123-45-67">
+        <p><small>На мобильных открывает цифровую клавиатуру</small></p>
+    </div>
+
+    <div class="form-group">
+        <label for="url-input">type="url" — ссылка</label>
+        <input type="url" id="url-input" placeholder="https://example.com">
+    </div>
+
+    <div class="form-group">
+        <label for="search-input">type="search" — поиск</label>
+        <input type="search" id="search-input" placeholder="Поиск...">
+        <p><small>Может иметь кнопку очистки "×"</small></p>
+    </div>
+
+    <!-- ================================================
+         ЧИСЛОВЫЕ ПОЛЯ
+         ================================================ -->
+
+    <h2>Числовые поля</h2>
+
+    <div class="form-group">
+        <label for="number-input">type="number" — число</label>
+        <input type="number" id="number-input" min="0" max="100" step="5" value="25">
+        <p><small>min="0" max="100" step="5"</small></p>
+    </div>
+
+    <div class="form-group">
+        <label for="range-input">type="range" — ползунок</label>
+        <input type="range" id="range-input" min="0" max="100" value="50">
+        <p>Значение: <span id="range-value">50</span></p>
+    </div>
+
+    <!-- ================================================
+         ДАТА И ВРЕМЯ
+         ================================================ -->
+
+    <h2>Дата и время</h2>
+
+    <div class="form-group">
+        <label for="date-input">type="date" — дата</label>
+        <input type="date" id="date-input">
+    </div>
+
+    <div class="form-group">
+        <label for="time-input">type="time" — время</label>
+        <input type="time" id="time-input">
+    </div>
+
+    <div class="form-group">
+        <label for="datetime-input">type="datetime-local"</label>
+        <input type="datetime-local" id="datetime-input">
+    </div>
+
+    <div class="form-group">
+        <label for="month-input">type="month" — месяц</label>
+        <input type="month" id="month-input">
+    </div>
+
+    <!-- ================================================
+         ВЫБОР
+         ================================================ -->
+
+    <h2>Выбор</h2>
+
+    <div class="form-group">
+        <label>type="checkbox" — флажки</label>
+        <div>
+            <label><input type="checkbox" name="skill" value="html"> HTML</label>
+            <label><input type="checkbox" name="skill" value="css"> CSS</label>
+            <label><input type="checkbox" name="skill" value="js"> JavaScript</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>type="radio" — переключатели</label>
+        <div>
+            <label><input type="radio" name="gender" value="male"> Мужской</label>
+            <label><input type="radio" name="gender" value="female"> Женский</label>
+        </div>
+    </div>
+
+    <!-- ================================================
+         ФАЙЛЫ И ЦВЕТА
+         ================================================ -->
+
+    <h2>Файлы и цвета</h2>
+
+    <div class="form-group">
+        <label for="file-input">type="file" — файл</label>
+        <input type="file" id="file-input" accept="image/*">
+    </div>
+
+    <div class="form-group">
+        <label for="color-input">type="color" — цвет</label>
+        <input type="color" id="color-input" value="#3498db">
+    </div>
+
+    <script>
+        // Показываем значение ползунка
+        const rangeInput = document.getElementById('range-input');
+        const rangeValue = document.getElementById('range-value');
+
+        rangeInput.addEventListener('input', function () {
+            rangeValue.textContent = this.value;
+        });
+    </script>
+</body>
+
+</html>

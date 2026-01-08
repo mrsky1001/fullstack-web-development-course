@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мультимедиа в HTML | Урок 01</title>
+</head>
+
+<body>
+    <!-- ================================================
+         УРОК 01: МУЛЬТИМЕДИА В HTML
+         ================================================
+         
+         HTML5 добавил нативную поддержку аудио и видео.
+         Раньше для этого требовался Flash-плеер.
+         
+         Основные теги:
+         - <video> — видео
+         - <audio> — аудио
+         - <source> — источник медиа
+         - <track> — субтитры
+    -->
+
+    <h1>Мультимедиа в HTML</h1>
+
+    <!-- ================================================
+         РАЗДЕЛ 1: ВИДЕО
+         ================================================ -->
+
+    <h2>Видео (video)</h2>
+
+    <h3>Простой пример</h3>
+
+    <!-- 
+        <video> — контейнер для видео.
+        
+        Атрибут controls — отображает панель управления:
+        - Кнопка воспроизведения/паузы
+        - Ползунок прогресса
+        - Регулятор громкости
+        - Кнопка полноэкранного режима
+    -->
+
+    <video controls width="640" height="360">
+        <!-- 
+            <source> — источник видео.
+            Можно указать несколько для разных форматов.
+            Браузер выберет первый поддерживаемый.
+            
+            type — MIME-тип файла (помогает браузеру)
+        -->
+        <source src="video/sample.mp4" type="video/mp4">
+        <source src="video/sample.webm" type="video/webm">
+
+        <!-- 
+            Текст внутри video показывается,
+            если браузер не поддерживает video.
+            Это fallback для очень старых браузеров.
+        -->
+        <p>
+            Ваш браузер не поддерживает тег video.
+            <a href="video/sample.mp4">Скачать видео</a>
+        </p>
+    </video>
+
+    <h3>Все атрибуты video</h3>
+
+    <video controls width="640" height="360" poster="images/video-poster.jpg" preload="metadata">
+        <!-- 
+            АТРИБУТЫ:
+            
+            controls — показать элементы управления
+            width/height — размеры плеера
+            poster — изображение-превью до воспроизведения
+            preload — что загружать до воспроизведения:
+                - "none" — ничего не загружать
+                - "metadata" — загрузить только метаданные
+                - "auto" — загрузить видео полностью
+            
+            autoplay — автовоспроизведение (ОСТОРОЖНО!)
+            loop — зациклить воспроизведение
+            muted — воспроизводить без звука
+            playsinline — воспроизводить в элементе (для iOS)
+        -->
+
+        <source src="video/sample.mp4" type="video/mp4">
+    </video>
+
+    <h3>Видео с автовоспроизведением</h3>
+
+    <!-- 
+        ВАЖНО: Большинство браузеров блокируют автовоспроизведение
+        со звуком. Для автовоспроизведения нужен атрибут muted.
+        
+        Это сделано для защиты пользователей от надоедливых видео.
+    -->
+
+    <video autoplay muted loop width="320">
+        <!-- Такое видео воспроизведётся автоматически -->
+        <source src="video/background.mp4" type="video/mp4">
+    </video>
+
+    <p><em>Видео выше воспроизводится автоматически, но без звука.</em></p>
+
+    <h3>Видео с субтитрами</h3>
+
+    <video controls width="640">
+        <source src="video/interview.mp4" type="video/mp4">
+
+        <!-- 
+            <track> — дорожка субтитров/метаданных.
+            
+            kind — тип дорожки:
+                - subtitles — субтитры на другом языке
+                - captions — субтитры для глухих (включая звуки)
+                - descriptions — описание для слепых
+                - chapters — главы
+                
+            srclang — язык субтитров
+            label — название в меню выбора
+            default — дорожка по умолчанию
+        -->
+
+        <track kind="subtitles" src="subtitles/russian.vtt" srclang="ru" label="Русский" default>
+        <track kind="subtitles" src="subtitles/english.vtt" srclang="en" label="English">
+    </video>
+
+    <hr>
+
+    <!-- ================================================
+         РАЗДЕЛ 2: АУДИО
+         ================================================ -->
+
+    <h2>Аудио (audio)</h2>
+
+    <h3>Простой аудиоплеер</h3>
+
+    <!-- 
+        <audio> — аудиоплеер.
+        Работает аналогично video, но без визуальной части.
+    -->
+
+    <audio controls>
+        <source src="audio/music.mp3" type="audio/mpeg">
+        <source src="audio/music.ogg" type="audio/ogg">
+
+        <p>
+            Ваш браузер не поддерживает аудио.
+            <a href="audio/music.mp3">Скачать аудио</a>
+        </p>
+    </audio>
+
+    <h3>Атрибуты audio</h3>
+
+    <audio controls preload="metadata">
+        <!-- 
+            АТРИБУТЫ (аналогичны video):
+            
+            controls — элементы управления
+            autoplay — автовоспроизведение
+            loop — зацикливание
+            muted — без звука
+            preload — предзагрузка
+        -->
+
+        <source src="audio/podcast.mp3" type="audio/mpeg">
+    </audio>
+
+    <h3>Скрытое аудио (для веб-приложений)</h3>
+
+    <!-- 
+        Аудио без controls не отображается.
+        Используется для звуковых эффектов в JavaScript.
+    -->
+
+    <audio id="notification-sound">
+        <source src="audio/notification.mp3" type="audio/mpeg">
+    </audio>
+
+    <p><em>Это скрытое аудио (без controls) можно воспроизводить через JavaScript.</em></p>
+
+    <hr>
+
+    <!-- ================================================
+         РАЗДЕЛ 3: ФОРМАТЫ МЕДИАФАЙЛОВ
+         ================================================ -->
+
+    <h2>Форматы медиафайлов</h2>
+
+    <h3>Видеоформаты</h3>
+
+    <table border="1" style="border-collapse: collapse;">
+        <thead>
+            <tr>
+                <th>Формат</th>
+                <th>Расширение</th>
+                <th>MIME-тип</th>
+                <th>Поддержка</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>MP4 (H.264)</strong></td>
+                <td>.mp4</td>
+                <td>video/mp4</td>
+                <td>Все браузеры ✓</td>
+            </tr>
+            <tr>
+                <td><strong>WebM (VP9)</strong></td>
+                <td>.webm</td>
+                <td>video/webm</td>
+                <td>Chrome, Firefox, Edge ✓</td>
+            </tr>
+            <tr>
+                <td><strong>Ogg (Theora)</strong></td>
+                <td>.ogv</td>
+                <td>video/ogg</td>
+                <td>Chrome, Firefox ✓</td>
+            </tr>
+            <tr>
+                <td><strong>AV1</strong></td>
+                <td>.mp4</td>
+                <td>video/mp4; codecs="av01..."</td>
+                <td>Современные браузеры</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Аудиоформаты</h3>
+
+    <table border="1" style="border-collapse: collapse;">
+        <thead>
+            <tr>
+                <th>Формат</th>
+                <th>Расширение</th>
+                <th>MIME-тип</th>
+                <th>Поддержка</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>MP3</strong></td>
+                <td>.mp3</td>
+                <td>audio/mpeg</td>
+                <td>Все браузеры ✓</td>
+            </tr>
+            <tr>
+                <td><strong>AAC</strong></td>
+                <td>.m4a, .aac</td>
+                <td>audio/aac</td>
+                <td>Все браузеры ✓</td>
+            </tr>
+            <tr>
+                <td><strong>Ogg Vorbis</strong></td>
+                <td>.ogg</td>
+                <td>audio/ogg</td>
+                <td>Chrome, Firefox, Edge ✓</td>
+            </tr>
+            <tr>
+                <td><strong>WAV</strong></td>
+                <td>.wav</td>
+                <td>audio/wav</td>
+                <td>Все браузеры ✓</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <!-- ================================================
+         РАЗДЕЛ 4: ВСТРАИВАНИЕ ВНЕШНИХ ВИДЕО
+         ================================================ -->
+
+    <h2>Встраивание видео с внешних сервисов</h2>
+
+    <p>
+        Для видео с YouTube, Vimeo и других сервисов
+        используется тег <code>&lt;iframe&gt;</code>.
+    </p>
+
+    <h3>YouTube</h3>
+
+    <!-- 
+        Как получить код для встраивания:
+        1. Откройте видео на YouTube
+        2. Нажмите "Поделиться"
+        3. Выберите "Встроить"
+        4. Скопируйте код
+    -->
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID" title="YouTube видео" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+    </iframe>
+
+    <h3>Vimeo</h3>
+
+    <iframe width="560" height="315" src="https://player.vimeo.com/video/VIDEO_ID" title="Vimeo видео" frameborder="0"
+        allow="autoplay; fullscreen; picture-in-picture" allowfullscreen>
+    </iframe>
+
+    <hr>
+
+    <!-- ================================================
+         СОВЕТЫ И ЛУЧШИЕ ПРАКТИКИ
+         ================================================ -->
+
+    <h2>Советы по работе с мультимедиа</h2>
+
+    <ol>
+        <li>
+            <strong>Всегда указывайте несколько форматов:</strong>
+            <ul>
+                <li>MP4 + WebM для видео</li>
+                <li>MP3 + OGG для аудио</li>
+            </ul>
+        </li>
+
+        <li>
+            <strong>Используйте poster для видео:</strong>
+            <ul>
+                <li>Показывает превью до загрузки</li>
+                <li>Улучшает пользовательский опыт</li>
+            </ul>
+        </li>
+
+        <li>
+            <strong>Не используйте autoplay без необходимости:</strong>
+            <ul>
+                <li>Раздражает пользователей</li>
+                <li>Тратит трафик</li>
+                <li>Блокируется браузерами (со звуком)</li>
+            </ul>
+        </li>
+
+        <li>
+            <strong>Оптимизируйте размер файлов:</strong>
+            <ul>
+                <li>Сжимайте видео перед загрузкой</li>
+                <li>Используйте современные кодеки (H.265, AV1)</li>
+            </ul>
+        </li>
+
+        <li>
+            <strong>Добавляйте субтитры:</strong>
+            <ul>
+                <li>Для доступности</li>
+                <li>Для просмотра без звука</li>
+            </ul>
+        </li>
+    </ol>
+
+</body>
+
+</html>

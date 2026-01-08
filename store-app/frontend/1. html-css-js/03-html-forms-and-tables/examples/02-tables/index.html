@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Таблица данных | Урок 03</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th,
+        td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        thead {
+            background: #2c3e50;
+            color: white;
+        }
+
+        tbody tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        tbody tr:hover {
+            background: #e9ecef;
+        }
+
+        caption {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        tfoot {
+            background: #ecf0f1;
+            font-weight: bold;
+        }
+
+        .price {
+            text-align: right;
+        }
+
+        .badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .badge-success {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .badge-warning {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .badge-danger {
+            background: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>HTML Таблицы</h1>
+
+    <!-- ================================================
+         ПРИМЕР 1: БАЗОВАЯ ТАБЛИЦА С ЗАГОЛОВКАМИ
+         ================================================ -->
+    <section>
+        <h2>1. Таблица товаров</h2>
+
+        <table>
+            <!-- caption — заголовок таблицы (для доступности) -->
+            <caption>Каталог товаров магазина</caption>
+
+            <!-- thead — шапка таблицы -->
+            <thead>
+                <tr>
+                    <!-- th — ячейка заголовка -->
+                    <th scope="col">ID</th>
+                    <th scope="col">Товар</th>
+                    <th scope="col">Категория</th>
+                    <th scope="col">Цена</th>
+                    <th scope="col">Статус</th>
+                </tr>
+            </thead>
+
+            <!-- tbody — тело таблицы -->
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Ноутбук ASUS</td>
+                    <td>Электроника</td>
+                    <td class="price">75 000 ₽</td>
+                    <td><span class="badge badge-success">В наличии</span></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Смартфон Samsung</td>
+                    <td>Электроника</td>
+                    <td class="price">45 000 ₽</td>
+                    <td><span class="badge badge-success">В наличии</span></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Наушники Sony</td>
+                    <td>Аксессуары</td>
+                    <td class="price">12 000 ₽</td>
+                    <td><span class="badge badge-warning">Мало</span></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Клавиатура Logitech</td>
+                    <td>Аксессуары</td>
+                    <td class="price">5 000 ₽</td>
+                    <td><span class="badge badge-danger">Нет</span></td>
+                </tr>
+            </tbody>
+
+            <!-- tfoot — подвал таблицы -->
+            <tfoot>
+                <tr>
+                    <td colspan="3">Итого товаров: 4</td>
+                    <td class="price">137 000 ₽</td>
+                    <td></td>
+                </tr>
+            </tfoot>
+        </table>
+    </section>
+
+    <!-- ================================================
+         ПРИМЕР 2: ОБЪЕДИНЕНИЕ ЯЧЕЕК
+         ================================================ -->
+    <section>
+        <h2>2. Объединение ячеек (colspan, rowspan)</h2>
+
+        <table>
+            <caption>Расписание занятий</caption>
+            <thead>
+                <tr>
+                    <th>Время</th>
+                    <th>Понедельник</th>
+                    <th>Вторник</th>
+                    <th>Среда</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>9:00 - 10:30</td>
+                    <!-- rowspan="2" — объединение 2 строк по вертикали -->
+                    <td rowspan="2">Математика<br><small>Ауд. 101</small></td>
+                    <td>Физика</td>
+                    <td>Химия</td>
+                </tr>
+                <tr>
+                    <td>10:45 - 12:15</td>
+                    <td>Информатика</td>
+                    <td>История</td>
+                </tr>
+                <tr>
+                    <td>12:30 - 14:00</td>
+                    <!-- colspan="3" — объединение 3 колонок по горизонтали -->
+                    <td colspan="3" style="text-align: center; background: #e9ecef;">
+                        Обеденный перерыв
+                    </td>
+                </tr>
+                <tr>
+                    <td>14:15 - 15:45</td>
+                    <td>Английский</td>
+                    <td>Литература</td>
+                    <td>Физкультура</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+</body>
+
+</html>

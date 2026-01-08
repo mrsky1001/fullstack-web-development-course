@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>События JavaScript | Урок 13</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .demo-box {
+            padding: 20px;
+            margin: 15px 0;
+            background: #f5f5f5;
+            border-radius: 8px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .hover-box {
+            width: 200px;
+            height: 100px;
+            background: #3498db;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .hover-box:hover {
+            background: #2980b9;
+            transform: scale(1.05);
+        }
+
+        #keyOutput {
+            font-family: monospace;
+            padding: 10px;
+            background: #2c3e50;
+            color: #2ecc71;
+        }
+
+        .list-item {
+            padding: 10px;
+            margin: 5px 0;
+            background: #ecf0f1;
+            cursor: pointer;
+        }
+
+        .list-item:hover {
+            background: #bdc3c7;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>События JavaScript</h1>
+
+    <!-- Пример 1: Клик -->
+    <section class="demo-box">
+        <h2>1. Событие клика</h2>
+        <button class="btn-primary" id="clickBtn">Нажми меня!</button>
+        <p id="clickCount">Нажатий: 0</p>
+    </section>
+
+    <!-- Пример 2: Мышь -->
+    <section class="demo-box">
+        <h2>2. События мыши</h2>
+        <div class="hover-box" id="hoverBox">Наведи на меня</div>
+        <p id="mouseStatus">Статус: ожидание</p>
+    </section>
+
+    <!-- Пример 3: Клавиатура -->
+    <section class="demo-box">
+        <h2>3. События клавиатуры</h2>
+        <input type="text" id="keyInput" placeholder="Печатай здесь...">
+        <p id="keyOutput">Нажатая клавиша: -</p>
+    </section>
+
+    <!-- Пример 4: Форма -->
+    <section class="demo-box">
+        <h2>4. События формы</h2>
+        <form id="demoForm">
+            <input type="text" id="nameInput" placeholder="Введите имя" required>
+            <button type="submit" class="btn-primary">Отправить</button>
+        </form>
+        <p id="formResult"></p>
+    </section>
+
+    <!-- Пример 5: Делегирование -->
+    <section class="demo-box">
+        <h2>5. Делегирование событий</h2>
+        <p><small>Один обработчик на родителе для всех элементов</small></p>
+        <ul id="itemList">
+            <li class="list-item" data-id="1">Элемент 1</li>
+            <li class="list-item" data-id="2">Элемент 2</li>
+            <li class="list-item" data-id="3">Элемент 3</li>
+        </ul>
+        <p id="delegateResult">Кликните на элемент списка</p>
+    </section>
+
+    <!-- Подключаем внешний JavaScript файл -->
+    <script src="script.js"></script>
+</body>
+
+</html>

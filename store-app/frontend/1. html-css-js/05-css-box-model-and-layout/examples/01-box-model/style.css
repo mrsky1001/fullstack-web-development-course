@@ -1,0 +1,243 @@
+/* ================================================
+   УРОК 05: СТИЛИ ДЛЯ ДЕМОНСТРАЦИИ БЛОЧНОЙ МОДЕЛИ
+   ================================================ */
+
+/* Базовые стили */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    background: #f5f5f5;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #2c3e50;
+}
+
+h2 {
+    color: #34495e;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+}
+
+h3 {
+    margin: 15px 0 10px;
+    color: #7f8c8d;
+}
+
+code {
+    background: #ecf0f1;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: 'Consolas', monospace;
+}
+
+.demo-section {
+    background: white;
+    padding: 25px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ================================================
+   ВИЗУАЛИЗАЦИЯ БЛОЧНОЙ МОДЕЛИ
+   ================================================ */
+
+.box-model-demo {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.margin-layer {
+    background: #ffeaa7;
+    padding: 30px;
+    position: relative;
+}
+
+.border-layer {
+    background: #fdcb6e;
+    border: 10px solid #e17055;
+    padding: 25px;
+    position: relative;
+}
+
+.padding-layer {
+    background: #81ecec;
+    padding: 25px;
+    position: relative;
+}
+
+.content-layer {
+    background: #74b9ff;
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+.label {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 11px;
+    font-weight: bold;
+    color: #2d3436;
+    opacity: 0.7;
+}
+
+.content-layer .label {
+    color: white;
+}
+
+/* ================================================
+   CONTENT-BOX VS BORDER-BOX
+   ================================================ */
+
+.comparison {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.box {
+    width: 300px;
+    padding: 20px;
+    border: 5px solid #3498db;
+    background: #ecf0f1;
+}
+
+.content-box {
+    box-sizing: content-box;
+    /* Итого: 300 + 20*2 + 5*2 = 350px */
+}
+
+.border-box {
+    box-sizing: border-box;
+    /* Итого: 300px */
+}
+
+.box h3 {
+    margin: 0 0 10px;
+    color: #2c3e50;
+}
+
+.box p {
+    margin: 5px 0;
+}
+
+/* ================================================
+   СХЛОПЫВАНИЕ MARGIN
+   ================================================ */
+
+.margin-collapse-demo {
+    background: #dfe6e9;
+    padding: 10px;
+    margin: 20px 0;
+}
+
+.collapse-box {
+    background: #74b9ff;
+    padding: 15px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+.box-1 {
+    margin-bottom: 30px;
+    background: #e74c3c;
+}
+
+.box-2 {
+    margin-top: 20px;
+    background: #3498db;
+}
+
+/* ================================================
+   BORDER-RADIUS ПРИМЕРЫ
+   ================================================ */
+
+.radius-examples {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.radius-box {
+    width: 100px;
+    height: 100px;
+    background: #9b59b6;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.r1 {
+    border-radius: 10px;
+}
+
+.r2 {
+    border-radius: 25px;
+}
+
+.r3 {
+    border-radius: 50%;
+}
+
+.r4 {
+    border-radius: 10px 30px;
+}
+
+.r5 {
+    border-radius: 50% 0;
+}
+
+/* ================================================
+   DISPLAY ПРИМЕРЫ
+   ================================================ */
+
+.display-demo {
+    background: #ecf0f1;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.d-block {
+    display: block;
+    background: #1abc9c;
+    color: white;
+    padding: 10px;
+    margin: 5px 0;
+}
+
+.d-inline {
+    display: inline;
+    background: #e74c3c;
+    color: white;
+    padding: 10px;
+    /* width и height не работают для inline! */
+}
+
+.d-inline-block {
+    display: inline-block;
+    background: #3498db;
+    color: white;
+    padding: 10px;
+    width: 150px;
+    text-align: center;
+    margin: 5px;
+}

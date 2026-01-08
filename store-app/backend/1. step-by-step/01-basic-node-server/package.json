@@ -1,0 +1,20 @@
+{
+    "name": "lesson-01-basic-node-server",
+    "version": "1.0.0",
+    "description": "Урок 1: Введение в Node.js - создание простого HTTP сервера",
+    "author": "IEEU - International East-European University",
+    "license": "MIT",
+    "main": "src/server.js",
+    "scripts": {
+        "start": "node src/server.js"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    },
+    "keywords": [
+        "education",
+        "nodejs",
+        "http-server",
+        "beginner"
+    ]
+}

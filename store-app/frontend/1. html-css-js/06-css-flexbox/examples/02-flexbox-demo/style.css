@@ -1,0 +1,185 @@
+/* ================================================
+   УРОК 06: ПРАКТИЧЕСКИЕ ПРИМЕРЫ FLEXBOX
+   ================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    padding: 20px;
+    background: #f5f5f5;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h2 {
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.demo {
+    background: white;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* ================================================
+   ПРИМЕР 1: ИДЕАЛЬНОЕ ЦЕНТРИРОВАНИЕ
+   ================================================ */
+
+.center-demo {
+    display: flex;
+    justify-content: center;
+    /* По горизонтали */
+    align-items: center;
+    /* По вертикали */
+
+    height: 200px;
+    background: #ecf0f1;
+    border-radius: 8px;
+}
+
+.centered-box {
+    padding: 30px 50px;
+    background: #3498db;
+    color: white;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+/* ================================================
+   ПРИМЕР 2: НАВИГАЦИЯ
+   ================================================ */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    /* Лого слева, ссылки справа */
+    align-items: center;
+
+    padding: 15px 25px;
+    background: #2c3e50;
+    border-radius: 8px;
+}
+
+.nav-logo {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    /* Промежутки между ссылками */
+    list-style: none;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.nav-links a:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* ================================================
+   ПРИМЕР 3: КАРТОЧКИ
+   ================================================ */
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    /* Перенос на новую строку */
+    gap: 20px;
+}
+
+.card {
+    /* flex: grow shrink basis */
+    flex: 1 1 250px;
+    /* Растёт, сжимается, базис 250px */
+
+    padding: 40px;
+    background: #9b59b6;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 1.2rem;
+}
+
+/* ================================================
+   ПРИМЕР 4: SIDEBAR LAYOUT
+   ================================================ */
+
+.layout {
+    display: flex;
+    gap: 20px;
+    min-height: 200px;
+}
+
+.sidebar {
+    flex: 0 0 200px;
+    /* НЕ растёт, НЕ сжимается, ширина 200px */
+
+    background: #34495e;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.content {
+    flex: 1;
+    /* Занимает всё оставшееся место */
+
+    background: #ecf0f1;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* ================================================
+   ПРИМЕР 5: FOOTER ВНИЗУ
+   ================================================ */
+
+.page-demo {
+    display: flex;
+    flex-direction: column;
+    /* Вертикальное направление */
+
+    min-height: 300px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.page-header {
+    background: #3498db;
+    color: white;
+    padding: 20px;
+}
+
+.page-main {
+    flex: 1;
+    /* Занимает всё свободное пространство */
+    padding: 20px;
+    background: #fff;
+}
+
+.page-footer {
+    background: #2c3e50;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}

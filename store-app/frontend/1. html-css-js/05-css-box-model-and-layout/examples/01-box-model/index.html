@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Блочная модель CSS | Урок 05</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- ================================================
+         УРОК 05: ДЕМОНСТРАЦИЯ БЛОЧНОЙ МОДЕЛИ
+         ================================================
+         
+         Этот файл наглядно показывает части блочной модели:
+         - Content (содержимое)
+         - Padding (внутренний отступ)
+         - Border (рамка)
+         - Margin (внешний отступ)
+    -->
+
+    <h1>Блочная модель CSS (Box Model)</h1>
+
+    <!-- ================================================
+         РАЗДЕЛ 1: ВИЗУАЛИЗАЦИЯ БЛОЧНОЙ МОДЕЛИ
+         ================================================ -->
+
+    <section class="demo-section">
+        <h2>Визуализация блочной модели</h2>
+
+        <div class="box-model-demo">
+            <div class="margin-layer">
+                <span class="label">MARGIN</span>
+                <div class="border-layer">
+                    <span class="label">BORDER</span>
+                    <div class="padding-layer">
+                        <span class="label">PADDING</span>
+                        <div class="content-layer">
+                            <span class="label">CONTENT</span>
+                            <p>Это содержимое элемента</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================
+         РАЗДЕЛ 2: СРАВНЕНИЕ CONTENT-BOX VS BORDER-BOX
+         ================================================ -->
+
+    <section class="demo-section">
+        <h2>content-box vs border-box</h2>
+        <p>Оба блока имеют <code>width: 300px</code>, но размеры разные:</p>
+
+        <div class="comparison">
+            <div class="box content-box">
+                <h3>content-box</h3>
+                <p>width: 300px</p>
+                <p>padding: 20px</p>
+                <p>border: 5px</p>
+                <p><strong>Итого: 350px</strong></p>
+            </div>
+
+            <div class="box border-box">
+                <h3>border-box</h3>
+                <p>width: 300px</p>
+                <p>padding: 20px</p>
+                <p>border: 5px</p>
+                <p><strong>Итого: 300px</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================================
+         РАЗДЕЛ 3: СХЛОПЫВАНИЕ MARGIN
+         ================================================ -->
+
+    <section class="demo-section">
+        <h2>Схлопывание margin</h2>
+        <p>Два блока с margin-bottom: 30px и margin-top: 20px</p>
+
+        <div class="margin-collapse-demo">
+            <div class="collapse-box box-1">
+                margin-bottom: 30px
+            </div>
+            <div class="collapse-box box-2">
+                margin-top: 20px
+            </div>
+        </div>
+        <p><small>Расстояние между ними = 30px (больший), а не 50px (сумма)</small></p>
+    </section>
+
+    <!-- ================================================
+         РАЗДЕЛ 4: ПРИМЕРЫ BORDER-RADIUS
+         ================================================ -->
+
+    <section class="demo-section">
+        <h2>Скругление углов (border-radius)</h2>
+
+        <div class="radius-examples">
+            <div class="radius-box r1">10px</div>
+            <div class="radius-box r2">25px</div>
+            <div class="radius-box r3">50%</div>
+            <div class="radius-box r4">10px 30px</div>
+            <div class="radius-box r5">50% 0</div>
+        </div>
+    </section>
+
+    <!-- ================================================
+         РАЗДЕЛ 5: ТИПЫ DISPLAY
+         ================================================ -->
+
+    <section class="demo-section">
+        <h2>Display: block vs inline vs inline-block</h2>
+
+        <h3>display: block</h3>
+        <div class="display-demo">
+            <span class="d-block">Block 1</span>
+            <span class="d-block">Block 2</span>
+            <span class="d-block">Block 3</span>
+        </div>
+
+        <h3>display: inline</h3>
+        <div class="display-demo">
+            <span class="d-inline">Inline 1</span>
+            <span class="d-inline">Inline 2</span>
+            <span class="d-inline">Inline 3</span>
+        </div>
+
+        <h3>display: inline-block</h3>
+        <div class="display-demo">
+            <span class="d-inline-block">Inline-block 1</span>
+            <span class="d-inline-block">Inline-block 2</span>
+            <span class="d-inline-block">Inline-block 3</span>
+        </div>
+    </section>
+
+</body>
+
+</html>

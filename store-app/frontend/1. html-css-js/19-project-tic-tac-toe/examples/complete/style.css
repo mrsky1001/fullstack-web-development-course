@@ -1,0 +1,532 @@
+/* ================================================
+   ПРОЕКТ: КРЕСТИКИ-НОЛИКИ
+   ================================================
+   
+   Стили для игры "Крестики-нолики".
+   Использует современный CSS с переменными,
+   Flexbox, Grid и анимациями.
+*/
+
+/* ================================================
+   CSS ПЕРЕМЕННЫЕ (Custom Properties)
+   ================================================
+   
+   Централизованное хранение цветов и значений.
+   Упрощает поддержку и изменение темы.
+*/
+
+:root {
+    /* Основные цвета */
+    --color-primary: #667eea;
+    --color-primary-dark: #5a6fd6;
+    --color-secondary: #764ba2;
+
+    /* Цвета игроков */
+    --color-x: #3498db;
+    --color-o: #e74c3c;
+
+    /* Цвета результатов */
+    --color-win: #27ae60;
+    --color-draw: #f39c12;
+
+    /* Нейтральные цвета */
+    --color-bg: #f5f7fa;
+    --color-white: #ffffff;
+    --color-text: #2c3e50;
+    --color-text-light: #7f8c8d;
+    --color-border: #e0e6ed;
+
+    /* Размеры */
+    --cell-size: 100px;
+    --cell-gap: 8px;
+    --border-radius: 16px;
+    --border-radius-sm: 8px;
+
+    /* Тени */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.2);
+
+    /* Анимации */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+}
+
+/* ================================================
+   СБРОС И БАЗОВЫЕ СТИЛИ
+   ================================================ */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: var(--color-text);
+    line-height: 1.5;
+}
+
+/* Скрытие элементов для screen readers */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ================================================
+   КОНТЕЙНЕР ИГРЫ
+   ================================================ */
+
+.game-container {
+    background: var(--color-white);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+/* ================================================
+   ШАПКА ИГРЫ
+   ================================================ */
+
+.game-header {
+    margin-bottom: 25px;
+}
+
+.game-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 15px;
+
+    /* Градиентный текст */
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ================================================
+   СТАТУС ИГРЫ
+   ================================================ */
+
+.game-status {
+    font-size: 1.25rem;
+    color: var(--color-text-light);
+    padding: 10px 20px;
+    background: var(--color-bg);
+    border-radius: var(--border-radius-sm);
+    display: inline-block;
+}
+
+.current-player {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+/* Цвет текущего игрока */
+.current-player.player-x {
+    color: var(--color-x);
+}
+
+.current-player.player-o {
+    color: var(--color-o);
+}
+
+/* ================================================
+   ИГРОВОЕ ПОЛЕ
+   ================================================ */
+
+.game-board {
+    /* 
+        CSS Grid для создания сетки 3x3.
+        Простой и мощный способ создания таблицы.
+    */
+    display: grid;
+    grid-template-columns: repeat(3, var(--cell-size));
+    grid-template-rows: repeat(3, var(--cell-size));
+    gap: var(--cell-gap);
+    margin: 25px auto;
+
+    /* Центрирование */
+    justify-content: center;
+}
+
+/* ================================================
+   КЛЕТКА ИГРОВОГО ПОЛЯ
+   ================================================ */
+
+.cell {
+    /* Размеры и позиционирование */
+    width: var(--cell-size);
+    height: var(--cell-size);
+
+    /* Flex для центрирования символа */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Внешний вид */
+    background: var(--color-bg);
+    border: 2px solid var(--color-border);
+    border-radius: var(--border-radius-sm);
+
+    /* Текст (символ X или O) */
+    font-size: 3.5rem;
+    font-weight: 700;
+
+    /* Курсор и взаимодействие */
+    cursor: pointer;
+    user-select: none;
+
+    /* Анимация */
+    transition:
+        transform var(--transition-fast),
+        background var(--transition-fast),
+        border-color var(--transition-fast);
+}
+
+/* Состояние при наведении */
+.cell:hover {
+    background: var(--color-white);
+    border-color: var(--color-primary);
+    transform: scale(1.05);
+}
+
+/* Состояние фокуса (для доступности) */
+.cell:focus {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* Клетка с X */
+.cell.cell-x {
+    color: var(--color-x);
+    cursor: default;
+}
+
+/* Клетка с O */
+.cell.cell-o {
+    color: var(--color-o);
+    cursor: default;
+}
+
+/* Занятые клетки не реагируют на hover */
+.cell.cell-x:hover,
+.cell.cell-o:hover {
+    transform: none;
+}
+
+/* ================================================
+   ПОБЕДНЫЕ КЛЕТКИ
+   ================================================ */
+
+.cell.winner {
+    background: linear-gradient(135deg, #d4edda, #c3e6cb);
+    border-color: var(--color-win);
+    animation: pulse 0.6s ease infinite alternate;
+}
+
+/* Анимация пульсации для победных клеток */
+@keyframes pulse {
+    from {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(39, 174, 96, 0.4);
+    }
+
+    to {
+        transform: scale(1.08);
+        box-shadow: 0 0 20px 5px rgba(39, 174, 96, 0.2);
+    }
+}
+
+/* Анимация появления символа */
+@keyframes pop-in {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    60% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.cell.cell-x,
+.cell.cell-o {
+    animation: pop-in 0.3s ease;
+}
+
+/* ================================================
+   КНОПКИ УПРАВЛЕНИЯ
+   ================================================ */
+
+.game-controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    /* Размеры и отступы */
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: inherit;
+
+    /* Убираем стандартные стили */
+    border: none;
+
+    /* Внешний вид */
+    border-radius: 25px;
+    cursor: pointer;
+
+    /* Анимация */
+    transition:
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+.btn:focus {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* Основная кнопка */
+.btn-primary {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    color: var(--color-white);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Вторичная кнопка */
+.btn-secondary {
+    background: var(--color-bg);
+    color: var(--color-text);
+    border: 2px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+    background: var(--color-white);
+    border-color: var(--color-primary);
+}
+
+/* ================================================
+   ТАБЛО СЧЁТА
+   ================================================ */
+
+.score-board {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-border);
+}
+
+.score-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: var(--border-radius-sm);
+    min-width: 80px;
+}
+
+.score-label {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.score-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+/* Цвета для разных типов очков */
+.score-x .score-value {
+    color: var(--color-x);
+}
+
+.score-o .score-value {
+    color: var(--color-o);
+}
+
+.score-draw .score-value {
+    color: var(--color-draw);
+}
+
+/* ================================================
+   МОДАЛЬНОЕ ОКНО
+   ================================================ */
+
+.modal {
+    /* Позиционирование поверх всего */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    /* Затемнение фона */
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+
+    /* Центрирование контента */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Z-index выше остального */
+    z-index: 1000;
+
+    /* Анимация */
+    animation: fade-in 0.3s ease;
+}
+
+/* Скрытое модальное окно */
+.modal[hidden] {
+    display: none;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    background: var(--color-white);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+    max-width: 350px;
+    width: 90%;
+
+    /* Анимация */
+    animation: slide-up 0.3s ease;
+}
+
+@keyframes slide-up {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-title {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: var(--color-text);
+}
+
+/* Цвет заголовка в зависимости от результата */
+.modal-title.winner-x {
+    color: var(--color-x);
+}
+
+.modal-title.winner-o {
+    color: var(--color-o);
+}
+
+.modal-title.draw {
+    color: var(--color-draw);
+}
+
+.modal-message {
+    font-size: 1.1rem;
+    color: var(--color-text-light);
+    margin-bottom: 25px;
+}
+
+/* ================================================
+   АДАПТИВНОСТЬ (MOBILE)
+   ================================================ */
+
+@media (max-width: 420px) {
+    :root {
+        --cell-size: 80px;
+    }
+
+    .game-container {
+        padding: 20px;
+    }
+
+    .game-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .cell {
+        font-size: 2.5rem;
+    }
+
+    .btn {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+    }
+
+    .score-item {
+        padding: 8px 12px;
+        min-width: 60px;
+    }
+
+    .score-value {
+        font-size: 1.5rem;
+    }
+}
+
+/* Очень маленькие экраны */
+@media (max-width: 350px) {
+    :root {
+        --cell-size: 70px;
+        --cell-gap: 4px;
+    }
+
+    .cell {
+        font-size: 2rem;
+    }
+}

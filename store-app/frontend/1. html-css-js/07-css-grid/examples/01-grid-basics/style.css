@@ -1,0 +1,121 @@
+/* ================================================
+   УРОК 07: ПРИМЕРЫ CSS GRID
+   ================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    padding: 20px;
+    background: #f0f0f0;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h2 {
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+section {
+    background: white;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+}
+
+.item,
+.card {
+    background: #3498db;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+/* ================================================
+   ПРИМЕР 1: БАЗОВАЯ СЕТКА
+   ================================================ */
+
+.grid-basic {
+    display: grid;
+    /* 3 колонки по 1fr (равные доли) */
+    grid-template-columns: repeat(3, 1fr);
+    /* Промежутки между ячейками */
+    gap: 10px;
+}
+
+/* ================================================
+   ПРИМЕР 2: GRID-TEMPLATE-AREAS
+   ================================================ */
+
+.page-layout {
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "nav    main   sidebar"
+        "footer footer footer";
+    grid-template-columns: 200px 1fr 200px;
+    grid-template-rows: 60px 300px 60px;
+    gap: 10px;
+}
+
+.header {
+    grid-area: header;
+    background: #2c3e50;
+    color: white;
+}
+
+.nav {
+    grid-area: nav;
+    background: #34495e;
+    color: white;
+}
+
+.main {
+    grid-area: main;
+    background: #ecf0f1;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background: #bdc3c7;
+}
+
+.footer {
+    grid-area: footer;
+    background: #2c3e50;
+    color: white;
+}
+
+.page-layout>* {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+/* ================================================
+   ПРИМЕР 3: АДАПТИВНЫЕ КАРТОЧКИ
+   ================================================ */
+
+.cards-grid {
+    display: grid;
+    /* auto-fit: автоматически подгоняет количество колонок */
+    /* minmax: минимум 250px, максимум 1fr */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #9b59b6;
+    padding: 40px;
+}

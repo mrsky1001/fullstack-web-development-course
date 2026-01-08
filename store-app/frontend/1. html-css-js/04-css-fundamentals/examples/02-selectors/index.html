@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Демонстрация CSS-селекторов</title>
+    <link rel="stylesheet" href="selectors.css">
+</head>
+
+<body>
+    <!-- 
+        Этот HTML-файл демонстрирует применение 
+        различных CSS-селекторов из файла selectors.css
+    -->
+
+    <header id="header">
+        <h1>CSS-селекторы</h1>
+        <nav>
+            <a href="#basic">Базовые</a>
+            <a href="#combinators">Комбинаторы</a>
+            <a href="#attributes">Атрибуты</a>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <article>
+            <h2 id="basic">Базовые селекторы</h2>
+
+            <!-- Класс highlight -->
+            <p>Это обычный параграф с <span class="highlight">выделенным текстом</span>.</p>
+
+            <!-- Карточки с классами -->
+            <div class="card">
+                <h3>Обычная карточка</h3>
+                <p>Содержимое карточки</p>
+            </div>
+
+            <div class="card featured">
+                <h3>Избранная карточка</h3>
+                <p>У неё два класса: card и featured</p>
+            </div>
+
+            <!-- Кнопки -->
+            <button class="btn btn-primary">Основная кнопка</button>
+            <button class="btn btn-danger">Опасная кнопка</button>
+            <button class="btn" disabled>Отключённая</button>
+        </article>
+
+        <article>
+            <h2 id="combinators">Комбинаторы</h2>
+
+            <p>Этот параграф сразу после h2 (соседний селектор).</p>
+            <p>Этот параграф тоже после h2, но не сразу.</p>
+
+            <ul>
+                <li>Первый элемент списка (first-child)</li>
+                <li>Второй элемент</li>
+                <li>Третий элемент</li>
+                <li>Последний элемент (last-child)</li>
+            </ul>
+        </article>
+
+        <article>
+            <h2 id="attributes">Селекторы атрибутов</h2>
+
+            <form>
+                <p>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" placeholder="user@example.com">
+                </p>
+                <p>
+                    <label for="password">Пароль:</label>
+                    <input type="password" id="password">
+                </p>
+                <button type="submit">Отправить</button>
+            </form>
+
+            <h3>Ссылки с атрибутами</h3>
+            <ul>
+                <li><a href="https://google.com">Внешняя ссылка (https)</a></li>
+                <li><a href="/about">Относительная ссылка</a></li>
+                <li><a href="document.pdf">Ссылка на PDF</a></li>
+                <li><a href="https://youtube.com/watch?v=123">Ссылка на YouTube</a></li>
+            </ul>
+        </article>
+
+        <aside class="sidebar">
+            <div class="card">
+                <h3>Боковая панель</h3>
+                <ul>
+                    <li>Пункт 1</li>
+                    <li>Пункт 2</li>
+                    <li>Пункт 3</li>
+                </ul>
+            </div>
+        </aside>
+    </main>
+
+    <footer id="footer">
+        <p>&copy; 2024 CSS-селекторы</p>
+    </footer>
+</body>
+
+</html>

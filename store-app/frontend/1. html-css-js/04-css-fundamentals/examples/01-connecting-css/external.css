@@ -1,0 +1,79 @@
+/* ================================================
+   УРОК 04: ВНЕШНИЙ CSS-ФАЙЛ
+   ================================================
+   
+   Это пример внешнего CSS-файла.
+   Подключается к HTML через <link rel="stylesheet" href="external.css">
+   
+   Преимущества:
+   1. Кэшируется браузером (быстрее загрузка)
+   2. Можно использовать на нескольких страницах
+   3. Чёткое разделение HTML и CSS
+   4. Легко поддерживать
+*/
+
+/* ================================================
+   БАЗОВЫЕ СТИЛИ СТРАНИЦЫ
+   ================================================ */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 15px;
+}
+
+h2 {
+    color: #34495e;
+    margin-bottom: 15px;
+}
+
+/* ================================================
+   СТИЛЬ ИЗ ВНЕШНЕГО ФАЙЛА
+   ================================================ */
+
+.external-style {
+    background-color: #3498db;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+/* ================================================
+   СТИЛИ ДЛЯ ДЕМОНСТРАЦИИ
+   ================================================ */
+
+pre {
+    background: #2c3e50;
+    color: #2ecc71;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    overflow-x: auto;
+    margin: 10px 0;
+}
+
+table {
+    margin-top: 15px;
+}
+
+th,
+td {
+    text-align: center;
+}
+
+tbody tr:nth-child(even) {
+    background: #f8f9fa;
+}
