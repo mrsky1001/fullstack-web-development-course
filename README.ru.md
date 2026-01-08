@@ -15,7 +15,7 @@
 [![Language](https://img.shields.io/badge/Язык-Русский-green?style=flat-square)]()
 [![Level](https://img.shields.io/badge/Уровень-Beginner-orange?style=flat-square)]()
 
-🌐 [English version](./README.en.md)
+🌐 [English version](./README.md)
 
 </div>
 
