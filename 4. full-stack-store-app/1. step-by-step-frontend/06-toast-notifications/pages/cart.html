@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="dark">
 
 <head>
+    <!-- STEP 5: Страница корзины -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Корзина | TechParts</title>
@@ -12,7 +13,6 @@
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/shop-styles.css">
-    <link rel="stylesheet" href="../css/toast.css">
 </head>
 
 <body>
@@ -30,7 +30,7 @@
                 <div class="nav-actions">
                     <a href="login.html" class="nav-link" id="auth-link">Войти</a>
                     <a href="./cart.html" class="btn btn-primary small">
-                        Корзина <span id="cart-count" class="cart-count">0</span>
+                        Корзина <span id="cart-count" class="cart-count">2</span>
                     </a>
 
                     <button class="theme-toggle" aria-label="Переключить тему">
@@ -52,7 +52,7 @@
                         </svg>
                     </button>
 
-                    <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    <button class="mobile-menu-btn" aria-label="Открыть меню">
                         <span></span>
                         <span></span>
                         <span></span>
@@ -61,13 +61,75 @@
             </div>
         </nav>
 
+        <!-- STEP 5: Страница корзины -->
         <main class="cart-page">
             <div class="container">
                 <h1>Корзина</h1>
 
+                <!-- В полной версии (урок 10) контент загружается динамически -->
                 <div id="cart-content">
-                    <!-- Контент корзины загрузится через JS -->
-                    <div class="loading">Загрузка корзины...</div>
+                    <div class="cart-container">
+                        <!-- Список товаров -->
+                        <div class="cart-items">
+                            <!-- Товар 1 -->
+                            <div class="cart-item">
+                                <div class="cart-item-image">🖥️</div>
+                                <div class="cart-item-details">
+                                    <div>
+                                        <h3 class="cart-item-name">Intel Core i9-14900K</h3>
+                                        <p class="cart-item-category">Процессоры</p>
+                                    </div>
+                                    <div class="cart-item-bottom">
+                                        <div class="quantity-controls">
+                                            <button class="quantity-btn">-</button>
+                                            <span class="quantity-display">1</span>
+                                            <button class="quantity-btn">+</button>
+                                        </div>
+                                        <div class="cart-item-price">52 990 ₽</div>
+                                    </div>
+                                </div>
+                                <button class="btn-remove" title="Удалить">×</button>
+                            </div>
+
+                            <!-- Товар 2 -->
+                            <div class="cart-item">
+                                <div class="cart-item-image">🎮</div>
+                                <div class="cart-item-details">
+                                    <div>
+                                        <h3 class="cart-item-name">NVIDIA RTX 4090</h3>
+                                        <p class="cart-item-category">Видеокарты</p>
+                                    </div>
+                                    <div class="cart-item-bottom">
+                                        <div class="quantity-controls">
+                                            <button class="quantity-btn">-</button>
+                                            <span class="quantity-display">1</span>
+                                            <button class="quantity-btn">+</button>
+                                        </div>
+                                        <div class="cart-item-price">189 990 ₽</div>
+                                    </div>
+                                </div>
+                                <button class="btn-remove" title="Удалить">×</button>
+                            </div>
+                        </div>
+
+                        <!-- Блок "Итого" -->
+                        <div class="cart-summary">
+                            <h3>Ваш заказ</h3>
+                            <div class="summary-row">
+                                <span>Товаров:</span>
+                                <span>2 шт.</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Стоимость:</span>
+                                <span>242 980 ₽</span>
+                            </div>
+                            <div class="summary-total">
+                                <span>К оплате:</span>
+                                <span>242 980 ₽</span>
+                            </div>
+                            <button class="btn-checkout">Оформить заказ</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
@@ -100,13 +162,8 @@
         </footer>
     </div>
 
-    <script src="../js/toast.js"></script>
-    <script src="../js/security.js"></script>
-    <script src="../js/config.js"></script>
-    <script src="../js/auth.js"></script>
     <script src="../js/theme.js"></script>
-    <script src="../js/main.js"></script>
-    <script src="../js/cart.js"></script>
+    <script src="../js/menu.js"></script>
 </body>
 
 </html>

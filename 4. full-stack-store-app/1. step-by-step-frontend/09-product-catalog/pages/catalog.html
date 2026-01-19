@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="dark">
 
 <head>
+    <!-- УРОК 9: СТРАНИЦА КАТАЛОГА
+         ==================================================
+         Динамически загружаем товары и отображаем фильтры.
+    -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Корзина | TechParts</title>
+    <title>TechParts | Каталог</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,13 +26,14 @@
                 <a href="../index.html" class="logo">TechParts</a>
 
                 <div class="nav-links">
-                    <a href="catalog.html">Каталог</a>
-                    <a href="catalog.html">Конфигуратор</a>
+                    <a href="./catalog.html">Каталог</a>
+                    <a href="./catalog.html">Конфигуратор</a>
                     <a href="../index.html#features">Акции</a>
                 </div>
 
                 <div class="nav-actions">
-                    <a href="login.html" class="nav-link" id="auth-link">Войти</a>
+                    <a href="./login.html" class="nav-link" id="auth-link">Войти</a>
+
                     <a href="./cart.html" class="btn btn-primary small">
                         Корзина <span id="cart-count" class="cart-count">0</span>
                     </a>
@@ -52,7 +57,7 @@
                         </svg>
                     </button>
 
-                    <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    <button class="mobile-menu-btn" aria-label="Открыть меню">
                         <span></span>
                         <span></span>
                         <span></span>
@@ -61,13 +66,20 @@
             </div>
         </nav>
 
-        <main class="cart-page">
+        <main class="catalog-page">
             <div class="container">
-                <h1>Корзина</h1>
+                <div class="catalog-header">
+                    <h1 class="catalog-title">Каталог</h1>
 
-                <div id="cart-content">
-                    <!-- Контент корзины загрузится через JS -->
-                    <div class="loading">Загрузка корзины...</div>
+                    <!-- STEP 9: Фильтры генерируются динамически через catalog.js -->
+                    <div class="catalog-filters" id="category-filters">
+                        <!-- Кнопки фильтров будут добавлены через JS -->
+                    </div>
+                </div>
+
+                <!-- STEP 9: Контейнер для товаров, заполняется через catalog.js -->
+                <div id="products-container" class="products-grid">
+                    <div class="loading">Загрузка товаров...</div>
                 </div>
             </div>
         </main>
@@ -80,9 +92,9 @@
                 </div>
                 <div class="footer-col">
                     <h4>Каталог</h4>
-                    <a href="catalog.html">Процессоры</a>
-                    <a href="catalog.html">Видеокарты</a>
-                    <a href="catalog.html">Материнские платы</a>
+                    <a href="./catalog.html">Процессоры</a>
+                    <a href="./catalog.html">Видеокарты</a>
+                    <a href="./catalog.html">Материнские платы</a>
                 </div>
                 <div class="footer-col">
                     <h4>Покупателям</h4>
@@ -100,15 +112,15 @@
         </footer>
     </div>
 
+    <!-- Подключение скриптов (порядок важен!) -->
     <script src="../js/toast.js"></script>
     <script src="../js/security.js"></script>
-    <script src="../js/mock-data.js"></script>
-    <script src="../js/mock-api.js"></script>
     <script src="../js/config.js"></script>
     <script src="../js/auth.js"></script>
     <script src="../js/theme.js"></script>
-    <script src="../js/main.js"></script>
-    <script src="../js/cart.js"></script>
+    <script src="../js/menu.js"></script>
+    <!-- STEP 9: Скрипт каталога -->
+    <script src="../js/catalog.js"></script>
 </body>
 
 </html>

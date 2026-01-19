@@ -1,0 +1,161 @@
+/* 
+  =========================================
+  УРОК 6: СТИЛИ ДЛЯ TOAST УВЕДОМЛЕНИЙ
+  =========================================
+  Красивые всплывающие уведомления вместо alert()
+*/
+
+/* Контейнер для всех уведомлений */
+.toast-container {
+    position: fixed;
+    top: calc(var(--header-height) + 20px); /* Под навигацией */
+    right: 20px;
+    z-index: 10000; /* Поверх всего */
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    pointer-events: none; /* Чтобы клики "проходили" сквозь пустое место */
+}
+
+/* Базовые стили одного уведомления */
+.toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 300px;
+    max-width: 400px;
+    padding: 16px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    
+    /* Начальное состояние: невидимо и сдвинуто вправо */
+    opacity: 0;
+    transform: translateX(400px);
+    
+    /* Анимация перехода */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    pointer-events: all; /* Кнопки внутри должны работать */
+    backdrop-filter: blur(10px);
+}
+
+/* Видимое состояние (добавляется через JS) */
+.toast.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Иконка уведомления */
+.toast-icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 1.25rem;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+/* Текст сообщения */
+.toast-message {
+    flex: 1;
+    color: var(--color-text);
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+/* Кнопка закрытия */
+.toast-close {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
+    font-size: 1.5rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.toast-close:hover {
+    background: var(--color-surface-hover);
+    color: var(--color-text);
+}
+
+/* 
+  =========================================
+  ТИПЫ УВЕДОМЛЕНИЙ (Цветовое оформление)
+  =========================================
+*/
+
+/* Успех (зелёный) */
+.toast-success {
+    border-left: 4px solid #10b981;
+}
+
+.toast-success .toast-icon {
+    background: rgba(16, 185, 129, 0.15);
+    color: #10b981;
+}
+
+/* Ошибка (красный) */
+.toast-error {
+    border-left: 4px solid #ef4444;
+}
+
+.toast-error .toast-icon {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+}
+
+/* Предупреждение (оранжевый) */
+.toast-warning {
+    border-left: 4px solid #f59e0b;
+}
+
+.toast-warning .toast-icon {
+    background: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+}
+
+/* Информация (фиолетовый — основной цвет темы) */
+.toast-info {
+    border-left: 4px solid var(--color-primary);
+}
+
+.toast-info .toast-icon {
+    background: rgba(110, 86, 207, 0.15);
+    color: var(--color-primary);
+}
+
+/* 
+  =========================================
+  АДАПТИВНОСТЬ (Мобильные устройства)
+  =========================================
+*/
+@media (max-width: 768px) {
+    .toast-container {
+        left: 20px;
+        right: 20px;
+        top: auto;
+        bottom: 20px; /* На мобильных — снизу */
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: none;
+        transform: translateY(200px); /* Выезжает снизу */
+    }
+
+    .toast.show {
+        transform: translateY(0);
+    }
+}

@@ -1,7 +1,11 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="dark">
 
 <head>
+    <!-- STEP 5: Страница каталога
+         Обратите внимание на пути к файлам: ../css/ означает
+         "подняться на уровень выше и зайти в папку css"
+    -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Каталог | TechParts</title>
@@ -10,15 +14,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+    <!-- STEP 5: Пути начинаются с ../ так как мы в папке pages/ -->
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/shop-styles.css">
-    <link rel="stylesheet" href="../css/toast.css">
 </head>
 
 <body>
     <div class="app-container">
         <nav class="navbar">
             <div class="container nav-content">
+                <!-- STEP 5: Путь на главную - выход из pages/ -->
                 <a href="../index.html" class="logo">TechParts</a>
 
                 <div class="nav-links">
@@ -35,8 +40,7 @@
 
                     <button class="theme-toggle" aria-label="Переключить тему">
                         <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="12" cy="12" r="5"></circle>
                             <line x1="12" y1="1" x2="12" y2="3"></line>
                             <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -48,13 +52,12 @@
                             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                         </svg>
                         <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                         </svg>
                     </button>
 
-                    <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    <button class="mobile-menu-btn" aria-label="Открыть меню">
                         <span></span>
                         <span></span>
                         <span></span>
@@ -63,6 +66,7 @@
             </div>
         </nav>
 
+        <!-- STEP 5: Основной контент каталога -->
         <main class="catalog-page">
             <div class="container">
                 <div class="catalog-header">
@@ -70,13 +74,60 @@
                     <p style="color: var(--color-text-muted);">Выберите нужные комплектующие для вашего ПК</p>
                 </div>
 
+                <!-- STEP 5: Фильтры по категориям -->
                 <div class="catalog-filters" id="category-filters">
                     <button class="filter-btn active" data-category="all">Все товары</button>
-                    <!-- Категории подгрузятся динамически -->
+                    <button class="filter-btn" data-category="Процессоры">Процессоры</button>
+                    <button class="filter-btn" data-category="Видеокарты">Видеокарты</button>
+                    <button class="filter-btn" data-category="SSD">SSD</button>
                 </div>
 
+                <!-- STEP 5: Сетка товаров -->
                 <div id="products-container" class="products-grid">
-                    <div class="loading">Загрузка товаров...</div>
+                    <div class="product-card">
+                        <div class="product-image">🖥️</div>
+                        <div class="product-info">
+                            <div class="product-category">Процессоры</div>
+                            <h3 class="product-name">Intel Core i9-14900K</h3>
+                            <div class="product-price">52 990 ₽</div>
+                            <div class="product-actions">
+                                <button class="btn-add-to-cart">В корзину</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">🎮</div>
+                        <div class="product-info">
+                            <div class="product-category">Видеокарты</div>
+                            <h3 class="product-name">NVIDIA RTX 4090</h3>
+                            <div class="product-price">189 990 ₽</div>
+                            <div class="product-actions">
+                                <button class="btn-add-to-cart">В корзину</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">💾</div>
+                        <div class="product-info">
+                            <div class="product-category">SSD</div>
+                            <h3 class="product-name">Samsung 990 PRO 2TB</h3>
+                            <div class="product-price">18 990 ₽</div>
+                            <div class="product-actions">
+                                <button class="btn-add-to-cart">В корзину</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">🔲</div>
+                        <div class="product-info">
+                            <div class="product-category">Процессоры</div>
+                            <h3 class="product-name">AMD Ryzen 9 7950X</h3>
+                            <div class="product-price">48 990 ₽</div>
+                            <div class="product-actions">
+                                <button class="btn-add-to-cart">В корзину</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
@@ -109,15 +160,9 @@
         </footer>
     </div>
 
-    <script src="../js/toast.js"></script>
-    <script src="../js/security.js"></script>
-    <script src="../js/mock-data.js"></script>
-    <script src="../js/mock-api.js"></script>
-    <script src="../js/config.js"></script>
-    <script src="../js/auth.js"></script>
+    <!-- STEP 5: Пути к скриптам тоже начинаются с ../ -->
     <script src="../js/theme.js"></script>
-    <script src="../js/main.js"></script>
-    <script src="../js/catalog.js"></script>
+    <script src="../js/menu.js"></script>
 </body>
 
 </html>

@@ -1,54 +1,48 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="dark">
 
 <head>
+    <!-- УРОК 6: УВЕДОМЛЕНИЯ (Toast Notifications)
+         ==================================================
+         Добавляем красивые всплывающие уведомления вместо alert().
+    -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TechParts | Главная</title>
 
-    <!-- Подключаем шрифты (Inter из Google Fonts) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- Подключаем стили -->
-    <link rel="stylesheet" href="css/style.css"> <!-- Основные стили (тема, кнопки, сетка) -->
-    <link rel="stylesheet" href="css/shop-styles.css"> <!-- Стили магазина (карточки, шапка) -->
-    <link rel="stylesheet" href="css/toast.css"> <!-- Стили уведомлений -->
+    <!-- Подключаем CSS файлы -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/shop-styles.css">
+    <!-- STEP 6: Новый файл стилей для уведомлений -->
+    <link rel="stylesheet" href="css/toast.css">
 </head>
 
 <body>
-    <!-- Главный контейнер приложения -->
     <div class="app-container">
-        <!-- Навигация (Navbar) -->
         <nav class="navbar">
             <div class="container nav-content">
-                <!-- Логотип -->
                 <a href="./index.html" class="logo">TechParts</a>
 
-                <!-- Ссылки меню (скрываются на мобильных) -->
                 <div class="nav-links">
                     <a href="pages/catalog.html">Каталог</a>
                     <a href="pages/catalog.html">Конфигуратор</a>
                     <a href="./index.html#features">Акции</a>
                 </div>
 
-                <!-- Правая часть меню (Войти, Корзина, Тема) -->
                 <div class="nav-actions">
-                    <!-- Сюда JS подставит имя пользователя или "Войти" -->
                     <a href="pages/login.html" class="nav-link" id="auth-link">Войти</a>
 
-                    <!-- Корзина со счетчиком -->
                     <a href="pages/cart.html" class="btn btn-primary small">
                         Корзина <span id="cart-count" class="cart-count">0</span>
                     </a>
 
-                    <!-- Кнопка переключения темы (Солнце/Луна) -->
                     <button class="theme-toggle" aria-label="Переключить тему">
-                        <!-- Иконка Солнца -->
                         <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="12" cy="12" r="5"></circle>
                             <line x1="12" y1="1" x2="12" y2="3"></line>
                             <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -59,16 +53,13 @@
                             <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
                             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                         </svg>
-                        <!-- Иконка Луны -->
                         <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                         </svg>
                     </button>
 
-                    <!-- Кнопка мобильного меню (Гамбургер) -->
-                    <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    <button class="mobile-menu-btn" aria-label="Открыть меню">
                         <span></span>
                         <span></span>
                         <span></span>
@@ -77,9 +68,7 @@
             </div>
         </nav>
 
-        <!-- Основной контент страницы -->
         <main>
-            <!-- Hero секция (Первый экран) -->
             <section class="hero">
                 <div class="container hero-content">
                     <div class="hero-badge">
@@ -87,20 +76,38 @@
                         <span class="badge-text">Серия RTX 5000 уже в наличии</span>
                         <a href="pages/catalog.html" class="arrow-link">Смотреть &rarr;</a>
                     </div>
+
                     <h1>Собери ПК своей мечты</h1>
                     <p class="hero-subtext">
-                        Лучшие цены на процессоры, видеокарты и периферию. Профессиональная сборка и гарантия качества.
+                        Лучшие цены на процессоры, видеокарты и периферию.
+                        Профессиональная сборка и гарантия качества.
                     </p>
+
                     <div class="hero-buttons">
                         <a href="pages/catalog.html" class="btn btn-primary">В каталог</a>
                         <a href="pages/catalog.html" class="btn btn-secondary">
                             <span class="play-icon">⚙️</span> Конфигуратор
                         </a>
                     </div>
+
+                    <!-- STEP 6: Демо-кнопки для тестирования уведомлений -->
+                    <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                        <button class="btn btn-primary small" onclick="Toast.success('Товар добавлен в корзину!')">
+                            Тест success
+                        </button>
+                        <button class="btn btn-secondary small" onclick="Toast.error('Произошла ошибка!')">
+                            Тест error
+                        </button>
+                        <button class="btn btn-secondary small" onclick="Toast.warning('Товар заканчивается!')">
+                            Тест warning
+                        </button>
+                        <button class="btn btn-secondary small" onclick="Toast.info('Новые товары уже в каталоге')">
+                            Тест info
+                        </button>
+                    </div>
                 </div>
             </section>
 
-            <!-- Блок "Мы работаем с..." (Логотипы) -->
             <section class="social-proof">
                 <div class="container">
                     <p class="trusted-text">Официальные партнеры</p>
@@ -114,51 +121,85 @@
                 </div>
             </section>
 
-            <!-- Секция преимуществ -->
             <section class="features" id="features">
                 <div class="container">
                     <div class="features-grid">
-                        <div class="feature-card">
+                        <article class="feature-card">
                             <div class="feature-icon">⚡</div>
                             <h3>Топовая производительность</h3>
-                            <p>Мы предлагаем только оригинальные комплектующие от ведущих мировых производителей с
-                                официальной гарантией.</p>
-                        </div>
-                        <div class="feature-card">
+                            <p>Только оригинальные комплектующие от ведущих производителей с официальной гарантией.</p>
+                        </article>
+
+                        <article class="feature-card">
                             <div class="feature-icon">🛠️</div>
                             <h3>Умный конфигуратор</h3>
-                            <p>Наш онлайн-инструмент автоматически проверит совместимость всех выбранных компонентов.
-                            </p>
-                        </div>
-                        <div class="feature-card">
+                            <p>Онлайн-инструмент автоматически проверит совместимость выбранных компонентов.</p>
+                        </article>
+
+                        <article class="feature-card">
                             <div class="feature-icon">🚀</div>
                             <h3>Быстрая доставка</h3>
-                            <p>Доставляем заказы день в день. Бережная упаковка хрупких комплектующих и страховка груза.
-                            </p>
-                        </div>
+                            <p>Доставляем заказы день в день. Бережная упаковка хрупких комплектующих.</p>
+                        </article>
                     </div>
                 </div>
             </section>
 
-            <!-- Секция "Популярные товары" -->
             <section class="featured-products">
                 <div class="container">
                     <div class="section-header">
                         <h2>Популярные товары</h2>
                         <a href="pages/catalog.html" class="view-all-link">Смотреть всё &rarr;</a>
                     </div>
-                    <!-- Контейнер для товаров (заполняется через main.js) -->
                     <div id="featured-products-grid" class="products-grid">
-                        <div class="loading">Загрузка товаров...</div>
+                        <!-- Демо-карточки товаров -->
+                        <div class="product-card">
+                            <div class="product-image">🖥️</div>
+                            <div class="product-info">
+                                <div class="product-category">Процессоры</div>
+                                <h3 class="product-name">Intel Core i9-14900K</h3>
+                                <div class="product-price">52 990 ₽</div>
+                                <div class="product-actions">
+                                    <button class="btn-add-to-cart"
+                                        onclick="Toast.success('Intel Core i9-14900K добавлен в корзину!')">В
+                                        корзину</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">🎮</div>
+                            <div class="product-info">
+                                <div class="product-category">Видеокарты</div>
+                                <h3 class="product-name">NVIDIA RTX 4090</h3>
+                                <div class="product-price">189 990 ₽</div>
+                                <div class="product-actions">
+                                    <button class="btn-add-to-cart"
+                                        onclick="Toast.success('NVIDIA RTX 4090 добавлен в корзину!')">В
+                                        корзину</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-image">💾</div>
+                            <div class="product-info">
+                                <div class="product-category">SSD</div>
+                                <h3 class="product-name">Samsung 990 PRO 2TB</h3>
+                                <div class="product-price">18 990 ₽</div>
+                                <div class="product-actions">
+                                    <button class="btn-add-to-cart"
+                                        onclick="Toast.success('Samsung 990 PRO 2TB добавлен в корзину!')">В
+                                        корзину</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Баннер с призывом к действию -->
             <section class="value-prop">
                 <div class="container">
                     <h2>Сердце твоей системы</h2>
-                    <p>Будь то игровая станция, сервер для рендеринга или офисный ПК — у нас есть всё необходимое.</p>
+                    <p>Игровая станция, сервер для рендеринга или офисный ПК — у нас есть всё необходимое.</p>
                     <div class="cta-box">
                         <a href="pages/catalog.html" class="btn btn-primary large">Начать покупки</a>
                     </div>
@@ -166,7 +207,6 @@
             </section>
         </main>
 
-        <!-- Подвал сайта (Footer) -->
         <footer>
             <div class="container footer-content">
                 <div class="footer-col">
@@ -196,15 +236,10 @@
     </div>
 
     <!-- Подключение скриптов -->
-    <!-- ВАЖНО: Порядок подключения имеет значение! -->
-    <script src="js/toast.js"></script> <!-- 1. Уведомления (должны быть доступны всем) -->
-    <script src="js/security.js"></script> <!-- 2. Утилиты безопасности (XSS-защита) -->
-    <script src="js/mock-data.js"></script> <!-- 3. Mock-данные товаров (заглушка) -->
-    <script src="js/mock-api.js"></script> <!-- 4. Mock API (заглушка для работы без бэкенда) -->
-    <script src="js/config.js"></script> <!-- 5. Конфигурация API (использует MockAPI) -->
-    <script src="js/auth.js"></script> <!-- 4. Модуль авторизации -->
-    <script src="js/theme.js"></script> <!-- 5. Темы оформления -->
-    <script src="js/main.js"></script> <!-- 6. Логика главной страницы -->
+    <!-- STEP 6: Сначала toast.js, чтобы Toast был доступен -->
+    <script src="js/toast.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/menu.js"></script>
 </body>
 
 </html>

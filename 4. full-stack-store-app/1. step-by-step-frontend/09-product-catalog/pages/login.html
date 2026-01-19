@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="dark">
 
 <head>
+    <!-- УРОК 8: СТРАНИЦА ВХОДА -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Регистрация | TechParts</title>
+    <title>TechParts | Вход</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,14 +23,15 @@
                 <a href="../index.html" class="logo">TechParts</a>
 
                 <div class="nav-links">
-                    <a href="catalog.html">Каталог</a>
-                    <a href="catalog.html">Конфигуратор</a>
+                    <a href="./catalog.html">Каталог</a>
+                    <a href="./catalog.html">Конфигуратор</a>
                     <a href="../index.html#features">Акции</a>
                 </div>
 
                 <div class="nav-actions">
-                    <a href="login.html" class="nav-link">Войти</a>
-                    <a href="cart.html" class="btn btn-primary small">
+                    <a href="./login.html" class="nav-link" id="auth-link">Войти</a>
+
+                    <a href="./cart.html" class="btn btn-primary small">
                         Корзина <span id="cart-count" class="cart-count">0</span>
                     </a>
 
@@ -51,6 +53,12 @@
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                         </svg>
                     </button>
+
+                    <button class="mobile-menu-btn" aria-label="Открыть меню">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
                 </div>
             </div>
         </nav>
@@ -58,55 +66,72 @@
         <main class="auth-page">
             <div class="auth-container">
                 <div class="auth-header">
-                    <h1 class="auth-title">Регистрация</h1>
-                    <p class="auth-subtitle">Создайте аккаунт для покупок</p>
+                    <h1 class="auth-title">Вход</h1>
+                    <p class="auth-subtitle">Войдите в свой аккаунт</p>
                 </div>
 
-                <form id="register-form" class="auth-form">
-                    <div class="form-group">
-                        <label class="form-label" for="username">Имя пользователя</label>
-                        <input type="text" id="username" class="form-input" placeholder="Иван Иванов" required />
-                        <span class="form-error" id="username-error"></span>
-                    </div>
+                <!-- STEP 8: Форма входа с обработкой через login.js -->
+                <form class="auth-form" id="login-form">
+                    <!-- Общая ошибка формы -->
+                    <div class="form-error" id="form-error"></div>
 
                     <div class="form-group">
                         <label class="form-label" for="email">Email</label>
-                        <input type="email" id="email" class="form-input" placeholder="ivan@example.com" required />
+                        <input type="email" id="email" class="form-input" placeholder="your@email.com">
                         <span class="form-error" id="email-error"></span>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label" for="password">Пароль</label>
-                        <input type="password" id="password" class="form-input" placeholder="••••••••" required />
+                        <input type="password" id="password" class="form-input" placeholder="••••••••">
                         <span class="form-error" id="password-error"></span>
                     </div>
 
-                    <div class="form-group">
-                        <label class="form-label" for="confirm-password">Подтвердите пароль</label>
-                        <input type="password" id="confirm-password" class="form-input" placeholder="••••••••"
-                            required />
-                        <span class="form-error" id="confirm-password-error"></span>
-                    </div>
-
-                    <span class="form-error" id="form-error"></span>
-
-                    <button type="submit" class="btn-submit">Зарегистрироваться</button>
+                    <button type="submit" class="btn-submit">Войти</button>
                 </form>
 
                 <div class="auth-footer">
-                    <p>Уже есть аккаунт? <a href="login.html" class="auth-link">Войти</a></p>
+                    Нет аккаунта? <a href="./register.html" class="auth-link">Зарегистрируйтесь</a>
                 </div>
             </div>
         </main>
+
+        <footer>
+            <div class="container footer-content">
+                <div class="footer-col">
+                    <h4>TechParts</h4>
+                    <p>Твой надежный поставщик железа</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Каталог</h4>
+                    <a href="./catalog.html">Процессоры</a>
+                    <a href="./catalog.html">Видеокарты</a>
+                    <a href="./catalog.html">Материнские платы</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Покупателям</h4>
+                    <a href="#">Доставка</a>
+                    <a href="#">Гарантия</a>
+                    <a href="#">Возврат</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Контакты</h4>
+                    <a href="#">О нас</a>
+                    <a href="#">Магазины</a>
+                    <a href="#">Поддержка</a>
+                </div>
+            </div>
+        </footer>
     </div>
 
+    <!-- Подключение скриптов (порядок важен!) -->
     <script src="../js/toast.js"></script>
-    <script src="../js/mock-data.js"></script>
-    <script src="../js/mock-api.js"></script>
     <script src="../js/config.js"></script>
     <script src="../js/auth.js"></script>
+    <!-- STEP 8: Скрипт обработки формы входа -->
+    <script src="../js/login.js"></script>
     <script src="../js/theme.js"></script>
-    <script src="../js/register.js"></script>
+    <script src="../js/menu.js"></script>
 </body>
 
 </html>

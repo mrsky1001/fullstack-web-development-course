@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="dark">
 
 <head>
+    <!-- УРОК 8: СТРАНИЦА ВХОДА -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Каталог | TechParts</title>
+    <title>TechParts | Вход</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,15 +29,15 @@
                 </div>
 
                 <div class="nav-actions">
-                    <a href="login.html" class="nav-link" id="auth-link">Войти</a>
-                    <a href="cart.html" class="btn btn-primary small">
+                    <a href="./login.html" class="nav-link" id="auth-link">Войти</a>
+
+                    <a href="./cart.html" class="btn btn-primary small">
                         Корзина <span id="cart-count" class="cart-count">0</span>
                     </a>
 
                     <button class="theme-toggle" aria-label="Переключить тему">
                         <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <circle cx="12" cy="12" r="5"></circle>
                             <line x1="12" y1="1" x2="12" y2="3"></line>
                             <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -48,13 +49,12 @@
                             <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                         </svg>
                         <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                         </svg>
                     </button>
 
-                    <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    <button class="mobile-menu-btn" aria-label="Открыть меню">
                         <span></span>
                         <span></span>
                         <span></span>
@@ -63,20 +63,35 @@
             </div>
         </nav>
 
-        <main class="catalog-page">
-            <div class="container">
-                <div class="catalog-header">
-                    <h1 class="catalog-title">Каталог товаров</h1>
-                    <p style="color: var(--color-text-muted);">Выберите нужные комплектующие для вашего ПК</p>
+        <main class="auth-page">
+            <div class="auth-container">
+                <div class="auth-header">
+                    <h1 class="auth-title">Вход</h1>
+                    <p class="auth-subtitle">Войдите в свой аккаунт</p>
                 </div>
 
-                <div class="catalog-filters" id="category-filters">
-                    <button class="filter-btn active" data-category="all">Все товары</button>
-                    <!-- Категории подгрузятся динамически -->
-                </div>
+                <!-- STEP 8: Форма входа с обработкой через login.js -->
+                <form class="auth-form" id="login-form">
+                    <!-- Общая ошибка формы -->
+                    <div class="form-error" id="form-error"></div>
 
-                <div id="products-container" class="products-grid">
-                    <div class="loading">Загрузка товаров...</div>
+                    <div class="form-group">
+                        <label class="form-label" for="email">Email</label>
+                        <input type="email" id="email" class="form-input" placeholder="your@email.com">
+                        <span class="form-error" id="email-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="password">Пароль</label>
+                        <input type="password" id="password" class="form-input" placeholder="••••••••">
+                        <span class="form-error" id="password-error"></span>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Войти</button>
+                </form>
+
+                <div class="auth-footer">
+                    Нет аккаунта? <a href="./register.html" class="auth-link">Зарегистрируйтесь</a>
                 </div>
             </div>
         </main>
@@ -109,13 +124,14 @@
         </footer>
     </div>
 
+    <!-- Подключение скриптов (порядок важен!) -->
     <script src="../js/toast.js"></script>
-    <script src="../js/security.js"></script>
     <script src="../js/config.js"></script>
     <script src="../js/auth.js"></script>
+    <!-- STEP 8: Скрипт обработки формы входа -->
+    <script src="../js/login.js"></script>
     <script src="../js/theme.js"></script>
-    <script src="../js/main.js"></script>
-    <script src="../js/catalog.js"></script>
+    <script src="../js/menu.js"></script>
 </body>
 
 </html>
