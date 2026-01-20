@@ -219,7 +219,7 @@ cd my-project
 git init
 
 # 3. Создайте файлы
-echo "# Мой проект" > README.md
+echo "# Мой проект" > Development Environment Setup Guide.md
 
 # 4. Добавьте файлы в отслеживание
 git add .
