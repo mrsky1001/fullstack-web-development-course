@@ -1,5 +1,7 @@
 # Web Development Glossary
 
+> 🌐 [Русская версия](./README.ru.md)
+
 A comprehensive glossary of terms used throughout the course.
 
 ## A

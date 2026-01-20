@@ -1,5 +1,7 @@
 # Development Environment Setup Guide
 
+> 🌐 [Русская версия](./README.ru.md) | 📚 [Git & GitHub Manual](./GIT-GITHUB-MANUAL.md)
+
 This guide will help you set up your development environment for the full-stack web development course.
 
 ## 📋 Table of Contents
@@ -10,6 +12,8 @@ This guide will help you set up your development environment for the full-stack 
 4. [Git Version Control](#git-version-control)
 5. [Browser and DevTools](#browser-and-devtools)
 6. [Optional Tools](#optional-tools)
+
+> 💡 **Tip:** For a comprehensive Git tutorial, see [Git & GitHub Manual](./GIT-GITHUB-MANUAL.md)
 
 ---
 
