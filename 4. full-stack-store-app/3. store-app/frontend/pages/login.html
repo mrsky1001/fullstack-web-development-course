@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Регистрация | TechParts</title>
+    <title>Вход | TechParts</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,7 +28,7 @@
                 </div>
 
                 <div class="nav-actions">
-                    <a href="login.html" class="nav-link">Войти</a>
+                    <a href="./login.html" class="nav-link">Войти</a>
                     <a href="cart.html" class="btn btn-primary small">
                         Корзина <span id="cart-count" class="cart-count">0</span>
                     </a>
@@ -58,17 +58,11 @@
         <main class="auth-page">
             <div class="auth-container">
                 <div class="auth-header">
-                    <h1 class="auth-title">Регистрация</h1>
-                    <p class="auth-subtitle">Создайте аккаунт для покупок</p>
+                    <h1 class="auth-title">Вход в систему</h1>
+                    <p class="auth-subtitle">Войдите, чтобы управлять заказами</p>
                 </div>
 
-                <form id="register-form" class="auth-form">
-                    <div class="form-group">
-                        <label class="form-label" for="username">Имя пользователя</label>
-                        <input type="text" id="username" class="form-input" placeholder="Иван Иванов" required />
-                        <span class="form-error" id="username-error"></span>
-                    </div>
-
+                <form id="login-form" class="auth-form">
                     <div class="form-group">
                         <label class="form-label" for="email">Email</label>
                         <input type="email" id="email" class="form-input" placeholder="ivan@example.com" required />
@@ -81,32 +75,23 @@
                         <span class="form-error" id="password-error"></span>
                     </div>
 
-                    <div class="form-group">
-                        <label class="form-label" for="confirm-password">Подтвердите пароль</label>
-                        <input type="password" id="confirm-password" class="form-input" placeholder="••••••••"
-                            required />
-                        <span class="form-error" id="confirm-password-error"></span>
-                    </div>
-
                     <span class="form-error" id="form-error"></span>
 
-                    <button type="submit" class="btn-submit">Зарегистрироваться</button>
+                    <button type="submit" class="btn-submit">Войти</button>
                 </form>
 
                 <div class="auth-footer">
-                    <p>Уже есть аккаунт? <a href="login.html" class="auth-link">Войти</a></p>
+                    <p>Нет аккаунта? <a href="register.html" class="auth-link">Зарегистрироваться</a></p>
                 </div>
             </div>
         </main>
     </div>
 
     <script src="../js/toast.js"></script>
-    <script src="../js/mock-data.js"></script>
-    <script src="../js/mock-api.js"></script>
     <script src="../js/config.js"></script>
     <script src="../js/auth.js"></script>
     <script src="../js/theme.js"></script>
-    <script src="../js/register.js"></script>
+    <script src="../js/login.js"></script>
 </body>
 
 </html>
