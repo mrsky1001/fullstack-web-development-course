@@ -3,6 +3,5 @@ package-lock.json
 .DS_Store
 .env
 *.log
-.idea
-
-work
+.idea/
+webinar_temp/

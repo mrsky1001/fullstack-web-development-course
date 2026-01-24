@@ -436,58 +436,58 @@ export async function removeFromCart(itemId) {
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <a href="/" class="logo">TechParts</a>
-            
-            <nav class="nav">
-                <a href="/">Каталог</a>
-            </nav>
-            
-            <div class="header-actions">
-                <!-- Меняется в зависимости от авторизации -->
-                <div id="auth-section">
-                    <a href="pages/login.html" class="btn btn-outline">Войти</a>
-                </div>
-                
-                <button id="cart-btn" class="btn btn-icon">
-                    🛒 <span id="cart-count">0</span>
-                </button>
+<header class="header">
+    <div class="container">
+        <a href="/" class="logo">TechParts</a>
+
+        <nav class="nav">
+            <a href="/">Каталог</a>
+        </nav>
+
+        <div class="header-actions">
+            <!-- Меняется в зависимости от авторизации -->
+            <div id="auth-section">
+                <a href="pages/login.html" class="btn btn-outline">Войти</a>
             </div>
-        </div>
-    </header>
-    
-    <main class="main">
-        <div class="container">
-            <h1>Каталог товаров</h1>
-            
-            <div class="filters">
-                <select id="category-filter">
-                    <option value="">Все категории</option>
-                    <option value="Процессоры">Процессоры</option>
-                    <option value="Видеокарты">Видеокарты</option>
-                    <option value="Материнские платы">Материнские платы</option>
-                </select>
-            </div>
-            
-            <div id="products-container" class="products-grid">
-                <!-- Товары загружаются через JS -->
-                <p class="loading">Загрузка...</p>
-            </div>
-        </div>
-    </main>
-    
-    <!-- Модальное окно корзины -->
-    <div id="cart-modal" class="modal hidden">
-        <div class="modal-content">
-            <h2>Корзина</h2>
-            <div id="cart-items"></div>
-            <div id="cart-total"></div>
-            <button id="close-cart" class="btn">Закрыть</button>
+
+            <button id="cart-btn" class="btn btn-icon">
+                🛒 <span id="cart-count">0</span>
+            </button>
         </div>
     </div>
-    
-    <script type="module" src="js/app.js"></script>
+</header>
+
+<main class="main">
+    <div class="container">
+        <h1>Каталог товаров</h1>
+
+        <div class="filters">
+            <select id="category-filter">
+                <option value="">Все категории</option>
+                <option value="Процессоры">Процессоры</option>
+                <option value="Видеокарты">Видеокарты</option>
+                <option value="Материнские платы">Материнские платы</option>
+            </select>
+        </div>
+
+        <div id="products-container" class="products-grid">
+            <!-- Товары загружаются через JS -->
+            <p class="loading">Загрузка...</p>
+        </div>
+    </div>
+</main>
+
+<!-- Модальное окно корзины -->
+<div id="cart-modal" class="modal hidden">
+    <div class="modal-content">
+        <h2>Корзина</h2>
+        <div id="cart-items"></div>
+        <div id="cart-total"></div>
+        <button id="close-cart" class="btn">Закрыть</button>
+    </div>
+</div>
+
+<script type="module" src="js/app.js"></script>
 </body>
 </html>
 ```

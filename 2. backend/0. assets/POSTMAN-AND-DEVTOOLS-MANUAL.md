@@ -822,12 +822,6 @@ localStorage.clear();
 - [Postman Learning Center](https://learning.postman.com/)
 - [Chrome DevTools Documentation](https://developer.chrome.com/docs/devtools/)
 - [MDN: HTTP](https://developer.mozilla.org/ru/docs/Web/HTTP)
-
-### Видеоуроки
-
-- Postman Beginner's Course (YouTube)
-- Chrome DevTools Crash Course (YouTube)
-
 ---
 
 <div align="center">
@@ -835,7 +829,5 @@ localStorage.clear();
 ### 🎓 Удачи в изучении Backend-разработки!
 
 *Практика — ключ к мастерству*
-
-**Совет:** Создайте полную коллекцию Postman для каждого урока курса
 
 </div>

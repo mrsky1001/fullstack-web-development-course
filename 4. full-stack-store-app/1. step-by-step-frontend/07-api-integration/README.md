@@ -118,14 +118,6 @@ async function getData() {
 | 404 | Not Found |
 | 500 | Server Error |
 
-## ✅ Что должен понять студент
-
-- [ ] `fetch()` возвращает Promise
-- [ ] `await` "ждет" выполнения Promise
-- [ ] `async` функция всегда возвращает Promise
-- [ ] `response.json()` парсит JSON-ответ
-- [ ] `credentials: 'include'` нужен для отправки cookies
-
 ## ⚠️ Важно
 
 Для работы этого урока нужен запущенный backend-сервер!

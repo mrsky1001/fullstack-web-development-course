@@ -43,15 +43,15 @@
 
 | № | Урок | Описание | Ключевые концепции |
 |---|------|----------|-------------------|
-| 01 | [Введение в курс](./01-course-introduction/) | Что такое backend? Обзор технологий | Backend vs Frontend, Node.js |
-| 02 | [Клиент-серверная архитектура](./02-client-server-architecture/) | Как браузер общается с сервером | HTTP, REST, JSON, API |
-| 03 | [Node.js и Express: Основы](./03-nodejs-and-express-basics/) | Создание первого сервера | `http.createServer()`, Express |
-| 04 | [Маршрутизация и Middleware](./04-express-routing-and-middleware/) | Организация маршрутов | Router, Controller, Middleware |
-| 05 | [Архитектура MVC](./05-mvc-architecture/) | Разделение ответственности | Model, View, Controller, Service |
-| 06 | [Интеграция с MySQL](./06-nodejs-and-mysql-integration/) | Работа с базой данных | mysql2, SQL-запросы, CRUD |
-| 07 | [Аутентификация (Passport.js)](./07-authentication-with-passportjs/) | Вход и регистрация | Sessions, Cookies, bcrypt |
-| 08 | [Интеграция Frontend + Backend](./08-frontend-backend-integration/) | Связь клиента и сервера | CORS, fetch, защита маршрутов |
-| 09 | [Тестирование приложений](./09-web-application-testing/) | Основы тестирования | Валидация, отладка |
+| 01 | [Введение в курс](1. node-js/01-course-introduction/) | Что такое backend? Обзор технологий | Backend vs Frontend, Node.js |
+| 02 | [Клиент-серверная архитектура](1. node-js/02-client-server-architecture/) | Как браузер общается с сервером | HTTP, REST, JSON, API |
+| 03 | [Node.js и Express: Основы](1. node-js/03-nodejs-and-express-basics/) | Создание первого сервера | `http.createServer()`, Express |
+| 04 | [Маршрутизация и Middleware](1. node-js/04-express-routing-and-middleware/) | Организация маршрутов | Router, Controller, Middleware |
+| 05 | [Архитектура MVC](1. node-js/05-mvc-architecture/) | Разделение ответственности | Model, View, Controller, Service |
+| 06 | [Интеграция с MySQL](1. node-js/06-nodejs-and-mysql-integration/) | Работа с базой данных | mysql2, SQL-запросы, CRUD |
+| 07 | [Аутентификация (Passport.js)](1. node-js/07-authentication-with-passportjs/) | Вход и регистрация | Sessions, Cookies, bcrypt |
+| 08 | [Интеграция Frontend + Backend](1. node-js/08-frontend-backend-integration/) | Связь клиента и сервера | CORS, fetch, защита маршрутов |
+| 09 | [Тестирование приложений](1. node-js/09-web-application-testing/) | Основы тестирования | Валидация, отладка |
 
 ---
 
