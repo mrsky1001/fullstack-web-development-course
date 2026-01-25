@@ -8,6 +8,7 @@
       <excludeFolder url="file://$MODULE_DIR$/.idea" />
       <excludeFolder url="file://$MODULE_DIR$/4. full-stack-store-app/.idea" />
       <excludeFolder url="file://$MODULE_DIR$/4. full-stack-store-app/3. store-app/backend/node_modules" />
+      <excludeFolder url="file://$MODULE_DIR$/webinar_temp" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
