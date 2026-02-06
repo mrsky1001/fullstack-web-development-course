@@ -45,7 +45,7 @@ app.use(express.urlencoded({ extended: true }));
 // 
 // Методы: get, post, put, delete, patch, options, all
 
-// 4.1 Главная страница
+// 4.1 Главная страница localhost:3000/
 app.get('/', (req, res) => {
     // res.send() автоматически:
     // - Определяет Content-Type по типу данных
