@@ -13,15 +13,5 @@
         "dotenv": "^17.2.3",
         "express": "^4.21.2",
         "mysql2": "^3.12.0"
-    },
-    "engines": {
-        "node": ">=18.0.0"
-    },
-    "keywords": [
-        "education",
-        "express",
-        "mysql",
-        "database",
-        "dotenv"
-    ]
+    }
 }

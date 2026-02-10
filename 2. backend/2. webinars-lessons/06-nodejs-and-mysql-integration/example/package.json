@@ -1,7 +1,7 @@
 {
-  "name": "lesson-04-middleware-and-logging",
+  "name": "lesson-05-mysql-connection",
   "version": "1.0.0",
-  "description": "Урок 4: Middleware и логирование запросов",
+  "description": "Урок 5: Подключение к MySQL с использованием mysql2",
   "author": "IEEU - International East-European University",
   "license": "MIT",
   "main": "src/server.js",
@@ -10,18 +10,11 @@
     "dev": "nodemon src/server.js"
   },
   "dependencies": {
-    "express": "^4.21.2"
+    "dotenv": "^17.2.3",
+    "express": "^4.21.2",
+    "mysql2": "^3.12.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.11"
-  },
-  "engines": {
-    "node": ">=18.0.0"
-  },
-  "keywords": [
-    "education",
-    "express",
-    "middleware",
-    "logging"
-  ]
+  }
 }
