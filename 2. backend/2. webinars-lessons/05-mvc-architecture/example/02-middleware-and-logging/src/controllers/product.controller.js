@@ -4,10 +4,10 @@
  * ====================================================================
  * Тот же контроллер из урока 3.
  */
-const msgs = require("../../lib/messages.lib")
-const ResObj = require("../../models/resObj.class")
-const mockProducts = require("../../lib/mockProducts")
-const Product = require("../../models/product.class")
+const msgs = require("../lib/messages.lib")
+const ResObj = require("../models/resObj.class")
+const mockProducts = require("../lib/mockProducts")
+const Product = require("../models/product.class")
 
 exports.getAllProducts = (req, res) => {
     res.json({
