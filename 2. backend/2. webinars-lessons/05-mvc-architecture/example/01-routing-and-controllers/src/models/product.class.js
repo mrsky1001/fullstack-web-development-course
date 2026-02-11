@@ -15,18 +15,14 @@ class Product {
             this.isExistInShoppingCart = obj.isExistInShoppingCart ?? false;
         }
     }
-
-    fromDB(row) {
-        this.id = row.product_id;
-        this.name = row.product_name;
-        this.price = row.product_price;
-        this.category = row.product_category;
-        this.img = row.product_img;
-        this.quantity = row.item_quantity;
-        this.rowId = row.item_id;
-        this.isExistInShoppingCart = !!row.is_exist_in_shopping_cart;
-        return this;
-    }
 }
+//
+// const monitorDell = new Product({
+//     id: 1,
+//     name: 'Монитор DELL U2419H',
+//     price: 15000,
+//     category: 'Мониторы',
+//     img: 'https://www.dell.ru/content/dam/uk/products/monitors/u2419h/monitor-u2419h-black-pdp-pic-1000x1000.png',
+// })
 
 module.exports = Product;

@@ -140,7 +140,7 @@ passport.deserializeUser(async (email, callback) => {
 // Подключаем группы маршрутов по базовым путям
 server.use('/auth', authRouter);          // Все запросы авторизации (login, register...)
 server.use('/product', productRouter);    // Запросы товаров
-server.use('/shopping-cart', isAuthenticated, shoppingCartRouter); // Корзина (доступна ТОЛЬКО авторизованным)
+server.use('/shopping-cart',isAuthenticated, shoppingCartRouter); // Корзина (доступна ТОЛЬКО авторизованным)
 
 // --- 8. Запуск сервера ---
 

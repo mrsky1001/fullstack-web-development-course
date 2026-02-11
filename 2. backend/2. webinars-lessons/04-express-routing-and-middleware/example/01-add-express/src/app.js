@@ -64,9 +64,9 @@ app.get('/', (req, res) => {
     `);
 });
 
-// 4.2 Страница "О проекте"
+// 4.2 Страница "О проекте" localhost:3000/about
 app.get('/about', (req, res) => {
-    res.send(`
+        res.send(`
         <h1>📚 О проекте</h1>
         <p>Это урок 2 курса Full-Stack Web Development.</p>
         <p>В этом уроке мы изучаем фреймворк Express.js.</p>
