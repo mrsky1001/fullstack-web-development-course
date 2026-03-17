@@ -90,10 +90,7 @@ exports.findProduct = async (productId) => {
         // 
         // Символ ? заменяется на значение из массива (с экранированием)
 
-        const [rows] = await db.execute(
-            'SELECT * FROM products WHERE product_id = ?',
-            [productId]
-        );
+        const [rows] = await db.execute('SELECT * FROM products WHERE product_id = ?',[productId]);
 
         if (rows.length > 0) {
             const row = rows[0];
