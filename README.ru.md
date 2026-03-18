@@ -184,7 +184,7 @@ cd fullstack-web-development-course
 
 ## 📂 Общие ресурсы
 
-📁 **Путь:** [`0. shared/`](./0.%20shared/)
+📁 **Путь:** [`0. shared/`](0. resources/)
 
 | Ресурс | Описание |
 |--------|----------|

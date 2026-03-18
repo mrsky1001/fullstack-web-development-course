@@ -193,7 +193,7 @@ Each lesson contains:
 
 ## 📂 Shared Resources
 
-📁 **Path:** [`0. shared/`](./0.%20shared/)
+📁 **Path:** [`0. shared/`](0. resources/)
 
 | Resource | Description |
 |----------|-------------|
