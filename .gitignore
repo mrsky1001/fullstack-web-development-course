@@ -6,3 +6,4 @@ package-lock.json
 .idea/
 webinar_temp/
 *.zip
+.svelte-kit
