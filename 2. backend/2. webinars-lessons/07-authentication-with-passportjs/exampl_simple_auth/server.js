@@ -6,6 +6,7 @@ const bcrypt = require('bcryptjs');
 
 const app = express();
 app.use(express.json()); // Для парсинга JSON в теле запроса
+app.use(express.urlencoded({ extended: true }));
 
 // ФЕЙКОВАЯ БАЗА ДАННЫХ (в памяти)
 const usersDb = [];
