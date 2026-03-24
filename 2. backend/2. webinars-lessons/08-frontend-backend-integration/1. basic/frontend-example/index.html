@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth Demo</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="js/shared.js"></script>
+</head>
+<body>
+    <div class="container">
+        <section class="card">
+            <h2>Добро пожаловать</h2>
+            <p>Пример авторизации на Passport.js</p>
+            <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px;">
+                <button onclick="window.location.href='pages/login.html'">Войти</button>
+                <button onclick="window.location.href='pages/register.html'" style="background-color: white; color: var(--primary); border: 2px solid var(--primary);">Регистрация</button>
+            </div>
+        </section>
+    </div>
+    <script>
+        // Быстрая проверка: если уже залогинен, кидаем в профиль
+        async function init() {
+            const data = await apiFetch('/profile');
+            if (data.status === 'success') {
+                window.location.href = 'pages/profile.html';
+            }
+        }
+        init();
+    </script>
+</body>
+</html>

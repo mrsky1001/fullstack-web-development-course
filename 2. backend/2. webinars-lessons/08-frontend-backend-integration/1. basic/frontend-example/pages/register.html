@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация - Auth Demo</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div class="container">
+        <section id="register-section" class="card">
+            <h2>Регистрация</h2>
+            <form id="register-form">
+                <input type="text" id="reg-name" placeholder="Имя" required>
+                <input type="email" id="reg-email" placeholder="Email" required>
+                <input type="password" id="reg-password" placeholder="Пароль" required>
+                <button type="submit">Зарегистрироваться</button>
+            </form>
+            <p>Уже есть аккаунт? <a href="login.html">Войти</a></p>
+        </section>
+        <div id="message" class="message hidden"></div>
+    </div>
+    <script src="../js/shared.js"></script>
+    <script src="../js/register.js"></script>
+</body>
+</html>
