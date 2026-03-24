@@ -3,8 +3,9 @@ const session = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const bcrypt = require('bcryptjs');
-
+ 
 const app = express();
+
 app.use(express.json()); // Для парсинга JSON в теле запроса
 app.use(express.urlencoded({ extended: true }));
 
