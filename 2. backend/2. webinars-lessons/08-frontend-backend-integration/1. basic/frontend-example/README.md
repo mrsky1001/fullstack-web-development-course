@@ -36,7 +36,10 @@ async function apiFetch(endpoint, method = 'GET', body = null) {
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include' // <--- Чтобы сессия не пропадала!
     };
-    if (body) options.body = JSON.stringify(body);
+
+    if (body) {
+        options.body = JSON.stringify(body);
+    }
     const res = await fetch(`${API_URL}${endpoint}`, options);
     return await res.json();
 }
