@@ -44,7 +44,17 @@ const shoppingCartRouter = require("./routers/shopping-cart.router");
 const userService = require("./services/user.service");
 const { isAuthenticated } = require("./middleware/auth.middleware");
 
-// --- 2. Настройка CORS (Безопасность и Доступ) ---
+// --- 2. Раздача статических файлов (Изображения) ---
+
+// Подключаем модуль path для работы с путями файловой системы
+const path = require('path');
+
+// Раздаём изображения товаров из папки public/products по URL-пути /img/
+// Пример: запрос GET /img/headphones.png → отдаст файл public/products/headphones.png
+// Это позволяет хранить в БД пути вида "img/headphones.png" и они будут работать!
+server.use('/img', express.static(path.join(__dirname, 'public', 'products')));
+
+// --- 3. Настройка CORS (Безопасность и Доступ) ---
 
 // Конфигурация CORS определяет, кому разрешено обращаться к этому серверу.
 const corsOptions = {
@@ -140,7 +150,7 @@ passport.deserializeUser(async (email, callback) => {
 // Подключаем группы маршрутов по базовым путям
 server.use('/auth', authRouter);          // Все запросы авторизации (login, register...)
 server.use('/product', productRouter);    // Запросы товаров
-server.use('/shopping-cart',isAuthenticated, shoppingCartRouter); // Корзина (доступна ТОЛЬКО авторизованным)
+server.use('/shopping-cart', isAuthenticated, shoppingCartRouter); // Корзина (доступна ТОЛЬКО авторизованным)
 
 // --- 8. Запуск сервера ---
 

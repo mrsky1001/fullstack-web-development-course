@@ -115,7 +115,7 @@ function renderProducts(products) {
     container.innerHTML = products.map(product => `
         <div class="product-card">
             <div class="product-image">
-                ${product.img ? `<img src="${escapeHtml(product.img)}" alt="${escapeHtml(product.name)}">` : '🖥️'}
+                ${product.img ? `<img src="${escapeHtml(API.getImageUrl(product.img))}" alt="${escapeHtml(product.name)}">` : '🖥️'}
             </div>
             <div class="product-info">
                 <div class="product-category">${escapeHtml(product.category) || 'Компоненты'}</div>

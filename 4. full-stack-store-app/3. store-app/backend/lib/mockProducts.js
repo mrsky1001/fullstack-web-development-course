@@ -15,7 +15,7 @@ const mockProducts = [
         price: 55990,
         category: 'Процессоры',
         quantity: 15,
-        img: null // null означает, что будет показана заглушка
+        img: 'img/laptop.png' // Путь к изображению (раздаётся через express.static)
     },
     {
         id: 2,
@@ -23,7 +23,7 @@ const mockProducts = [
         price: 62990,
         category: 'Процессоры',
         quantity: 12,
-        img: null
+        img: 'img/headphones.png'
     },
     {
         id: 3,
@@ -31,7 +31,7 @@ const mockProducts = [
         price: 159990,
         category: 'Видеокарты',
         quantity: 8,
-        img: null
+        img: 'img/smart.png'
     },
     {
         id: 4,

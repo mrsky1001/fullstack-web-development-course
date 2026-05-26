@@ -79,10 +79,24 @@ async function apiRequest(url, options = {}) {
     }
 }
 
+/**
+ * Формирует полный URL изображения товара.
+ * В БД хранится относительный путь (например, "img/headphones.png"),
+ * а нам нужен полный URL к backend (например, "http://localhost:3000/img/headphones.png").
+ * 
+ * @param {string|null} imgPath - Относительный путь к изображению из БД
+ * @returns {string|null} - Полный URL или null
+ */
+function getImageUrl(imgPath) {
+    if (!imgPath) return null;
+    return `${API_BASE_URL}/${imgPath}`;
+}
+
 // Делаем API доступным везде через глобальный объект window
 window.API = {
     endpoints: API_ENDPOINTS,
-    request: apiRequest
+    request: apiRequest,
+    getImageUrl: getImageUrl
 };
 
 // Функция для правильного построения путей к страницам (фикс для GitHub Pages / вложенных папок)
