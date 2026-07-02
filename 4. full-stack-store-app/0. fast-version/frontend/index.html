@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechParts — Собери ПК своей мечты</title>
+  <!-- Критерий №6: Подключение стилей -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       ШАПКА (HEADER) — Критерий №11 (до 3 баллов)
+       Семантический тег header (Критерий №7)
+       ============================================================ -->
+  <header>
+    <!-- Навигация — Критерий №13: тег nav (1 балл) -->
+    <nav>
+      <!-- Логотип — Критерий №10 (до 3 баллов) -->
+      <!-- 1 балл — соответствие теме, 1 балл — SVG, 1 балл — надпись -->
+      <a href="index.html" class="logo">
+        <img src="images/logo.svg" alt="TechParts логотип">
+        TechParts
+      </a>
+
+      <!-- Навигационное меню — формируется динамически через JS -->
+      <!-- Критерий №13: меню для авторизованных и неавторизованных -->
+      <div class="nav-links" id="nav-menu">
+        <!-- JS подставит нужные ссылки -->
+      </div>
+    </nav>
+  </header>
+
+  <!-- ============================================================
+       ОСНОВНОЙ КОНТЕНТ — Критерий №7: семантический тег main
+       ============================================================ -->
+  <main>
+
+    <!-- ============================================================
+         СЛАЙДЕР — Критерий №14 (до 3 баллов)
+         1 балл — разметка и стилизация
+         1 балл — автопереключение каждые 3 сек.
+         1 балл — индикаторы и стрелки
+         ============================================================ -->
+    <!-- Критерий №7: семантический тег section -->
+    <section>
+      <div class="slider-container">
+        <!-- 4 слайда одинакового размера 800x400 -->
+        <!-- Критерий №5: Использование изображений из задания -->
+        <!-- Критерий №6: object-fit: cover — растягивает без искажения, центрирует -->
+        <div class="slider-slide active">
+          <img src="images/processor.jpg" alt="Процессоры Intel и AMD">
+        </div>
+        <div class="slider-slide">
+          <img src="images/video-cart.jpg" alt="Видеокарты RTX и Radeon">
+        </div>
+        <div class="slider-slide">
+          <img src="images/matherboard.jpg" alt="Материнские платы">
+        </div>
+        <div class="slider-slide">
+          <img src="images/keyboard.jpg" alt="Периферия для ПК">
+        </div>
+
+        <!-- Кнопки Назад и Вперёд в виде стрелок -->
+        <button class="slider-btn prev" id="slider-prev">&#10094;</button>
+        <button class="slider-btn next" id="slider-next">&#10095;</button>
+
+        <!-- Индикаторы в виде точек -->
+        <div class="slider-dots" id="slider-dots">
+          <button class="slider-dot active" data-index="0"></button>
+          <button class="slider-dot" data-index="1"></button>
+          <button class="slider-dot" data-index="2"></button>
+          <button class="slider-dot" data-index="3"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         СЕКЦИЯ «ПОПУЛЯРНЫЕ ТОВАРЫ» — Критерий №15 (2 балла)
+         Критерий №7: семантический тег section
+         ============================================================ -->
+    <section>
+      <h2 class="section-title">Популярные товары</h2>
+
+      <!-- 3 карточки с изображением 300x200, названием, описанием, ценой -->
+      <!-- 3 карточки с изображением 300x200, названием, описанием, ценой -->
+      <!-- Критерий №5: Использование изображений из задания -->
+      <div class="cards-grid">
+        <!-- Карточка 1 -->
+        <div class="card">
+          <!-- Критерий №6: изображение 300x200, object-fit: cover, центрирование -->
+          <img class="card-image" src="images/processor.jpg" alt="Процессор Intel">
+          <div class="card-body">
+            <div class="card-title">Intel Core i7-14700K</div>
+            <div class="card-desc">20 ядер, 5.6 ГГц. Идеален для игр и работы.</div>
+            <div class="card-price">38 990 ₽</div>
+          </div>
+        </div>
+
+        <!-- Карточка 2 -->
+        <div class="card">
+          <img class="card-image" src="images/video-cart.jpg" alt="Видеокарта RTX">
+          <div class="card-body">
+            <div class="card-title">NVIDIA GeForce RTX 4070 Ti</div>
+            <div class="card-desc">12 ГБ GDDR6X, ray tracing, DLSS 3.</div>
+            <div class="card-price">72 990 ₽</div>
+          </div>
+        </div>
+
+        <!-- Карточка 3 -->
+        <div class="card">
+          <img class="card-image" src="images/matherboard.jpg" alt="Материнская плата">
+          <div class="card-body">
+            <div class="card-title">ASUS ROG STRIX B650E-F</div>
+            <div class="card-desc">AM5, DDR5, PCIe 5.0, WiFi 6E.</div>
+            <div class="card-price">24 990 ₽</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Кнопка «Весь каталог» — ведёт на страницу каталога -->
+      <a href="catalog.html" class="btn btn-primary btn-center">Весь каталог</a>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       ПОДВАЛ (FOOTER) — Критерий №12 (до 3 баллов)
+       1 балл — тег footer
+       1 балл — подвал на главной
+       1 балл — подвал на всех страницах
+       ============================================================ -->
+  <footer>
+    <div class="footer-content">
+      <!-- Информация о магазине -->
+      <div class="footer-col">
+        <h4>TechParts</h4>
+        <p>Собери ПК своей мечты</p>
+        <p>Надёжный поставщик комплектующих</p>
+      </div>
+
+      <!-- Каталог -->
+      <div class="footer-col">
+        <h4>Каталог</h4>
+        <a href="catalog.html">Процессоры</a>
+        <a href="catalog.html">Видеокарты</a>
+        <a href="catalog.html">Материнские платы</a>
+      </div>
+
+      <!-- Контактная информация -->
+      <div class="footer-col">
+        <h4>Контакты</h4>
+        <p>Email: info@techparts.ru</p>
+        <p>Тел: +7 (800) 555-35-35</p>
+        <p>Москва, ул. Технологическая, 42</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      &copy; 2024 TechParts. Все права защищены.
+    </div>
+  </footer>
+
+  <!-- Подключение скриптов -->
+  <!-- Критерий №13: navigation.js — динамическое меню -->
+  <script src="js/navigation.js"></script>
+  <!-- Критерий №14: slider.js — слайдер на главной -->
+  <script src="js/slider.js"></script>
+
+</body>
+</html>

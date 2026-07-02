@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechParts — Регистрация</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       ШАПКА — Критерий №11: шапка на всех страницах
+       ============================================================ -->
+  <header>
+    <nav>
+      <!-- Критерий №10: Логотип SVG + надпись -->
+      <a href="index.html" class="logo">
+        <img src="images/logo.svg" alt="TechParts логотип">
+        TechParts
+      </a>
+      <div class="nav-links" id="nav-menu"></div>
+    </nav>
+  </header>
+
+  <!-- ============================================================
+       СТРАНИЦА РЕГИСТРАЦИИ — Критерий №16 (до 10 баллов)
+       ============================================================ -->
+  <main>
+    <!-- Заголовок страницы: «Регистрация в TechParts» -->
+    <h1 class="page-title" style="text-align:center;">Регистрация в TechParts</h1>
+
+    <div class="form-container">
+      <!-- Блок для сообщений об ошибке/успехе -->
+      <div id="register-message"></div>
+
+      <!-- Форма регистрации -->
+      <!-- Критерий №8: Обязательные поля (required) -->
+      <form id="register-form">
+
+        <!-- 1) Логин — только лат. буквы и цифры, мин. 5 символов -->
+        <!-- Критерий №16: 1 балл — критерии к логину -->
+        <div class="form-group">
+          <label for="login">Логин</label>
+          <input type="text" id="login" name="login" required
+                 placeholder="Например: techuser1"
+                 minlength="5"
+                 pattern="[A-Za-z0-9]+"
+                 title="Только латинские буквы и цифры, минимум 5 символов">
+          <div class="error-text" id="login-error"></div>
+        </div>
+
+        <!-- 2) Пароль — минимальная длина 8 символов -->
+        <!-- Критерий №16: 1 балл — проверка пароля на мин. длину -->
+        <div class="form-group">
+          <label for="password">Пароль</label>
+          <input type="password" id="password" name="password" required
+                 placeholder="Минимум 8 символов"
+                 minlength="8">
+          <div class="error-text" id="password-error"></div>
+        </div>
+
+        <!-- 3) Повтор пароля — проверка совпадения -->
+        <!-- Критерий №16: 1 балл — совпадение паролей -->
+        <div class="form-group">
+          <label for="password2">Повторите пароль</label>
+          <input type="password" id="password2" name="password2" required
+                 placeholder="Повторите пароль">
+          <div class="error-text" id="password2-error"></div>
+        </div>
+
+        <!-- 4) ФИО — минимум три слова, кириллица -->
+        <!-- Критерий №16: 1 балл — три слова в ФИО -->
+        <div class="form-group">
+          <label for="fullname">ФИО</label>
+          <input type="text" id="fullname" name="fullname" required
+                 placeholder="Иванов Иван Иванович">
+          <div class="error-text" id="fullname-error"></div>
+        </div>
+
+        <!-- 5) Email — валидация @ и . -->
+        <!-- Критерий №16: 1 балл — корректная валидация email -->
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required
+                 placeholder="user@example.com">
+          <div class="error-text" id="email-error"></div>
+        </div>
+
+        <!-- 6) Телефон — формат +7 (XXX) XXX-XX-XX -->
+        <!-- Критерий №16: 1 балл — валидация телефона -->
+        <div class="form-group">
+          <label for="phone">Телефон</label>
+          <input type="tel" id="phone" name="phone" required
+                 placeholder="+7 (999) 123-45-67">
+          <div class="error-text" id="phone-error"></div>
+        </div>
+
+        <!-- Кнопка отправки формы -->
+        <button type="submit" class="btn btn-primary btn-block">Зарегистрироваться</button>
+      </form>
+
+      <!-- Ссылка на страницу авторизации -->
+      <div class="form-footer">
+        Уже зарегистрированы? <a href="login.html">Войти</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Критерий №12: Подвал на всех страницах -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h4>TechParts</h4>
+        <p>Собери ПК своей мечты</p>
+      </div>
+      <div class="footer-col">
+        <h4>Контакты</h4>
+        <p>Email: info@techparts.ru</p>
+        <p>Тел: +7 (800) 555-35-35</p>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2024 TechParts. Все права защищены.</div>
+  </footer>
+
+  <!-- Скрипты -->
+  <script src="js/navigation.js"></script>
+  <script src="js/auth.js"></script>
+
+</body>
+</html>

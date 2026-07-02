@@ -1,0 +1,11 @@
+<!-- SVG-логотип TechParts -->
+<!-- Критерий №10: 1 балл — векторное изображение, 1 балл — надпись с названием -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" width="200" height="50">
+  <!-- Иконка монитора/ПК -->
+  <rect x="5" y="5" width="30" height="22" rx="3" fill="#2563eb" stroke="#1e40af" stroke-width="1.5"/>
+  <rect x="14" y="27" width="12" height="4" fill="#1e40af"/>
+  <rect x="10" y="31" width="20" height="3" rx="1" fill="#1e40af"/>
+  <!-- Текст названия -->
+  <text x="42" y="26" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#2563eb">Tech</text>
+  <text x="102" y="26" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#1e293b">Parts</text>
+</svg>

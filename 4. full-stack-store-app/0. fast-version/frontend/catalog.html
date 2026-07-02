@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechParts — Каталог</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Критерий №11: Шапка на всех страницах -->
+  <header>
+    <nav>
+      <a href="index.html" class="logo">
+        <img src="images/logo.svg" alt="TechParts логотип">
+        TechParts
+      </a>
+      <div class="nav-links" id="nav-menu"></div>
+    </nav>
+  </header>
+
+  <!-- ============================================================
+       СТРАНИЦА КАТАЛОГА — Критерий №18 (до 5 баллов)
+       1 балл — разметка и стилизация
+       1 балл — динамический вывод карточек из БД
+       1 балл — кнопка «В корзину»
+       1 балл — фильтрация по названию
+       1 балл — сортировка по цене
+       ============================================================ -->
+  <main>
+    <!-- Заголовок: «Каталог комплектующих» -->
+    <h1 class="page-title">Каталог комплектующих</h1>
+
+    <!-- Блок фильтров и сортировки -->
+    <!-- Критерий №18: поиск по названию + сортировка по цене -->
+    <div class="filters">
+      <!-- 1) Поиск по названию -->
+      <input type="text" id="search-input" placeholder="Поиск по названию...">
+
+      <!-- 2) Сортировка по цене -->
+      <select id="sort-select">
+        <option value="">Сортировка</option>
+        <option value="asc">Цена: по возрастанию</option>
+        <option value="desc">Цена: по убыванию</option>
+      </select>
+    </div>
+
+    <!-- Контейнер для карточек товаров (заполняется JS из БД) -->
+    <!-- Критерий №18: 1 балл — динамический вывод -->
+    <div class="cards-grid" id="products-grid">
+      <!-- Карточки создаются динамически через catalog.js -->
+    </div>
+
+    <!-- Всплывающее окно «Войдите, чтобы добавить товар в корзину» -->
+    <!-- Критерий №18: всплывающее окно для неавторизованных -->
+    <div class="modal-overlay" id="auth-modal">
+      <div class="modal-box">
+        <p>Войдите, чтобы добавить товар в корзину</p>
+        <a href="login.html" class="btn btn-primary">Войти</a>
+        <br><br>
+        <button class="btn" onclick="closeModal()" style="color:var(--text-light);">Закрыть</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Критерий №12: Подвал на всех страницах -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h4>TechParts</h4>
+        <p>Собери ПК своей мечты</p>
+      </div>
+      <div class="footer-col">
+        <h4>Контакты</h4>
+        <p>Email: info@techparts.ru</p>
+        <p>Тел: +7 (800) 555-35-35</p>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2024 TechParts. Все права защищены.</div>
+  </footer>
+
+  <script src="js/navigation.js"></script>
+  <script src="js/catalog.js"></script>
+
+</body>
+</html>

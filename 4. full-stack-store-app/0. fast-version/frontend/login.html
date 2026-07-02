@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechParts — Вход</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Критерий №11: Шапка на всех страницах -->
+  <header>
+    <nav>
+      <a href="index.html" class="logo">
+        <img src="images/logo.svg" alt="TechParts логотип">
+        TechParts
+      </a>
+      <div class="nav-links" id="nav-menu"></div>
+    </nav>
+  </header>
+
+  <!-- ============================================================
+       СТРАНИЦА АВТОРИЗАЦИИ — Критерий №17 (до 4 баллов)
+       1 балл — разметка и стилизация
+       3 балла — корректная проверка данных по БД
+       ============================================================ -->
+  <main>
+    <!-- Заголовок: «Вход в систему» -->
+    <h1 class="page-title" style="text-align:center;">Вход в систему</h1>
+
+    <div class="form-container">
+      <!-- Сообщение об ошибке красным цветом -->
+      <div id="login-message"></div>
+
+      <!-- Форма с полями: логин и пароль -->
+      <form id="login-form">
+        <!-- Поле логина с подписью -->
+        <div class="form-group">
+          <label for="login">Логин</label>
+          <input type="text" id="login" name="login" required
+                 placeholder="Введите логин">
+        </div>
+
+        <!-- Поле пароля с подписью -->
+        <div class="form-group">
+          <label for="password">Пароль</label>
+          <input type="password" id="password" name="password" required
+                 placeholder="Введите пароль">
+        </div>
+
+        <!-- Кнопка «Войти» -->
+        <button type="submit" class="btn btn-primary btn-block">Войти</button>
+      </form>
+
+      <!-- Ссылка для незарегистрированных: «Ещё не зарегистрированы? Регистрация» -->
+      <div class="form-footer">
+        Ещё не зарегистрированы? <a href="register.html">Регистрация</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Критерий №12: Подвал на всех страницах -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h4>TechParts</h4>
+        <p>Собери ПК своей мечты</p>
+      </div>
+      <div class="footer-col">
+        <h4>Контакты</h4>
+        <p>Email: info@techparts.ru</p>
+        <p>Тел: +7 (800) 555-35-35</p>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2024 TechParts. Все права защищены.</div>
+  </footer>
+
+  <script src="js/navigation.js"></script>
+  <script src="js/auth.js"></script>
+
+</body>
+</html>

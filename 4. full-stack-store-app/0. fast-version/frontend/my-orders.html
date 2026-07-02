@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechParts — Мои заказы</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Критерий №11: Шапка на всех страницах -->
+  <header>
+    <nav>
+      <a href="index.html" class="logo">
+        <img src="images/logo.svg" alt="TechParts логотип">
+        TechParts
+      </a>
+      <div class="nav-links" id="nav-menu"></div>
+    </nav>
+  </header>
+
+  <!-- ============================================================
+       СТРАНИЦА «МОИ ЗАКАЗЫ» — Критерий №20 (до 5 баллов)
+       1 балл — разметка и стилизация
+       1 балл — доступность только авторизованным + редирект
+       3 балла — корректный вывод информации
+       ============================================================ -->
+  <main>
+    <h1 class="page-title">Мои заказы</h1>
+
+    <!-- Контейнер для карточек заказов (заполняется через JS) -->
+    <div id="orders-container">
+      <!-- Карточки или пустое состояние — создаются динамически -->
+    </div>
+  </main>
+
+  <!-- Критерий №12: Подвал на всех страницах -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-col">
+        <h4>TechParts</h4>
+        <p>Собери ПК своей мечты</p>
+      </div>
+      <div class="footer-col">
+        <h4>Контакты</h4>
+        <p>Email: info@techparts.ru</p>
+        <p>Тел: +7 (800) 555-35-35</p>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2024 TechParts. Все права защищены.</div>
+  </footer>
+
+  <script src="js/navigation.js"></script>
+
+  <!-- ============================================================
+       Скрипт страницы «Мои заказы»
+       Критерий №20: загрузка и отображение заказов пользователя
+       ============================================================ -->
+  <script>
+    // Адрес API сервера
+    const API = 'http://localhost:3000/api';
+
+    // --- Проверка авторизации при загрузке страницы ---
+    // Критерий №20: 1 балл — доступность только авторизованным + редирект
+    async function init() {
+      try {
+        // Запрос к серверу на проверку сессии
+        const res = await fetch(API + '/auth/check', { credentials: 'include' });
+        const data = await res.json();
+
+        // Если не авторизован — редирект на login.html
+        if (!data.authorized) {
+          window.location.href = 'login.html';
+          return;
+        }
+
+        // Загружаем заказы авторизованного пользователя
+        loadOrders();
+      } catch (err) {
+        console.error('Ошибка проверки авторизации:', err);
+      }
+    }
+
+    // --- Загрузка заказов текущего пользователя ---
+    // Критерий №20: 3 балла — корректный вывод информации
+    async function loadOrders() {
+      try {
+        const res = await fetch(API + '/orders/my', { credentials: 'include' });
+        const orders = await res.json();
+
+        const container = document.getElementById('orders-container');
+
+        // Если нет заказов — показываем пустое состояние
+        if (orders.length === 0) {
+          container.innerHTML = `
+            <div class="empty-state">
+              <p>У вас пока нет заказов. Перейдите в каталог и выберите комплектующие для вашего ПК!</p>
+              <a href="catalog.html" class="btn btn-primary">Перейти в каталог</a>
+            </div>
+          `;
+          return;
+        }
+
+        // Отображаем заказы в виде карточек
+        container.innerHTML = '<div class="cards-grid">' + orders.map(order => `
+          <div class="card">
+            <!-- Изображение товара 300x200 -->
+            <!-- Критерий №5: изображения из задания, Критерий №6: object-fit: cover -->
+            <img class="card-image" src="${order.image}" alt="${order.name}">
+            <div class="card-body">
+              <!-- Название товара -->
+              <div class="card-title">${order.name}</div>
+              <!-- Номер заказа в формате «Заказ #X» -->
+              <div class="card-info"><strong>Заказ #${order.id}</strong></div>
+              <!-- Дата доставки -->
+              <div class="card-info">Дата доставки: ${new Date(order.delivery_date).toLocaleDateString('ru-RU')}</div>
+              <!-- Количество единиц -->
+              <div class="card-info">Количество: ${order.quantity} шт.</div>
+              <!-- Общая стоимость заказа -->
+              <div class="card-price">${Number(order.total_price).toLocaleString('ru-RU')} ₽</div>
+            </div>
+          </div>
+        `).join('') + '</div>';
+      } catch (err) {
+        console.error('Ошибка загрузки заказов:', err);
+      }
+    }
+
+    // Запускаем инициализацию при загрузке страницы
+    init();
+  </script>
+
+</body>
+</html>

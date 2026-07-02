@@ -1,0 +1,17 @@
+{
+  "name": "techparts-backend",
+  "version": "1.0.0",
+  "description": "Backend для интернет-магазина TechParts",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql2": "^3.6.0",
+    "express-session": "^1.17.3",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5"
+  }
+}
