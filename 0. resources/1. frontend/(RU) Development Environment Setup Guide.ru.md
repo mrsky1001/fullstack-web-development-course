@@ -1,6 +1,6 @@
 # Руководство по настройке среды разработки
 
-> 🌐 [English version](./Development Environment Setup Guide.md) | 📚 [Руководство Git & GitHub](./GIT-GITHUB-MANUAL.md)
+> 🌐 [English version](./Development%20Environment%20Setup%20Guide.md) | 📚 [Руководство Git & GitHub](./GIT-GITHUB-MANUAL.md)
 
 Это руководство поможет вам настроить среду разработки для курса полного стека веб-разработки.
 

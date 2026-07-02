@@ -52,17 +52,17 @@ After completing the course, you will be able to:
 
 ## 📚 Course Structure
 
-The course consists of **4 main modules**, each deepening knowledge from basic to advanced level.
+The course is divided into **4 main modules**, each containing practical examples, theory, and homework assignments. Books and guides are placed by topic inside the shared resources folder [`0. resources/`](./0.%20resources/) for convenience.
 
 ### 1️⃣ Frontend — Client-Side Development
 
 📁 **Path:** [`1. frontend/`](./1.%20frontend/)
 
-| Section | Description | Lessons |
-|---------|-------------|---------|
-| [HTML, CSS, JS](./1.%20frontend/1.%20html-css-js/) | Complete web programming course from scratch | 22 |
-| [Webinars](./1.%20frontend/2.%20webinars-lessons/) | Additional sessions and code reviews | — |
-| [Landing Example](./1.%20frontend/3.%20example-landing/) | Ready-made landing page example | — |
+| Section | Description | Lessons | Resources & Books |
+|---------|-------------|---------|-------------------|
+| [HTML, CSS, JS](./1.%20frontend/1.%20html-css-js/) | Complete web programming course from scratch | 22 | Books on HTML/CSS/JS, Git and WebStorm guides in [0. resources/1. frontend/](./0.%20resources/1.%20frontend/) |
+| [Webinars](./1.%20frontend/2.%20webinars-lessons/) | Additional sessions and code reviews | — | — |
+| [Landing Example](./1.%20frontend/3.%20example-landing/) | Ready-made landing page example | — | — |
 
 **Key Topics:**
 - 📄 HTML5: structure, semantics, forms
@@ -76,17 +76,17 @@ The course consists of **4 main modules**, each deepening knowledge from basic t
 
 📁 **Path:** [`2. backend/`](./2.%20backend/)
 
-| # | Lesson | Topic |
-|---|--------|-------|
-| 01 | Course Introduction | Overview of server-side development |
-| 02 | Client-Server Architecture | HTTP, REST, API |
-| 03 | Node.js and Express | Creating your first server |
-| 04 | Routing and Middleware | Request handling |
-| 05 | MVC Architecture | Model-View-Controller |
-| 06 | MySQL Integration | Database connection |
-| 07 | Authentication (Passport.js) | Login, registration, sessions |
-| 08 | Frontend + Backend Integration | Connecting all parts |
-| 09 | Testing | Application testing basics |
+| # | Lesson | Topic | Resources & Books |
+|---|--------|-------|-------------------|
+| 01 | Course Introduction | Overview of server-side development | Node.js book, Postman API testing guide in [0. resources/2. backend/](./0.%20resources/2.%20backend/) |
+| 02 | Client-Server Architecture | HTTP, REST, API | |
+| 03 | Node.js and Express | Creating your first server | |
+| 04 | Routing and Middleware | Request handling | |
+| 05 | MVC Architecture | Model-View-Controller | |
+| 06 | MySQL Integration | Database connection | |
+| 07 | Authentication (Passport.js) | Login, registration, sessions | |
+| 08 | Frontend + Backend Integration | Connecting all parts | |
+| 09 | Testing | Application testing basics | |
 
 **Key Topics:**
 - 🖥 Node.js and Express.js
@@ -100,15 +100,19 @@ The course consists of **4 main modules**, each deepening knowledge from basic t
 
 📁 **Path:** [`3. databases/`](./3.%20databases/)
 
-| # | Lesson | Topic |
-|---|--------|-------|
-| 01 | Course Introduction | Database overview |
-| 02 | DBMS Types | Relational and non-relational databases |
-| 03 | MySQL Installation | Environment setup |
-| 04 | Database Design | ER diagrams, normalization |
-| 05 | SQL Basics (CREATE) | Creating tables |
-| 06 | CRUD Operations | SELECT, INSERT, UPDATE, DELETE |
-| 07 | JOIN and Aggregation | Table joins, grouping |
+The databases module is split into main lessons and webinars:
+*   📁 **[1. sql-mysql/](./3.%20databases/1.%20sql-mysql/)** — main lessons on SQL and MySQL.
+*   📁 **[2. webinars-lessons/](./3.%20databases/2.%20webinars-lessons/)** — additional webinar materials.
+
+| # | Lesson | Topic | Resources & Books |
+|---|--------|-------|-------------------|
+| 01 | [Course Introduction](./3.%20databases/1.%20sql-mysql/01-course-introduction/) | Database overview | Database & SQL books in [0. resources/3. databases/](./0.%20resources/3.%20databases/) |
+| 02 | [DBMS Types](./3.%20databases/1.%20sql-mysql/02-databases-and-dbms-introduction/) | Relational and non-relational databases | |
+| 03 | [MySQL Installation](./3.%20databases/1.%20sql-mysql/03-mysql-installation-and-setup/) | Environment setup | |
+| 04 | [Database Design](./3.%20databases/1.%20sql-mysql/04-database-design-and-er-diagrams/) | ER diagrams, normalization | |
+| 05 | [SQL Basics (CREATE)](./3.%20databases/1.%20sql-mysql/05-sql-basics-and-create-commands/) | Creating tables | |
+| 06 | [CRUD Operations](./3.%20databases/1.%20sql-mysql/06-sql-select-insert-update-delete/) | SELECT, INSERT, UPDATE, DELETE | |
+| 07 | [JOIN and Aggregation](./3.%20databases/1.%20sql-mysql/07-sql-joins-grouping-and-aggregation/) | Table joins, grouping | |
 
 **Key Topics:**
 - 🗄 Relational data model
@@ -122,7 +126,7 @@ The course consists of **4 main modules**, each deepening knowledge from basic t
 
 📁 **Path:** [`4. full-stack-store-app/`](./4.%20full-stack-store-app/)
 
-**A complete online store** — the final project combining all acquired knowledge.
+**A complete online store** — the final project combining all acquired knowledge. Web application development guidelines and coursework tasks are located in [0. resources/4. full-stack/](./0.%20resources/4.%20full-stack/).
 
 | Component | Technologies | Description |
 |-----------|--------------|-------------|
@@ -131,14 +135,54 @@ The course consists of **4 main modules**, each deepening knowledge from basic t
 | Database | MySQL | Data storage |
 | Auth | Passport.js | Registration and login |
 
-**Features:**
-- 🛒 Product catalog
-- 🛍 Shopping cart
-- 👤 Registration and authorization
-- 🔄 REST API for all operations
-- 💾 Data storage in MySQL
-
 ➡️ [Detailed project documentation](./4.%20full-stack-store-app/README.md)
+
+---
+
+## 🗺️ Repository Map
+
+Use the schema below to quickly navigate through the educational materials:
+
+```text
+fullstack-web-development-course/
+├── 0. resources/                    # Common course resources (books, guides, tasks)
+│   ├── 0. shared/                   # Common resources for the whole course
+│   │   └── glossary/                # Glossary of terms (RU/EN)
+│   ├── 1. frontend/                 # HTML/CSS/JS books, WebStorm and Git guides
+│   ├── 2. backend/                  # Node.js book, Postman API testing guide
+│   ├── 3. databases/                # SQL books, ER modeling and database design guides
+│   └── 4. full-stack/               # Web app development guide and coursework tasks
+├── 1. frontend/                     # Client-side development
+│   ├── 1. html-css-js/              # Base 22 lessons
+│   │   └── 00-environment-setup/    # Practice and examples for environment setup
+│   ├── 2. webinars-lessons/         # Additional frontend webinars
+│   ├── 3. example-landing/          # Simple landing page example
+│   ├── 4. frontend-with-svelte-and-backend/
+│   └── 5. svelte-without-backend/   # Standalone educational Svelte version of the store
+├── 2. backend/                      # Server-side development
+│   ├── 1. node-js/                  # Base 9 lessons
+│   └── 2. webinars-lessons/         # Additional backend webinars
+├── 3. databases/                    # Databases module
+│   ├── 1. sql-mysql/                # 7 lessons on SQL and MySQL
+│   └── 2. webinars-lessons/         # Database webinars
+├── 4. full-stack-store-app/         # Final and practical projects
+│   ├── 1. step-by-step-frontend/    # Step-by-step store frontend assembly
+│   ├── 2. step-by-step-backend/     # Step-by-step store backend assembly
+│   ├── 3. store-app/                # Final fullstack store (HTML/JS + Node.js)
+│   └── 4. store-app-svelte/         # Svelte + Node.js version of the store
+└── docs/                            # Demo version for GitHub Pages (Mock API in localStorage)
+```
+
+### 🛍️ Store App Versions (Which one to use?)
+
+The repository contains several implementations of the **TechParts Store** educational web application. Use the table below to understand the differences:
+
+| Project Path | Stack | Backend Role | Data Storage | Target Audience |
+|---|---|---|---|---|
+| [`docs/`](./docs/) | Vanilla HTML/CSS/JS | **None** (Mock API) | Browser `localStorage` | For quick preview (live demo on GitHub Pages). Runs without a server. |
+| [`4. full-stack-store-app/3. store-app/`](./4.%20full-stack-store-app/3.%20store-app/) | Vanilla JS + Express | **Real Express Server** | MySQL Database | **Main project of the course**. Classic Fullstack project. |
+| [`4. full-stack-store-app/4. store-app-svelte/`](./4.%20full-stack-store-app/4.%20store-app-svelte/) | SvelteKit + Express | **Real Express Server** | MySQL Database | **Advanced level**. For learning reactive frontend frameworks. |
+| [`1. frontend/5. svelte-without-backend/`](./1.%20frontend/5.%20svelte-without-backend/) | Svelte | **None** (Mock API) | Browser `localStorage` | Intermediate step for learning Svelte basics without a backend. |
 
 ---
 
@@ -193,13 +237,15 @@ Each lesson contains:
 
 ## 📂 Shared Resources
 
-📁 **Path:** [`0. shared/`](0. resources/)
+📁 **Path:** [`0. resources/`](./0.%20resources/)
 
-| Resource | Description |
+| Resource Category | Description |
 |----------|-------------|
-| `assets/` | Common images and files |
-| `glossary/` | Glossary of terms |
-| `setup-guides/` | Environment setup instructions |
+| [0. shared/](./0.%20resources/0.%20shared/) | Common resources for the whole course (glossary, etc.) |
+| [1. frontend/](./0.%20resources/1.%20frontend/) | HTML/CSS/JS books, Git manual, and WebStorm installation guides |
+| [2. backend/](./0.%20resources/2.%20backend/) | Node.js book, API testing manual with Postman |
+| [3. databases/](./0.%20resources/3.%20databases/) | Materials and books regarding databases and SQL |
+| [4. full-stack/](./0.%20resources/4.%20full-stack/) | Web application development guides and coursework topics |
 
 ---
 

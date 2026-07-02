@@ -35,7 +35,7 @@
 - ✅ Защищать маршруты с помощью **middleware**
 - ✅ Интегрировать **frontend** с **backend**
 
-> 📚 **Руководства:** [Postman и Chrome DevTools](./assets/POSTMAN-AND-DEVTOOLS-MANUAL.md) — как тестировать и отлаживать API
+> 📚 **Руководства:** [Postman и Chrome DevTools](../0.%20resources/2.%20backend/POSTMAN-AND-DEVTOOLS-MANUAL.md) — как тестировать и отлаживать API
 
 ---
 

@@ -1,6 +1,6 @@
 # Development Environment Setup Guide
 
-> 🌐 [Русская версия](./(RU) Development Environment Setup Guide.ru.md) | 📚 [Git & GitHub Manual](./GIT-GITHUB-MANUAL.md)
+> 🌐 [Русская версия](./%28RU%29%20Development%20Environment%20Setup%20Guide.ru.md) | 📚 [Git & GitHub Manual](./GIT-GITHUB-MANUAL.md)
 
 This guide will help you set up your development environment for the full-stack web development course.
 
