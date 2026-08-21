@@ -135,7 +135,7 @@
 Для быстрого ориентирования в учебных материалах используйте схему ниже:
 
 ```mermaid
-flowchart TB
+flowchart TD
     subgraph ROOT["🎓 Fullstack Web Development Course"]
         direction TB
 
@@ -146,6 +146,7 @@ flowchart TB
             R2["2. backend<br/>Книга Node.js, гайд Postman"]
             R3["3. databases<br/>Книги SQL, ER-диаграммы"]
             R4["4. full-stack<br/>Методички и 100 вариантов заданий"]
+            R0 ~~~ R1 ~~~ R2 ~~~ R3 ~~~ R4
         end
 
         subgraph MOD1["🎨 1. frontend — Клиентская часть"]
@@ -155,18 +156,21 @@ flowchart TB
             F3["3. example-landing<br/>Пример готового лендинга"]
             F4["4. frontend-with-svelte...<br/>SvelteKit + бэкенд"]
             F5["5. svelte-without-backend<br/>Автономный учебный Svelte"]
-        end
-
-        subgraph MOD3["🗄️ 3. databases — Базы данных"]
-            direction LR
-            D1["1. sql-mysql<br/>7 уроков (ER, CRUD, JOIN, Grouping)"]
-            D2["2. webinars-lessons<br/>Вебинары и разборы"]
+            F1 ~~~ F2 ~~~ F3 ~~~ F4 ~~~ F5
         end
 
         subgraph MOD2["⚙️ 2. backend — Серверная часть"]
             direction LR
             B1["1. node-js<br/>9 уроков (Node.js, Express, REST API, Auth)"]
             B2["2. webinars-lessons<br/>Вебинары и разборы"]
+            B1 ~~~ B2
+        end
+
+        subgraph MOD3["🗄️ 3. databases — Базы данных"]
+            direction LR
+            D1["1. sql-mysql<br/>7 уроков (ER, CRUD, JOIN, Grouping)"]
+            D2["2. webinars-lessons<br/>Вебинары и разборы"]
+            D1 ~~~ D2
         end
 
         subgraph MOD4["🛍️ 4. full-stack-store-app — Итоговый интернет-магазин TechParts"]
@@ -176,11 +180,14 @@ flowchart TB
             S2["2. step-by-step-backend<br/>Пошаговый бэкенд"]
             S3["3. store-app<br/>Финальный Vanilla Fullstack"]
             S4["4. store-app-svelte<br/>Продвинутый SvelteKit + Express"]
+            S0 ~~~ S1 ~~~ S2 ~~~ S3 ~~~ S4
         end
 
         subgraph DOCS["🌐 docs/ — GitHub Pages Demo"]
             DOC["Автономный фронтенд в браузере (Mock API в LocalStorage)"]
         end
+
+        RES ~~~ MOD1 ~~~ MOD2 ~~~ MOD3 ~~~ MOD4 ~~~ DOCS
     end
 ```
 

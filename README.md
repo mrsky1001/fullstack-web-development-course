@@ -144,7 +144,7 @@ The databases module is split into main lessons and webinars:
 Use the schema below to quickly navigate through the educational materials:
 
 ```mermaid
-flowchart TB
+flowchart TD
     subgraph ROOT["🎓 Fullstack Web Development Course"]
         direction TB
 
@@ -155,6 +155,7 @@ flowchart TB
             R2["2. backend<br/>Node.js book, Postman guide"]
             R3["3. databases<br/>SQL books, ER diagrams"]
             R4["4. full-stack<br/>Guidelines & 100 coursework tasks"]
+            R0 ~~~ R1 ~~~ R2 ~~~ R3 ~~~ R4
         end
 
         subgraph MOD1["🎨 1. frontend — Client-side Development"]
@@ -164,18 +165,21 @@ flowchart TB
             F3["3. example-landing<br/>Ready-to-use landing page"]
             F4["4. frontend-with-svelte...<br/>SvelteKit + Backend"]
             F5["5. svelte-without-backend<br/>Standalone educational Svelte"]
-        end
-
-        subgraph MOD3["🗄️ 3. databases — Database Development"]
-            direction LR
-            D1["1. sql-mysql<br/>7 Lessons (ER, CRUD, JOIN, Grouping)"]
-            D2["2. webinars-lessons<br/>Webinars & reviews"]
+            F1 ~~~ F2 ~~~ F3 ~~~ F4 ~~~ F5
         end
 
         subgraph MOD2["⚙️ 2. backend — Server-side Development"]
             direction LR
             B1["1. node-js<br/>9 Lessons (Node.js, Express, REST API, Auth)"]
             B2["2. webinars-lessons<br/>Webinars & reviews"]
+            B1 ~~~ B2
+        end
+
+        subgraph MOD3["🗄️ 3. databases — Database Development"]
+            direction LR
+            D1["1. sql-mysql<br/>7 Lessons (ER, CRUD, JOIN, Grouping)"]
+            D2["2. webinars-lessons<br/>Webinars & reviews"]
+            D1 ~~~ D2
         end
 
         subgraph MOD4["🛍️ 4. full-stack-store-app — TechParts Store Project"]
@@ -185,11 +189,14 @@ flowchart TB
             S2["2. step-by-step-backend<br/>Step-by-step backend"]
             S3["3. store-app<br/>Final Vanilla Fullstack"]
             S4["4. store-app-svelte<br/>Advanced SvelteKit + Express"]
+            S0 ~~~ S1 ~~~ S2 ~~~ S3 ~~~ S4
         end
 
         subgraph DOCS["🌐 docs/ — GitHub Pages Demo"]
             DOC["Standalone browser frontend (Mock API in LocalStorage)"]
         end
+
+        RES ~~~ MOD1 ~~~ MOD2 ~~~ MOD3 ~~~ MOD4 ~~~ DOCS
     end
 ```
 
