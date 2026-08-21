@@ -136,114 +136,146 @@
 
 ```mermaid
 flowchart TD
-    %% 0. resources
-    H0["📂 <b>0. resources — Общие ресурсы курса</b>"]
-    R0["<span style='display:inline-block;text-decoration:none;'><b>0. shared</b><br/>Глоссарий терминов</span>"]
-    R1["<span style='display:inline-block;text-decoration:none;'><b>1. frontend</b><br/>Книги HTML/CSS/JS, Git</span>"]
-    R2["<span style='display:inline-block;text-decoration:none;'><b>2. databases</b><br/>Книги SQL, ER-модели</span>"]
-    R3["<span style='display:inline-block;text-decoration:none;'><b>3. backend</b><br/>Книга Node.js, Postman</span>"]
-    R4["<span style='display:inline-block;text-decoration:none;'><b>4. full-stack</b><br/>Методички и 100 заданий</span>"]
-    H0 --> R0 & R1 & R2
-    H0 --> R3 & R4
+    subgraph ROOT["🎓 Fullstack Web Development Course"]
+        direction TB
 
-    %% 1. frontend
-    H1["🎨 <b>1. frontend — Клиентская часть</b>"]
-    F1["<span style='display:inline-block;text-decoration:none;'><b>1. html-css-js</b><br/>22 урока (HTML5 / CSS3 / JS)</span>"]
-    F2["<span style='display:inline-block;text-decoration:none;'><b>2. webinars-lessons</b><br/>Вебинары и разборы</span>"]
-    F3["<span style='display:inline-block;text-decoration:none;'><b>3. example-landing</b><br/>Пример готового лендинга</span>"]
-    F4["<span style='display:inline-block;text-decoration:none;'><b>4. frontend-with-svelte...</b><br/>SvelteKit + бэкенд</span>"]
-    F5["<span style='display:inline-block;text-decoration:none;'><b>5. svelte-without-backend</b><br/>Автономный Svelte</span>"]
-    H1 --> F1 & F2 & F3
-    H1 --> F4 & F5
+        subgraph RES[" "]
+            direction TB
+            H_RES["📂 0. resources — Общие ресурсы"]
+            subgraph RES_ROW[" "]
+                direction LR
+                R0["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>0. shared</b><br/>Глоссарий терминов</div>"]
+                R1["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>1. frontend</b><br/>Книги HTML/CSS/JS и Git</div>"]
+                R2["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>2. databases</b><br/>Книги SQL и ER-схемы</div>"]
+                R3["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>3. backend</b><br/>Книга Node.js и Postman</div>"]
+                R4["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>4. full-stack</b><br/>100 вариантов заданий</div>"]
+                R0 ~~~ R1 ~~~ R2 ~~~ R3 ~~~ R4
+            end
+            H_RES ~~~ RES_ROW
+        end
 
-    %% 2. databases
-    H2["🗄️ <b>2. databases — Базы данных</b>"]
-    D1["<span style='display:inline-block;text-decoration:none;'><b>1. sql-mysql</b><br/>7 уроков (SQL, ER, CRUD, JOIN)</span>"]
-    D2["<span style='display:inline-block;text-decoration:none;'><b>2. webinars-lessons</b><br/>Вебинары и разборы</span>"]
-    H2 --> D1 & D2
+        subgraph MOD1[" "]
+            direction TB
+            H_MOD1["🎨 1. frontend — Клиентская часть"]
+            subgraph MOD1_ROW[" "]
+                direction LR
+                F1["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>1. html-css-js</b><br/>22 урока (HTML, CSS, JS)</div>"]
+                F2["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>2. webinars-lessons</b><br/>Записи вебинаров</div>"]
+                F3["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>3. example-landing</b><br/>Готовый лендинг</div>"]
+                F4["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>4. frontend-with-svelte...</b><br/>SvelteKit + бэкенд</div>"]
+                F5["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>5. svelte-without-backend</b><br/>Учебный Svelte (SPA)</div>"]
+                F1 ~~~ F2 ~~~ F3 ~~~ F4 ~~~ F5
+            end
+            H_MOD1 ~~~ MOD1_ROW
+        end
 
-    %% 3. backend
-    H3["⚙️ <b>3. backend — Серверная разработка</b>"]
-    B1["<span style='display:inline-block;text-decoration:none;'><b>1. node-js</b><br/>9 уроков (Node.js, Express, Auth)</span>"]
-    B2["<span style='display:inline-block;text-decoration:none;'><b>2. webinars-lessons</b><br/>Вебинары и разборы</span>"]
-    H3 --> B1 & B2
+        subgraph MOD2[" "]
+            direction TB
+            H_MOD2["🗄️ 2. databases — Базы данных"]
+            subgraph MOD2_ROW[" "]
+                direction LR
+                D1["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>1. sql-mysql</b><br/>7 уроков (CRUD, JOIN)</div>"]
+                D2["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>2. webinars-lessons</b><br/>Вебинары и разборы</div>"]
+                D1 ~~~ D2
+            end
+            H_MOD2 ~~~ MOD2_ROW
+        end
 
-    %% 4. full-stack-store-app
-    H4["🛍️ <b>4. full-stack-store-app — Итоговый интернет-магазин TechParts</b>"]
-    S0["<span style='display:inline-block;text-decoration:none;'><b>0. fast-version</b><br/>Быстрая сборка магазина</span>"]
-    S1["<span style='display:inline-block;text-decoration:none;'><b>1. step-by-step-frontend</b><br/>Пошаговый фронтенд</span>"]
-    S2["<span style='display:inline-block;text-decoration:none;'><b>2. step-by-step-backend</b><br/>Пошаговый бэкенд</span>"]
-    S3["<span style='display:inline-block;text-decoration:none;'><b>3. store-app</b><br/>Финальный Vanilla Fullstack</span>"]
-    S4["<span style='display:inline-block;text-decoration:none;'><b>4. store-app-svelte</b><br/>SvelteKit + Express</span>"]
-    H4 --> S0 & S1 & S2
-    H4 --> S3 & S4
+        subgraph MOD3[" "]
+            direction TB
+            H_MOD3["⚙️ 3. backend — Серверная часть"]
+            subgraph MOD3_ROW[" "]
+                direction LR
+                B1["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>1. node-js</b><br/>9 уроков (Express, REST API)</div>"]
+                B2["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>2. webinars-lessons</b><br/>Вебинары и разборы</div>"]
+                B1 ~~~ B2
+            end
+            H_MOD3 ~~~ MOD3_ROW
+        end
 
-    %% docs
-    H5["🌐 <b>docs/ — GitHub Pages Demo</b>"]
-    DOC["<span style='display:inline-block;text-decoration:none;'><b>docs/</b><br/>Автономный фронтенд в браузере (Mock API в LocalStorage)</span>"]
-    H5 --> DOC
+        subgraph MOD4[" "]
+            direction TB
+            H_MOD4["🛍️ 4. full-stack-store-app — Итоговый интернет-магазин TechParts"]
+            subgraph MOD4_ROW[" "]
+                direction LR
+                S0["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>0. fast-version</b><br/>Быстрая сборка магазина</div>"]
+                S1["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>1. step-by-step-frontend</b><br/>Пошаговый фронтенд</div>"]
+                S2["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>2. step-by-step-backend</b><br/>Пошаговый бэкенд</div>"]
+                S3["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>3. store-app</b><br/>Финальный Vanilla Fullstack</div>"]
+                S4["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>4. store-app-svelte</b><br/>Продвинутый SvelteKit + Express</div>"]
+                S0 ~~~ S1 ~~~ S2 ~~~ S3 ~~~ S4
+            end
+            H_MOD4 ~~~ MOD4_ROW
+        end
 
-    %% Flow between modules
-    H0 ~~~ H1 ~~~ H2 ~~~ H3 ~~~ H4 ~~~ H5
+        subgraph DOCS[" "]
+            direction TB
+            H_DOCS["🌐 docs/ — GitHub Pages Demo"]
+            subgraph DOCS_ROW[" "]
+                direction LR
+                DOC["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>docs/ (GitHub Pages)</b><br/>Автономный фронтенд в браузере (Mock API в LocalStorage)</div>"]
+            end
+            H_DOCS ~~~ DOCS_ROW
+        end
 
-    classDef header0 fill:#f8fafc,stroke:#64748b,stroke-width:2px,color:#0f172a,rx:8px,ry:8px;
-    classDef header1 fill:#f0f9ff,stroke:#0284c7,stroke-width:2px,color:#0369a1,rx:8px,ry:8px;
-    classDef header2 fill:#fffbeb,stroke:#d97706,stroke-width:2px,color:#92400e,rx:8px,ry:8px;
-    classDef header3 fill:#eef2ff,stroke:#6366f1,stroke-width:2px,color:#3730a3,rx:8px,ry:8px;
-    classDef header4 fill:#ecfdf5,stroke:#059669,stroke-width:2px,color:#065f46,rx:8px,ry:8px;
-    classDef header5 fill:#f1f5f9,stroke:#475569,stroke-width:2px,color:#1e293b,rx:8px,ry:8px;
+        RES ~~~ MOD1 ~~~ MOD2 ~~~ MOD3 ~~~ MOD4 ~~~ DOCS
+    end
 
-    classDef card0 fill:#ffffff,stroke:#94a3b8,stroke-width:1.5px,color:#1e293b,rx:8px,ry:8px;
-    classDef card1 fill:#ffffff,stroke:#0ea5e9,stroke-width:1.5px,color:#0369a1,rx:8px,ry:8px;
-    classDef card2 fill:#ffffff,stroke:#f59e0b,stroke-width:1.5px,color:#92400e,rx:8px,ry:8px;
-    classDef card3 fill:#ffffff,stroke:#818cf8,stroke-width:1.5px,color:#3730a3,rx:8px,ry:8px;
-    classDef card4 fill:#ffffff,stroke:#10b981,stroke-width:1.5px,color:#065f46,rx:8px,ry:8px;
-    classDef card5 fill:#ffffff,stroke:#64748b,stroke-width:1.5px,color:#1e293b,rx:8px,ry:8px;
+    classDef headerStyle fill:transparent,stroke:transparent,color:#0f172a,font-weight:bold,font-size:14px;
+    classDef resStyle fill:#f8fafc,stroke:#64748b,stroke-width:1.5px,color:#0f172a,rx:8px,ry:8px,text-decoration:none;
+    classDef frontStyle fill:#f0f9ff,stroke:#0284c7,stroke-width:1.5px,color:#0369a1,rx:8px,ry:8px,text-decoration:none;
+    classDef dbStyle fill:#fffbeb,stroke:#d97706,stroke-width:1.5px,color:#92400e,rx:8px,ry:8px,text-decoration:none;
+    classDef backStyle fill:#eef2ff,stroke:#6366f1,stroke-width:1.5px,color:#3730a3,rx:8px,ry:8px,text-decoration:none;
+    classDef appStyle fill:#ecfdf5,stroke:#059669,stroke-width:1.5px,color:#065f46,rx:8px,ry:8px,text-decoration:none;
+    classDef docStyle fill:#f1f5f9,stroke:#475569,stroke-width:1.5px,color:#1e293b,rx:8px,ry:8px,text-decoration:none;
 
-    class H0 header0;
-    class H1 header1;
-    class H2 header2;
-    class H3 header3;
-    class H4 header4;
-    class H5 header5;
+    class H_RES,H_MOD1,H_MOD2,H_MOD3,H_MOD4,H_DOCS headerStyle;
+    class R0,R1,R2,R3,R4 resStyle;
+    class F1,F2,F3,F4,F5 frontStyle;
+    class D1,D2 dbStyle;
+    class B1,B2 backStyle;
+    class S0,S1,S2,S3,S4 appStyle;
+    class DOC docStyle;
 
-    class R0,R1,R2,R3,R4 card0;
-    class F1,F2,F3,F4,F5 card1;
-    class D1,D2 card2;
-    class B1,B2 card3;
-    class S0,S1,S2,S3,S4 card4;
-    class DOC card5;
+    style ROOT fill:#f8fafc,stroke:#cbd5e1,stroke-width:1.5px
+    style RES fill:#ffffff,stroke:#e2e8f0,stroke-width:1.5px
+    style MOD1 fill:#ffffff,stroke:#e2e8f0,stroke-width:1.5px
+    style MOD2 fill:#ffffff,stroke:#e2e8f0,stroke-width:1.5px
+    style MOD3 fill:#ffffff,stroke:#e2e8f0,stroke-width:1.5px
+    style MOD4 fill:#ffffff,stroke:#e2e8f0,stroke-width:1.5px
+    style DOCS fill:#ffffff,stroke:#e2e8f0,stroke-width:1.5px
 
-    click H0 "./0.%20resources/" "Открыть 0. resources"
+    style RES_ROW fill:none,stroke:none
+    style MOD1_ROW fill:none,stroke:none
+    style MOD2_ROW fill:none,stroke:none
+    style MOD3_ROW fill:none,stroke:none
+    style MOD4_ROW fill:none,stroke:none
+    style DOCS_ROW fill:none,stroke:none
+
     click R0 "./0.%20resources/0.%20shared/" "Открыть 0. shared"
     click R1 "./0.%20resources/1.%20frontend/" "Открыть 1. frontend"
     click R2 "./0.%20resources/2.%20databases/" "Открыть 2. databases"
     click R3 "./0.%20resources/3.%20backend/" "Открыть 3. backend"
     click R4 "./0.%20resources/4.%20full-stack/" "Открыть 4. full-stack"
 
-    click H1 "./1.%20frontend/" "Открыть 1. frontend"
     click F1 "./1.%20frontend/1.%20html-css-js/" "Открыть 1. html-css-js"
     click F2 "./1.%20frontend/2.%20webinars-lessons/" "Открыть 2. webinars-lessons"
     click F3 "./1.%20frontend/3.%20example-landing/" "Открыть 3. example-landing"
     click F4 "./1.%20frontend/4.%20frontend-with-svelte-and-backend/" "Открыть 4. frontend-with-svelte-and-backend"
     click F5 "./1.%20frontend/5.%20svelte-without-backend/" "Открыть 5. svelte-without-backend"
 
-    click H2 "./2.%20databases/" "Открыть 2. databases"
     click D1 "./2.%20databases/1.%20sql-mysql/" "Открыть 1. sql-mysql"
     click D2 "./2.%20databases/2.%20webinars-lessons/" "Открыть 2. webinars-lessons"
 
-    click H3 "./3.%20backend/" "Открыть 3. backend"
     click B1 "./3.%20backend/1.%20node-js/" "Открыть 1. node-js"
     click B2 "./3.%20backend/2.%20webinars-lessons/" "Открыть 2. webinars-lessons"
 
-    click H4 "./4.%20full-stack-store-app/" "Открыть 4. full-stack-store-app"
     click S0 "./4.%20full-stack-store-app/0.%20fast-version/" "Открыть 0. fast-version"
     click S1 "./4.%20full-stack-store-app/1.%20step-by-step-frontend/" "Открыть 1. step-by-step-frontend"
     click S2 "./4.%20full-stack-store-app/2.%20step-by-step-backend/" "Открыть 2. step-by-step-backend"
     click S3 "./4.%20full-stack-store-app/3.%20store-app/" "Открыть 3. store-app"
     click S4 "./4.%20full-stack-store-app/4.%20store-app-svelte/" "Открыть 4. store-app-svelte"
 
-    click H5 "./docs/" "Открыть docs"
     click DOC "./docs/" "Открыть демо docs"
 ```
 
