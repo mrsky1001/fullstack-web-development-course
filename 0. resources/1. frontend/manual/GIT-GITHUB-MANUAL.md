@@ -138,8 +138,8 @@ git clone https://github.com/mrsky1001/fullstack-web-development-course.git
 📁 Documents/
    └── 📂 fullstack-web-development-course/  ← Курс скачан!
        ├── 📁 1. frontend/
-       ├── 📁 2. backend/
-       ├── 📁 3. databases/
+       ├── 📁 2. databases/
+       ├── 📁 3. backend/
        └── ...
 ```
 

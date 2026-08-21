@@ -72,13 +72,39 @@ The course is divided into **4 main modules**, each containing practical example
 
 ---
 
-### 2️⃣ Backend — Server-Side Development
+### 2️⃣ Databases — Data Management
 
-📁 **Path:** [`2. backend/`](./2.%20backend/)
+📁 **Path:** [`2. databases/`](./2.%20databases/)
+
+The databases module is split into main lessons and webinars:
+*   📁 **[1. sql-mysql/](./2.%20databases/1.%20sql-mysql/)** — main lessons on SQL and MySQL.
+*   📁 **[2. webinars-lessons/](./2.%20databases/2.%20webinars-lessons/)** — additional webinar materials.
 
 | # | Lesson | Topic | Resources & Books |
 |---|--------|-------|-------------------|
-| 01 | Course Introduction | Overview of server-side development | Node.js book, Postman API testing guide in [0. resources/2. backend/](./0.%20resources/2.%20backend/) |
+| 01 | [Course Introduction](./2.%20databases/1.%20sql-mysql/01-course-introduction/) | Database overview | Database & SQL books in [0. resources/2. databases/](./0.%20resources/2.%20databases/) |
+| 02 | [DBMS Types](./2.%20databases/1.%20sql-mysql/02-databases-and-dbms-introduction/) | Relational and non-relational databases | |
+| 03 | [MySQL Installation](./2.%20databases/1.%20sql-mysql/03-mysql-installation-and-setup/) | Environment setup | |
+| 04 | [Database Design](./2.%20databases/1.%20sql-mysql/04-database-design-and-er-diagrams/) | ER diagrams, normalization | |
+| 05 | [SQL Basics (CREATE)](./2.%20databases/1.%20sql-mysql/05-sql-basics-and-create-commands/) | Creating tables | |
+| 06 | [CRUD Operations](./2.%20databases/1.%20sql-mysql/06-sql-select-insert-update-delete/) | SELECT, INSERT, UPDATE, DELETE | |
+| 07 | [JOIN and Aggregation](./2.%20databases/1.%20sql-mysql/07-sql-joins-grouping-and-aggregation/) | Table joins, grouping | |
+
+**Key Topics:**
+- 🗄 Relational data model
+- 📊 SQL queries
+- 🔗 Table relationships
+- 📐 Database schema design
+
+---
+
+### 3️⃣ Backend — Server-Side Development
+
+📁 **Path:** [`3. backend/`](./3.%20backend/)
+
+| # | Lesson | Topic | Resources & Books |
+|---|--------|-------|-------------------|
+| 01 | Course Introduction | Overview of server-side development | Node.js book, Postman API testing guide in [0. resources/3. backend/](./0.%20resources/3.%20backend/) |
 | 02 | Client-Server Architecture | HTTP, REST, API | |
 | 03 | Node.js and Express | Creating your first server | |
 | 04 | Routing and Middleware | Request handling | |
@@ -93,32 +119,6 @@ The course is divided into **4 main modules**, each containing practical example
 - 🔐 Authentication and sessions
 - 📡 REST API design
 - 🏗 Architectural patterns
-
----
-
-### 3️⃣ Databases — Data Management
-
-📁 **Path:** [`3. databases/`](./3.%20databases/)
-
-The databases module is split into main lessons and webinars:
-*   📁 **[1. sql-mysql/](./3.%20databases/1.%20sql-mysql/)** — main lessons on SQL and MySQL.
-*   📁 **[2. webinars-lessons/](./3.%20databases/2.%20webinars-lessons/)** — additional webinar materials.
-
-| # | Lesson | Topic | Resources & Books |
-|---|--------|-------|-------------------|
-| 01 | [Course Introduction](./3.%20databases/1.%20sql-mysql/01-course-introduction/) | Database overview | Database & SQL books in [0. resources/3. databases/](./0.%20resources/3.%20databases/) |
-| 02 | [DBMS Types](./3.%20databases/1.%20sql-mysql/02-databases-and-dbms-introduction/) | Relational and non-relational databases | |
-| 03 | [MySQL Installation](./3.%20databases/1.%20sql-mysql/03-mysql-installation-and-setup/) | Environment setup | |
-| 04 | [Database Design](./3.%20databases/1.%20sql-mysql/04-database-design-and-er-diagrams/) | ER diagrams, normalization | |
-| 05 | [SQL Basics (CREATE)](./3.%20databases/1.%20sql-mysql/05-sql-basics-and-create-commands/) | Creating tables | |
-| 06 | [CRUD Operations](./3.%20databases/1.%20sql-mysql/06-sql-select-insert-update-delete/) | SELECT, INSERT, UPDATE, DELETE | |
-| 07 | [JOIN and Aggregation](./3.%20databases/1.%20sql-mysql/07-sql-joins-grouping-and-aggregation/) | Table joins, grouping | |
-
-**Key Topics:**
-- 🗄 Relational data model
-- 📊 SQL queries
-- 🔗 Table relationships
-- 📐 Database schema design
 
 ---
 
@@ -152,8 +152,8 @@ flowchart TD
             direction LR
             R0["0. shared<br/>Glossary of terms"]
             R1["1. frontend<br/>HTML/CSS/JS books, Git, WebStorm"]
-            R2["2. backend<br/>Node.js book, Postman guide"]
-            R3["3. databases<br/>SQL books, ER diagrams"]
+            R2["2. databases<br/>SQL books, ER diagrams"]
+            R3["3. backend<br/>Node.js book, Postman guide"]
             R4["4. full-stack<br/>Guidelines & 100 coursework tasks"]
             R0 ~~~ R1 ~~~ R2 ~~~ R3 ~~~ R4
         end
@@ -168,18 +168,18 @@ flowchart TD
             F1 ~~~ F2 ~~~ F3 ~~~ F4 ~~~ F5
         end
 
-        subgraph MOD2["⚙️ 2. backend — Server-side Development"]
-            direction LR
-            B1["1. node-js<br/>9 Lessons (Node.js, Express, REST API, Auth)"]
-            B2["2. webinars-lessons<br/>Webinars & reviews"]
-            B1 ~~~ B2
-        end
-
-        subgraph MOD3["🗄️ 3. databases — Database Development"]
+        subgraph MOD2["🗄️ 2. databases — Database Development"]
             direction LR
             D1["1. sql-mysql<br/>7 Lessons (ER, CRUD, JOIN, Grouping)"]
             D2["2. webinars-lessons<br/>Webinars & reviews"]
             D1 ~~~ D2
+        end
+
+        subgraph MOD3["⚙️ 3. backend — Server-side Development"]
+            direction LR
+            B1["1. node-js<br/>9 Lessons (Node.js, Express, REST API, Auth)"]
+            B2["2. webinars-lessons<br/>Webinars & reviews"]
+            B1 ~~~ B2
         end
 
         subgraph MOD4["🛍️ 4. full-stack-store-app — TechParts Store Project"]
@@ -198,6 +198,54 @@ flowchart TD
 
         RES ~~~ MOD1 ~~~ MOD2 ~~~ MOD3 ~~~ MOD4 ~~~ DOCS
     end
+
+    classDef resStyle fill:#f8fafc,stroke:#64748b,stroke-width:1.5px,color:#0f172a,rx:8px,ry:8px;
+    classDef frontStyle fill:#f0f9ff,stroke:#0284c7,stroke-width:1.5px,color:#0369a1,rx:8px,ry:8px;
+    classDef dbStyle fill:#fffbeb,stroke:#d97706,stroke-width:1.5px,color:#92400e,rx:8px,ry:8px;
+    classDef backStyle fill:#eef2ff,stroke:#6366f1,stroke-width:1.5px,color:#3730a3,rx:8px,ry:8px;
+    classDef appStyle fill:#ecfdf5,stroke:#059669,stroke-width:1.5px,color:#065f46,rx:8px,ry:8px;
+    classDef docStyle fill:#f1f5f9,stroke:#475569,stroke-width:1.5px,color:#1e293b,rx:8px,ry:8px;
+
+    class R0,R1,R2,R3,R4 resStyle;
+    class F1,F2,F3,F4,F5 frontStyle;
+    class D1,D2 dbStyle;
+    class B1,B2 backStyle;
+    class S0,S1,S2,S3,S4 appStyle;
+    class DOC docStyle;
+
+    style ROOT fill:#f8fafc,stroke:#cbd5e1,stroke-width:1.5px
+    style RES fill:#ffffff,stroke:#e2e8f0,stroke-width:1.5px
+    style MOD1 fill:#ffffff,stroke:#e2e8f0,stroke-width:1.5px
+    style MOD2 fill:#ffffff,stroke:#e2e8f0,stroke-width:1.5px
+    style MOD3 fill:#ffffff,stroke:#e2e8f0,stroke-width:1.5px
+    style MOD4 fill:#ffffff,stroke:#e2e8f0,stroke-width:1.5px
+    style DOCS fill:#ffffff,stroke:#e2e8f0,stroke-width:1.5px
+
+    click R0 "./0.%20resources/0.%20shared/" "Open 0. shared"
+    click R1 "./0.%20resources/1.%20frontend/" "Open 1. frontend"
+    click R2 "./0.%20resources/2.%20databases/" "Open 2. databases"
+    click R3 "./0.%20resources/3.%20backend/" "Open 3. backend"
+    click R4 "./0.%20resources/4.%20full-stack/" "Open 4. full-stack"
+
+    click F1 "./1.%20frontend/1.%20html-css-js/" "Open 1. html-css-js"
+    click F2 "./1.%20frontend/2.%20webinars-lessons/" "Open 2. webinars-lessons"
+    click F3 "./1.%20frontend/3.%20example-landing/" "Open 3. example-landing"
+    click F4 "./1.%20frontend/4.%20frontend-with-svelte-and-backend/" "Open 4. frontend-with-svelte-and-backend"
+    click F5 "./1.%20frontend/5.%20svelte-without-backend/" "Open 5. svelte-without-backend"
+
+    click D1 "./2.%20databases/1.%20sql-mysql/" "Open 1. sql-mysql"
+    click D2 "./2.%20databases/2.%20webinars-lessons/" "Open 2. webinars-lessons"
+
+    click B1 "./3.%20backend/1.%20node-js/" "Open 1. node-js"
+    click B2 "./3.%20backend/2.%20webinars-lessons/" "Open 2. webinars-lessons"
+
+    click S0 "./4.%20full-stack-store-app/0.%20fast-version/" "Open 0. fast-version"
+    click S1 "./4.%20full-stack-store-app/1.%20step-by-step-frontend/" "Open 1. step-by-step-frontend"
+    click S2 "./4.%20full-stack-store-app/2.%20step-by-step-backend/" "Open 2. step-by-step-backend"
+    click S3 "./4.%20full-stack-store-app/3.%20store-app/" "Open 3. store-app"
+    click S4 "./4.%20full-stack-store-app/4.%20store-app-svelte/" "Open 4. store-app-svelte"
+
+    click DOC "./docs/" "Open demo docs"
 ```
 
 ### 🛣️ Learning Roadmap
@@ -205,11 +253,27 @@ flowchart TD
 ```mermaid
 flowchart LR
     Start(["🚀 Start"]) --> F["1️⃣ Frontend<br/>(1. frontend/)<br/>HTML5, CSS3, JS"]
-    F --> D["2️⃣ Databases<br/>(3. databases/)<br/>SQL & MySQL"]
-    D --> B["3️⃣ Backend<br/>(2. backend/)<br/>Node.js & Express API"]
+    F --> D["2️⃣ Databases<br/>(2. databases/)<br/>SQL & MySQL"]
+    D --> B["3️⃣ Backend<br/>(3. backend/)<br/>Node.js & Express API"]
     B --> App["4️⃣ Fullstack Project<br/>(4. full-stack-store-app/)<br/>TechParts Store"]
-    
     App --> Done(["🏆 Portfolio Ready"])
+
+    classDef startDone fill:#f1f5f9,stroke:#475569,stroke-width:2px,color:#0f172a,rx:20px,ry:20px;
+    classDef front fill:#f0f9ff,stroke:#0ea5e9,stroke-width:2px,color:#0369a1,rx:10px,ry:10px;
+    classDef db fill:#fffbeb,stroke:#f59e0b,stroke-width:2px,color:#92400e,rx:10px,ry:10px;
+    classDef back fill:#eef2ff,stroke:#6366f1,stroke-width:2px,color:#3730a3,rx:10px,ry:10px;
+    classDef app fill:#ecfdf5,stroke:#10b981,stroke-width:2px,color:#065f46,rx:10px,ry:10px;
+
+    class Start,Done startDone;
+    class F front;
+    class D db;
+    class B back;
+    class App app;
+
+    click F "./1.%20frontend/" "Go to Frontend"
+    click D "./2.%20databases/" "Go to Databases"
+    click B "./3.%20backend/" "Go to Backend"
+    click App "./4.%20full-stack-store-app/" "Go to Fullstack Store App"
 ```
 
 ```text
@@ -218,8 +282,8 @@ fullstack-web-development-course/
 │   ├── 0. shared/                   # Common resources for the whole course
 │   │   └── glossary/                # Glossary of terms (RU/EN)
 │   ├── 1. frontend/                 # HTML/CSS/JS books, WebStorm and Git guides
-│   ├── 2. backend/                  # Node.js book, Postman API testing guide
-│   ├── 3. databases/                # SQL books, ER modeling and database design guides
+│   ├── 2. databases/                # SQL books, ER modeling and database design guides
+│   ├── 3. backend/                  # Node.js book, Postman API testing guide
 │   └── 4. full-stack/               # Web app development guide and coursework tasks
 ├── 1. frontend/                     # Client-side development
 │   ├── 1. html-css-js/              # Base 22 lessons
@@ -228,12 +292,12 @@ fullstack-web-development-course/
 │   ├── 3. example-landing/          # Simple landing page example
 │   ├── 4. frontend-with-svelte-and-backend/
 │   └── 5. svelte-without-backend/   # Standalone educational Svelte version of the store
-├── 2. backend/                      # Server-side development
-│   ├── 1. node-js/                  # Base 9 lessons
-│   └── 2. webinars-lessons/         # Additional backend webinars
-├── 3. databases/                    # Databases module
+├── 2. databases/                    # Databases module
 │   ├── 1. sql-mysql/                # 7 lessons on SQL and MySQL
 │   └── 2. webinars-lessons/         # Database webinars
+├── 3. backend/                      # Server-side development
+│   ├── 1. node-js/                  # Base 9 lessons
+│   └── 2. webinars-lessons/         # Additional backend webinars
 ├── 4. full-stack-store-app/         # Final and practical projects
 │   ├── 0. fast-version/             # Fast-track store implementation
 │   ├── 1. step-by-step-frontend/    # Step-by-step store frontend assembly
@@ -279,8 +343,8 @@ cd fullstack-web-development-course
 Recommended learning path:
 
 1. **Frontend** → Start with [`1. frontend/1. html-css-js/`](./1.%20frontend/1.%20html-css-js/)
-2. **Databases** → Continue with [`3. databases/`](./3.%20databases/)
-3. **Backend** → Then [`2. backend/`](./2.%20backend/)
+2. **Databases** → Continue with [`2. databases/`](./2.%20databases/)
+3. **Backend** → Then [`3. backend/`](./3.%20backend/)
 4. **Full-stack** → Final project [`4. full-stack-store-app/`](./4.%20full-stack-store-app/)
 
 ### Step 3: Follow the Lessons
@@ -313,8 +377,8 @@ Each lesson contains:
 |----------|-------------|
 | [0. shared/](./0.%20resources/0.%20shared/) | Common resources for the whole course (glossary, etc.) |
 | [1. frontend/](./0.%20resources/1.%20frontend/) | HTML/CSS/JS books, Git manual, and WebStorm installation guides |
-| [2. backend/](./0.%20resources/2.%20backend/) | Node.js book, API testing manual with Postman |
-| [3. databases/](./0.%20resources/3.%20databases/) | Materials and books regarding databases and SQL |
+| [2. databases/](./0.%20resources/2.%20databases/) | Materials and books regarding databases and SQL |
+| [3. backend/](./0.%20resources/3.%20backend/) | Node.js book, API testing manual with Postman |
 | [4. full-stack/](./0.%20resources/4.%20full-stack/) | Web application development guides and coursework topics |
 
 ---

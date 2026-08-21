@@ -63,13 +63,39 @@
 
 ---
 
-### 2️⃣ Backend — Серверная разработка
+### 2️⃣ Databases — Базы данных
 
-📁 **Путь:** [`2. backend/`](./2.%20backend/)
+📁 **Путь:** [`2. databases/`](./2.%20databases/)
+
+Модуль баз данных разделен на основные уроки и дополнительные вебинары:
+*   📁 **[1. sql-mysql/](./2.%20databases/1.%20sql-mysql/)** — основные уроки по SQL.
+*   📁 **[2. webinars-lessons/](./2.%20databases/2.%20webinars-lessons/)** — дополнительные материалы.
 
 | # | Урок | Тема | Ресурсы и Книги |
 |---|------|------|-----------------|
-| 01 | Введение в курс | Обзор серверной разработки | Книга по Node.js, руководство по Postman в [0. resources/2. backend/](./0.%20resources/2.%20backend/) |
+| 01 | [Введение в курс](./2.%20databases/1.%20sql-mysql/01-course-introduction/) | Обзор баз данных | Материалы и книги по SQL в [0. resources/2. databases/](./0.%20resources/2.%20databases/) |
+| 02 | [СУБД и их виды](./2.%20databases/1.%20sql-mysql/02-databases-and-dbms-introduction/) | Реляционные и нереляционные БД | |
+| 03 | [Установка MySQL](./2.%20databases/1.%20sql-mysql/03-mysql-installation-and-setup/) | Настройка окружения | |
+| 04 | [Проектирование БД](./2.%20databases/1.%20sql-mysql/04-database-design-and-er-diagrams/) | ER-диаграммы, нормализация | |
+| 05 | [Основы SQL (CREATE)](./2.%20databases/1.%20sql-mysql/05-sql-basics-and-create-commands/) | Создание таблиц | |
+| 06 | [CRUD операции](./2.%20databases/1.%20sql-mysql/06-sql-select-insert-update-delete/) | SELECT, INSERT, UPDATE, DELETE | |
+| 07 | [JOIN и агрегация](./2.%20databases/1.%20sql-mysql/07-sql-joins-grouping-and-aggregation/) | Объединение таблиц, группировка | |
+
+**Ключевые темы:**
+- 🗄 Реляционная модель данных
+- 📊 SQL запросы
+- 🔗 Связи между таблицами
+- 📐 Проектирование схемы БД
+
+---
+
+### 3️⃣ Backend — Серверная разработка
+
+📁 **Путь:** [`3. backend/`](./3.%20backend/)
+
+| # | Урок | Тема | Ресурсы и Книги |
+|---|------|------|-----------------|
+| 01 | Введение в курс | Обзор серверной разработки | Книга по Node.js, руководство по Postman в [0. resources/3. backend/](./0.%20resources/3.%20backend/) |
 | 02 | Клиент-серверная архитектура | HTTP, REST, API | |
 | 03 | Node.js и Express | Создание первого сервера | |
 | 04 | Маршрутизация и Middleware | Роутинг, обработка запросов | |
@@ -84,32 +110,6 @@
 - 🔐 Аутентификация и сессии
 - 📡 REST API дизайн
 - 🏗 Архитектурные паттерны
-
----
-
-### 3️⃣ Databases — Базы данных
-
-📁 **Путь:** [`3. databases/`](./3.%20databases/)
-
-Модуль баз данных разделен на основные уроки и дополнительные вебинары:
-*   📁 **[1. sql-mysql/](./3.%20databases/1.%20sql-mysql/)** — основные уроки по SQL.
-*   📁 **[2. webinars-lessons/](./3.%20databases/2.%20webinars-lessons/)** — дополнительные материалы.
-
-| # | Урок | Тема | Ресурсы и Книги |
-|---|------|------|-----------------|
-| 01 | [Введение в курс](./3.%20databases/1.%20sql-mysql/01-course-introduction/) | Обзор баз данных | Материалы и книги по SQL в [0. resources/3. databases/](./0.%20resources/3.%20databases/) |
-| 02 | [СУБД и их виды](./3.%20databases/1.%20sql-mysql/02-databases-and-dbms-introduction/) | Реляционные и нереляционные БД | |
-| 03 | [Установка MySQL](./3.%20databases/1.%20sql-mysql/03-mysql-installation-and-setup/) | Настройка окружения | |
-| 04 | [Проектирование БД](./3.%20databases/1.%20sql-mysql/04-database-design-and-er-diagrams/) | ER-диаграммы, нормализация | |
-| 05 | [Основы SQL (CREATE)](./3.%20databases/1.%20sql-mysql/05-sql-basics-and-create-commands/) | Создание таблиц | |
-| 06 | [CRUD операции](./3.%20databases/1.%20sql-mysql/06-sql-select-insert-update-delete/) | SELECT, INSERT, UPDATE, DELETE | |
-| 07 | [JOIN и агрегация](./3.%20databases/1.%20sql-mysql/07-sql-joins-grouping-and-aggregation/) | Объединение таблиц, группировка | |
-
-**Ключевые темы:**
-- 🗄 Реляционная модель данных
-- 📊 SQL запросы
-- 🔗 Связи между таблицами
-- 📐 Проектирование схемы БД
 
 ---
 
@@ -143,8 +143,8 @@ flowchart TD
             direction LR
             R0["0. shared<br/>Глоссарий терминов"]
             R1["1. frontend<br/>Книги HTML/CSS/JS, Git, WebStorm"]
-            R2["2. backend<br/>Книга Node.js, гайд Postman"]
-            R3["3. databases<br/>Книги SQL, ER-диаграммы"]
+            R2["2. databases<br/>Книги SQL, ER-диаграммы"]
+            R3["3. backend<br/>Книга Node.js, гайд Postman"]
             R4["4. full-stack<br/>Методички и 100 вариантов заданий"]
             R0 ~~~ R1 ~~~ R2 ~~~ R3 ~~~ R4
         end
@@ -159,18 +159,18 @@ flowchart TD
             F1 ~~~ F2 ~~~ F3 ~~~ F4 ~~~ F5
         end
 
-        subgraph MOD2["⚙️ 2. backend — Серверная часть"]
-            direction LR
-            B1["1. node-js<br/>9 уроков (Node.js, Express, REST API, Auth)"]
-            B2["2. webinars-lessons<br/>Вебинары и разборы"]
-            B1 ~~~ B2
-        end
-
-        subgraph MOD3["🗄️ 3. databases — Базы данных"]
+        subgraph MOD2["🗄️ 2. databases — Базы данных"]
             direction LR
             D1["1. sql-mysql<br/>7 уроков (ER, CRUD, JOIN, Grouping)"]
             D2["2. webinars-lessons<br/>Вебинары и разборы"]
             D1 ~~~ D2
+        end
+
+        subgraph MOD3["⚙️ 3. backend — Серверная часть"]
+            direction LR
+            B1["1. node-js<br/>9 уроков (Node.js, Express, REST API, Auth)"]
+            B2["2. webinars-lessons<br/>Вебинары и разборы"]
+            B1 ~~~ B2
         end
 
         subgraph MOD4["🛍️ 4. full-stack-store-app — Итоговый интернет-магазин TechParts"]
@@ -189,6 +189,54 @@ flowchart TD
 
         RES ~~~ MOD1 ~~~ MOD2 ~~~ MOD3 ~~~ MOD4 ~~~ DOCS
     end
+
+    classDef resStyle fill:#f8fafc,stroke:#64748b,stroke-width:1.5px,color:#0f172a,rx:8px,ry:8px;
+    classDef frontStyle fill:#f0f9ff,stroke:#0284c7,stroke-width:1.5px,color:#0369a1,rx:8px,ry:8px;
+    classDef dbStyle fill:#fffbeb,stroke:#d97706,stroke-width:1.5px,color:#92400e,rx:8px,ry:8px;
+    classDef backStyle fill:#eef2ff,stroke:#6366f1,stroke-width:1.5px,color:#3730a3,rx:8px,ry:8px;
+    classDef appStyle fill:#ecfdf5,stroke:#059669,stroke-width:1.5px,color:#065f46,rx:8px,ry:8px;
+    classDef docStyle fill:#f1f5f9,stroke:#475569,stroke-width:1.5px,color:#1e293b,rx:8px,ry:8px;
+
+    class R0,R1,R2,R3,R4 resStyle;
+    class F1,F2,F3,F4,F5 frontStyle;
+    class D1,D2 dbStyle;
+    class B1,B2 backStyle;
+    class S0,S1,S2,S3,S4 appStyle;
+    class DOC docStyle;
+
+    style ROOT fill:#f8fafc,stroke:#cbd5e1,stroke-width:1.5px
+    style RES fill:#ffffff,stroke:#e2e8f0,stroke-width:1.5px
+    style MOD1 fill:#ffffff,stroke:#e2e8f0,stroke-width:1.5px
+    style MOD2 fill:#ffffff,stroke:#e2e8f0,stroke-width:1.5px
+    style MOD3 fill:#ffffff,stroke:#e2e8f0,stroke-width:1.5px
+    style MOD4 fill:#ffffff,stroke:#e2e8f0,stroke-width:1.5px
+    style DOCS fill:#ffffff,stroke:#e2e8f0,stroke-width:1.5px
+
+    click R0 "./0.%20resources/0.%20shared/" "Открыть 0. shared"
+    click R1 "./0.%20resources/1.%20frontend/" "Открыть 1. frontend"
+    click R2 "./0.%20resources/2.%20databases/" "Открыть 2. databases"
+    click R3 "./0.%20resources/3.%20backend/" "Открыть 3. backend"
+    click R4 "./0.%20resources/4.%20full-stack/" "Открыть 4. full-stack"
+
+    click F1 "./1.%20frontend/1.%20html-css-js/" "Открыть 1. html-css-js"
+    click F2 "./1.%20frontend/2.%20webinars-lessons/" "Открыть 2. webinars-lessons"
+    click F3 "./1.%20frontend/3.%20example-landing/" "Открыть 3. example-landing"
+    click F4 "./1.%20frontend/4.%20frontend-with-svelte-and-backend/" "Открыть 4. frontend-with-svelte-and-backend"
+    click F5 "./1.%20frontend/5.%20svelte-without-backend/" "Открыть 5. svelte-without-backend"
+
+    click D1 "./2.%20databases/1.%20sql-mysql/" "Открыть 1. sql-mysql"
+    click D2 "./2.%20databases/2.%20webinars-lessons/" "Открыть 2. webinars-lessons"
+
+    click B1 "./3.%20backend/1.%20node-js/" "Открыть 1. node-js"
+    click B2 "./3.%20backend/2.%20webinars-lessons/" "Открыть 2. webinars-lessons"
+
+    click S0 "./4.%20full-stack-store-app/0.%20fast-version/" "Открыть 0. fast-version"
+    click S1 "./4.%20full-stack-store-app/1.%20step-by-step-frontend/" "Открыть 1. step-by-step-frontend"
+    click S2 "./4.%20full-stack-store-app/2.%20step-by-step-backend/" "Открыть 2. step-by-step-backend"
+    click S3 "./4.%20full-stack-store-app/3.%20store-app/" "Открыть 3. store-app"
+    click S4 "./4.%20full-stack-store-app/4.%20store-app-svelte/" "Открыть 4. store-app-svelte"
+
+    click DOC "./docs/" "Открыть демо docs"
 ```
 
 ### 🛣️ Дорожная карта обучения (Roadmap)
@@ -196,11 +244,27 @@ flowchart TD
 ```mermaid
 flowchart LR
     Start(["🚀 Старт"]) --> F["1️⃣ Frontend<br/>(1. frontend/)<br/>HTML5, CSS3, JS"]
-    F --> D["2️⃣ Databases<br/>(3. databases/)<br/>SQL & MySQL"]
-    D --> B["3️⃣ Backend<br/>(2. backend/)<br/>Node.js & Express API"]
+    F --> D["2️⃣ Databases<br/>(2. databases/)<br/>SQL & MySQL"]
+    D --> B["3️⃣ Backend<br/>(3. backend/)<br/>Node.js & Express API"]
     B --> App["4️⃣ Fullstack Проект<br/>(4. full-stack-store-app/)<br/>TechParts Store"]
-    
     App --> Done(["🏆 Готовое портфолио"])
+
+    classDef startDone fill:#f1f5f9,stroke:#475569,stroke-width:2px,color:#0f172a,rx:20px,ry:20px;
+    classDef front fill:#f0f9ff,stroke:#0ea5e9,stroke-width:2px,color:#0369a1,rx:10px,ry:10px;
+    classDef db fill:#fffbeb,stroke:#f59e0b,stroke-width:2px,color:#92400e,rx:10px,ry:10px;
+    classDef back fill:#eef2ff,stroke:#6366f1,stroke-width:2px,color:#3730a3,rx:10px,ry:10px;
+    classDef app fill:#ecfdf5,stroke:#10b981,stroke-width:2px,color:#065f46,rx:10px,ry:10px;
+
+    class Start,Done startDone;
+    class F front;
+    class D db;
+    class B back;
+    class App app;
+
+    click F "./1.%20frontend/" "Перейти в Frontend"
+    click D "./2.%20databases/" "Перейти в Databases"
+    click B "./3.%20backend/" "Перейти в Backend"
+    click App "./4.%20full-stack-store-app/" "Перейти в Fullstack Store App"
 ```
 
 ```text
@@ -209,8 +273,8 @@ fullstack-web-development-course/
 │   ├── 0. shared/                   # Общие для всего курса ресурсы
 │   │   └── glossary/                # Словарь терминов (RU/EN)
 │   ├── 1. frontend/                 # Книги по HTML/CSS/JS, руководства по WebStorm и Git
-│   ├── 2. backend/                  # Книга по Node.js, руководство по Postman
-│   ├── 3. databases/                # Книги по SQL, руководства по проектированию БД и ER-моделям
+│   ├── 2. databases/                # Книги по SQL, руководства по проектированию БД и ER-моделям
+│   ├── 3. backend/                  # Книга по Node.js, руководство по Postman
 │   └── 4. full-stack/               # Методички по веб-разработке и 100 вариантов заданий
 ├── 1. frontend/                     # Клиентская часть
 │   ├── 1. html-css-js/              # Базовые 22 урока
@@ -219,12 +283,12 @@ fullstack-web-development-course/
 │   ├── 3. example-landing/          # Пример простого лендинга
 │   ├── 4. frontend-with-svelte-and-backend/
 │   └── 5. svelte-without-backend/   # Автономная учебная Svelte-версия магазина
-├── 2. backend/                      # Серверная часть
-│   ├── 1. node-js/                  # Базовые 9 уроков
-│   └── 2. webinars-lessons/         # Дополнительные вебинары по бэкенду
-├── 3. databases/                    # Работа с базами данных
+├── 2. databases/                    # Работа с базами данных
 │   ├── 1. sql-mysql/                # 7 уроков по SQL и MySQL
 │   └── 2. webinars-lessons/         # Вебинары по базам данных
+├── 3. backend/                      # Серверная часть
+│   ├── 1. node-js/                  # Базовые 9 уроков
+│   └── 2. webinars-lessons/         # Дополнительные вебинары по бэкенду
 ├── 4. full-stack-store-app/         # Финальные и практические проекты
 │   ├── 0. fast-version/             # Экспресс-версия интернет-магазина
 │   ├── 1. step-by-step-frontend/    # Пошаговая сборка фронтенда магазина
@@ -270,8 +334,8 @@ cd fullstack-web-development-course
 Рекомендуемый порядок прохождения:
 
 1. **Frontend** → Начните с [`1. frontend/1. html-css-js/`](./1.%20frontend/1.%20html-css-js/)
-2. **Databases** → Продолжите с [`3. databases/`](./3.%20databases/)
-3. **Backend** → Затем [`2. backend/`](./2.%20backend/)
+2. **Databases** → Продолжите с [`2. databases/`](./2.%20databases/)
+3. **Backend** → Затем [`3. backend/`](./3.%20backend/)
 4. **Full-stack** → Финальный проект [`4. full-stack-store-app/`](./4.%20full-stack-store-app/)
 
 ### Шаг 3: Следуйте урокам
@@ -304,8 +368,8 @@ cd fullstack-web-development-course
 |--------|----------|
 | [0. shared/](./0.%20resources/0.%20shared/) | Общие материалы для всего курса (глоссарий и т.д.) |
 | [1. frontend/](./0.%20resources/1.%20frontend/) | Книги по HTML/CSS/JS, руководства по Git и установке WebStorm |
-| [2. backend/](./0.%20resources/2.%20backend/) | Книга по Node.js, руководство по тестированию API в Postman |
-| [3. databases/](./0.%20resources/3.%20databases/) | Материалы и книги по базам данных |
+| [2. databases/](./0.%20resources/2.%20databases/) | Материалы и книги по базам данных |
+| [3. backend/](./0.%20resources/3.%20backend/) | Книга по Node.js, руководство по тестированию API в Postman |
 | [4. full-stack/](./0.%20resources/4.%20full-stack/) | Методичка по созданию веб-приложений, 100 вариантов учебных заданий |
 
 ---
