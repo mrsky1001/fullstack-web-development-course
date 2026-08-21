@@ -144,67 +144,68 @@ The databases module is split into main lessons and webinars:
 Use the schema below to quickly navigate through the educational materials:
 
 ```mermaid
+%%{init: {'flowchart': {'rankSpacing': 60, 'nodeSpacing': 30, 'subGraphTitleMargin': {'top': 16, 'bottom': 16}}}}%%
 flowchart TD
     subgraph ROOT["🎓 Fullstack Web Development Course"]
         direction TB
 
-        subgraph RES["📂 0. resources — General Resources"]
+        subgraph RES["<br/>📂 0. resources — General Resources<br/>&nbsp;"]
             direction LR
-            R0["0. shared<br/>Glossary of terms"]
-            R1["1. frontend<br/>HTML/CSS/JS books, Git, WebStorm"]
-            R2["2. databases<br/>SQL books, ER diagrams"]
-            R3["3. backend<br/>Node.js book, Postman guide"]
-            R4["4. full-stack<br/>Guidelines & 100 coursework tasks"]
+            R0["&nbsp;<br/>0. shared<br/>Glossary of terms<br/>&nbsp;"]
+            R1["&nbsp;<br/>1. frontend<br/>HTML/CSS/JS books, Git, WebStorm<br/>&nbsp;"]
+            R2["&nbsp;<br/>2. databases<br/>SQL books, ER diagrams<br/>&nbsp;"]
+            R3["&nbsp;<br/>3. backend<br/>Node.js book, Postman guide<br/>&nbsp;"]
+            R4["&nbsp;<br/>4. full-stack<br/>Guidelines & 100 coursework tasks<br/>&nbsp;"]
             R0 ~~~ R1 ~~~ R2 ~~~ R3 ~~~ R4
         end
 
-        subgraph MOD1["🎨 1. frontend — Client-side Development"]
+        subgraph MOD1["<br/>🎨 1. frontend — Client-side Development<br/>&nbsp;"]
             direction LR
-            F1["1. html-css-js<br/>22 Lessons (HTML5 / CSS3 / JS)"]
-            F2["2. webinars-lessons<br/>Webinar recordings & reviews"]
-            F3["3. example-landing<br/>Ready-to-use landing page"]
-            F4["4. frontend-with-svelte...<br/>SvelteKit + Backend"]
-            F5["5. svelte-without-backend<br/>Standalone educational Svelte"]
+            F1["&nbsp;<br/>1. html-css-js<br/>22 Lessons (HTML5 / CSS3 / JS)<br/>&nbsp;"]
+            F2["&nbsp;<br/>2. webinars-lessons<br/>Webinar recordings & reviews<br/>&nbsp;"]
+            F3["&nbsp;<br/>3. example-landing<br/>Ready-to-use landing page<br/>&nbsp;"]
+            F4["&nbsp;<br/>4. frontend-with-svelte...<br/>SvelteKit + Backend<br/>&nbsp;"]
+            F5["&nbsp;<br/>5. svelte-without-backend<br/>Standalone educational Svelte<br/>&nbsp;"]
             F1 ~~~ F2 ~~~ F3 ~~~ F4 ~~~ F5
         end
 
-        subgraph MOD2["🗄️ 2. databases — Database Development"]
+        subgraph MOD2["<br/>🗄️ 2. databases — Database Development<br/>&nbsp;"]
             direction LR
-            D1["1. sql-mysql<br/>7 Lessons (ER, CRUD, JOIN, Grouping)"]
-            D2["2. webinars-lessons<br/>Webinars & reviews"]
+            D1["&nbsp;<br/>1. sql-mysql<br/>7 Lessons (ER, CRUD, JOIN, Grouping)<br/>&nbsp;"]
+            D2["&nbsp;<br/>2. webinars-lessons<br/>Webinars & reviews<br/>&nbsp;"]
             D1 ~~~ D2
         end
 
-        subgraph MOD3["⚙️ 3. backend — Server-side Development"]
+        subgraph MOD3["<br/>⚙️ 3. backend — Server-side Development<br/>&nbsp;"]
             direction LR
-            B1["1. node-js<br/>9 Lessons (Node.js, Express, REST API, Auth)"]
-            B2["2. webinars-lessons<br/>Webinars & reviews"]
+            B1["&nbsp;<br/>1. node-js<br/>9 Lessons (Node.js, Express, REST API, Auth)<br/>&nbsp;"]
+            B2["&nbsp;<br/>2. webinars-lessons<br/>Webinars & reviews<br/>&nbsp;"]
             B1 ~~~ B2
         end
 
-        subgraph MOD4["🛍️ 4. full-stack-store-app — TechParts Store Project"]
+        subgraph MOD4["<br/>🛍️ 4. full-stack-store-app — TechParts Store Project<br/>&nbsp;"]
             direction LR
-            S0["0. fast-version<br/>Fast-track store version"]
-            S1["1. step-by-step-frontend<br/>Step-by-step frontend"]
-            S2["2. step-by-step-backend<br/>Step-by-step backend"]
-            S3["3. store-app<br/>Final Vanilla Fullstack"]
-            S4["4. store-app-svelte<br/>Advanced SvelteKit + Express"]
+            S0["&nbsp;<br/>0. fast-version<br/>Fast-track store version<br/>&nbsp;"]
+            S1["&nbsp;<br/>1. step-by-step-frontend<br/>Step-by-step frontend<br/>&nbsp;"]
+            S2["&nbsp;<br/>2. step-by-step-backend<br/>Step-by-step backend<br/>&nbsp;"]
+            S3["&nbsp;<br/>3. store-app<br/>Final Vanilla Fullstack<br/>&nbsp;"]
+            S4["&nbsp;<br/>4. store-app-svelte<br/>Advanced SvelteKit + Express<br/>&nbsp;"]
             S0 ~~~ S1 ~~~ S2 ~~~ S3 ~~~ S4
         end
 
-        subgraph DOCS["🌐 docs/ — GitHub Pages Demo"]
-            DOC["Standalone browser frontend (Mock API in LocalStorage)"]
+        subgraph DOCS["<br/>🌐 docs/ — GitHub Pages Demo<br/>&nbsp;"]
+            DOC["&nbsp;<br/>Standalone browser frontend (Mock API in LocalStorage)<br/>&nbsp;"]
         end
 
         RES ~~~ MOD1 ~~~ MOD2 ~~~ MOD3 ~~~ MOD4 ~~~ DOCS
     end
 
-    classDef resStyle fill:#f8fafc,stroke:#64748b,stroke-width:1.5px,color:#0f172a,rx:8px,ry:8px;
-    classDef frontStyle fill:#f0f9ff,stroke:#0284c7,stroke-width:1.5px,color:#0369a1,rx:8px,ry:8px;
-    classDef dbStyle fill:#fffbeb,stroke:#d97706,stroke-width:1.5px,color:#92400e,rx:8px,ry:8px;
-    classDef backStyle fill:#eef2ff,stroke:#6366f1,stroke-width:1.5px,color:#3730a3,rx:8px,ry:8px;
-    classDef appStyle fill:#ecfdf5,stroke:#059669,stroke-width:1.5px,color:#065f46,rx:8px,ry:8px;
-    classDef docStyle fill:#f1f5f9,stroke:#475569,stroke-width:1.5px,color:#1e293b,rx:8px,ry:8px;
+    classDef resStyle fill:#f8fafc,stroke:#64748b,stroke-width:1.5px,color:#0f172a,rx:8px,ry:8px,text-decoration:none;
+    classDef frontStyle fill:#f0f9ff,stroke:#0284c7,stroke-width:1.5px,color:#0369a1,rx:8px,ry:8px,text-decoration:none;
+    classDef dbStyle fill:#fffbeb,stroke:#d97706,stroke-width:1.5px,color:#92400e,rx:8px,ry:8px,text-decoration:none;
+    classDef backStyle fill:#eef2ff,stroke:#6366f1,stroke-width:1.5px,color:#3730a3,rx:8px,ry:8px,text-decoration:none;
+    classDef appStyle fill:#ecfdf5,stroke:#059669,stroke-width:1.5px,color:#065f46,rx:8px,ry:8px,text-decoration:none;
+    classDef docStyle fill:#f1f5f9,stroke:#475569,stroke-width:1.5px,color:#1e293b,rx:8px,ry:8px,text-decoration:none;
 
     class R0,R1,R2,R3,R4 resStyle;
     class F1,F2,F3,F4,F5 frontStyle;
@@ -258,11 +259,11 @@ flowchart LR
     B --> App["4️⃣ Fullstack Project<br/>(4. full-stack-store-app/)<br/>TechParts Store"]
     App --> Done(["🏆 Portfolio Ready"])
 
-    classDef startDone fill:#f1f5f9,stroke:#475569,stroke-width:2px,color:#0f172a,rx:20px,ry:20px;
-    classDef front fill:#f0f9ff,stroke:#0ea5e9,stroke-width:2px,color:#0369a1,rx:10px,ry:10px;
-    classDef db fill:#fffbeb,stroke:#f59e0b,stroke-width:2px,color:#92400e,rx:10px,ry:10px;
-    classDef back fill:#eef2ff,stroke:#6366f1,stroke-width:2px,color:#3730a3,rx:10px,ry:10px;
-    classDef app fill:#ecfdf5,stroke:#10b981,stroke-width:2px,color:#065f46,rx:10px,ry:10px;
+    classDef startDone fill:#f1f5f9,stroke:#475569,stroke-width:2px,color:#0f172a,rx:20px,ry:20px,text-decoration:none;
+    classDef front fill:#f0f9ff,stroke:#0ea5e9,stroke-width:2px,color:#0369a1,rx:10px,ry:10px,text-decoration:none;
+    classDef db fill:#fffbeb,stroke:#f59e0b,stroke-width:2px,color:#92400e,rx:10px,ry:10px,text-decoration:none;
+    classDef back fill:#eef2ff,stroke:#6366f1,stroke-width:2px,color:#3730a3,rx:10px,ry:10px,text-decoration:none;
+    classDef app fill:#ecfdf5,stroke:#10b981,stroke-width:2px,color:#065f46,rx:10px,ry:10px,text-decoration:none;
 
     class Start,Done startDone;
     class F front;
