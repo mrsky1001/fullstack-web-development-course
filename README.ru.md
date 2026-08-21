@@ -135,7 +135,6 @@
 Для быстрого ориентирования в учебных материалах используйте схему ниже:
 
 ```mermaid
-%%{init: {'flowchart': {'curve': 'stepAfter', 'rankSpacing': 35, 'nodeSpacing': 20}}}%%
 flowchart TD
     subgraph ROOT["🎓 Fullstack Web Development Course"]
         direction TB
@@ -143,62 +142,80 @@ flowchart TD
         subgraph RES[" "]
             direction TB
             H_RES["📂 0. resources — Общие ресурсы"]
-            R0["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>0. shared</b><br/>Глоссарий терминов</div>"]
-            R1["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>1. frontend</b><br/>Книги HTML/CSS/JS и Git</div>"]
-            R2["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>2. databases</b><br/>Книги SQL и ER-схемы</div>"]
-            R3["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>3. backend</b><br/>Книга Node.js и Postman</div>"]
-            R4["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>4. full-stack</b><br/>100 вариантов заданий</div>"]
-            H_RES --- R0 & R1 & R2 & R3 & R4
-            R0 ~~~ R1 ~~~ R2 ~~~ R3 ~~~ R4
+            subgraph RES_ROW[" "]
+                direction LR
+                R0["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>0. shared</b><br/>Глоссарий терминов</div>"]
+                R1["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>1. frontend</b><br/>Книги HTML/CSS/JS и Git</div>"]
+                R2["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>2. databases</b><br/>Книги SQL и ER-схемы</div>"]
+                R3["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>3. backend</b><br/>Книга Node.js и Postman</div>"]
+                R4["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>4. full-stack</b><br/>100 вариантов заданий</div>"]
+                R0 ~~~ R1 ~~~ R2 ~~~ R3 ~~~ R4
+            end
+            H_RES ~~~ RES_ROW
         end
 
         subgraph MOD1[" "]
             direction TB
             H_MOD1["🎨 1. frontend — Клиентская часть"]
-            F1["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>1. html-css-js</b><br/>22 урока (HTML, CSS, JS)</div>"]
-            F2["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>2. webinars-lessons</b><br/>Записи вебинаров</div>"]
-            F3["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>3. example-landing</b><br/>Готовый лендинг</div>"]
-            F4["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>4. frontend-with-svelte...</b><br/>SvelteKit + бэкенд</div>"]
-            F5["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>5. svelte-without-backend</b><br/>Учебный Svelte (SPA)</div>"]
-            H_MOD1 --- F1 & F2 & F3 & F4 & F5
-            F1 ~~~ F2 ~~~ F3 ~~~ F4 ~~~ F5
+            subgraph MOD1_ROW[" "]
+                direction LR
+                F1["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>1. html-css-js</b><br/>22 урока (HTML, CSS, JS)</div>"]
+                F2["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>2. webinars-lessons</b><br/>Записи вебинаров</div>"]
+                F3["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>3. example-landing</b><br/>Готовый лендинг</div>"]
+                F4["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>4. frontend-with-svelte...</b><br/>SvelteKit + бэкенд</div>"]
+                F5["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>5. svelte-without-backend</b><br/>Учебный Svelte (SPA)</div>"]
+                F1 ~~~ F2 ~~~ F3 ~~~ F4 ~~~ F5
+            end
+            H_MOD1 ~~~ MOD1_ROW
         end
 
         subgraph MOD2[" "]
             direction TB
             H_MOD2["🗄️ 2. databases — Базы данных"]
-            D1["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>1. sql-mysql</b><br/>7 уроков (CRUD, JOIN)</div>"]
-            D2["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>2. webinars-lessons</b><br/>Вебинары и разборы</div>"]
-            H_MOD2 --- D1 & D2
-            D1 ~~~ D2
+            subgraph MOD2_ROW[" "]
+                direction LR
+                D1["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>1. sql-mysql</b><br/>7 уроков (CRUD, JOIN)</div>"]
+                D2["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>2. webinars-lessons</b><br/>Вебинары и разборы</div>"]
+                D1 ~~~ D2
+            end
+            H_MOD2 ~~~ MOD2_ROW
         end
 
         subgraph MOD3[" "]
             direction TB
             H_MOD3["⚙️ 3. backend — Серверная часть"]
-            B1["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>1. node-js</b><br/>9 уроков (Express, REST API)</div>"]
-            B2["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>2. webinars-lessons</b><br/>Вебинары и разборы</div>"]
-            H_MOD3 --- B1 & B2
-            B1 ~~~ B2
+            subgraph MOD3_ROW[" "]
+                direction LR
+                B1["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>1. node-js</b><br/>9 уроков (Express, REST API)</div>"]
+                B2["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>2. webinars-lessons</b><br/>Вебинары и разборы</div>"]
+                B1 ~~~ B2
+            end
+            H_MOD3 ~~~ MOD3_ROW
         end
 
         subgraph MOD4[" "]
             direction TB
             H_MOD4["🛍️ 4. full-stack-store-app — Итоговый интернет-магазин TechParts"]
-            S0["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>0. fast-version</b><br/>Быстрая сборка магазина</div>"]
-            S1["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>1. step-by-step-frontend</b><br/>Пошаговый фронтенд</div>"]
-            S2["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>2. step-by-step-backend</b><br/>Пошаговый бэкенд</div>"]
-            S3["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>3. store-app</b><br/>Финальный Vanilla Fullstack</div>"]
-            S4["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>4. store-app-svelte</b><br/>Продвинутый SvelteKit + Express</div>"]
-            H_MOD4 --- S0 & S1 & S2 & S3 & S4
-            S0 ~~~ S1 ~~~ S2 ~~~ S3 ~~~ S4
+            subgraph MOD4_ROW[" "]
+                direction LR
+                S0["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>0. fast-version</b><br/>Быстрая сборка магазина</div>"]
+                S1["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>1. step-by-step-frontend</b><br/>Пошаговый фронтенд</div>"]
+                S2["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>2. step-by-step-backend</b><br/>Пошаговый бэкенд</div>"]
+                S3["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>3. store-app</b><br/>Финальный Vanilla Fullstack</div>"]
+                S4["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>4. store-app-svelte</b><br/>Продвинутый SvelteKit + Express</div>"]
+                S0 ~~~ S1 ~~~ S2 ~~~ S3 ~~~ S4
+            end
+            H_MOD4 ~~~ MOD4_ROW
         end
 
         subgraph DOCS[" "]
             direction TB
             H_DOCS["🌐 docs/ — GitHub Pages Demo"]
-            DOC["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>docs/ (GitHub Pages)</b><br/>Автономный фронтенд в браузере (Mock API в LocalStorage)</div>"]
-            H_DOCS --- DOC
+            subgraph DOCS_ROW[" "]
+                direction LR
+                DOC["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>docs/ (GitHub Pages)</b><br/>Автономный фронтенд в браузере (Mock API в LocalStorage)</div>"]
+            end
+            H_DOCS ~~~ DOCS_ROW
         end
 
         RES ~~~ MOD1 ~~~ MOD2 ~~~ MOD3 ~~~ MOD4 ~~~ DOCS
@@ -228,7 +245,12 @@ flowchart TD
     style MOD4 fill:#ffffff,stroke:#e2e8f0,stroke-width:1.5px
     style DOCS fill:#ffffff,stroke:#e2e8f0,stroke-width:1.5px
 
-    linkStyle default stroke:#cbd5e1,stroke-width:1.5px;
+    style RES_ROW fill:none,stroke:none
+    style MOD1_ROW fill:none,stroke:none
+    style MOD2_ROW fill:none,stroke:none
+    style MOD3_ROW fill:none,stroke:none
+    style MOD4_ROW fill:none,stroke:none
+    style DOCS_ROW fill:none,stroke:none
 
     click R0 "./0.%20resources/0.%20shared/" "Открыть 0. shared"
     click R1 "./0.%20resources/1.%20frontend/" "Открыть 1. frontend"
