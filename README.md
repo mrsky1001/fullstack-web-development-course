@@ -144,88 +144,93 @@ The databases module is split into main lessons and webinars:
 Use the schema below to quickly navigate through the educational materials:
 
 ```mermaid
-%%{init: {'flowchart': {'rankSpacing': 15, 'nodeSpacing': 20, 'padding': 8}}}%%
 flowchart TD
     subgraph ROOT["🎓 Fullstack Web Development Course"]
         direction TB
 
         subgraph RES[" "]
             direction TB
-            H_RES["<div style='font-size:16px; font-weight:700; color:#0f172a; white-space:nowrap; padding:2px 0;'>📂 0. resources — General Resources</div>"]
+            H_RES["📂 0. resources — General Resources"]
             subgraph RES_ROW[" "]
                 direction LR
-                R0["<div style='display:inline-block; text-decoration:none; white-space:nowrap; padding:4px 8px;'><b>0. shared</b><br/>Glossary of terms</div>"]
-                R1["<div style='display:inline-block; text-decoration:none; white-space:nowrap; padding:4px 8px;'><b>1. frontend</b><br/>HTML/CSS/JS books & Git</div>"]
-                R2["<div style='display:inline-block; text-decoration:none; white-space:nowrap; padding:4px 8px;'><b>2. databases</b><br/>SQL books & ER diagrams</div>"]
-                R3["<div style='display:inline-block; text-decoration:none; white-space:nowrap; padding:4px 8px;'><b>3. backend</b><br/>Node.js book & Postman</div>"]
-                R4["<div style='display:inline-block; text-decoration:none; white-space:nowrap; padding:4px 8px;'><b>4. full-stack</b><br/>100 coursework tasks</div>"]
+                R0["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>0. shared</b><br/>Glossary of terms</div>"]
+                R1["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>1. frontend</b><br/>HTML/CSS/JS books & Git</div>"]
+                R2["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>2. databases</b><br/>SQL books & ER diagrams</div>"]
+                R3["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>3. backend</b><br/>Node.js book & Postman</div>"]
+                R4["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>4. full-stack</b><br/>100 coursework tasks</div>"]
                 R0 ~~~ R1 ~~~ R2 ~~~ R3 ~~~ R4
             end
+            H_RES ~~~ RES_ROW
         end
 
         subgraph MOD1[" "]
             direction TB
-            H_MOD1["<div style='font-size:16px; font-weight:700; color:#0f172a; white-space:nowrap; padding:2px 0;'>🎨 1. frontend — Client-side Development</div>"]
+            H_MOD1["🎨 1. frontend — Client-side Development"]
             subgraph MOD1_ROW[" "]
                 direction LR
-                F1["<div style='display:inline-block; text-decoration:none; white-space:nowrap; padding:4px 8px;'><b>1. html-css-js</b><br/>22 Lessons (HTML, CSS, JS)</div>"]
-                F2["<div style='display:inline-block; text-decoration:none; white-space:nowrap; padding:4px 8px;'><b>2. webinars-lessons</b><br/>Webinar recordings</div>"]
-                F3["<div style='display:inline-block; text-decoration:none; white-space:nowrap; padding:4px 8px;'><b>3. example-landing</b><br/>Ready-to-use landing page</div>"]
-                F4["<div style='display:inline-block; text-decoration:none; white-space:nowrap; padding:4px 8px;'><b>4. frontend-with-svelte...</b><br/>SvelteKit + Backend</div>"]
-                F5["<div style='display:inline-block; text-decoration:none; white-space:nowrap; padding:4px 8px;'><b>5. svelte-without-backend</b><br/>Educational Svelte (SPA)</div>"]
+                F1["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>1. html-css-js</b><br/>22 Lessons (HTML, CSS, JS)</div>"]
+                F2["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>2. webinars-lessons</b><br/>Webinar recordings</div>"]
+                F3["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>3. example-landing</b><br/>Ready-to-use landing page</div>"]
+                F4["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>4. frontend-with-svelte...</b><br/>SvelteKit + Backend</div>"]
+                F5["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>5. svelte-without-backend</b><br/>Educational Svelte (SPA)</div>"]
                 F1 ~~~ F2 ~~~ F3 ~~~ F4 ~~~ F5
             end
+            H_MOD1 ~~~ MOD1_ROW
         end
 
         subgraph MOD2[" "]
             direction TB
-            H_MOD2["<div style='font-size:16px; font-weight:700; color:#0f172a; white-space:nowrap; padding:2px 0;'>🗄️ 2. databases — Database Development</div>"]
+            H_MOD2["🗄️ 2. databases — Database Development"]
             subgraph MOD2_ROW[" "]
                 direction LR
-                D1["<div style='display:inline-block; text-decoration:none; white-space:nowrap; padding:4px 8px;'><b>1. sql-mysql</b><br/>7 Lessons (CRUD, JOIN)</div>"]
-                D2["<div style='display:inline-block; text-decoration:none; white-space:nowrap; padding:4px 8px;'><b>2. webinars-lessons</b><br/>Webinars & reviews</div>"]
+                D1["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>1. sql-mysql</b><br/>7 Lessons (CRUD, JOIN)</div>"]
+                D2["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>2. webinars-lessons</b><br/>Webinars & reviews</div>"]
                 D1 ~~~ D2
             end
+            H_MOD2 ~~~ MOD2_ROW
         end
 
         subgraph MOD3[" "]
             direction TB
-            H_MOD3["<div style='font-size:16px; font-weight:700; color:#0f172a; white-space:nowrap; padding:2px 0;'>⚙️ 3. backend — Server-side Development</div>"]
+            H_MOD3["⚙️ 3. backend — Server-side Development"]
             subgraph MOD3_ROW[" "]
                 direction LR
-                B1["<div style='display:inline-block; text-decoration:none; white-space:nowrap; padding:4px 8px;'><b>1. node-js</b><br/>9 Lessons (Express, REST API)</div>"]
-                B2["<div style='display:inline-block; text-decoration:none; white-space:nowrap; padding:4px 8px;'><b>2. webinars-lessons</b><br/>Webinars & reviews</div>"]
+                B1["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>1. node-js</b><br/>9 Lessons (Express, REST API)</div>"]
+                B2["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>2. webinars-lessons</b><br/>Webinars & reviews</div>"]
                 B1 ~~~ B2
             end
+            H_MOD3 ~~~ MOD3_ROW
         end
 
         subgraph MOD4[" "]
             direction TB
-            H_MOD4["<div style='font-size:16px; font-weight:700; color:#0f172a; white-space:nowrap; padding:2px 0;'>🛍️ 4. full-stack-store-app — TechParts Store Project</div>"]
+            H_MOD4["🛍️ 4. full-stack-store-app — TechParts Store Project"]
             subgraph MOD4_ROW[" "]
                 direction LR
-                S0["<div style='display:inline-block; text-decoration:none; white-space:nowrap; padding:4px 8px;'><b>0. fast-version</b><br/>Fast-track store version</div>"]
-                S1["<div style='display:inline-block; text-decoration:none; white-space:nowrap; padding:4px 8px;'><b>1. step-by-step-frontend</b><br/>Step-by-step frontend</div>"]
-                S2["<div style='display:inline-block; text-decoration:none; white-space:nowrap; padding:4px 8px;'><b>2. step-by-step-backend</b><br/>Step-by-step backend</div>"]
-                S3["<div style='display:inline-block; text-decoration:none; white-space:nowrap; padding:4px 8px;'><b>3. store-app</b><br/>Final Vanilla Fullstack</div>"]
-                S4["<div style='display:inline-block; text-decoration:none; white-space:nowrap; padding:4px 8px;'><b>4. store-app-svelte</b><br/>Advanced SvelteKit + Express</div>"]
+                S0["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>0. fast-version</b><br/>Fast-track store version</div>"]
+                S1["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>1. step-by-step-frontend</b><br/>Step-by-step frontend</div>"]
+                S2["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>2. step-by-step-backend</b><br/>Step-by-step backend</div>"]
+                S3["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>3. store-app</b><br/>Final Vanilla Fullstack</div>"]
+                S4["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>4. store-app-svelte</b><br/>Advanced SvelteKit + Express</div>"]
                 S0 ~~~ S1 ~~~ S2 ~~~ S3 ~~~ S4
             end
+            H_MOD4 ~~~ MOD4_ROW
         end
 
         subgraph DOCS[" "]
             direction TB
-            H_DOCS["<div style='font-size:16px; font-weight:700; color:#0f172a; white-space:nowrap; padding:2px 0;'>🌐 docs/ — GitHub Pages Demo</div>"]
+            H_DOCS["🌐 docs/ — GitHub Pages Demo"]
             subgraph DOCS_ROW[" "]
                 direction LR
-                DOC["<div style='display:inline-block; text-decoration:none; white-space:nowrap; padding:4px 8px;'><b>docs/ (GitHub Pages)</b><br/>Standalone browser frontend (Mock API in LocalStorage)</div>"]
+                DOC["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>docs/ (GitHub Pages)</b><br/>Standalone browser frontend (Mock API in LocalStorage)</div>"]
             end
+            H_DOCS ~~~ DOCS_ROW
         end
 
         RES ~~~ MOD1 ~~~ MOD2 ~~~ MOD3 ~~~ MOD4 ~~~ DOCS
     end
 
-    classDef headerStyle fill:transparent,stroke:transparent,color:#0f172a;
+    classDef headerStyle fill:transparent,stroke:transparent,color:#0f172a,font-weight:bold,font-size:14px;
     classDef resStyle fill:#f8fafc,stroke:#64748b,stroke-width:1.5px,color:#0f172a,rx:8px,ry:8px,text-decoration:none;
     classDef frontStyle fill:#f0f9ff,stroke:#0284c7,stroke-width:1.5px,color:#0369a1,rx:8px,ry:8px,text-decoration:none;
     classDef dbStyle fill:#fffbeb,stroke:#d97706,stroke-width:1.5px,color:#92400e,rx:8px,ry:8px,text-decoration:none;
