@@ -143,6 +143,68 @@ The databases module is split into main lessons and webinars:
 
 Use the schema below to quickly navigate through the educational materials:
 
+```mermaid
+flowchart TB
+    subgraph ROOT["🎓 Fullstack Web Development Course"]
+        direction TB
+
+        subgraph RES["📂 0. resources — General Resources"]
+            direction LR
+            R0["0. shared<br/>Glossary of terms"]
+            R1["1. frontend<br/>HTML/CSS/JS books, Git, WebStorm"]
+            R2["2. backend<br/>Node.js book, Postman guide"]
+            R3["3. databases<br/>SQL books, ER diagrams"]
+            R4["4. full-stack<br/>Guidelines & 100 coursework tasks"]
+        end
+
+        subgraph MOD1["🎨 1. frontend — Client-side Development"]
+            direction LR
+            F1["1. html-css-js<br/>22 Lessons (HTML5 / CSS3 / JS)"]
+            F2["2. webinars-lessons<br/>Webinar recordings & reviews"]
+            F3["3. example-landing<br/>Ready-to-use landing page"]
+            F4["4. frontend-with-svelte...<br/>SvelteKit + Backend"]
+            F5["5. svelte-without-backend<br/>Standalone educational Svelte"]
+        end
+
+        subgraph MOD3["🗄️ 3. databases — Database Development"]
+            direction LR
+            D1["1. sql-mysql<br/>7 Lessons (ER, CRUD, JOIN, Grouping)"]
+            D2["2. webinars-lessons<br/>Webinars & reviews"]
+        end
+
+        subgraph MOD2["⚙️ 2. backend — Server-side Development"]
+            direction LR
+            B1["1. node-js<br/>9 Lessons (Node.js, Express, REST API, Auth)"]
+            B2["2. webinars-lessons<br/>Webinars & reviews"]
+        end
+
+        subgraph MOD4["🛍️ 4. full-stack-store-app — TechParts Store Project"]
+            direction LR
+            S0["0. fast-version<br/>Fast-track store version"]
+            S1["1. step-by-step-frontend<br/>Step-by-step frontend"]
+            S2["2. step-by-step-backend<br/>Step-by-step backend"]
+            S3["3. store-app<br/>Final Vanilla Fullstack"]
+            S4["4. store-app-svelte<br/>Advanced SvelteKit + Express"]
+        end
+
+        subgraph DOCS["🌐 docs/ — GitHub Pages Demo"]
+            DOC["Standalone browser frontend (Mock API in LocalStorage)"]
+        end
+    end
+```
+
+### 🛣️ Learning Roadmap
+
+```mermaid
+flowchart LR
+    Start(["🚀 Start"]) --> F["1️⃣ Frontend<br/>(1. frontend/)<br/>HTML5, CSS3, JS"]
+    F --> D["2️⃣ Databases<br/>(3. databases/)<br/>SQL & MySQL"]
+    D --> B["3️⃣ Backend<br/>(2. backend/)<br/>Node.js & Express API"]
+    B --> App["4️⃣ Fullstack Project<br/>(4. full-stack-store-app/)<br/>TechParts Store"]
+    
+    App --> Done(["🏆 Portfolio Ready"])
+```
+
 ```text
 fullstack-web-development-course/
 ├── 0. resources/                    # Common course resources (books, guides, tasks)
@@ -166,6 +228,7 @@ fullstack-web-development-course/
 │   ├── 1. sql-mysql/                # 7 lessons on SQL and MySQL
 │   └── 2. webinars-lessons/         # Database webinars
 ├── 4. full-stack-store-app/         # Final and practical projects
+│   ├── 0. fast-version/             # Fast-track store implementation
 │   ├── 1. step-by-step-frontend/    # Step-by-step store frontend assembly
 │   ├── 2. step-by-step-backend/     # Step-by-step store backend assembly
 │   ├── 3. store-app/                # Final fullstack store (HTML/JS + Node.js)

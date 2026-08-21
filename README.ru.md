@@ -134,6 +134,68 @@
 
 Для быстрого ориентирования в учебных материалах используйте схему ниже:
 
+```mermaid
+flowchart TB
+    subgraph ROOT["🎓 Fullstack Web Development Course"]
+        direction TB
+
+        subgraph RES["📂 0. resources — Общие ресурсы"]
+            direction LR
+            R0["0. shared<br/>Глоссарий терминов"]
+            R1["1. frontend<br/>Книги HTML/CSS/JS, Git, WebStorm"]
+            R2["2. backend<br/>Книга Node.js, гайд Postman"]
+            R3["3. databases<br/>Книги SQL, ER-диаграммы"]
+            R4["4. full-stack<br/>Методички и 100 вариантов заданий"]
+        end
+
+        subgraph MOD1["🎨 1. frontend — Клиентская часть"]
+            direction LR
+            F1["1. html-css-js<br/>22 урока (HTML5 / CSS3 / JS)"]
+            F2["2. webinars-lessons<br/>Записи вебинаров и разборы"]
+            F3["3. example-landing<br/>Пример готового лендинга"]
+            F4["4. frontend-with-svelte...<br/>SvelteKit + бэкенд"]
+            F5["5. svelte-without-backend<br/>Автономный учебный Svelte"]
+        end
+
+        subgraph MOD3["🗄️ 3. databases — Базы данных"]
+            direction LR
+            D1["1. sql-mysql<br/>7 уроков (ER, CRUD, JOIN, Grouping)"]
+            D2["2. webinars-lessons<br/>Вебинары и разборы"]
+        end
+
+        subgraph MOD2["⚙️ 2. backend — Серверная часть"]
+            direction LR
+            B1["1. node-js<br/>9 уроков (Node.js, Express, REST API, Auth)"]
+            B2["2. webinars-lessons<br/>Вебинары и разборы"]
+        end
+
+        subgraph MOD4["🛍️ 4. full-stack-store-app — Итоговый интернет-магазин TechParts"]
+            direction LR
+            S0["0. fast-version<br/>Быстрая сборка магазина"]
+            S1["1. step-by-step-frontend<br/>Пошаговый фронтенд"]
+            S2["2. step-by-step-backend<br/>Пошаговый бэкенд"]
+            S3["3. store-app<br/>Финальный Vanilla Fullstack"]
+            S4["4. store-app-svelte<br/>Продвинутый SvelteKit + Express"]
+        end
+
+        subgraph DOCS["🌐 docs/ — GitHub Pages Demo"]
+            DOC["Автономный фронтенд в браузере (Mock API в LocalStorage)"]
+        end
+    end
+```
+
+### 🛣️ Дорожная карта обучения (Roadmap)
+
+```mermaid
+flowchart LR
+    Start(["🚀 Старт"]) --> F["1️⃣ Frontend<br/>(1. frontend/)<br/>HTML5, CSS3, JS"]
+    F --> D["2️⃣ Databases<br/>(3. databases/)<br/>SQL & MySQL"]
+    D --> B["3️⃣ Backend<br/>(2. backend/)<br/>Node.js & Express API"]
+    B --> App["4️⃣ Fullstack Проект<br/>(4. full-stack-store-app/)<br/>TechParts Store"]
+    
+    App --> Done(["🏆 Готовое портфолио"])
+```
+
 ```text
 fullstack-web-development-course/
 ├── 0. resources/                    # Общие ресурсы курса (книги, гайды, задания)
@@ -157,6 +219,7 @@ fullstack-web-development-course/
 │   ├── 1. sql-mysql/                # 7 уроков по SQL и MySQL
 │   └── 2. webinars-lessons/         # Вебинары по базам данных
 ├── 4. full-stack-store-app/         # Финальные и практические проекты
+│   ├── 0. fast-version/             # Экспресс-версия интернет-магазина
 │   ├── 1. step-by-step-frontend/    # Пошаговая сборка фронтенда магазина
 │   ├── 2. step-by-step-backend/     # Пошаговая сборка бэкенда магазина
 │   ├── 3. store-app/                # Финальный полноценный магазин (HTML/JS + Node.js)

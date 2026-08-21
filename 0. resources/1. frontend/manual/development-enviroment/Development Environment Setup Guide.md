@@ -1,6 +1,6 @@
 # Development Environment Setup Guide
 
-> 🌐 [Русская версия](./%28RU%29%20Development%20Environment%20Setup%20Guide.ru.md) | 📚 [Git & GitHub Manual](manual/GIT-GITHUB-MANUAL.md)
+> 🌐 [Русская версия]((RU) Development Environment Setup Guide.ru.md) | 📚 [Git & GitHub Manual](../GIT-GITHUB-MANUAL.md)
 
 This guide will help you set up your development environment for the full-stack web development course.
 
@@ -13,7 +13,7 @@ This guide will help you set up your development environment for the full-stack 
 5. [Browser and DevTools](#browser-and-devtools)
 6. [Optional Tools](#optional-tools)
 
-> 💡 **Tip:** For a comprehensive Git tutorial, see [Git & GitHub Manual](manual/GIT-GITHUB-MANUAL.md)
+> 💡 **Tip:** For a comprehensive Git tutorial, see [Git & GitHub Manual](../GIT-GITHUB-MANUAL.md)
 
 ---
 

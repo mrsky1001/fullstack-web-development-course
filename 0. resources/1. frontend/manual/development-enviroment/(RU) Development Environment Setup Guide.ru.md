@@ -1,6 +1,6 @@
 # Руководство по настройке среды разработки
 
-> 🌐 [English version](./Development%20Environment%20Setup%20Guide.md) | 📚 [Руководство Git & GitHub](manual/GIT-GITHUB-MANUAL.md)
+> 🌐 [English version](Development Environment Setup Guide.md) | 📚 [Руководство Git & GitHub](../GIT-GITHUB-MANUAL.md)
 
 Это руководство поможет вам настроить среду разработки для курса полного стека веб-разработки.
 
@@ -13,7 +13,7 @@
 5. [Браузер и DevTools](#5-браузер-и-devtools)
 6. [Дополнительные инструменты](#6-дополнительные-инструменты)
 
-> 💡 **Совет:** Подробное руководство по Git см. в [Руководство Git & GitHub](manual/GIT-GITHUB-MANUAL.md)
+> 💡 **Совет:** Подробное руководство по Git см. в [Руководство Git & GitHub](../GIT-GITHUB-MANUAL.md)
 
 ---
 
