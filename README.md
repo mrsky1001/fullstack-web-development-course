@@ -160,7 +160,7 @@ flowchart TD
                 R4["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>4. full-stack</b><br/>100 coursework tasks</div>"]
                 R0 ~~~ R1 ~~~ R2 ~~~ R3 ~~~ R4
             end
-            H_RES ~~~ RES_ROW
+            H_RES --> R0 & R1 & R2 & R3 & R4
         end
 
         subgraph MOD1[" "]
@@ -175,7 +175,7 @@ flowchart TD
                 F5["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>5. svelte-without-backend</b><br/>Educational Svelte (SPA)</div>"]
                 F1 ~~~ F2 ~~~ F3 ~~~ F4 ~~~ F5
             end
-            H_MOD1 ~~~ MOD1_ROW
+            H_MOD1 --> F1 & F2 & F3 & F4 & F5
         end
 
         subgraph MOD2[" "]
@@ -187,7 +187,7 @@ flowchart TD
                 D2["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>2. webinars-lessons</b><br/>Webinars & reviews</div>"]
                 D1 ~~~ D2
             end
-            H_MOD2 ~~~ MOD2_ROW
+            H_MOD2 --> D1 & D2
         end
 
         subgraph MOD3[" "]
@@ -199,7 +199,7 @@ flowchart TD
                 B2["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>2. webinars-lessons</b><br/>Webinars & reviews</div>"]
                 B1 ~~~ B2
             end
-            H_MOD3 ~~~ MOD3_ROW
+            H_MOD3 --> B1 & B2
         end
 
         subgraph MOD4[" "]
@@ -214,7 +214,7 @@ flowchart TD
                 S4["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>4. store-app-svelte</b><br/>Advanced SvelteKit + Express</div>"]
                 S0 ~~~ S1 ~~~ S2 ~~~ S3 ~~~ S4
             end
-            H_MOD4 ~~~ MOD4_ROW
+            H_MOD4 --> S0 & S1 & S2 & S3 & S4
         end
 
         subgraph DOCS[" "]
@@ -224,7 +224,7 @@ flowchart TD
                 direction LR
                 DOC["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>docs/ (GitHub Pages)</b><br/>Standalone browser frontend (Mock API in LocalStorage)</div>"]
             end
-            H_DOCS ~~~ DOCS_ROW
+            H_DOCS --> DOC
         end
 
         RES ~~~ MOD1 ~~~ MOD2 ~~~ MOD3 ~~~ MOD4 ~~~ DOCS
