@@ -143,7 +143,6 @@ flowchart TD
             direction TB
             H_RES["📂 0. resources — Общие ресурсы"]
             subgraph RES_ROW[" "]
-                direction LR
                 R0["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>0. shared</b><br/>Глоссарий терминов</div>"]
                 R1["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>1. frontend</b><br/>Книги HTML/CSS/JS и Git</div>"]
                 R2["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>2. databases</b><br/>Книги SQL и ER-схемы</div>"]
@@ -158,7 +157,6 @@ flowchart TD
             direction TB
             H_MOD1["🎨 1. frontend — Клиентская часть"]
             subgraph MOD1_ROW[" "]
-                direction LR
                 F1["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>1. html-css-js</b><br/>22 урока (HTML, CSS, JS)</div>"]
                 F2["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>2. webinars-lessons</b><br/>Записи вебинаров</div>"]
                 F3["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>3. example-landing</b><br/>Готовый лендинг</div>"]
