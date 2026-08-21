@@ -135,57 +135,75 @@
 Для быстрого ориентирования в учебных материалах используйте схему ниже:
 
 ```mermaid
-%%{init: {'flowchart': {'rankSpacing': 45, 'nodeSpacing': 20, 'padding': 20}}}%%
 flowchart TD
     subgraph ROOT["🎓 Fullstack Web Development Course"]
         direction TB
 
         subgraph RES["📂 0. resources — Общие ресурсы"]
-            direction LR
-            R0["<span style='display:inline-block; text-decoration:none;'>0. shared<br/>Глоссарий терминов</span>"]
-            R1["<span style='display:inline-block; text-decoration:none;'>1. frontend<br/>Книги HTML/CSS/JS, Git, WebStorm</span>"]
-            R2["<span style='display:inline-block; text-decoration:none;'>2. databases<br/>Книги SQL, ER-диаграммы</span>"]
-            R3["<span style='display:inline-block; text-decoration:none;'>3. backend<br/>Книга Node.js, гайд Postman</span>"]
-            R4["<span style='display:inline-block; text-decoration:none;'>4. full-stack<br/>Методички и 100 вариантов заданий</span>"]
-            R0 ~~~ R1 ~~~ R2 ~~~ R3 ~~~ R4
+            direction TB
+            subgraph RES_ROW[" "]
+                direction LR
+                R0["<span style='display:inline-block; text-decoration:none;'>0. shared<br/>Глоссарий терминов</span>"]
+                R1["<span style='display:inline-block; text-decoration:none;'>1. frontend<br/>Книги HTML/CSS/JS, Git, WebStorm</span>"]
+                R2["<span style='display:inline-block; text-decoration:none;'>2. databases<br/>Книги SQL, ER-диаграммы</span>"]
+                R3["<span style='display:inline-block; text-decoration:none;'>3. backend<br/>Книга Node.js, гайд Postman</span>"]
+                R4["<span style='display:inline-block; text-decoration:none;'>4. full-stack<br/>Методички и 100 вариантов заданий</span>"]
+                R0 ~~~ R1 ~~~ R2 ~~~ R3 ~~~ R4
+            end
         end
 
         subgraph MOD1["🎨 1. frontend — Клиентская часть"]
-            direction LR
-            F1["<span style='display:inline-block; text-decoration:none;'>1. html-css-js<br/>22 урока (HTML5 / CSS3 / JS)</span>"]
-            F2["<span style='display:inline-block; text-decoration:none;'>2. webinars-lessons<br/>Записи вебинаров и разборы</span>"]
-            F3["<span style='display:inline-block; text-decoration:none;'>3. example-landing<br/>Пример готового лендинга</span>"]
-            F4["<span style='display:inline-block; text-decoration:none;'>4. frontend-with-svelte...<br/>SvelteKit + бэкенд</span>"]
-            F5["<span style='display:inline-block; text-decoration:none;'>5. svelte-without-backend<br/>Автономный учебный Svelte</span>"]
-            F1 ~~~ F2 ~~~ F3 ~~~ F4 ~~~ F5
+            direction TB
+            subgraph MOD1_ROW[" "]
+                direction LR
+                F1["<span style='display:inline-block; text-decoration:none;'>1. html-css-js<br/>22 урока (HTML5 / CSS3 / JS)</span>"]
+                F2["<span style='display:inline-block; text-decoration:none;'>2. webinars-lessons<br/>Записи вебинаров и разборы</span>"]
+                F3["<span style='display:inline-block; text-decoration:none;'>3. example-landing<br/>Пример готового лендинга</span>"]
+                F4["<span style='display:inline-block; text-decoration:none;'>4. frontend-with-svelte...<br/>SvelteKit + бэкенд</span>"]
+                F5["<span style='display:inline-block; text-decoration:none;'>5. svelte-without-backend<br/>Автономный учебный Svelte</span>"]
+                F1 ~~~ F2 ~~~ F3 ~~~ F4 ~~~ F5
+            end
         end
 
         subgraph MOD2["🗄️ 2. databases — Базы данных"]
-            direction LR
-            D1["<span style='display:inline-block; text-decoration:none;'>1. sql-mysql<br/>7 уроков (ER, CRUD, JOIN, Grouping)</span>"]
-            D2["<span style='display:inline-block; text-decoration:none;'>2. webinars-lessons<br/>Вебинары и разборы</span>"]
-            D1 ~~~ D2
+            direction TB
+            subgraph MOD2_ROW[" "]
+                direction LR
+                D1["<span style='display:inline-block; text-decoration:none;'>1. sql-mysql<br/>7 уроков (ER, CRUD, JOIN, Grouping)</span>"]
+                D2["<span style='display:inline-block; text-decoration:none;'>2. webinars-lessons<br/>Вебинары и разборы</span>"]
+                D1 ~~~ D2
+            end
         end
 
         subgraph MOD3["⚙️ 3. backend — Серверная часть"]
-            direction LR
-            B1["<span style='display:inline-block; text-decoration:none;'>1. node-js<br/>9 уроков (Node.js, Express, REST API, Auth)</span>"]
-            B2["<span style='display:inline-block; text-decoration:none;'>2. webinars-lessons<br/>Вебинары и разборы</span>"]
-            B1 ~~~ B2
+            direction TB
+            subgraph MOD3_ROW[" "]
+                direction LR
+                B1["<span style='display:inline-block; text-decoration:none;'>1. node-js<br/>9 уроков (Node.js, Express, REST API, Auth)</span>"]
+                B2["<span style='display:inline-block; text-decoration:none;'>2. webinars-lessons<br/>Вебинары и разборы</span>"]
+                B1 ~~~ B2
+            end
         end
 
         subgraph MOD4["🛍️ 4. full-stack-store-app — Итоговый интернет-магазин TechParts"]
-            direction LR
-            S0["<span style='display:inline-block; text-decoration:none;'>0. fast-version<br/>Быстрая сборка магазина</span>"]
-            S1["<span style='display:inline-block; text-decoration:none;'>1. step-by-step-frontend<br/>Пошаговый фронтенд</span>"]
-            S2["<span style='display:inline-block; text-decoration:none;'>2. step-by-step-backend<br/>Пошаговый бэкенд</span>"]
-            S3["<span style='display:inline-block; text-decoration:none;'>3. store-app<br/>Финальный Vanilla Fullstack</span>"]
-            S4["<span style='display:inline-block; text-decoration:none;'>4. store-app-svelte<br/>Продвинутый SvelteKit + Express</span>"]
-            S0 ~~~ S1 ~~~ S2 ~~~ S3 ~~~ S4
+            direction TB
+            subgraph MOD4_ROW[" "]
+                direction LR
+                S0["<span style='display:inline-block; text-decoration:none;'>0. fast-version<br/>Быстрая сборка магазина</span>"]
+                S1["<span style='display:inline-block; text-decoration:none;'>1. step-by-step-frontend<br/>Пошаговый фронтенд</span>"]
+                S2["<span style='display:inline-block; text-decoration:none;'>2. step-by-step-backend<br/>Пошаговый бэкенд</span>"]
+                S3["<span style='display:inline-block; text-decoration:none;'>3. store-app<br/>Финальный Vanilla Fullstack</span>"]
+                S4["<span style='display:inline-block; text-decoration:none;'>4. store-app-svelte<br/>Продвинутый SvelteKit + Express</span>"]
+                S0 ~~~ S1 ~~~ S2 ~~~ S3 ~~~ S4
+            end
         end
 
         subgraph DOCS["🌐 docs/ — GitHub Pages Demo"]
-            DOC["<span style='display:inline-block; text-decoration:none;'>Автономный фронтенд в браузере (Mock API в LocalStorage)</span>"]
+            direction TB
+            subgraph DOCS_ROW[" "]
+                direction LR
+                DOC["<span style='display:inline-block; text-decoration:none;'>Автономный фронтенд в браузере (Mock API в LocalStorage)</span>"]
+            end
         end
 
         RES ~~~ MOD1 ~~~ MOD2 ~~~ MOD3 ~~~ MOD4 ~~~ DOCS
@@ -212,6 +230,13 @@ flowchart TD
     style MOD3 fill:#ffffff,stroke:#e2e8f0,stroke-width:1.5px
     style MOD4 fill:#ffffff,stroke:#e2e8f0,stroke-width:1.5px
     style DOCS fill:#ffffff,stroke:#e2e8f0,stroke-width:1.5px
+
+    style RES_ROW fill:none,stroke:none
+    style MOD1_ROW fill:none,stroke:none
+    style MOD2_ROW fill:none,stroke:none
+    style MOD3_ROW fill:none,stroke:none
+    style MOD4_ROW fill:none,stroke:none
+    style DOCS_ROW fill:none,stroke:none
 
     click R0 "./0.%20resources/0.%20shared/" "Открыть 0. shared"
     click R1 "./0.%20resources/1.%20frontend/" "Открыть 1. frontend"
