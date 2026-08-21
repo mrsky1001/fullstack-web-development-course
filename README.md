@@ -135,7 +135,7 @@ The databases module is split into main lessons and webinars:
 | Database | MySQL | Data storage |
 | Auth | Passport.js | Registration and login |
 
-➡️ [Detailed project documentation](./4.%20full-stack-store-app/README.md)
+➡️ [Detailed project documentation](./4. full-stack-store-app/README.md)
 
 ---
 
@@ -148,97 +148,64 @@ flowchart TD
     subgraph ROOT["🎓 Fullstack Web Development Course"]
         direction TB
 
-        subgraph RES[" "]
-            direction TB
-            H_RES["📂 0. resources — General Resources"]
-            subgraph RES_ROW[" "]
-                direction LR
-                R0["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>0. shared</b><br/>Glossary of terms</div>"]
-                R1["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>1. frontend</b><br/>HTML/CSS/JS books & Git</div>"]
-                R2["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>2. databases</b><br/>SQL books & ER diagrams</div>"]
-                R3["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>3. backend</b><br/>Node.js book & Postman</div>"]
-                R4["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>4. full-stack</b><br/>100 coursework tasks</div>"]
-                R0 ~~~ R1 ~~~ R2 ~~~ R3 ~~~ R4
-            end
-            H_RES --> R0 & R1 & R2 & R3 & R4
+        subgraph RES["📂 0. resources — General Resources"]
+            direction LR
+            R0["<span style='display:inline-block;'><b>0. shared</b><br/>Glossary of terms</span>"]
+            R1["<span style='display:inline-block;'><b>1. frontend</b><br/>HTML/CSS/JS books & Git</span>"]
+            R2["<span style='display:inline-block;'><b>2. databases</b><br/>SQL books & ER diagrams</span>"]
+            R3["<span style='display:inline-block;'><b>3. backend</b><br/>Node.js book & Postman</span>"]
+            R4["<span style='display:inline-block;'><b>4. full-stack</b><br/>100 coursework tasks</span>"]
+            R0 ~~~ R1 ~~~ R2 ~~~ R3 ~~~ R4
         end
 
-        subgraph MOD1[" "]
-            direction TB
-            H_MOD1["🎨 1. frontend — Client-side Development"]
-            subgraph MOD1_ROW[" "]
-                direction LR
-                F1["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>1. html-css-js</b><br/>22 Lessons (HTML, CSS, JS)</div>"]
-                F2["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>2. webinars-lessons</b><br/>Webinar recordings</div>"]
-                F3["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>3. example-landing</b><br/>Ready-to-use landing page</div>"]
-                F4["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>4. frontend-with-svelte...</b><br/>SvelteKit + Backend</div>"]
-                F5["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>5. svelte-without-backend</b><br/>Educational Svelte (SPA)</div>"]
-                F1 ~~~ F2 ~~~ F3 ~~~ F4 ~~~ F5
-            end
-            H_MOD1 --> F1 & F2 & F3 & F4 & F5
+        subgraph MOD1["🎨 1. frontend — Client-side Development"]
+            direction LR
+            F1["<span style='display:inline-block;'><b>1. html-css-js</b><br/>22 Lessons (HTML, CSS, JS)</span>"]
+            F2["<span style='display:inline-block;'><b>2. webinars-lessons</b><br/>Webinar recordings</span>"]
+            F3["<span style='display:inline-block;'><b>3. example-landing</b><br/>Ready-to-use landing page</span>"]
+            F4["<span style='display:inline-block;'><b>4. frontend-with-svelte...</b><br/>SvelteKit + Backend</span>"]
+            F5["<span style='display:inline-block;'><b>5. svelte-without-backend</b><br/>Educational Svelte SPA</span>"]
+            F1 ~~~ F2 ~~~ F3 ~~~ F4 ~~~ F5
         end
 
-        subgraph MOD2[" "]
-            direction TB
-            H_MOD2["🗄️ 2. databases — Database Development"]
-            subgraph MOD2_ROW[" "]
-                direction LR
-                D1["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>1. sql-mysql</b><br/>7 Lessons (CRUD, JOIN)</div>"]
-                D2["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>2. webinars-lessons</b><br/>Webinars & reviews</div>"]
-                D1 ~~~ D2
-            end
-            H_MOD2 --> D1 & D2
+        subgraph MOD2["🗄️ 2. databases — Database Development"]
+            direction LR
+            D1["<span style='display:inline-block;'><b>1. sql-mysql</b><br/>7 Lessons (CRUD, JOIN)</span>"]
+            D2["<span style='display:inline-block;'><b>2. webinars-lessons</b><br/>Webinars & reviews</span>"]
+            D1 ~~~ D2
         end
 
-        subgraph MOD3[" "]
-            direction TB
-            H_MOD3["⚙️ 3. backend — Server-side Development"]
-            subgraph MOD3_ROW[" "]
-                direction LR
-                B1["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>1. node-js</b><br/>9 Lessons (Express, REST API)</div>"]
-                B2["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>2. webinars-lessons</b><br/>Webinars & reviews</div>"]
-                B1 ~~~ B2
-            end
-            H_MOD3 --> B1 & B2
+        subgraph MOD3["⚙️ 3. backend — Server-side Development"]
+            direction LR
+            B1["<span style='display:inline-block;'><b>1. node-js</b><br/>9 Lessons (Express, REST API)</span>"]
+            B2["<span style='display:inline-block;'><b>2. webinars-lessons</b><br/>Webinars & reviews</span>"]
+            B1 ~~~ B2
         end
 
-        subgraph MOD4[" "]
-            direction TB
-            H_MOD4["🛍️ 4. full-stack-store-app — TechParts Store Project"]
-            subgraph MOD4_ROW[" "]
-                direction LR
-                S0["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>0. fast-version</b><br/>Fast-track store version</div>"]
-                S1["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>1. step-by-step-frontend</b><br/>Step-by-step frontend</div>"]
-                S2["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>2. step-by-step-backend</b><br/>Step-by-step backend</div>"]
-                S3["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>3. store-app</b><br/>Final Vanilla Fullstack</div>"]
-                S4["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>4. store-app-svelte</b><br/>Advanced SvelteKit + Express</div>"]
-                S0 ~~~ S1 ~~~ S2 ~~~ S3 ~~~ S4
-            end
-            H_MOD4 --> S0 & S1 & S2 & S3 & S4
+        subgraph MOD4["🛍️ 4. full-stack-store-app — TechParts Store Project"]
+            direction LR
+            S0["<span style='display:inline-block;'><b>0. fast-version</b><br/>Fast-track store version</span>"]
+            S1["<span style='display:inline-block;'><b>1. step-by-step-frontend</b><br/>Step-by-step frontend</span>"]
+            S2["<span style='display:inline-block;'><b>2. step-by-step-backend</b><br/>Step-by-step backend</span>"]
+            S3["<span style='display:inline-block;'><b>3. store-app</b><br/>Final Vanilla Fullstack</span>"]
+            S4["<span style='display:inline-block;'><b>4. store-app-svelte</b><br/>Advanced SvelteKit</span>"]
+            S0 ~~~ S1 ~~~ S2 ~~~ S3 ~~~ S4
         end
 
-        subgraph DOCS[" "]
-            direction TB
-            H_DOCS["🌐 docs/ — GitHub Pages Demo"]
-            subgraph DOCS_ROW[" "]
-                direction LR
-                DOC["<div style='display:inline-block; text-decoration:none; white-space:nowrap;'><b>docs/ (GitHub Pages)</b><br/>Standalone browser frontend (Mock API in LocalStorage)</div>"]
-            end
-            H_DOCS --> DOC
+        subgraph DOCS["🌐 docs/ — GitHub Pages Demo"]
+            DOC["<span style='display:inline-block;'><b>docs/ (GitHub Pages)</b><br/>Standalone browser frontend (Mock API in LocalStorage)</span>"]
         end
 
         RES ~~~ MOD1 ~~~ MOD2 ~~~ MOD3 ~~~ MOD4 ~~~ DOCS
     end
 
-    classDef headerStyle fill:transparent,stroke:transparent,color:#0f172a,font-weight:bold,font-size:14px;
-    classDef resStyle fill:#f8fafc,stroke:#64748b,stroke-width:1.5px,color:#0f172a,rx:8px,ry:8px,text-decoration:none;
-    classDef frontStyle fill:#f0f9ff,stroke:#0284c7,stroke-width:1.5px,color:#0369a1,rx:8px,ry:8px,text-decoration:none;
-    classDef dbStyle fill:#fffbeb,stroke:#d97706,stroke-width:1.5px,color:#92400e,rx:8px,ry:8px,text-decoration:none;
-    classDef backStyle fill:#eef2ff,stroke:#6366f1,stroke-width:1.5px,color:#3730a3,rx:8px,ry:8px,text-decoration:none;
-    classDef appStyle fill:#ecfdf5,stroke:#059669,stroke-width:1.5px,color:#065f46,rx:8px,ry:8px,text-decoration:none;
-    classDef docStyle fill:#f1f5f9,stroke:#475569,stroke-width:1.5px,color:#1e293b,rx:8px,ry:8px,text-decoration:none;
+    classDef resStyle fill:#f8fafc,stroke:#64748b,stroke-width:1.5px,color:#0f172a,rx:8px,ry:8px;
+    classDef frontStyle fill:#f0f9ff,stroke:#0284c7,stroke-width:1.5px,color:#0369a1,rx:8px,ry:8px;
+    classDef dbStyle fill:#fffbeb,stroke:#d97706,stroke-width:1.5px,color:#92400e,rx:8px,ry:8px;
+    classDef backStyle fill:#eef2ff,stroke:#6366f1,stroke-width:1.5px,color:#3730a3,rx:8px,ry:8px;
+    classDef appStyle fill:#ecfdf5,stroke:#059669,stroke-width:1.5px,color:#065f46,rx:8px,ry:8px;
+    classDef docStyle fill:#f1f5f9,stroke:#475569,stroke-width:1.5px,color:#1e293b,rx:8px,ry:8px;
 
-    class H_RES,H_MOD1,H_MOD2,H_MOD3,H_MOD4,H_DOCS headerStyle;
     class R0,R1,R2,R3,R4 resStyle;
     class F1,F2,F3,F4,F5 frontStyle;
     class D1,D2 dbStyle;
@@ -253,14 +220,6 @@ flowchart TD
     style MOD3 fill:#ffffff,stroke:#e2e8f0,stroke-width:1.5px
     style MOD4 fill:#ffffff,stroke:#e2e8f0,stroke-width:1.5px
     style DOCS fill:#ffffff,stroke:#e2e8f0,stroke-width:1.5px
-
-    style RES_ROW fill:none,stroke:none
-    style MOD1_ROW fill:none,stroke:none
-    style MOD2_ROW fill:none,stroke:none
-    style MOD3_ROW fill:none,stroke:none
-    style MOD4_ROW fill:none,stroke:none
-    style DOCS_ROW fill:none,stroke:none
-
     click R0 "./0.%20resources/0.%20shared/" "Open 0. shared"
     click R1 "./0.%20resources/1.%20frontend/" "Open 1. frontend"
     click R2 "./0.%20resources/2.%20databases/" "Open 2. databases"
