@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" width="300" height="200">
+  <rect width="300" height="200" fill="#f8f9fa"/>
+  <rect x="10" y="10" width="280" height="180" rx="6" fill="#ffffff" stroke="#dddddd" stroke-width="1.5"/>
+  <g><rect x="115" y="48" width="70" height="35" rx="4" fill="#007bff"/><circle cx="100" cy="65" r="6" fill="#222222"/><circle cx="200" cy="65" r="6" fill="#222222"/><line x1="130" y1="58" x2="170" y2="58" stroke="#ffffff" stroke-width="2"/></g>
+  <text x="150" y="125" fill="#222222" font-size="14" font-family="Arial, sans-serif" font-weight="bold" text-anchor="middle">Конференц-зал Alpha</text>
+  <text x="150" y="145" fill="#666666" font-size="11" font-family="Arial, sans-serif" text-anchor="middle">Большая переговорная</text>
+  <rect x="105" y="155" width="90" height="20" rx="10" fill="#eaf2ff"/>
+  <text x="150" y="169" fill="#007bff" font-size="11" font-family="Arial, sans-serif" font-weight="bold" text-anchor="middle">до 12 чел.</text>
+</svg>
