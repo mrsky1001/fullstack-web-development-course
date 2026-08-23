@@ -610,7 +610,7 @@ const POPULAR_CARDS_HTML = `      <section class="popular-section">
         <div class="rooms-grid">
           <div class="room-card">
             <div class="card-img-wrap">
-              <img src="img/room-1.svg" alt="Мини-офис Focus" class="card-img" onerror="this.src='img/no-image.svg'">
+              <img src="img/room-1.jpg" alt="Мини-офис Focus" class="card-img" onerror="this.src='img/no-image.svg'">
             </div>
             <div class="card-content">
               <h3 class="card-title">Мини-офис Focus</h3>
@@ -628,7 +628,7 @@ const POPULAR_CARDS_HTML = `      <section class="popular-section">
 
           <div class="room-card">
             <div class="card-img-wrap">
-              <img src="img/room-2.svg" alt="Конференц-зал Alpha" class="card-img" onerror="this.src='img/no-image.svg'">
+              <img src="img/room-2.jpg" alt="Конференц-зал Alpha" class="card-img" onerror="this.src='img/no-image.svg'">
             </div>
             <div class="card-content">
               <h3 class="card-title">Конференц-зал Alpha</h3>
@@ -646,7 +646,7 @@ const POPULAR_CARDS_HTML = `      <section class="popular-section">
 
           <div class="room-card">
             <div class="card-img-wrap">
-              <img src="img/room-3.svg" alt="Опенспейс Hub" class="card-img" onerror="this.src='img/no-image.svg'">
+              <img src="img/room-3.jpg" alt="Опенспейс Hub" class="card-img" onerror="this.src='img/no-image.svg'">
             </div>
             <div class="card-content">
               <h3 class="card-title">Опенспейс Hub</h3>
@@ -671,16 +671,16 @@ const POPULAR_CARDS_HTML = `      <section class="popular-section">
 const SLIDER_HTML = `      <section class="slider-section">
         <div class="slider">
           <div class="slide active">
-            <img src="img/slider-1.svg" alt="Слайд 1" class="slide-img">
+            <img src="img/slider-1.jpg" alt="Слайд 1" class="slide-img">
           </div>
           <div class="slide">
-            <img src="img/slider-2.svg" alt="Слайд 2" class="slide-img">
+            <img src="img/slider-2.jpg" alt="Слайд 2" class="slide-img">
           </div>
           <div class="slide">
-            <img src="img/slider-3.svg" alt="Слайд 3" class="slide-img">
+            <img src="img/slider-3.jpg" alt="Слайд 3" class="slide-img">
           </div>
           <div class="slide">
-            <img src="img/slider-4.svg" alt="Слайд 4" class="slide-img">
+            <img src="img/slider-4.jpg" alt="Слайд 4" class="slide-img">
           </div>
           <button class="slider-btn slider-prev">‹</button>
           <button class="slider-btn slider-next">›</button>
@@ -736,7 +736,7 @@ const OFFICE_ROOMS = [
     title: 'Мини-офис Focus',
     pricePerHour: 450,
     equipment: ['Wi-Fi 500 Мбит/с', '4K Монитор', 'Эргономичное кресло'],
-    image: '../img/room-1.svg',
+    image: '../img/room-1.jpg',
     isPopular: true
   },
   {
@@ -744,7 +744,7 @@ const OFFICE_ROOMS = [
     title: 'Конференц-зал Alpha',
     pricePerHour: 1200,
     equipment: ['Проектор 4K', 'Спикерфон', 'Флипчарт'],
-    image: '../img/room-2.svg',
+    image: '../img/room-2.jpg',
     isPopular: true
   },
   {
@@ -752,7 +752,7 @@ const OFFICE_ROOMS = [
     title: 'Опенспейс Hub',
     pricePerHour: 250,
     equipment: ['Личный стол', 'Wi-Fi', 'Кофе-поинт'],
-    image: '../img/room-3.svg',
+    image: '../img/room-3.jpg',
     isPopular: true
   },
   {
@@ -760,7 +760,7 @@ const OFFICE_ROOMS = [
     title: 'Переговорная Solo',
     pricePerHour: 600,
     equipment: ['Звукоизоляция', 'Smart TV 55"', 'Маркерная доска'],
-    image: '../img/room-4.svg',
+    image: '../img/room-4.jpg',
     isPopular: false
   },
   {
@@ -768,7 +768,7 @@ const OFFICE_ROOMS = [
     title: 'Премиум Сьют Executive',
     pricePerHour: 1800,
     equipment: ['Лаунж-зона', 'Кофемашина', 'Панорамный вид'],
-    image: '../img/room-5.svg',
+    image: '../img/room-5.jpg',
     isPopular: false
   },
   {
@@ -776,7 +776,7 @@ const OFFICE_ROOMS = [
     title: 'Творческая студия Design',
     pricePerHour: 850,
     equipment: ['Студийный свет', 'Цветной принтер', 'Маркерная стена'],
-    image: '../img/room-6.svg',
+    image: '../img/room-6.jpg',
     isPopular: false
   }
 ];
