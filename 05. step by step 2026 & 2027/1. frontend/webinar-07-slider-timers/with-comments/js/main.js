@@ -1,6 +1,7 @@
 // СмартОфис — Скрипт веб-приложения (Вебинар 7)
 document.addEventListener('DOMContentLoaded', () => {
   initNavigation();
+  // [Логика: Запускаем инициализацию слайдера на главной странице]
   initSlider();
   renderCatalog();
   initRegisterForm();
@@ -32,21 +33,30 @@ function initNavigation() {
   });
 }
 
+// [Теория: JS позволяет управлять DOM-элементами во времени, используя функции setInterval и setTimeout]
+// [Логика: Инициализация автоматического слайдера изображений]
 function initSlider() {
   const slides = document.querySelectorAll('.slide');
   const dots = document.querySelectorAll('.dot');
   const prevBtn = document.querySelector('.slider-prev');
   const nextBtn = document.querySelector('.slider-next');
+  // [Логика: Если слайдов нет (мы на другой странице), прерываем выполнение]
   if (!slides.length) return;
 
+  // [Логика: Переменная для хранения индекса текущего слайда]
   let currentSlide = 0;
+  // [Логика: Переменная для хранения ID запущенного таймера (чтобы можно было его остановить)]
   let timerId = null;
 
+  // [Логика: Функция показа слайда по индексу]
   function showSlide(index) {
+    // [Логика: Обработка закольцованности (если индекс вышел за границы массива)]
     if (index >= slides.length) currentSlide = 0;
     else if (index < 0) currentSlide = slides.length - 1;
     else currentSlide = index;
 
+    // [Теория: Метод classList.toggle(className, force) добавляет класс, если force === true, и удаляет, если false]
+    // [Логика: Проходим по всем слайдам и точкам, добавляя класс 'active' только текущему индексу]
     slides.forEach((s, i) => s.classList.toggle('active', i === currentSlide));
     dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
   }
@@ -54,18 +64,24 @@ function initSlider() {
   function next() { showSlide(currentSlide + 1); }
   function prev() { showSlide(currentSlide - 1); }
 
+  // [Логика: Запуск автоматического перелистывания]
   function startAuto() {
-    stopAuto();
-    timerId = setInterval(next, 3000);
+    stopAuto(); // Сначала останавливаем старый таймер, чтобы они не накладывались
+    // [Теория: setInterval(func, ms) вызывает функцию func каждые ms миллисекунд и возвращает свой ID]
+    timerId = setInterval(next, 3000); // 3000 мс = 3 секунды
   }
 
+  // [Логика: Остановка автоматического перелистывания]
   function stopAuto() {
+    // [Теория: clearInterval(id) останавливает таймер с указанным ID]
     if (timerId) clearInterval(timerId);
   }
 
+  // [Логика: Навешиваем обработчики на кнопки. При ручном клике таймер перезапускается]
   if (nextBtn) nextBtn.addEventListener('click', () => { next(); startAuto(); });
   if (prevBtn) prevBtn.addEventListener('click', () => { prev(); startAuto(); });
 
+  // [Логика: Навешиваем обработчики на нижние точки]
   dots.forEach((dot, idx) => {
     dot.addEventListener('click', () => {
       showSlide(idx);
@@ -73,6 +89,7 @@ function initSlider() {
     });
   });
 
+  // [Логика: Сразу после загрузки страницы запускаем автоматическое перелистывание]
   startAuto();
 }
 
@@ -128,9 +145,8 @@ function initRegisterForm() {
     }
 
     if (isValid) {
-      alert('Пользователь зарегистрирован успешно!');
       form.reset();
-      window.location.href = 'login.html';
+      showModal('Пользователь зарегистрирован успешно!', 'login.html');
     }
   });
 }
@@ -147,14 +163,30 @@ function initLoginForm() {
 
     if (login === 'admin' && pass === '12345') {
       if (alertBox) alertBox.style.display = 'none';
-      alert('Успешный вход в систему!');
-      window.location.href = '../index.html';
+      showModal('Успешный вход в систему!', '../index.html');
     } else {
       if (alertBox) {
         alertBox.textContent = 'Неверный логин или пароль';
         alertBox.className = 'form-alert alert-danger';
         alertBox.style.display = 'block';
       }
+    }
+  });
+}
+
+
+// Вспомогательная функция для показа модального окна
+function showModal(message, redirectUrl = null) {
+  const modal = document.createElement('div');
+  modal.className = 'modal-overlay';
+  modal.innerHTML = '<div class="modal-content"><p>' + message + '</p><button class="btn btn-primary" id="modalCloseBtn">OK</button></div>';
+  document.body.appendChild(modal);
+
+  const closeBtn = modal.querySelector('#modalCloseBtn');
+  closeBtn.addEventListener('click', () => {
+    modal.remove();
+    if (redirectUrl) {
+      window.location.href = redirectUrl;
     }
   });
 }

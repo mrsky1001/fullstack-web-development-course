@@ -78,6 +78,8 @@ function initSlider() {
 }
 
 
+// [Теория: JS позволяет динамически фильтровать и сортировать массивы данных перед их отрисовкой]
+// [Логика: Инициализация поиска и сортировки на странице каталога]
 function initCatalogFilters() {
   const container = document.getElementById('catalogContainer');
   const searchInput = document.getElementById('searchInput');
@@ -85,8 +87,10 @@ function initCatalogFilters() {
   const sortDescBtn = document.getElementById('sortDesc');
   if (!container || typeof OFFICE_ROOMS === 'undefined') return;
 
+  // [Теория: Оператор spread (...) создает поверхностную копию массива. Это нужно, чтобы не изменять оригинальный OFFICE_ROOMS при сортировке]
   let displayedRooms = [...OFFICE_ROOMS];
 
+  // [Логика: Локальная функция рендера, которая перерисовывает карточки на основе текущего отфильтрованного массива]
   function render(rooms) {
     if (!rooms.length) {
       container.innerHTML = '<p class="empty-message">Комнаты не найдены</p>';
@@ -111,31 +115,41 @@ function initCatalogFilters() {
     `).join('');
   }
 
+  // [Логика: Применяет текстовый поиск (фильтрацию) по названию]
   function applyFilter() {
+    // [Теория: toLowerCase() приводит строку к нижнему регистру для регистронезависимого поиска]
     const q = (searchInput ? searchInput.value : '').toLowerCase().trim();
+    // [Теория: Метод filter() создает новый массив со всеми элементами, прошедшими проверку в переданной функции]
     displayedRooms = OFFICE_ROOMS.filter(r => r.title.toLowerCase().includes(q));
     render(displayedRooms);
   }
 
+  // [Теория: Событие 'input' срабатывает синхронно при каждом изменении значения элемента <input>]
   if (searchInput) searchInput.addEventListener('input', applyFilter);
 
+  // [Логика: Сортировка по возрастанию цены]
   if (sortAscBtn) {
     sortAscBtn.addEventListener('click', () => {
+      // [Теория: Метод sort() сортирует элементы массива на месте. a - b сортирует по возрастанию]
       displayedRooms.sort((a, b) => a.pricePerHour - b.pricePerHour);
       render(displayedRooms);
     });
   }
 
+  // [Логика: Сортировка по убыванию цены]
   if (sortDescBtn) {
     sortDescBtn.addEventListener('click', () => {
+      // [Теория: b - a сортирует по убыванию]
       displayedRooms.sort((a, b) => b.pricePerHour - a.pricePerHour);
       render(displayedRooms);
     });
   }
 
+  // [Логика: Первичный рендер при загрузке страницы]
   render(displayedRooms);
 }
 
+// [Логика: Инициализация формы калькулятора бронирования (booking.html)]
 function initBookingCalc() {
   const form = document.getElementById('bookingForm');
   const roomSelect = document.getElementById('roomSelect');
@@ -144,34 +158,47 @@ function initBookingCalc() {
   const totalPriceSpan = document.getElementById('totalPrice');
   if (!form || typeof OFFICE_ROOMS === 'undefined') return;
 
+  // [Логика: Динамическое заполнение выпадающего списка (<select>) комнатами из массива]
   roomSelect.innerHTML = OFFICE_ROOMS.map(r => `
+    <!-- [Теория: data-* атрибуты позволяют хранить пользовательские данные в HTML элементах (здесь data-price)] -->
     <option value="${r.id}" data-price="${r.pricePerHour}">${r.title} (${r.pricePerHour} ₽/час)</option>
   `).join('');
 
+  // [Теория: URLSearchParams предоставляет интерфейс для работы с параметрами строки запроса (GET параметрами) URL]
+  // [Логика: Получаем ID комнаты из адресной строки (например, ?room=alpha-2)]
   const urlParams = new URLSearchParams(window.location.search);
   const roomId = urlParams.get('room');
+  // [Логика: Автоматически выбираем в селекте нужную комнату]
   if (roomId) roomSelect.value = roomId;
 
+  // [Логика: Функция пересчета итоговой стоимости]
   function updatePrice() {
+    // [Теория: roomSelect.selectedIndex возвращает индекс выбранной опции, а dataset.price позволяет прочитать data-price]
     const selectedOption = roomSelect.options[roomSelect.selectedIndex];
     const price = selectedOption ? Number(selectedOption.dataset.price || 0) : 0;
+    // [Логика: Берем количество часов, но не меньше 1 (Math.max)]
     const hours = Math.max(1, Number(hoursInput.value || 1));
     const total = price * hours;
 
+    // [Логика: Обновляем текстовое содержимое спанов на странице]
     if (pricePerHourSpan) pricePerHourSpan.textContent = price + ' ₽';
     if (totalPriceSpan) totalPriceSpan.textContent = total + ' ₽';
   }
 
+  // [Теория: Событие 'change' срабатывает, когда пользователь выбирает другой элемент в селекте]
   roomSelect.addEventListener('change', updatePrice);
   hoursInput.addEventListener('input', updatePrice);
+  
+  // [Логика: Первичный расчет при загрузке страницы]
   updatePrice();
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
+    // [Логика: Генерируем случайный номер заявки для красоты]
     const appNumber = Math.floor(10000 + Math.random() * 90000);
-    alert('Бронирование создано! Номер заявки: №' + appNumber);
+    showModal('Бронирование создано! Номер заявки: №' + appNumber);
     form.reset();
-    updatePrice();
+    updatePrice(); // Пересчитываем цену после сброса формы
   });
 }
 
@@ -203,9 +230,8 @@ function initRegisterForm() {
     }
 
     if (isValid) {
-      alert('Пользователь зарегистрирован успешно!');
       form.reset();
-      window.location.href = 'login.html';
+      showModal('Пользователь зарегистрирован успешно!', 'login.html');
     }
   });
 }
@@ -222,14 +248,30 @@ function initLoginForm() {
 
     if (login === 'admin' && pass === '12345') {
       if (alertBox) alertBox.style.display = 'none';
-      alert('Успешный вход в систему!');
-      window.location.href = '../index.html';
+      showModal('Успешный вход в систему!', '../index.html');
     } else {
       if (alertBox) {
         alertBox.textContent = 'Неверный логин или пароль';
         alertBox.className = 'form-alert alert-danger';
         alertBox.style.display = 'block';
       }
+    }
+  });
+}
+
+
+// Вспомогательная функция для показа модального окна
+function showModal(message, redirectUrl = null) {
+  const modal = document.createElement('div');
+  modal.className = 'modal-overlay';
+  modal.innerHTML = '<div class="modal-content"><p>' + message + '</p><button class="btn btn-primary" id="modalCloseBtn">OK</button></div>';
+  document.body.appendChild(modal);
+
+  const closeBtn = modal.querySelector('#modalCloseBtn');
+  closeBtn.addEventListener('click', () => {
+    modal.remove();
+    if (redirectUrl) {
+      window.location.href = redirectUrl;
     }
   });
 }

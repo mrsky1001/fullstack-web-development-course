@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="css/style.css">
   <script src="js/data.js" defer></script>
   <script src="js/main.js" defer></script>
+  <link rel="icon" type="image/svg+xml" href="img/logo.svg">
 </head>
 <body>
   <header class="header">
@@ -57,8 +58,10 @@
         </div>
       </section>
 
+      <!-- [Логика: Секция со слайдером изображений] -->
       <section class="slider-section">
         <div class="slider">
+          <!-- [Логика: Каждый отдельный слайд. Класс active делает его видимым по умолчанию] -->
           <div class="slide active">
             <img src="img/slider-1.jpg" alt="Слайд 1" class="slide-img">
           </div>
@@ -71,8 +74,12 @@
           <div class="slide">
             <img src="img/slider-4.jpg" alt="Слайд 4" class="slide-img">
           </div>
+          
+          <!-- [Логика: Кнопки управления (назад/вперед)] -->
           <button class="slider-btn slider-prev">‹</button>
           <button class="slider-btn slider-next">›</button>
+          
+          <!-- [Логика: Блок с точками-индикаторами текущего слайда] -->
           <div class="slider-dots">
             <span class="dot active"></span>
             <span class="dot"></span>

@@ -169,7 +169,7 @@ function initBookingCalc() {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const appNumber = Math.floor(10000 + Math.random() * 90000);
-    alert('Бронирование создано! Номер заявки: №' + appNumber);
+    showModal('Бронирование создано! Номер заявки: №' + appNumber);
     form.reset();
     updatePrice();
   });
@@ -203,9 +203,8 @@ function initRegisterForm() {
     }
 
     if (isValid) {
-      alert('Пользователь зарегистрирован успешно!');
       form.reset();
-      window.location.href = 'login.html';
+      showModal('Пользователь зарегистрирован успешно!', 'login.html');
     }
   });
 }
@@ -222,14 +221,30 @@ function initLoginForm() {
 
     if (login === 'admin' && pass === '12345') {
       if (alertBox) alertBox.style.display = 'none';
-      alert('Успешный вход в систему!');
-      window.location.href = '../index.html';
+      showModal('Успешный вход в систему!', '../index.html');
     } else {
       if (alertBox) {
         alertBox.textContent = 'Неверный логин или пароль';
         alertBox.className = 'form-alert alert-danger';
         alertBox.style.display = 'block';
       }
+    }
+  });
+}
+
+
+// Вспомогательная функция для показа модального окна
+function showModal(message, redirectUrl = null) {
+  const modal = document.createElement('div');
+  modal.className = 'modal-overlay';
+  modal.innerHTML = '<div class="modal-content"><p>' + message + '</p><button class="btn btn-primary" id="modalCloseBtn">OK</button></div>';
+  document.body.appendChild(modal);
+
+  const closeBtn = modal.querySelector('#modalCloseBtn');
+  closeBtn.addEventListener('click', () => {
+    modal.remove();
+    if (redirectUrl) {
+      window.location.href = redirectUrl;
     }
   });
 }

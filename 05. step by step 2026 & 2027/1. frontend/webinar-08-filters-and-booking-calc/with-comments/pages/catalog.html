@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="../css/style.css">
   <script src="../js/data.js" defer></script>
   <script src="../js/main.js" defer></script>
+  <link rel="icon" type="image/svg+xml" href="../img/logo.svg">
 </head>
 <body>
   <header class="header">
@@ -35,9 +36,12 @@
       <h1 class="page-title">Каталог офисных пространств</h1>
       <p class="page-subtitle">Выберите подходящее помещение для индивидуальной работы или командных встреч</p>
 
+      <!-- [Логика: Панель инструментов для фильтрации и сортировки каталога] -->
       <div class="catalog-toolbar">
+        <!-- [Логика: Поле ввода для поиска по названию. Обрабатывается в JS через событие 'input'] -->
         <input type="text" id="searchInput" class="search-input" placeholder="Поиск по названию офиса...">
         <div class="sort-actions">
+          <!-- [Логика: Кнопки сортировки по цене (возрастание/убывание)] -->
           <button id="sortAsc" class="btn btn-outline">Цена: по возрастанию ↑</button>
           <button id="sortDesc" class="btn btn-outline">Цена: по убыванию ↓</button>
         </div>

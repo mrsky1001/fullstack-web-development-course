@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="../css/style.css">
   <script src="../js/data.js" defer></script>
   <script src="../js/main.js" defer></script>
+  <link rel="icon" type="image/svg+xml" href="../img/logo.svg">
 </head>
 <body>
   <header class="header">
@@ -35,7 +36,9 @@
       <h1 class="page-title">Авторизация</h1>
       <p class="page-subtitle">Войдите в личный кабинет (тестовые данные: admin / 12345)</p>
 
+      <!-- [Логика: Карточка-контейнер для формы авторизации] -->
       <div class="form-card">
+        <!-- [Логика: Блок для вывода сообщения об ошибке при неверном логине/пароле (скрыт по умолчанию)] -->
         <div id="loginAlert" class="form-alert"></div>
         <form id="loginForm" novalidate>
           <div class="form-group">
@@ -48,6 +51,7 @@
             <input type="password" id="password" class="form-control" placeholder="12345" required>
           </div>
 
+          <!-- [Теория: Атрибут type="submit" указывает, что кнопка отправляет данные формы] -->
           <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Войти</button>
         </form>
       </div>

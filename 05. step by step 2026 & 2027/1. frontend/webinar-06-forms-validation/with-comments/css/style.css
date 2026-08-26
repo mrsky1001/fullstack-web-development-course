@@ -21,9 +21,9 @@
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  color: #222222;
-  background-color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  color: #222;
+  background-color: #fff;
   line-height: 1.5;
   display: flex;
   flex-direction: column;
@@ -39,9 +39,9 @@ body {
 
 /* Шапка сайта */
 .header {
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #ddd;
   padding: 18px 0;
-  background-color: #ffffff;
+  background-color: #fff;
 }
 
 .header-container {
@@ -55,7 +55,7 @@ body {
   align-items: center;
   gap: 10px;
   text-decoration: none;
-  color: #222222;
+  color: #222;
   font-size: 20px;
   font-weight: 800;
   letter-spacing: -0.02em;
@@ -75,7 +75,7 @@ body {
 
 .nav-link {
   text-decoration: none;
-  color: #222222;
+  color: #222;
   padding: 8px 14px;
   border-radius: 4px;
   font-weight: 500;
@@ -89,13 +89,13 @@ body {
 
 .nav-btn {
   background-color: #007bff;
-  color: #ffffff;
+  color: #fff;
   font-weight: 600;
 }
 
 .nav-btn:hover {
   background-color: #0056b3;
-  color: #ffffff;
+  color: #fff;
 }
 
 /* Основной блок */
@@ -106,7 +106,7 @@ body {
 
 /* Дизайнерская типографическая секция (Hero во всю ширину) */
 .hero-section {
-  padding: 20px 0 50px 0;
+  padding: 20px 0 50px;
   margin-bottom: 30px;
 }
 
@@ -115,7 +115,7 @@ body {
   line-height: 0.95;
   letter-spacing: -0.04em;
   font-weight: 800;
-  color: #222222;
+  color: #222;
   margin-bottom: 25px;
 }
 
@@ -124,7 +124,7 @@ body {
 }
 
 .hero-bottom {
-  border-top: 2px solid #222222;
+  border-top: 2px solid #222;
   padding-top: 20px;
   display: flex;
   justify-content: space-between;
@@ -135,7 +135,7 @@ body {
 .hero-subtitle {
   font-size: 17px;
   line-height: 1.5;
-  color: #555555;
+  color: #555;
   max-width: 600px;
 }
 
@@ -159,7 +159,7 @@ body {
 
 .metric-lbl {
   font-size: 12px;
-  color: #777777;
+  color: #777;
   font-weight: 500;
 }
 
@@ -172,7 +172,7 @@ body {
 }
 
 .page-subtitle {
-  color: #666666;
+  color: #666;
   text-align: center;
   font-size: 15px;
 }
@@ -180,8 +180,8 @@ body {
 /* Подвал сайта */
 .footer {
   background-color: #f8f9fa;
-  border-top: 1px solid #dddddd;
-  color: #444444;
+  border-top: 1px solid #ddd;
+  color: #444;
   padding: 25px 0;
   margin-top: auto;
 }
@@ -217,7 +217,7 @@ body {
 
 .btn-primary {
   background-color: #007bff;
-  color: #ffffff;
+  color: #fff;
 }
 
 .btn-primary:hover {
@@ -232,7 +232,7 @@ body {
 
 .btn-outline:hover {
   background-color: #007bff;
-  color: #ffffff;
+  color: #fff;
 }
 
 /* Сетка карточек комнат */
@@ -246,10 +246,10 @@ body {
 
 .room-card {
   width: 373px;
-  border: 1px solid #dddddd;
+  border: 1px solid #ddd;
   border-radius: 6px;
   overflow: hidden;
-  background-color: #ffffff;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
 }
@@ -265,8 +265,6 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
-  display: block;
 }
 
 .card-content {
@@ -290,7 +288,7 @@ body {
 
 .card-equipment li {
   font-size: 13px;
-  color: #555555;
+  color: #555;
   margin-bottom: 4px;
 }
 
@@ -298,20 +296,20 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid #eeeeee;
+  border-top: 1px solid #eee;
   padding-top: 10px;
 }
 
 .card-price {
   font-size: 18px;
   font-weight: 700;
-  color: #222222;
+  color: #222;
 }
 
 .card-price span {
   font-size: 13px;
   font-weight: 400;
-  color: #666666;
+  color: #666;
 }
 
 .center-action {
@@ -324,21 +322,28 @@ body {
   background-color: #eaf2ff;
 }
 
-/* Стилизация форм (Регистрация и Вход) */
+/* ========================================= */
+/* НОВЫЙ КОД ВЕБИНАРА 06 (Формы и Валидация) */
+/* ========================================= */
+
+/* [Логика: Центрированная карточка, внутри которой размещаются формы регистрации и входа] */
 .form-card {
   max-width: 480px;
-  margin: 30px auto 0 auto;
+  /* [Теория: margin: 30px auto 0 задает отступ сверху 30px, автоматически выравнивает по центру по горизонтали, и 0 снизу] */
+  margin: 30px auto 0;
   padding: 25px;
-  border: 1px solid #dddddd;
+  border: 1px solid #ddd;
   border-radius: 6px;
-  background-color: #ffffff;
+  background-color: #fff;
 }
 
+/* [Логика: Обёртка для связки "подпись (label) + поле (input) + ошибка"] */
 .form-group {
   margin-bottom: 15px;
 }
 
 .form-label {
+  /* [Теория: display: block заставляет label занимать всю ширину, перенося input на новую строку] */
   display: block;
   font-size: 14px;
   font-weight: 600;
@@ -348,29 +353,35 @@ body {
 .form-control {
   width: 100%;
   padding: 8px 12px;
-  border: 1px solid #dddddd;
+  border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 14px;
+  /* [Теория: font-family: inherit заставляет input наследовать шрифт документа (иначе браузер применит системный шрифт для инпутов)] */
   font-family: inherit;
 }
 
-/* Красная подсветка поля при ошибке валидации */
+/* [Логика: Красная подсветка поля при ошибке валидации, добавляется через JS] */
 .form-control.is-invalid {
   border-color: #dc3545;
   background-color: #fff8f8;
 }
 
+/* [Логика: Текст ошибки, скрыт по умолчанию] */
 .error-text {
   color: #dc3545;
   font-size: 12px;
   margin-top: 4px;
+  /* [Теория: display: none полностью убирает элемент из визуального отображения и потока документа] */
   display: none;
 }
 
+/* [Теория: Селектор + выбирает соседний элемент. В данном случае .error-text, который идет СРАЗУ ПОСЛЕ .form-control.is-invalid] */
+/* [Логика: Если инпут стал невалидным, мы показываем идущий за ним блок ошибки] */
 .form-control.is-invalid + .error-text {
   display: block;
 }
 
+/* [Логика: Блок для вывода общих ошибок формы (например, неверный логин/пароль)] */
 .form-alert {
   padding: 10px;
   border-radius: 4px;
@@ -384,4 +395,34 @@ body {
   color: #721c24;
   border: 1px solid #f5c6cb;
   display: block;
+}
+
+
+/* [Логика: Стили для кастомного модального окна, которое вызывается из JS] */
+.modal-overlay {
+  /* [Теория: position: fixed фиксирует элемент относительно окна браузера, он не прокручивается со страницей] */
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  /* [Теория: rgba задает цвет с прозрачностью (последнее число от 0 до 1)] */
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* [Теория: z-index контролирует наложение слоев, элемент с бОльшим значением перекрывает остальные] */
+  z-index: 1000;
+}
+.modal-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 6px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  /* [Теория: box-shadow создает тень (смещение X, смещение Y, размытие, цвет)] */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+.modal-content p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 500;
 }

@@ -21,9 +21,9 @@
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  color: #222222;
-  background-color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  color: #222;
+  background-color: #fff;
   line-height: 1.5;
   display: flex;
   flex-direction: column;
@@ -39,9 +39,9 @@ body {
 
 /* Шапка сайта */
 .header {
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #ddd;
   padding: 18px 0;
-  background-color: #ffffff;
+  background-color: #fff;
 }
 
 .header-container {
@@ -55,7 +55,7 @@ body {
   align-items: center;
   gap: 10px;
   text-decoration: none;
-  color: #222222;
+  color: #222;
   font-size: 20px;
   font-weight: 800;
   letter-spacing: -0.02em;
@@ -75,7 +75,7 @@ body {
 
 .nav-link {
   text-decoration: none;
-  color: #222222;
+  color: #222;
   padding: 8px 14px;
   border-radius: 4px;
   font-weight: 500;
@@ -89,13 +89,13 @@ body {
 
 .nav-btn {
   background-color: #007bff;
-  color: #ffffff;
+  color: #fff;
   font-weight: 600;
 }
 
 .nav-btn:hover {
   background-color: #0056b3;
-  color: #ffffff;
+  color: #fff;
 }
 
 /* Основной блок */
@@ -106,7 +106,7 @@ body {
 
 /* Дизайнерская типографическая секция (Hero во всю ширину) */
 .hero-section {
-  padding: 20px 0 50px 0;
+  padding: 20px 0 50px;
   margin-bottom: 30px;
 }
 
@@ -115,7 +115,7 @@ body {
   line-height: 0.95;
   letter-spacing: -0.04em;
   font-weight: 800;
-  color: #222222;
+  color: #222;
   margin-bottom: 25px;
 }
 
@@ -124,7 +124,7 @@ body {
 }
 
 .hero-bottom {
-  border-top: 2px solid #222222;
+  border-top: 2px solid #222;
   padding-top: 20px;
   display: flex;
   justify-content: space-between;
@@ -135,7 +135,7 @@ body {
 .hero-subtitle {
   font-size: 17px;
   line-height: 1.5;
-  color: #555555;
+  color: #555;
   max-width: 600px;
 }
 
@@ -159,7 +159,7 @@ body {
 
 .metric-lbl {
   font-size: 12px;
-  color: #777777;
+  color: #777;
   font-weight: 500;
 }
 
@@ -172,7 +172,7 @@ body {
 }
 
 .page-subtitle {
-  color: #666666;
+  color: #666;
   text-align: center;
   font-size: 15px;
 }
@@ -180,8 +180,8 @@ body {
 /* Подвал сайта */
 .footer {
   background-color: #f8f9fa;
-  border-top: 1px solid #dddddd;
-  color: #444444;
+  border-top: 1px solid #ddd;
+  color: #444;
   padding: 25px 0;
   margin-top: auto;
 }
@@ -217,7 +217,7 @@ body {
 
 .btn-primary {
   background-color: #007bff;
-  color: #ffffff;
+  color: #fff;
 }
 
 .btn-primary:hover {
@@ -232,7 +232,7 @@ body {
 
 .btn-outline:hover {
   background-color: #007bff;
-  color: #ffffff;
+  color: #fff;
 }
 
 /* Сетка карточек комнат */
@@ -246,10 +246,10 @@ body {
 
 .room-card {
   width: 373px;
-  border: 1px solid #dddddd;
+  border: 1px solid #ddd;
   border-radius: 6px;
   overflow: hidden;
-  background-color: #ffffff;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
 }
@@ -265,8 +265,6 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
-  display: block;
 }
 
 .card-content {
@@ -290,7 +288,7 @@ body {
 
 .card-equipment li {
   font-size: 13px;
-  color: #555555;
+  color: #555;
   margin-bottom: 4px;
 }
 
@@ -298,20 +296,20 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid #eeeeee;
+  border-top: 1px solid #eee;
   padding-top: 10px;
 }
 
 .card-price {
   font-size: 18px;
   font-weight: 700;
-  color: #222222;
+  color: #222;
 }
 
 .card-price span {
   font-size: 13px;
   font-weight: 400;
-  color: #666666;
+  color: #666;
 }
 
 .center-action {
@@ -327,11 +325,11 @@ body {
 /* Стилизация форм (Регистрация и Вход) */
 .form-card {
   max-width: 480px;
-  margin: 30px auto 0 auto;
+  margin: 30px auto 0;
   padding: 25px;
-  border: 1px solid #dddddd;
+  border: 1px solid #ddd;
   border-radius: 6px;
-  background-color: #ffffff;
+  background-color: #fff;
 }
 
 .form-group {
@@ -348,7 +346,7 @@ body {
 .form-control {
   width: 100%;
   padding: 8px 12px;
-  border: 1px solid #dddddd;
+  border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 14px;
   font-family: inherit;
@@ -393,12 +391,12 @@ body {
 
 .slider {
   position: relative;
-  width: 800px;
+  width: 100%;
   height: 400px;
   margin: 0 auto;
   overflow: hidden;
   border-radius: 6px;
-  border: 1px solid #dddddd;
+  border: 1px solid #ddd;
   background-color: #f8f9fa;
 }
 
@@ -420,7 +418,6 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
 }
 
 .slider-btn {
@@ -428,7 +425,7 @@ body {
   top: 50%;
   transform: translateY(-50%);
   background-color: rgba(0, 0, 0, 0.4);
-  color: #ffffff;
+  color: #fff;
   border: none;
   width: 36px;
   height: 36px;
@@ -466,4 +463,30 @@ body {
 
 .dot.active {
   background-color: #007bff;
+}
+
+
+/* Модальное окно */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.modal-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 6px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+.modal-content p {
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 500;
 }

@@ -4,13 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>СмартОфис — Бронирование офисных комнат</title>
-  <!-- Подключение шрифта Inter через Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  
-  
+  <link rel="icon" type="image/svg+xml" href="img/logo.svg">
 </head>
 <body>
   <header class="header">
@@ -23,7 +21,6 @@
         <ul class="nav-list">
           <li><a href="index.html" class="nav-link active">Главная</a></li>
           <li><a href="pages/catalog.html" class="nav-link">Каталог</a></li>
-          
           <li><a href="pages/login.html" class="nav-link nav-btn">Войти</a></li>
         </ul>
       </nav>
@@ -57,25 +54,38 @@
         </div>
       </section>
 
-
+      <!-- [Логика: Новая секция с карточками популярных офисных комнат] -->
       <section class="popular-section">
+        <!-- [Теория: Тег h2 обозначает заголовок второго уровня] -->
+        <!-- [Логика: Заголовок блока с популярными комнатами] -->
         <h2 class="page-title">Популярные офисные комнаты</h2>
         <p class="page-subtitle">Наиболее востребованные пространства с полным техническим оснащением</p>
 
+        <!-- [Логика: Контейнер-сетка для размещения карточек комнат в один ряд] -->
         <div class="rooms-grid">
+          
+          <!-- [Логика: Карточка конкретной офисной комнаты] -->
           <div class="room-card">
             <div class="card-img-wrap">
+              <!-- [Теория: Атрибут onerror позволяет задать JS-код, который выполнится при ошибке загрузки картинки] -->
+              <!-- [Логика: Заглушка, если фотография комнаты не найдена или удалена] -->
               <img src="img/room-1.jpg" alt="Мини-офис Focus" class="card-img" onerror="this.src='img/no-image.svg'">
             </div>
             <div class="card-content">
+              <!-- [Теория: Тег h3 обозначает заголовок третьего уровня (подзаголовок)] -->
+              <!-- [Логика: Название комнаты внутри карточки] -->
               <h3 class="card-title">Мини-офис Focus</h3>
+              
+              <!-- [Логика: Список удобств/оснащения для данной комнаты] -->
               <ul class="card-equipment">
                 <li>Wi-Fi 500 Мбит/с</li>
                 <li>4K Монитор</li>
                 <li>Эргономичное кресло</li>
               </ul>
+              
               <div class="card-footer">
                 <div class="card-price">450 ₽ <span>/ час</span></div>
+                <!-- [Логика: Кнопка перехода к подробному описанию в каталоге] -->
                 <a href="pages/catalog.html" class="btn btn-primary">Подробнее</a>
               </div>
             </div>
@@ -118,6 +128,7 @@
           </div>
         </div>
 
+        <!-- [Логика: Блок с кнопкой перехода ко всем комнатам] -->
         <div class="center-action">
           <a href="pages/catalog.html" class="btn btn-outline">Больше офисов</a>
         </div>
