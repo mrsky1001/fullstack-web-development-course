@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Регистрация — СмартОфис</title>
+  <!-- Подключение шрифта Inter через Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" type="image/svg+xml" href="../img/logo.svg">
+  <script src="../js/data.js" defer></script>
+  <script src="../js/main.js" defer></script>
+</head>
+<body>
+  <!-- [Теория: Семантический тег header обозначает верхнюю шапку сайта] -->
+  <header class="header">
+    <div class="container header-container">
+      <!-- [Логика: Логотип ведет на главную страницу при клике] -->
+      <a href="../index.html" class="logo">
+        <img src="../img/logo.svg" alt="Логотип" class="logo-icon">
+        <span>СмартОфис</span>
+      </a>
+      <!-- [Теория: Тег nav группирует навигационные ссылки] -->
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="../index.html" class="nav-link active">Главная</a></li>
+          <li><a href="../pages/catalog.html" class="nav-link">Каталог</a></li>
+          
+          <li><a href="../pages/login.html" class="nav-link nav-btn" id="authNavBtn">Войти</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="container">
+      <h1 class="page-title">Регистрация в СмартОфис</h1>
+      <p class="page-subtitle">Создайте аккаунт для быстрого бронирования рабочих мест</p>
+
+      <div class="form-card">
+        <form id="registerForm" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="login">Логин</label>
+            <input type="text" id="login" class="form-control" placeholder="Введите логин" required>
+            <div class="error-text">Поле обязательно для заполнения</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="password">Пароль</label>
+            <input type="password" id="password" class="form-control" placeholder="Минимум 6 символов" required>
+            <div class="error-text">Поле обязательно для заполнения</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="confirmPassword">Подтверждение пароля</label>
+            <input type="password" id="confirmPassword" class="form-control" placeholder="Повторите пароль" required>
+            <div class="error-text">Пароли не совпадают</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="fullName">ФИО</label>
+            <input type="text" id="fullName" class="form-control" placeholder="Иванов Иван Иванович" required>
+            <div class="error-text">Поле обязательно для заполнения</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="email">Email</label>
+            <input type="email" id="email" class="form-control" placeholder="example@mail.ru" required>
+            <div class="error-text">Введите корректный email</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="phone">Телефон</label>
+            <input type="tel" id="phone" class="form-control" placeholder="+7 (999) 000-00-00" required>
+            <div class="error-text">Поле обязательно для заполнения</div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Зарегистрироваться</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- [Теория: Семантический тег footer обозначает подвал страницы с контактами и копирайтом] -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-info">
+        <p><strong>СмартОфис</strong> — Сервис бронирования офисных комнат</p>
+        <p>© 2026 СмартОфис. Все права защищены.</p>
+      </div>
+      <div class="footer-contacts">
+        <p>Email: <a href="mailto:info@smartoffice.ru">info@smartoffice.ru</a></p>
+        <p>Телефон: <a href="tel:+78005553535">+7 (800) 555-35-35</a></p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -6,8 +6,8 @@
 > Эта папка (`/docs`) используется для хостинга демонстрационной версии проекта на **GitHub Pages** курса. 
 > Данное приложение работает полностью автономно: авторизация и корзина эмулируются через `localStorage` браузера.
 > 
-> *   Если вам нужна версия с реальным сервером и базой данных MySQL, обратитесь к разделу [4. full-stack-store-app/3. store-app/](../4.%20full-stack-store-app/3.%20store-app/).
-> *   Если вам нужна версия на Svelte, перейдите в [4. full-stack-store-app/4. store-app-svelte/](../4.%20full-stack-store-app/4.%20store-app-svelte/).
+> *   Если вам нужна версия с реальным сервером и базой данных MySQL, обратитесь к разделу [04. full-stack-store-app/03. store-app/](../04.%20full-stack-store-app/03.%20store-app/).
+> *   Если вам нужна версия на Svelte, перейдите в [04. full-stack-store-app/04. store-app-svelte/](../04.%20full-stack-store-app/04.%20store-app-svelte/).
 
 ## 🎯 Назначение
 

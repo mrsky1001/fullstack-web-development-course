@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вход — СмартОфис</title>
+  <!-- Подключение шрифта Inter через Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" type="image/svg+xml" href="../img/logo.svg">
+  <script src="../js/data.js" defer></script>
+  <script src="../js/main.js" defer></script>
+</head>
+<body>
+  <!-- [Теория: Семантический тег header обозначает верхнюю шапку сайта] -->
+  <header class="header">
+    <div class="container header-container">
+      <!-- [Логика: Логотип ведет на главную страницу при клике] -->
+      <a href="../index.html" class="logo">
+        <img src="../img/logo.svg" alt="Логотип" class="logo-icon">
+        <span>СмартОфис</span>
+      </a>
+      <!-- [Теория: Тег nav группирует навигационные ссылки] -->
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="../index.html" class="nav-link active">Главная</a></li>
+          <li><a href="../pages/catalog.html" class="nav-link">Каталог</a></li>
+          
+          <li><a href="../pages/login.html" class="nav-link nav-btn" id="authNavBtn">Войти</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="container">
+      <h1 class="page-title">Авторизация</h1>
+      <p class="page-subtitle">Войдите в личный кабинет (тестовые данные: admin / 12345)</p>
+
+      <div class="form-card">
+        <div id="loginAlert" class="form-alert"></div>
+        <form id="loginForm" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="login">Логин</label>
+            <input type="text" id="login" class="form-control" placeholder="admin" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="password">Пароль</label>
+            <input type="password" id="password" class="form-control" placeholder="12345" required>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Войти</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- [Теория: Семантический тег footer обозначает подвал страницы с контактами и копирайтом] -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-info">
+        <p><strong>СмартОфис</strong> — Сервис бронирования офисных комнат</p>
+        <p>© 2026 СмартОфис. Все права защищены.</p>
+      </div>
+      <div class="footer-contacts">
+        <p>Email: <a href="mailto:info@smartoffice.ru">info@smartoffice.ru</a></p>
+        <p>Телефон: <a href="tel:+78005553535">+7 (800) 555-35-35</a></p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
