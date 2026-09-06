@@ -7,3 +7,20 @@ package-lock.json
 webinar_temp/
 *.zip
 .svelte-kit
+
+# Python & compiled bytecode
+__pycache__/
+*.pyc
+*.py
+
+# AI Agent configuration & rules
+.agents/
+
+# PowerPoint presentations and Office locks
+*.pptx
+~$*
+
+# Temporary/preview artifacts and shortcuts
+*.lnk
+/webinar*.png
+/webinar*_previews*/
