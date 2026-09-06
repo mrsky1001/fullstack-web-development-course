@@ -13,7 +13,7 @@ git push origin agent-workspace
 Write-Host ">>> [2/4] Switching to main branch..." -ForegroundColor Cyan
 git checkout main
 
-Write-Host ">>> [3/4] Syncing course folders from agent-workspace..." -ForegroundColor Cyan
+Write-Host ">>> [3/4] Syncing pure course folders to main..." -ForegroundColor Cyan
 $courseFolders = @(
     "00. resources",
     "01. frontend",
@@ -27,9 +27,12 @@ $courseFolders = @(
 
 foreach ($folder in $courseFolders) {
     if (Test-Path $folder) {
-        git checkout agent-workspace -- "$folder" 2>$null
+        git checkout agent-workspace -- "$folder" ":(exclude)*.pptx" ":(exclude)*.py" ":(exclude)*.png" ":(exclude)*.lnk" 2>$null
     }
 }
+
+# Ensure no pptx or py ever gets staged in main
+git reset HEAD -- "*.pptx" "*.py" ".agents/*" 2>$null
 
 $mainStatus = git status --porcelain
 if ($mainStatus) {
