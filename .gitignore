@@ -7,3 +7,13 @@ package-lock.json
 webinar_temp/
 *.zip
 .svelte-kit
+
+# Python bytecode cache
+__pycache__/
+*.pyc
+
+# MS Office temporary lock files
+~$*
+
+# Windows shortcuts
+*.lnk
