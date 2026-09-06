@@ -59,7 +59,7 @@ export function Sidebar({
                   <span>{discipline}</span>
                 </div>
               )}
-              {!isGroupCollapsed && groupLessons.map((lesson) => (
+              {groupLessons.map((lesson) => (
                 <button
                   key={lesson.id}
                   className={`lesson-item ${lesson.id === currentIndex ? 'active' : ''}`}

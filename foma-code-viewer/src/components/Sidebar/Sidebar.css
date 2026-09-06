@@ -49,33 +49,40 @@
 .sidebar-discipline-group {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
+  margin-bottom: 8px;
 }
 
 .sidebar-discipline-title {
-  padding: 0 16px 8px;
+  padding: 8px 12px;
+  margin: 0 4px 4px 4px;
+  border-radius: var(--radius-sm);
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--text-muted);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .sidebar-discipline-title.clickable {
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   user-select: none;
-  transition: color var(--transition-smooth);
+  transition: all var(--transition-smooth);
 }
 
 .sidebar-discipline-title.clickable:hover {
-  color: var(--text-secondary);
+  background-color: var(--bg-card-hover);
+  color: var(--text-primary);
 }
 
 .sidebar-discipline-group.collapsed {
   gap: 0;
+}
+.sidebar-discipline-group.collapsed .lesson-item {
+  display: none;
 }
 
 .lesson-item {

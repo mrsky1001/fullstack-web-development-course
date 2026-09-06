@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { Download, FolderDown, Check } from 'lucide-react';
+import { Download, FolderDown, Check, RotateCcw } from 'lucide-react';
 import type { CodeFiles } from '../../types/lesson';
 import { downloadProjectZip, saveProjectToFolder, generateZipFilename } from '../../utils/exportProject';
 import './Preview.css';
@@ -18,6 +18,7 @@ export function Preview({
   stepTitle = 'код',
 }: PreviewProps) {
   const [statusMsg, setStatusMsg] = useState<string | null>(null);
+  const [refreshKey, setRefreshKey] = useState(0);
   const hasFolderApi = typeof window !== 'undefined' && 'showDirectoryPicker' in window;
   const targetZipName = useMemo(
     () => generateZipFilename(lessonNumber, stepNumber, stepTitle),
@@ -88,6 +89,15 @@ ${code.html}
             </button>
           )}
           <button
+            className="btn btn-xs btn-ghost"
+            onClick={() => setRefreshKey(k => k + 1)}
+            title="Перезапустить скрипты (обновить превью)"
+            id="refresh-preview-btn"
+          >
+            <RotateCcw size={12} />
+            <span>Перезапуск JS</span>
+          </button>
+          <button
             className="btn btn-xs btn-accent"
             onClick={handleDownloadZip}
             title={`Скачать ZIP-архив: ${targetZipName}`}
@@ -100,6 +110,7 @@ ${code.html}
       </div>
       <div className="preview-body">
         <iframe
+          key={refreshKey}
           srcDoc={srcdoc}
           title="Preview"
           sandbox="allow-scripts allow-modals"
