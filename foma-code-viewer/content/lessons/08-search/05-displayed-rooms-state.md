@@ -17,14 +17,18 @@ highlight: js
 Добавьте эту строчку внутри вашей новой функции.
 
 ```js:start
+function initCatalogFilters() {
   const sortDescBtn = document.getElementById('sortDesc');
   if (!container || typeof OFFICE_ROOMS === 'undefined') return;
 
+}
 ```
 
 ```js:solution
+function initCatalogFilters() {
   const sortDescBtn = document.getElementById('sortDesc');
   if (!container || typeof OFFICE_ROOMS === 'undefined') return;
 
   let displayedRooms = [...OFFICE_ROOMS];
+}
 ```

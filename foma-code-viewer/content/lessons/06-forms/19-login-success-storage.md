@@ -22,6 +22,8 @@ highlight: js
     if (login === 'admin' && pass === '12345') {
       
     } else {
+      // обработка ошибки
+    }
 ```
 
 ```js:solution
@@ -33,4 +35,6 @@ highlight: js
         window.location.href = 'my-bookings.html';
       }, 1000);
     } else {
+      // обработка ошибки
+    }
 ```

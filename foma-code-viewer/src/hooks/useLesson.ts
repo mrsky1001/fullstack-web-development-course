@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import type { CodeFiles } from '../types/lesson';
 import { lessons } from '../lessons';
 import { formatCode } from '../utils/formatCode';
@@ -11,10 +11,72 @@ function formatCodeFiles(files: CodeFiles): CodeFiles {
   };
 }
 
+function getInitialLessonAndStep(): { lessonIdx: number; stepIdx: number } {
+  let lessonParam: string | null = null;
+  let stepParam: string | null = null;
+
+  try {
+    // 1. Check URL search params (?lesson=4&step=1 or ?l=4&s=1)
+    const searchParams = new URLSearchParams(window.location.search);
+    lessonParam = searchParams.get('lesson') || searchParams.get('l');
+    stepParam = searchParams.get('step') || searchParams.get('s');
+
+    // 2. Hash fallback (#lesson=4&step=1 or #/4/1)
+    if (!lessonParam && window.location.hash) {
+      const cleanHash = window.location.hash.replace(/^#\/?/, '');
+      const hashParams = new URLSearchParams(cleanHash);
+      lessonParam = hashParams.get('lesson') || hashParams.get('l');
+      stepParam = hashParams.get('step') || hashParams.get('s');
+
+      if (!lessonParam) {
+        const match = cleanHash.match(/(?:lesson\/)?(\d+)(?:\/step\/|\/)(\d+)/i);
+        if (match) {
+          lessonParam = match[1];
+          stepParam = match[2];
+        }
+      }
+    }
+
+    // 3. LocalStorage fallback
+    if (!lessonParam) {
+      lessonParam = localStorage.getItem('foma-last-lesson-id');
+      stepParam = localStorage.getItem('foma-last-step-idx');
+    }
+  } catch {
+    // Ignore in non-browser context
+  }
+
+  let lessonIdx = 0;
+  let stepIdx = 0;
+
+  if (lessonParam) {
+    const num = parseInt(lessonParam, 10);
+    const foundIdx = lessons.findIndex((l) => l.id === num);
+    if (foundIdx !== -1) {
+      lessonIdx = foundIdx;
+    }
+  }
+
+  if (stepParam) {
+    const sNum = parseInt(stepParam, 10);
+    if (!isNaN(sNum)) {
+      const targetIdx = sNum >= 1 ? sNum - 1 : 0;
+      if (targetIdx >= 0 && targetIdx < lessons[lessonIdx].steps.length) {
+        stepIdx = targetIdx;
+      }
+    }
+  }
+
+  return { lessonIdx, stepIdx };
+}
+
 export function useLesson() {
-  const [lessonIndex, setLessonIndex] = useState(0);
-  const [stepIndex, setStepIndex] = useState(0);
-  const [code, setCode] = useState<CodeFiles>(() => formatCodeFiles({ ...lessons[0].steps[0].startCode }));
+  const initial = getInitialLessonAndStep();
+  const [lessonIndex, setLessonIndex] = useState(initial.lessonIdx);
+  const [stepIndex, setStepIndex] = useState(initial.stepIdx);
+  const [code, setCode] = useState<CodeFiles>(() =>
+    formatCodeFiles({ ...lessons[initial.lessonIdx].steps[initial.stepIdx].startCode })
+  );
   
   const [isShowingSolution, setIsShowingSolution] = useState(false);
   const [userCodeBeforeSolution, setUserCodeBeforeSolution] = useState<CodeFiles | null>(null);
@@ -22,6 +84,39 @@ export function useLesson() {
   const lesson = lessons[lessonIndex];
   const step = lesson.steps[stepIndex];
   const totalSteps = lesson.steps.length;
+
+  // Sync URL and localStorage on lesson/step change
+  useEffect(() => {
+    const currentLesson = lessons[lessonIndex];
+    if (!currentLesson) return;
+
+    try {
+      const url = new URL(window.location.href);
+      url.searchParams.set('lesson', String(currentLesson.id));
+      url.searchParams.set('step', String(stepIndex + 1));
+      window.history.replaceState(null, '', url.toString());
+
+      localStorage.setItem('foma-last-lesson-id', String(currentLesson.id));
+      localStorage.setItem('foma-last-step-idx', String(stepIndex + 1));
+    } catch {
+      // Ignore
+    }
+  }, [lessonIndex, stepIndex]);
+
+  // Sync state if user clicks browser back/forward (popstate)
+  useEffect(() => {
+    const handlePopState = () => {
+      const { lessonIdx, stepIdx } = getInitialLessonAndStep();
+      setLessonIndex(lessonIdx);
+      setStepIndex(stepIdx);
+      setCode(formatCodeFiles({ ...lessons[lessonIdx].steps[stepIdx].startCode }));
+      setIsShowingSolution(false);
+      setUserCodeBeforeSolution(null);
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
   // Helper to reset solution state on navigation
   const resetSolutionState = useCallback(() => {

@@ -14,6 +14,7 @@ highlight: js
 В самом-самом конце вашей огромной функции `initSlider()` вызовите `startAuto()`.
 
 ```js:start
+function initSlider() {
   dots.forEach((dot, idx) => {
     dot.addEventListener('click', () => {
       showSlide(idx);
@@ -23,11 +24,10 @@ highlight: js
 
   // Впишите вызов здесь
 }
-
-function renderCatalog() {
 ```
 
 ```js:solution
+function initSlider() {
   dots.forEach((dot, idx) => {
     dot.addEventListener('click', () => {
       showSlide(idx);
@@ -37,6 +37,4 @@ function renderCatalog() {
 
   startAuto();
 }
-
-function renderCatalog() {
 ```

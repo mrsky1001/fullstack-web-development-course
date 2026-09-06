@@ -15,6 +15,8 @@ highlight: js
 В файле `js/data.js` в самом низу добавьте массив `MOCK_BOOKINGS`. И на этом вебинар официально завершен!
 
 ```js:start
+const OFFICE_ROOMS = [
+  {
     image: '../img/room-6.jpg',
     isPopular: false
   }
@@ -22,6 +24,8 @@ highlight: js
 ```
 
 ```js:solution
+const OFFICE_ROOMS = [
+  {
     image: '../img/room-6.jpg',
     isPopular: false
   }

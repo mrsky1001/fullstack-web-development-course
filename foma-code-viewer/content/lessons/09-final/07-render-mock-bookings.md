@@ -14,16 +14,19 @@ highlight: js
 Напишите каркас маппинга.
 
 ```js:start
+function initMyBookings() {
   if (!MOCK_BOOKINGS || MOCK_BOOKINGS.length === 0) {
-    // ...
+    container.innerHTML = '<div class="empty-message">У вас пока нет бронирований</div>';
     return;
   }
 
+}
 ```
 
 ```js:solution
+function initMyBookings() {
   if (!MOCK_BOOKINGS || MOCK_BOOKINGS.length === 0) {
-    // ...
+    container.innerHTML = '<div class="empty-message">У вас пока нет бронирований</div>';
     return;
   }
 
@@ -32,4 +35,5 @@ highlight: js
       <!-- Сюда вставим внутренности -->
     </div>
   `).join('');
+}
 ```

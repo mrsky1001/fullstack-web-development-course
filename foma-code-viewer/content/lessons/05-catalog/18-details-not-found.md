@@ -14,6 +14,7 @@ highlight: js
 Вставьте этот блок обработки ошибки.
 
 ```js:start
+function initDetails() {
   const urlParams = new URLSearchParams(window.location.search);
   const roomId = urlParams.get('id') || urlParams.get('room');
   const room = OFFICE_ROOMS.find(r => r.id === roomId);
@@ -22,6 +23,7 @@ highlight: js
 ```
 
 ```js:solution
+function initDetails() {
   const urlParams = new URLSearchParams(window.location.search);
   const roomId = urlParams.get('id') || urlParams.get('room');
   const room = OFFICE_ROOMS.find(r => r.id === roomId);

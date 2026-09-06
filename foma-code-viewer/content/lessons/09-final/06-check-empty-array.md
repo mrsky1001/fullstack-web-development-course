@@ -13,14 +13,17 @@ highlight: js
 Добавьте логику проверки на пустоту под Auth Guard.
 
 ```js:start
+function initMyBookings() {
   if (!currentUser) {
     window.location.href = 'login.html';
     return;
   }
 
+}
 ```
 
 ```js:solution
+function initMyBookings() {
   if (!currentUser) {
     window.location.href = 'login.html';
     return;
@@ -30,4 +33,5 @@ highlight: js
     container.innerHTML = '<div class="empty-message">У вас пока нет бронирований</div>';
     return;
   }
+}
 ```

@@ -16,17 +16,21 @@ highlight: js
 Объявите переменные состояния внутри `initSlider()`.
 
 ```js:start
+function initSlider() {
   const prevBtn = document.querySelector('.slider-prev');
   const nextBtn = document.querySelector('.slider-next');
   if (!slides.length) return;
 
+}
 ```
 
 ```js:solution
+function initSlider() {
   const prevBtn = document.querySelector('.slider-prev');
   const nextBtn = document.querySelector('.slider-next');
   if (!slides.length) return;
 
   let currentSlide = 0;
   let timerId = null;
+}
 ```

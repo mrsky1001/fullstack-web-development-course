@@ -14,17 +14,19 @@ highlight: js
 Добавьте этот `if` внутрь функции `render`.
 
 ```js:start
-  function render(rooms) {
-    
-    container.innerHTML = rooms.map(room => `
+function render(rooms) {
+  
+  container.innerHTML = rooms.map(room => `<div>${room.title}</div>`).join('');
+}
 ```
 
 ```js:solution
-  function render(rooms) {
-    if (!rooms.length) {
-      container.innerHTML = '<p class="empty-message">Комнаты не найдены</p>';
-      return;
-    }
-    
-    container.innerHTML = rooms.map(room => `
+function render(rooms) {
+  if (!rooms.length) {
+    container.innerHTML = '<p class="empty-message">Комнаты не найдены</p>';
+    return;
+  }
+  
+  container.innerHTML = rooms.map(room => `<div>${room.title}</div>`).join('');
+}
 ```

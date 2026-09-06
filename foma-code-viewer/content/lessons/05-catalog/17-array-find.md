@@ -14,6 +14,7 @@ highlight: js
 Сразу после получения `roomId` напишите поиск комнаты.
 
 ```js:start
+function initDetails() {
   const urlParams = new URLSearchParams(window.location.search);
   const roomId = urlParams.get('id') || urlParams.get('room');
   
@@ -21,6 +22,7 @@ highlight: js
 ```
 
 ```js:solution
+function initDetails() {
   const urlParams = new URLSearchParams(window.location.search);
   const roomId = urlParams.get('id') || urlParams.get('room');
   const room = OFFICE_ROOMS.find(r => r.id === roomId);

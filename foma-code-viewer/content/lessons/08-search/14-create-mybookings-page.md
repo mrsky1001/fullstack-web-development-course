@@ -15,9 +15,19 @@ highlight: html
 Идем дальше! Ничего вписывать не нужно.
 
 ```html:start
-<!-- Оставьте пустым -->
+<section class="my-bookings">
+  <div class="container">
+    <h2>Мои бронирования</h2>
+    <!-- Добавьте контейнер myBookingsList -->
+  </div>
+</section>
 ```
 
 ```html:solution
-<!-- Оставьте пустым -->
+<section class="my-bookings">
+  <div class="container">
+    <h2>Мои бронирования</h2>
+    <div id="myBookingsList"></div>
+  </div>
+</section>
 ```

@@ -21,19 +21,19 @@ JS-файлы подключаются с помощью тега `<script>`. О
 В файле `index.html` найдите раздел `<head>`. Сразу после подключения иконки добавьте тег `<script src="js/main.js" defer></script>`.
 
 ```html:start
+<head>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" type="image/svg+xml" href="img/logo.svg">
-  
   
 </head>
 ```
 
 ```html:solution
+<head>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" type="image/svg+xml" href="img/logo.svg">
-  
   <script src="js/main.js" defer></script>
 </head>
 ```

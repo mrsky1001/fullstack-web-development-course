@@ -16,15 +16,17 @@ highlight: js
 Добавьте вызов `.join('')` сразу после закрывающей скобки метода `map()`.
 
 ```js:start
+function renderCatalog() {
   container.innerHTML = OFFICE_ROOMS.map(room => `
-    // ... HTML код ...
-  `)
+    <div class="catalog-card">${room.name}</div>
+  `);
 }
 ```
 
 ```js:solution
+function renderCatalog() {
   container.innerHTML = OFFICE_ROOMS.map(room => `
-    // ... HTML код ...
+    <div class="catalog-card">${room.name}</div>
   `).join('');
 }
 ```

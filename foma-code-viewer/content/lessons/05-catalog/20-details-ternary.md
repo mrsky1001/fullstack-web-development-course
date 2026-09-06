@@ -17,17 +17,21 @@ highlight: js
 Внутри функции `initRoomDetails`, найдите блок `room-badges` и добавьте туда строчку с тернарным оператором, чтобы у популярных комнат появился бейдж.
 
 ```js:start
-        <div class="room-badges">
-          <span class="room-badge">${room.capacity}</span>
-          <span class="room-badge">${room.area}</span>
-          
-        </div>
+const badgesHtml = `
+  <div class="room-badges">
+    <span class="room-badge">${room.capacity}</span>
+    <span class="room-badge">${room.area}</span>
+    
+  </div>
+`;
 ```
 
 ```js:solution
-        <div class="room-badges">
-          <span class="room-badge">${room.capacity}</span>
-          <span class="room-badge">${room.area}</span>
-          ${room.isPopular ? '<span class="room-badge badge-popular">Популярное</span>' : ''}
-        </div>
+const badgesHtml = `
+  <div class="room-badges">
+    <span class="room-badge">${room.capacity}</span>
+    <span class="room-badge">${room.area}</span>
+    ${room.isPopular ? '<span class="room-badge badge-popular">Популярное</span>' : ''}
+  </div>
+`;
 ```

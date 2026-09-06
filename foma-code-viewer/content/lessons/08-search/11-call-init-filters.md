@@ -15,6 +15,7 @@ highlight: js
 И не забудьте подняться в самый верх файла `main.js` и **удалить вызов старой функции `renderCatalog()`**, заменив его на вызов новой `initCatalogFilters()` внутри `DOMContentLoaded`!
 
 ```js:start
+function initCatalogFilters() {
   if (sortDescBtn) {
     sortDescBtn.addEventListener('click', () => {
       displayedRooms.sort((a, b) => b.pricePerHour - a.pricePerHour);
@@ -27,6 +28,7 @@ highlight: js
 ```
 
 ```js:solution
+function initCatalogFilters() {
   if (sortDescBtn) {
     sortDescBtn.addEventListener('click', () => {
       displayedRooms.sort((a, b) => b.pricePerHour - a.pricePerHour);

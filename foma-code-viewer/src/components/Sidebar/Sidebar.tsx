@@ -30,7 +30,10 @@ export function Sidebar({
   };
 
   const groupedLessons = lessons.reduce((acc, lesson) => {
-    const discipline = lesson.discipline || 'Без раздела';
+    let discipline = (lesson.discipline || 'Основы верстки').trim();
+    if (discipline.toLowerCase().includes('основы верстки')) {
+      discipline = 'Основы верстки';
+    }
     if (!acc[discipline]) acc[discipline] = [];
     acc[discipline].push(lesson);
     return acc;
@@ -47,19 +50,21 @@ export function Sidebar({
       </div>
       <nav className="sidebar-lessons" aria-label="Lessons">
         {Object.entries(groupedLessons).map(([discipline, groupLessons]) => {
-          const isGroupCollapsed = collapsedGroups[discipline];
+          const isGroupCollapsed = !!collapsedGroups[discipline];
           return (
             <div key={discipline} className={`sidebar-discipline-group ${isGroupCollapsed ? 'collapsed' : ''}`}>
-              {discipline !== 'Без раздела' && (
-                <div 
-                  className="sidebar-discipline-title clickable" 
-                  onClick={() => toggleGroup(discipline)}
-                >
-                  {isGroupCollapsed ? <ChevronRight size={14} /> : <ChevronDown size={14} />}
-                  <span>{discipline}</span>
-                </div>
-              )}
-              {groupLessons.map((lesson) => (
+              <div 
+                className="sidebar-discipline-title clickable" 
+                onClick={() => toggleGroup(discipline)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && toggleGroup(discipline)}
+              >
+                {isGroupCollapsed ? <ChevronRight size={14} /> : <ChevronDown size={14} />}
+                <span className="sidebar-discipline-name">{discipline}</span>
+                <span className="sidebar-discipline-count">{groupLessons.length}</span>
+              </div>
+              {!isGroupCollapsed && groupLessons.map((lesson) => (
                 <button
                   key={lesson.id}
                   className={`lesson-item ${lesson.id === currentIndex ? 'active' : ''}`}

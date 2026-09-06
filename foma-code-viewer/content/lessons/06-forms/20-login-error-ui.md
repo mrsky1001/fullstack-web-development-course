@@ -14,20 +14,28 @@ highlight: js
 Вставьте логику ошибки в блок `else`.
 
 ```js:start
-    } else {
-      
-    }
-  });
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  if (login === 'admin' && pass === '12345') {
+    // успех
+  } else {
+    
+  }
+});
 ```
 
 ```js:solution
-    } else {
-      if (alertBox) {
-        alertBox.textContent = 'Неверный логин или пароль';
-        alertBox.className = 'form-alert alert-danger';
-        alertBox.style.display = 'block';
-      }
-      showNotification('Неверный логин или пароль', 'danger');
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  if (login === 'admin' && pass === '12345') {
+    // успех
+  } else {
+    if (alertBox) {
+      alertBox.textContent = 'Неверный логин или пароль';
+      alertBox.className = 'form-alert alert-danger';
+      alertBox.style.display = 'block';
     }
-  });
+    showNotification('Неверный логин или пароль', 'danger');
+  }
+});
 ```

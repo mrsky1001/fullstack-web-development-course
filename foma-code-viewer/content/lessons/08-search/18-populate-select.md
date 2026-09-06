@@ -15,14 +15,17 @@ highlight: js
 Найдите все нужные элементы на странице и заполните `roomSelect.innerHTML`.
 
 ```js:start
+function initBooking() {
   if (!currentUser) {
     window.location.href = 'login.html';
     return;
   }
 
+}
 ```
 
 ```js:solution
+function initBooking() {
   if (!currentUser) {
     window.location.href = 'login.html';
     return;
@@ -36,4 +39,5 @@ highlight: js
   roomSelect.innerHTML = OFFICE_ROOMS.map(r => `
     <option value="${r.id}" data-price="${r.pricePerHour}">${r.title} (${r.pricePerHour} ₽/час)</option>
   `).join('');
+}
 ```

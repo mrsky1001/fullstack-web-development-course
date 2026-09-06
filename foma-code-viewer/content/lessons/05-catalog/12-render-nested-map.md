@@ -17,14 +17,18 @@ highlight: js
 *(Теперь страница Каталога будет идеально работать и выводить все 6 комнат из базы!)*
 
 ```js:start
-        <ul class="card-equipment">
-          <li>Wi-Fi</li>
-          <li>Монитор</li>
-        </ul>
+const equipmentHtml = `
+  <ul class="card-equipment">
+    <li>Wi-Fi</li>
+    <li>Монитор</li>
+  </ul>
+`;
 ```
 
 ```js:solution
-        <ul class="card-equipment">
-          ${room.equipment.map(item => `<li>${item}</li>`).join('')}
-        </ul>
+const equipmentHtml = `
+  <ul class="card-equipment">
+    ${room.equipment.map(item => `<li>${item}</li>`).join('')}
+  </ul>
+`;
 ```

@@ -13,16 +13,16 @@ highlight: js
 После блока `if (!room)` вставьте HTML-код карточки деталей. Заметьте, что мы уже расставили `${room.title}`, `${room.pricePerHour}` и другие переменные!
 
 ```js:start
+function initDetails() {
   if (!room) {
-    // ... обработка ошибки ...
     return;
   }
 }
 ```
 
 ```js:solution
+function initDetails() {
   if (!room) {
-    // ... обработка ошибки ...
     return;
   }
 

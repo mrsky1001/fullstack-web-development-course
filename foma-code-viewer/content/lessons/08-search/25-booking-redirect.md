@@ -16,15 +16,22 @@ highlight: js
 Вы огромный молодец! Переходите в браузере, авторизуйтесь под `admin` (пароль `12345`), нажмите "Забронировать" у любой комнаты и поиграйтесь с калькулятором!
 
 ```js:start
-      });
+function initBookingCalc() {
+  bookingForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (typeof MOCK_BOOKINGS !== 'undefined') {
+      // сохранение бронирования
     }
-    
   });
 }
 ```
 
 ```js:solution
-      });
+function initBookingCalc() {
+  bookingForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (typeof MOCK_BOOKINGS !== 'undefined') {
+      // сохранение бронирования
     }
 
     showNotification('Бронирование создано! Номер заявки: №' + appNumber, 'success');

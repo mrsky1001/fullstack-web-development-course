@@ -90,10 +90,13 @@ function loadAllLessons(contentDir: string): Lesson[] {
       }
     }
 
+    const rawDiscipline = meta.discipline ? String(meta.discipline).trim() : 'Основы верстки';
+    const discipline = rawDiscipline.toLowerCase().includes('основы верстки') ? 'Основы верстки' : rawDiscipline;
+
     lessons.push({
       id: Number(meta.id),
       title: String(meta.title ?? dir.name),
-      discipline: meta.discipline ? String(meta.discipline) : undefined,
+      discipline,
       steps,
     });
   }

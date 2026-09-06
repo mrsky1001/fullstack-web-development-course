@@ -26,11 +26,42 @@ export function Preview({
   );
 
   const srcdoc = useMemo(() => {
+    const rawHtml = code.html || '';
+    const hasDocType = rawHtml.includes('<!DOCTYPE') || rawHtml.includes('<html');
+
+    if (hasDocType) {
+      let html = rawHtml;
+      // Inject <base href="/"> so that relative paths like "img/..." load properly
+      if (!html.includes('<base')) {
+        if (html.includes('<head>')) {
+          html = html.replace('<head>', '<head>\n  <base href="/">');
+        } else {
+          html = '<base href="/">' + html;
+        }
+      }
+      // Inject style tag
+      const styleTag = `<style>\n${code.css || ''}\n</style>`;
+      if (html.includes('</head>')) {
+        html = html.replace('</head>', `  ${styleTag}\n</head>`);
+      } else {
+        html = styleTag + html;
+      }
+      // Inject script tag
+      const scriptTag = `<script>\n${code.js || ''}\n</script>`;
+      if (html.includes('</body>')) {
+        html = html.replace('</body>', `  ${scriptTag}\n</body>`);
+      } else {
+        html = html + '\n' + scriptTag;
+      }
+      return html;
+    }
+
     return `<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">

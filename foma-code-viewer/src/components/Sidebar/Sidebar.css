@@ -78,6 +78,20 @@
   color: var(--text-primary);
 }
 
+.sidebar-discipline-name {
+  flex: 1;
+}
+
+.sidebar-discipline-count {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: 10px;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+}
+
 .sidebar-discipline-group.collapsed {
   gap: 0;
 }
