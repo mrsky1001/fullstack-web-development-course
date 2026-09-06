@@ -690,7 +690,7 @@ slides_config = [
             [("  font-size", CODE_PROP), (": ", CODE_TEXT), ("20px", CODE_VAL), (";", CODE_TEXT)],
             [("  font-weight", CODE_PROP), (": ", CODE_TEXT), ("800", CODE_VAL), (";", CODE_TEXT)],
             [("}", CODE_KW)],
-            [(".logo-icon { width: 32px; height: 32px; }", CODE_COMM)]
+            [(".logo-icon", CODE_KW), (" { ", CODE_TEXT), ("width", CODE_PROP), (": ", CODE_TEXT), ("32px", CODE_VAL), ("; ", CODE_TEXT), ("height", CODE_PROP), (": ", CODE_TEXT), ("32px", CODE_VAL), ("; }", CODE_TEXT)]
         ],
         "right_title": "СИЛА FLEXBOX В ДЕЙСТВИИ",
         "bullets": [
@@ -746,7 +746,7 @@ slides_config = [
             [("  background-color", CODE_PROP), (": ", CODE_TEXT), ("#007bff", CODE_VAL), (";", CODE_TEXT)],
             [("  color", CODE_PROP), (": ", CODE_TEXT), ("#ffffff", CODE_VAL), (";", CODE_TEXT)],
             [("}", CODE_KW)],
-            [(".nav-btn:hover { background-color: #0056b3; }", CODE_COMM)]
+            [(".nav-btn:hover", CODE_KW), (" { ", CODE_TEXT), ("background-color", CODE_PROP), (": ", CODE_TEXT), ("#0056b3", CODE_STR), ("; }", CODE_TEXT)]
         ],
         "right_title": "СТИЛИЗАЦИЯ И ИНТЕРАКТИВНОСТЬ",
         "bullets": [
@@ -840,21 +840,21 @@ slides_config = [
             [("  </p>", CODE_TAG)],
             [("  <div ", CODE_TAG), ("class=", CODE_PROP), ("\"hero-metrics\"", CODE_STR), (">", CODE_TAG)],
             [("    <div ", CODE_TAG), ("class=", CODE_PROP), ("\"metric-item\"", CODE_STR), (">", CODE_TAG)],
-            [("      <span ", CODE_TAG), ("class=", CODE_PROP), ("\"metric-val\"", CODE_STR), (">24/7</span>", CODE_TAG)],
-            [("      <span ", CODE_TAG), ("class=", CODE_PROP), ("\"metric-lbl\"", CODE_STR), (">Доступ</span>", CODE_TAG)],
+            [("      <span ", CODE_TAG), ("class=", CODE_PROP), ("\"metric-val\"", CODE_STR), (">", CODE_TAG), ("24/7", CODE_TEXT), ("</span>", CODE_TAG)],
+            [("      <span ", CODE_TAG), ("class=", CODE_PROP), ("\"metric-lbl\"", CODE_STR), (">", CODE_TAG), ("Доступ", CODE_TEXT), ("</span>", CODE_TAG)],
             [("    </div>", CODE_TAG)],
             [("    <div ", CODE_TAG), ("class=", CODE_PROP), ("\"metric-item\"", CODE_STR), (">", CODE_TAG)],
-            [("      <span ", CODE_TAG), ("class=", CODE_PROP), ("\"metric-val\"", CODE_STR), (">от 250 ₽</span>", CODE_TAG)],
-            [("      <span ", CODE_TAG), ("class=", CODE_PROP), ("\"metric-lbl\"", CODE_STR), (">Почасовая аренда</span>", CODE_TAG)],
+            [("      <span ", CODE_TAG), ("class=", CODE_PROP), ("\"metric-val\"", CODE_STR), (">", CODE_TAG), ("от 250 ₽", CODE_TEXT), ("</span>", CODE_TAG)],
+            [("      <span ", CODE_TAG), ("class=", CODE_PROP), ("\"metric-lbl\"", CODE_STR), (">", CODE_TAG), ("Почасовая аренда", CODE_TEXT), ("</span>", CODE_TAG)],
             [("    </div>", CODE_TAG)],
             [("  </div>", CODE_TAG)],
             [("</div>", CODE_TAG)],
             [(" ", CODE_TEXT)],
-            [(".hero-bottom {", CODE_KW)],
-            [("  border-top: 2px solid #222222; padding-top: 20px;", CODE_COMM)],
-            [("  display: flex; justify-content: space-between;", CODE_COMM)],
-            [("}", CODE_KW)],
-            [(".metric-val { font-size: 20px; font-weight: 800; color: #007bff; }", CODE_COMM)]
+            [(".hero-bottom", CODE_KW), (" {", CODE_TEXT)],
+            [("  ", CODE_TEXT), ("border-top", CODE_PROP), (": ", CODE_TEXT), ("2px", CODE_VAL), (" ", CODE_TEXT), ("solid", CODE_VAL), (" ", CODE_TEXT), ("#222222", CODE_STR), ("; ", CODE_TEXT), ("padding-top", CODE_PROP), (": ", CODE_TEXT), ("20px", CODE_VAL), (";", CODE_TEXT)],
+            [("  ", CODE_TEXT), ("display", CODE_PROP), (": ", CODE_TEXT), ("flex", CODE_VAL), ("; ", CODE_TEXT), ("justify-content", CODE_PROP), (": ", CODE_TEXT), ("space-between", CODE_VAL), (";", CODE_TEXT)],
+            [("}", CODE_TEXT)],
+            [(".metric-val", CODE_KW), (" { ", CODE_TEXT), ("font-size", CODE_PROP), (": ", CODE_TEXT), ("20px", CODE_VAL), ("; ", CODE_TEXT), ("font-weight", CODE_PROP), (": ", CODE_TEXT), ("800", CODE_VAL), ("; ", CODE_TEXT), ("color", CODE_PROP), (": ", CODE_TEXT), ("#007bff", CODE_STR), ("; }", CODE_TEXT)]
         ],
         "right_title": "АРХИТЕКТУРА НИЖНЕЙ ЧАСТИ HERO",
         "bullets": [
@@ -957,8 +957,8 @@ slides_config = [
             [("  </div>", CODE_TAG)],
             [("</footer>", CODE_TAG)],
             [(" ", CODE_TEXT)],
-            [(".footer { background-color: #f8f9fa; border-top: 1px solid #dddddd; padding: 25px 0; }", CODE_COMM)],
-            [(".footer-contacts a { color: #007bff; text-decoration: none; }", CODE_COMM)]
+            [(".footer", CODE_KW), (" { ", CODE_TEXT), ("background-color", CODE_PROP), (": ", CODE_TEXT), ("#f8f9fa", CODE_STR), ("; ", CODE_TEXT), ("border-top", CODE_PROP), (": ", CODE_TEXT), ("1px solid #dddddd", CODE_VAL), ("; ", CODE_TEXT), ("padding", CODE_PROP), (": ", CODE_TEXT), ("25px 0", CODE_VAL), ("; }", CODE_TEXT)],
+            [(".footer-contacts a", CODE_KW), (" { ", CODE_TEXT), ("color", CODE_PROP), (": ", CODE_TEXT), ("#007bff", CODE_STR), ("; ", CODE_TEXT), ("text-decoration", CODE_PROP), (": ", CODE_TEXT), ("none", CODE_VAL), ("; }", CODE_TEXT)]
         ],
         "right_title": "СТАНДАРТЫ ОФОРМЛЕНИЯ ПОДВАЛА",
         "bullets": [
@@ -1054,12 +1054,12 @@ slides_config = [
             [("  padding", CODE_PROP), (": ", CODE_TEXT), ("14px 18px", CODE_VAL), ("; ", CODE_TEXT), ("border-radius", CODE_PROP), (": ", CODE_TEXT), ("6px", CODE_VAL), (";", CODE_TEXT)],
             [("  animation", CODE_PROP), (": ", CODE_TEXT), ("toastFadeIn 0.3s ease", CODE_VAL), (";", CODE_TEXT)],
             [("}", CODE_KW)],
-            [(".toast-success { border-left: 4px solid #28a745; }", CODE_COMM)],
-            [(".toast-danger  { border-left: 4px solid #dc3545; }", CODE_COMM)],
+            [(".toast-success", CODE_KW), (" { ", CODE_TEXT), ("border-left", CODE_PROP), (": ", CODE_TEXT), ("4px solid #28a745", CODE_VAL), ("; }", CODE_TEXT)],
+            [(".toast-danger", CODE_KW), ("  { ", CODE_TEXT), ("border-left", CODE_PROP), (": ", CODE_TEXT), ("4px solid #dc3545", CODE_VAL), ("; }", CODE_TEXT)],
             [("/* Плавная анимация всплытия снизу */", CODE_COMM)],
-            [("@keyframes toastFadeIn {", CODE_KW)],
-            [("  from { opacity: 0; transform: translateY(15px); }", CODE_VAL)],
-            [("  to   { opacity: 1; transform: translateY(0); }", CODE_VAL)],
+            [("@keyframes toastFadeIn", CODE_KW), (" {", CODE_TEXT)],
+            [("  ", CODE_TEXT), ("from", CODE_KW), (" { ", CODE_TEXT), ("opacity", CODE_PROP), (": ", CODE_TEXT), ("0", CODE_VAL), ("; ", CODE_TEXT), ("transform", CODE_PROP), (": ", CODE_TEXT), ("translateY(15px)", CODE_VAL), ("; }", CODE_TEXT)],
+            [("  ", CODE_TEXT), ("to", CODE_KW), ("   { ", CODE_TEXT), ("opacity", CODE_PROP), (": ", CODE_TEXT), ("1", CODE_VAL), ("; ", CODE_TEXT), ("transform", CODE_PROP), (": ", CODE_TEXT), ("translateY(0)", CODE_VAL), ("; }", CODE_TEXT)],
             [("}", CODE_KW)]
         ],
         "right_title": "ПОЗИЦИОНИРОВАНИЕ И ЭФФЕКТЫ",

@@ -1,0 +1,96 @@
+/* ══════════════════════════════════════════════
+   Foma Code Viewer — Design Tokens
+   ══════════════════════════════════════════════ */
+
+:root {
+  /* ── Typography ── */
+  --font-sans: "Forma DJR", "Inter", "Outfit", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Code", "SF Mono", Consolas, "Courier New", monospace;
+
+  /* ── Accent — «Foma Coral» — unchanged across themes ── */
+  --accent-coral:        #ff7a45;
+  --accent-coral-dim:    rgba(255, 122, 69, 0.14);
+  --accent-coral-glow:   rgba(255, 122, 69, 0.35);
+
+  /* ── Secondary — «Foma Blue» ── */
+  --accent-blue:         #5AA0D3;
+
+  /* ── States ── */
+  --accent-amber:        #f59e0b;
+  --accent-teal:         #10b981;
+  --accent-red:          #ef4444;
+  --accent-red-dim:      rgba(239, 68, 68, 0.15);
+
+  /* ── Radii ── */
+  --radius-sm:  4px;
+  --radius-md:  6px;
+  --radius-lg:  10px;
+  --radius-xl:  16px;
+
+  /* ── Transitions ── */
+  --transition-smooth: 220ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ── Layout ── */
+  --sidebar-width:           260px;
+  --sidebar-collapsed-width: 0px;
+  --header-height:           56px;
+  --panel-header-height:     38px;
+}
+
+/* ══════════════════════════════════════════════
+   DARK THEME
+   ══════════════════════════════════════════════ */
+[data-theme="dark"] {
+  --bg-app:          #12121A;
+  --bg-sidebar:      #12121A;
+  --bg-card:         #161622;
+  --bg-card-hover:   #1c1c28;
+  --bg-input:        #151520;
+  --bg-editor:       #0f0f17;
+
+  --border-subtle:   rgba(255, 255, 255, 0.07);
+  --border-medium:   rgba(255, 255, 255, 0.14);
+  --border-active:   rgba(255, 255, 255, 0.22);
+
+  --text-primary:    #C5C5D2;
+  --text-secondary:  #A0A0B0;
+  --text-muted:      #787E91;
+
+  --shadow-accent:   rgba(255, 122, 69, 0.45);
+
+  /* CodeMirror */
+  --cm-bg:        #0f0f17;
+  --cm-fg:        #C5C5D2;
+  --cm-gutter:    #1c1c28;
+  --cm-selection: rgba(255, 122, 69, 0.18);
+  --cm-cursor:    #ff7a45;
+}
+
+/* ══════════════════════════════════════════════
+   LIGHT THEME
+   ══════════════════════════════════════════════ */
+[data-theme="light"] {
+  --bg-app:          #F5F5F7;
+  --bg-sidebar:      #EBEBEF;
+  --bg-card:         #FFFFFF;
+  --bg-card-hover:   #F0F0F5;
+  --bg-input:        #FFFFFF;
+  --bg-editor:       #FAFAFA;
+
+  --border-subtle:   rgba(0, 0, 0, 0.06);
+  --border-medium:   rgba(0, 0, 0, 0.12);
+  --border-active:   rgba(0, 0, 0, 0.22);
+
+  --text-primary:    #1A1A2E;
+  --text-secondary:  #4A4A6A;
+  --text-muted:      #7A7A9A;
+
+  --shadow-accent:   rgba(255, 122, 69, 0.25);
+
+  /* CodeMirror */
+  --cm-bg:        #FAFAFA;
+  --cm-fg:        #1A1A2E;
+  --cm-gutter:    #EBEBEF;
+  --cm-selection: rgba(255, 122, 69, 0.15);
+  --cm-cursor:    #ff7a45;
+}

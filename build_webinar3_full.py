@@ -228,7 +228,9 @@ def create_code_explanation_slide(slide, category, question, left_title, code_li
             r_desc.font.name = "Inter"
             r_desc.font.size = Pt(8.5)
             r_desc.font.color.rgb = BODY_TEXT
+            desc_len = len(item["desc"])
         else:
+            desc_len = 0
             for d_text, d_bold, d_color in item["desc"]:
                 r_desc = p_b2.add_run()
                 r_desc.text = d_text
@@ -236,8 +238,13 @@ def create_code_explanation_slide(slide, category, question, left_title, code_li
                 r_desc.font.size = Pt(8.5)
                 r_desc.font.bold = d_bold
                 r_desc.font.color.rgb = d_color
+                desc_len += len(d_text)
 
-        y_offset += Pt(62)
+        # Dynamic height calculation and guaranteed 10pt gap to prevent text overlapping
+        computed_h = 54 if desc_len > 95 else (44 if desc_len > 45 else 34)
+        item_h = Pt(max(item.get("height", 44), computed_h))
+        gap = Pt(10)
+        y_offset += item_h + gap
 
 def create_diagram_flex_grid_slide(slide, category, question):
     """Full-width 3-column diagram comparing 1D Flexbox, 2D Grid, and Interface Synergy."""
@@ -1564,104 +1571,48 @@ slides_data = [
         ]
     },
 
-    # 18. Slide 20: Practice CSS: Tablet Responsiveness (768px)
+    # 18. Slide 20: Practice CSS: Responsive Media Queries (768px & 480px)
     {
         "type": "code",
-        "category": "АДАПТИВНОСТЬ: ПЛАНШЕТЫ",
-        "question": "Как перестроить витрину из 3 колонок в 2 колонки на экране планшета?",
-        "left_title": "css/style.css (@media max-width: 768px)",
+        "category": "АДАПТИВНОСТЬ: МЕДИА-ЗАПРОСЫ",
+        "question": "Как перестроить витрину и шапку сайта под экраны планшетов и смартфонов?",
+        "left_title": "css/style.css (@media 768px & 480px)",
         "code_lines": [
+            [("/* 1. Планшет (max-width: 768px): 2 колонки */", CODE_COMM)],
             [("@media ", CODE_KW), ("(max-width: 768px) ", CODE_TAG), ("{", CODE_TEXT)],
-            [("  /* 1. Резиновый контейнер */", CODE_COMM)],
-            [("  .container ", CODE_TAG), ("{", CODE_TEXT)],
-            [("    width", CODE_PROP), (": ", CODE_TEXT), ("100%", CODE_VAL), (";", CODE_TEXT)],
-            [("    padding", CODE_PROP), (": ", CODE_TEXT), ("0 16px", CODE_VAL), (";", CODE_TEXT)],
-            [("  }", CODE_TEXT)],
+            [("  .container ", CODE_TAG), ("{ width: 100%; padding: 0 16px; }", CODE_TEXT)],
+            [("  .room-card ", CODE_TAG), ("{ width: calc(50% - 10px); }", CODE_TEXT)],
+            [("  .hero-title ", CODE_TAG), ("{ font-size: 52px; line-height: 1.1; }", CODE_TEXT)],
+            [("}", CODE_TEXT)],
             [("", CODE_TEXT)],
-            [("  /* 2. 2 колонки вместо 3 */", CODE_COMM)],
-            [("  .room-card ", CODE_TAG), ("{", CODE_TEXT)],
-            [("    width", CODE_PROP), (": ", CODE_TEXT), ("calc(50% - 10px)", CODE_VAL), (";", CODE_TEXT)],
-            [("  }", CODE_TEXT)],
-            [("", CODE_TEXT)],
-            [("  /* 3. Оптимизация заголовка Hero */", CODE_COMM)],
-            [("  .hero-title ", CODE_TAG), ("{", CODE_TEXT)],
-            [("    font-size", CODE_PROP), (": ", CODE_TEXT), ("52px", CODE_VAL), (";", CODE_TEXT)],
-            [("    line-height", CODE_PROP), (": ", CODE_TEXT), ("1.1", CODE_VAL), (";", CODE_TEXT)],
-            [("  }", CODE_TEXT)],
+            [("/* 2. Смартфон (max-width: 480px): 1 колонка */", CODE_COMM)],
+            [("@media ", CODE_KW), ("(max-width: 480px) ", CODE_TAG), ("{", CODE_TEXT)],
+            [("  .room-card ", CODE_TAG), ("{ width: 100%; }", CODE_TEXT)],
+            [("  .header-container ", CODE_TAG), ("{ flex-direction: column; gap: 12px; }", CODE_TEXT)],
+            [("  .btn ", CODE_TAG), ("{ padding: 12px 20px; font-size: 15px; }", CODE_TEXT)],
             [("}", CODE_TEXT)]
         ],
-        "right_title": "ТАКТИКА АДАПТАЦИИ ДЛЯ СРЕДНИХ ЭКРАНОВ",
+        "right_title": "ТАКТИКА АДАПТАЦИИ ПОД ВСЕ ЭКРАНЫ",
         "bullet_items": [
             {
                 "title": "Снятие жесткой ширины 1200px:",
-                "desc": "На экране шириной 768px фиксированный контейнер 1200px вызовет горизонтальный скролл. width: 100% делает верстку резиновой.",
+                "desc": "Свойство width: 100% устраняет фиксированную ширину и защищает мобильные экраны от появления горизонтального скролла.",
                 "height": 46
             },
             {
-                "title": "Формула calc(50% - 10px):",
-                "desc": "При промежутке gap: 20px между двумя колонками каждая карточка занимает ровно половину ширины за вычетом половины зазора.",
-                "height": 48
-            },
-            {
-                "title": "Боковые поля безопасности:",
-                "desc": "padding: 0 16px предотвращает некрасивое прилипание карточек и текста к физическим стеклянным рамкам планшета.",
+                "title": "Сетка колонок (2 -> 1):",
+                "desc": "На планшетах карточки выстраиваются по две в ряд через calc(50% - 10px), а на смартфонах разворачиваются в 100% ленту.",
                 "height": 46
             },
             {
-                "title": "Сжатие hero-типографики:",
-                "desc": "Огромный шрифт 108px на планшете не поместится в одну строку, поэтому кегль уменьшается до гармоничных 52px.",
-                "height": 44
-            }
-        ]
-    },
-
-    # 19. Slide 21: Practice CSS: Mobile Responsiveness (480px)
-    {
-        "type": "code",
-        "category": "МОБИЛЬНАЯ ВЕРСТКА",
-        "question": "Как трансформировать карточки в удобную вертикальную ленту для пальца?",
-        "left_title": "css/style.css (@media max-width: 480px)",
-        "code_lines": [
-            [("@media ", CODE_KW), ("(max-width: 480px) ", CODE_TAG), ("{", CODE_TEXT)],
-            [("  /* Карточка на всю ширину */", CODE_COMM)],
-            [("  .room-card ", CODE_TAG), ("{", CODE_TEXT)],
-            [("    width", CODE_PROP), (": ", CODE_TEXT), ("100%", CODE_VAL), (";", CODE_TEXT)],
-            [("  }", CODE_TEXT)],
-            [("", CODE_TEXT)],
-            [("  /* Стек шапки сайта */", CODE_COMM)],
-            [("  .header-container ", CODE_TAG), ("{", CODE_TEXT)],
-            [("    flex-direction", CODE_PROP), (": ", CODE_TEXT), ("column", CODE_VAL), (";", CODE_TEXT)],
-            [("    gap", CODE_PROP), (": ", CODE_TEXT), ("12px", CODE_VAL), (";", CODE_TEXT)],
-            [("  }", CODE_TEXT)],
-            [("", CODE_TEXT)],
-            [("  /* Увеличение кнопок под тач */", CODE_COMM)],
-            [("  .btn ", CODE_TAG), ("{", CODE_TEXT)],
-            [("    padding", CODE_PROP), (": ", CODE_TEXT), ("10px 18px", CODE_VAL), (";", CODE_TEXT)],
-            [("    font-size", CODE_PROP), (": ", CODE_TEXT), ("15px", CODE_VAL), (";", CODE_TEXT)],
-            [("  }", CODE_TEXT)],
-            [("}", CODE_TEXT)]
-        ],
-        "right_title": "ПРАВИЛА УДОБСТВА НА ЭКРАНАХ СМАРТФОНОВ",
-        "bullet_items": [
-            {
-                "title": "Ширина 100% (Одноколоночный поток):",
-                "desc": "На экране смартфона 360-400px две колонки карточек выглядели бы мелко. 100% ширины превращает витрину в комфортную ленту.",
+                "title": "Вертикальный стек в шапке:",
+                "desc": "Директива flex-direction: column гармонично размещает логотип и ссылки навигации друг под другом на узких дисплеях.",
                 "height": 46
             },
             {
                 "title": "Увеличение тач-зон (Touch Targets):",
-                "desc": "Палец человека больше курсора мыши. Высота кнопок увеличивается (минимум 44px) для безошибочного нажатия в движении.",
-                "height": 48
-            },
-            {
-                "title": "Вертикальная шапка (column):",
-                "desc": "Логотип и ссылки меню на узком экране не помещаются в ряд и аккуратно выстраиваются друг под другом по центру.",
+                "desc": "Кнопки и ссылки получают увеличенные отступы (padding), делая интерфейс удобным для быстрого нажатия пальцем.",
                 "height": 46
-            },
-            {
-                "title": "Защита от горизонтальной прокрутки:",
-                "desc": "Каждый блок проверяется на отсутствие фиксированных пиксельных ширин, исключая 'болтанку' страницы влево-вправо.",
-                "height": 44
             }
         ]
     },
@@ -1860,36 +1811,9 @@ for sh in slide2.shapes:
         r.font.bold = False
         r.font.color.rgb = RGBColor(0x55, 0x55, 0x55)
 
-# Add Result block at the bottom of Slide 2
-res_card = slide2.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Pt(106.6), Pt(342), Pt(465), Pt(26))
-res_card.adjustments[0] = 0.25
-res_card.fill.solid()
-res_card.fill.fore_color.rgb = RGBColor(0xFA, 0xFA, 0xF9)
-res_card.line.color.rgb = RGBColor(0xFD, 0xBA, 0x74)
-res_card.line.width = Pt(1)
-strip_shape_styles_and_shadows(res_card)
-
-tf_rc = res_card.text_frame
-tf_rc.word_wrap = False
-tf_rc.margin_left = Pt(12)
-tf_rc.margin_top = Pt(4)
-tf_rc.margin_bottom = Pt(0)
-tf_rc.margin_right = Pt(8)
-p_rc = tf_rc.paragraphs[0]
-p_rc.alignment = PP_ALIGN.LEFT
-r_lbl = p_rc.add_run()
-r_lbl.text = "РЕЗУЛЬТАТ: "
-r_lbl.font.name = "Montserrat"
-r_lbl.font.size = Pt(8.5)
-r_lbl.font.bold = True
-r_lbl.font.color.rgb = ORANGE_PILL
-
-r_val = p_rc.add_run()
-r_val.text = "Адаптивная секция популярных предложений с переиспользуемыми компонентами."
-r_val.font.name = "Inter"
-r_val.font.size = Pt(8.5)
-r_val.font.bold = False
-r_val.font.color.rgb = RGBColor(0x33, 0x33, 0x33)
+# Strip shadows and theme styles from Slide 2
+for sh in slide2.shapes:
+    strip_shape_styles_and_shadows(sh)
 print("Slide 2 updated successfully.")
 
 # 3. Create all 22 new content slides
@@ -1919,6 +1843,7 @@ slide_res = prs.slides[25]
 pic_to_remove = None
 tb2_res = None
 for sh in slide_res.shapes:
+    strip_shape_styles_and_shadows(sh)
     if sh.shape_type == MSO_SHAPE_TYPE.PICTURE:
         pic_to_remove = sh
     elif sh.name == "TextBox 2":

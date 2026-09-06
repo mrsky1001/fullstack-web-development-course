@@ -1,0 +1,89 @@
+.lesson-panel {
+  padding: 20px 24px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.panel-header-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  flex: 1;
+}
+
+.step-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  background: transparent;
+  padding: 2px 0;
+  border-radius: 0;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.step-indicator {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: 10px;
+  flex-shrink: 0;
+}
+
+.step-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--border-medium);
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+  border: none;
+  padding: 0;
+}
+
+.step-dot:hover {
+  background-color: var(--text-muted);
+}
+
+.step-dot.active {
+  background-color: var(--accent-coral);
+  width: 18px;
+  border-radius: 4px;
+}
+
+.step-dot.completed {
+  background-color: var(--text-muted);
+}
+
+.lesson-solution-section {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.lesson-panel-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-top: 1px solid var(--border-subtle);
+  background-color: var(--bg-card);
+  flex-shrink: 0;
+  gap: 6px;
+  transition: background-color 200ms ease;
+}
+
+.lesson-panel-footer-left,
+.lesson-panel-footer-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
