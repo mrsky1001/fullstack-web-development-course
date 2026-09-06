@@ -147,20 +147,6 @@ body {
   font-weight: 500;
 }
 
-.page-title {
-  font-size: 28px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  margin-bottom: 8px;
-  text-align: center;
-}
-
-.page-subtitle {
-  color: #666666;
-  text-align: center;
-  font-size: 15px;
-}
-
 /* Подвал сайта */
 .footer {
   background-color: #f8f9fa;
@@ -184,56 +170,4 @@ body {
 .footer-contacts a {
   color: #007bff;
   text-decoration: none;
-}
-
-/* Всплывающие уведомления (Toast) справа внизу */
-.toast-container {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  pointer-events: none;
-}
-
-.toast {
-  min-width: 280px;
-  max-width: 380px;
-  padding: 14px 18px;
-  background-color: #222222;
-  color: #ffffff;
-  border-radius: 6px;
-  font-size: 14px;
-  font-weight: 500;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  animation: toastFadeIn 0.3s ease;
-  pointer-events: auto;
-}
-
-.toast.toast-success {
-  border-left: 4px solid #28a745;
-}
-
-.toast.toast-danger {
-  border-left: 4px solid #dc3545;
-}
-
-.toast.toast-info {
-  border-left: 4px solid #007bff;
-}
-
-@keyframes toastFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
