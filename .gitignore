@@ -22,5 +22,6 @@ __pycache__/
 
 # Temporary/preview artifacts and shortcuts
 *.lnk
+*.ps1
 /webinar*.png
 /webinar*_previews*/
