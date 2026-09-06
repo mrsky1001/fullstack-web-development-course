@@ -13,8 +13,23 @@ git push origin agent-workspace
 Write-Host ">>> [2/4] Switching to main branch..." -ForegroundColor Cyan
 git checkout main
 
-Write-Host ">>> [3/4] Copying course folders from agent-workspace..." -ForegroundColor Cyan
-git checkout agent-workspace -- "01. frontend" "02. frontend-course-advanced" "03. backend" "04. full-stack-store-app" "05. step by step 2026 & 2027" "README.md"
+Write-Host ">>> [3/4] Syncing course folders from agent-workspace..." -ForegroundColor Cyan
+$courseFolders = @(
+    "00. resources",
+    "01. frontend",
+    "02. databases",
+    "03. backend",
+    "04. full-stack-store-app",
+    "05. step by step 2026 & 2027",
+    "docs",
+    "README.md"
+)
+
+foreach ($folder in $courseFolders) {
+    if (Test-Path $folder) {
+        git checkout agent-workspace -- "$folder" 2>$null
+    }
+}
 
 $mainStatus = git status --porcelain
 if ($mainStatus) {
