@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" width="300" height="200">
+  <rect width="300" height="200" fill="#f8f9fa"/>
+  <rect x="8" y="8" width="284" height="184" rx="6" fill="#ffffff" stroke="#dee2e6" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <g transform="translate(126, 55)" fill="none" stroke="#6c757d" stroke-width="2">
+    <rect x="0" y="0" width="48" height="36" rx="4"/>
+    <circle cx="16" cy="13" r="4"/>
+    <path d="M4 32L18 18L30 30M24 24L32 16L44 28"/>
+  </g>
+  <text x="150" y="125" fill="#222222" font-size="14" font-family="Arial, sans-serif" font-weight="bold" text-anchor="middle">Нет изображения</text>
+  <text x="150" y="145" fill="#666666" font-size="12" font-family="Arial, sans-serif" text-anchor="middle">СмартОфис</text>
+</svg>
