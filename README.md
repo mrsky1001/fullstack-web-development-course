@@ -21,6 +21,10 @@
 
 ---
 
+## Practice
+
+https://mrsky1001.github.io/foma-code-lab-public
+
 ## 📖 About the Course
 
 This repository is a **comprehensive educational course** in fullstack web development. The course is designed for **first-year students and beginner developers** with no prior programming experience.
