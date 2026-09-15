@@ -1,13 +1,13 @@
 // СмартОфис — Скрипт веб-приложения (Вебинар 4)
 
-// [Теория: Событие 'DOMContentLoaded' срабатывает, когда браузер полностью построил HTML-дерево страницы]
-// [Логика: Мы запускаем функции только после того, как все теги загружены и готовы к работе]
+// [Событие 'DOMContentLoaded' срабатывает, когда браузер полностью построил HTML-дерево страницы]
+// [ Мы запускаем функции только после того, как все теги загружены и готовы к работе]
 document.addEventListener('DOMContentLoaded', () => {
   initNavigation();
 });
 
-// [Теория: Всплывающие уведомления (Toast) — это элементы, которые создаются через createElement и плавно исчезают через таймер]
-// [Логика: Показываем красивое всплывающее сообщение в правом нижнем углу вместо устаревшего alert()]
+// [Всплывающие уведомления (Toast) — это элементы, которые создаются через createElement и плавно исчезают через таймер]
+// [ Показываем красивое всплывающее сообщение в правом нижнем углу вместо устаревшего alert()]
 function showNotification(message, type = 'success') {
   let container = document.getElementById('toastContainer');
   if (!container) {
@@ -23,7 +23,7 @@ function showNotification(message, type = 'success') {
 
   container.appendChild(toast);
 
-  // [Теория: setTimeout выполняет действие через указанное время (3500 мс = 3.5 секунды)]
+  // [setTimeout выполняет действие через указанное время (3500 мс = 3.5 секунды)]
   setTimeout(() => {
     toast.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
     toast.style.opacity = '0';
@@ -32,12 +32,12 @@ function showNotification(message, type = 'success') {
   }, 3500);
 }
 
-// [Теория: Функция — это многократно используемый блок кода, решающий одну понятную задачу]
-// [Логика: Функция подсвечивает пункт меню той страницы, на которой сейчас находится пользователь]
+// [Функция — это многократно используемый блок кода, решающий одну понятную задачу]
+// [ Функция подсвечивает пункт меню той страницы, на которой сейчас находится пользователь]
 function initNavigation() {
-  // [Теория: document.querySelectorAll находит ВСЕ элементы с указанным CSS-классом]
+  // [document.querySelectorAll находит ВСЕ элементы с указанным CSS-классом]
   const links = document.querySelectorAll('.nav-link');
-  // [Теория: window.location.pathname возвращает путь текущей страницы в строке браузера]
+  // [window.location.pathname возвращает путь текущей страницы в строке браузера]
   const current = window.location.pathname;
 
   links.forEach(link => {
@@ -66,8 +66,8 @@ function initNavigation() {
   updateAuthNav();
 }
 
-// [Теория: localStorage — встроенное хранилище браузера, позволяющее сохранять данные между страницами]
-// [Логика: Обновляем меню в зависимости от того, вошел ли пользователь в систему]
+// [localStorage — встроенное хранилище браузера, позволяющее сохранять данные между страницами]
+// [ Обновляем меню в зависимости от того, вошел ли пользователь в систему]
 function updateAuthNav() {
   const currentUser = localStorage.getItem('currentUser');
   const myBookingsNavItem = document.getElementById('myBookingsNavItem');

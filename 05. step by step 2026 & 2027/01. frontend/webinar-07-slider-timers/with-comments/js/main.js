@@ -1,7 +1,7 @@
 // СмартОфис — Скрипт веб-приложения (Вебинар 7)
 
-// [Теория: Событие 'DOMContentLoaded' срабатывает, когда браузер полностью построил HTML-дерево страницы]
-// [Логика: Мы запускаем функции только после того, как все теги загружены и готовы к работе]
+// [Событие 'DOMContentLoaded' срабатывает, когда браузер полностью построил HTML-дерево страницы]
+// [ Мы запускаем функции только после того, как все теги загружены и готовы к работе]
 document.addEventListener('DOMContentLoaded', () => {
   initNavigation();
   initSlider();
@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initLoginForm();
 });
 
-// [Теория: Всплывающие уведомления (Toast) — это элементы, которые создаются через createElement и плавно исчезают через таймер]
-// [Логика: Показываем красивое всплывающее сообщение в правом нижнем углу вместо устаревшего alert()]
+// [Всплывающие уведомления (Toast) — это элементы, которые создаются через createElement и плавно исчезают через таймер]
+// [ Показываем красивое всплывающее сообщение в правом нижнем углу вместо устаревшего alert()]
 function showNotification(message, type = 'success') {
   let container = document.getElementById('toastContainer');
   if (!container) {
@@ -28,7 +28,7 @@ function showNotification(message, type = 'success') {
 
   container.appendChild(toast);
 
-  // [Теория: setTimeout выполняет действие через указанное время (3500 мс = 3.5 секунды)]
+  // [setTimeout выполняет действие через указанное время (3500 мс = 3.5 секунды)]
   setTimeout(() => {
     toast.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
     toast.style.opacity = '0';
@@ -37,12 +37,12 @@ function showNotification(message, type = 'success') {
   }, 3500);
 }
 
-// [Теория: Функция — это многократно используемый блок кода, решающий одну понятную задачу]
-// [Логика: Функция подсвечивает пункт меню той страницы, на которой сейчас находится пользователь]
+// [Функция — это многократно используемый блок кода, решающий одну понятную задачу]
+// [ Функция подсвечивает пункт меню той страницы, на которой сейчас находится пользователь]
 function initNavigation() {
-  // [Теория: document.querySelectorAll находит ВСЕ элементы с указанным CSS-классом]
+  // [document.querySelectorAll находит ВСЕ элементы с указанным CSS-классом]
   const links = document.querySelectorAll('.nav-link');
-  // [Теория: window.location.pathname возвращает путь текущей страницы в строке браузера]
+  // [window.location.pathname возвращает путь текущей страницы в строке браузера]
   const current = window.location.pathname;
 
   links.forEach(link => {
@@ -71,8 +71,8 @@ function initNavigation() {
   updateAuthNav();
 }
 
-// [Теория: localStorage — встроенное хранилище браузера, позволяющее сохранять данные между страницами]
-// [Логика: Обновляем меню в зависимости от того, вошел ли пользователь в систему]
+// [localStorage — встроенное хранилище браузера, позволяющее сохранять данные между страницами]
+// [ Обновляем меню в зависимости от того, вошел ли пользователь в систему]
 function updateAuthNav() {
   const currentUser = localStorage.getItem('currentUser');
   const myBookingsNavItem = document.getElementById('myBookingsNavItem');
@@ -106,8 +106,8 @@ function updateAuthNav() {
   }
 }
 
-// [Теория: Таймеры setInterval позволяют выполнять действие повторно через заданный интервал времени (в миллисекундах)]
-// [Логика: Инициализируем интерактивный слайдер картинок с автосменой каждые 3 секунды]
+// [Таймеры setInterval позволяют выполнять действие повторно через заданный интервал времени (в миллисекундах)]
+// [ Инициализируем интерактивный слайдер картинок с автосменой каждые 3 секунды]
 function initSlider() {
   const slides = document.querySelectorAll('.slide');
   const dots = document.querySelectorAll('.dot');
@@ -124,7 +124,7 @@ function initSlider() {
     else if (index < 0) currentSlide = slides.length - 1; // Если идем назад от 0 — идем в конец
     else currentSlide = index;
 
-    // [Теория: classList.toggle('active', условие) добавляет класс если условие истинно, и удаляет если ложно]
+    // [classList.toggle('active', условие) добавляет класс если условие истинно, и удаляет если ложно]
     slides.forEach((s, i) => s.classList.toggle('active', i === currentSlide));
     dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
   }
@@ -132,13 +132,13 @@ function initSlider() {
   function next() { showSlide(currentSlide + 1); }
   function prev() { showSlide(currentSlide - 1); }
 
-  // [Логика: Запуск автоматической прокрутки каждые 3 секунды (3000 мс)]
+  // [ Запуск автоматической прокрутки каждые 3 секунды (3000 мс)]
   function startAuto() {
     stopAuto(); // Сначала очищаем предыдущий таймер, чтобы они не дублировались
     timerId = setInterval(next, 3000);
   }
 
-  // [Теория: clearInterval останавливает ранее запущенный интервал]
+  // [clearInterval останавливает ранее запущенный интервал]
   function stopAuto() {
     if (timerId) clearInterval(timerId);
   }
@@ -159,14 +159,14 @@ function initSlider() {
   startAuto();
 }
 
-// [Теория: Динамическая отрисовка (рендеринг) — это создание HTML-разметки из данных массива прямо в браузере]
-// [Логика: Проходим по массиву OFFICE_ROOMS и создаем карточки комнат в каталоге]
+// [Динамическая отрисовка (рендеринг) — это создание HTML-разметки из данных массива прямо в браузере]
+// [ Проходим по массиву OFFICE_ROOMS и создаем карточки комнат в каталоге]
 function renderCatalog() {
   const container = document.getElementById('catalogContainer');
   if (!container || typeof OFFICE_ROOMS === 'undefined') return;
 
-  // [Теория: Метод map() трансформирует каждый объект комнаты в кусок HTML-кода]
-  // [Теория: Метод join('') склеивает массив получившихся строк в одну большую строку]
+  // [Метод map() трансформирует каждый объект комнаты в кусок HTML-кода]
+  // [Метод join('') склеивает массив получившихся строк в одну большую строку]
   container.innerHTML = OFFICE_ROOMS.map(room => `
     <div class="room-card">
       <div class="card-img-wrap">
@@ -184,7 +184,7 @@ function renderCatalog() {
         <div class="card-footer">
           <div class="card-price">${room.pricePerHour} ₽ <span>/ час</span></div>
           <div class="card-btns">
-            <!-- [Логика: Кнопка-иконка для перехода на страницу детального описания] -->
+            <!-- Кнопка-иконка для перехода на страницу детального описания -->
             <a href="room-details.html?id=${room.id}" class="btn-icon" title="Подробнее о комнате" aria-label="Подробнее"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
             <a href="booking.html?room=${room.id}" class="btn btn-primary">Забронировать</a>
           </div>
@@ -195,16 +195,16 @@ function renderCatalog() {
 }
 
 
-// [Логика: Отображение подробной информации о комнате на странице room-details.html]
+// [ Отображение подробной информации о комнате на странице room-details.html]
 function initRoomDetails() {
   const container = document.getElementById('roomDetailsContainer');
   if (!container || typeof OFFICE_ROOMS === 'undefined') return;
 
-  // [Теория: Считываем параметр ?id=... из адресной строки]
+  // [Считываем параметр ?id=... из адресной строки]
   const urlParams = new URLSearchParams(window.location.search);
   const roomId = urlParams.get('id') || urlParams.get('room');
   
-  // [Теория: Метод find() ищет первый элемент массива, удовлетворяющий условию]
+  // [Метод find() ищет первый элемент массива, удовлетворяющий условию]
   const room = OFFICE_ROOMS.find(r => r.id === roomId);
 
   if (!room) {
@@ -255,7 +255,7 @@ function initRoomDetails() {
 }
 
 
-// [Логика: Валидация полей формы регистрации]
+// [ Валидация полей формы регистрации]
 function initRegisterForm() {
   const form = document.getElementById('registerForm');
   if (!form) return;
@@ -296,7 +296,7 @@ function initRegisterForm() {
   });
 }
 
-// [Логика: Проверка авторизации на форме входа и сохранение в localStorage]
+// [ Проверка авторизации на форме входа и сохранение в localStorage]
 function initLoginForm() {
   const form = document.getElementById('loginForm');
   if (!form) return;

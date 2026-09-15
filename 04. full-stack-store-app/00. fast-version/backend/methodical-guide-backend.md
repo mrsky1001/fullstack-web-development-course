@@ -112,9 +112,9 @@ backend/
 ├── config/
 │   └── db.js              ← Подключение к MySQL
 ├── controllers/
-│   ├── authController.js  ← Логика: регистрация, вход, выход
-│   ├── productController.js ← Логика: список товаров
-│   └── orderController.js ← Логика: создание заказа, мои заказы
+│   ├── authController.js  ←  регистрация, вход, выход
+│   ├── productController.js ←  список товаров
+│   └── orderController.js ←  создание заказа, мои заказы
 ├── routes/
 │   ├── authRoutes.js      ← Маршруты авторизации
 │   ├── productRoutes.js   ← Маршруты товаров
