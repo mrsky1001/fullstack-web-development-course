@@ -496,6 +496,16 @@ body {
   margin-top: auto;
 }
 
+.empty-message {
+  text-align: center;
+  padding: 30px;
+  color: #666666;
+  border: 1px dashed #dddddd;
+  border-radius: 6px;
+  max-width: 600px;
+  margin: 30px auto 0 auto;
+}
+
 /* Формы регистрации и входа */
 .form-card {
   max-width: 480px;

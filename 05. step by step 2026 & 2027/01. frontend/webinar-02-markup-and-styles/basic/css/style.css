@@ -71,6 +71,12 @@ body {
   background-color: #eaf2ff;
 }
 
+.nav-link.active {
+  color: #007bff;
+  background-color: #eaf2ff;
+  font-weight: 600;
+}
+
 .nav-btn {
   background-color: #007bff;
   color: #ffffff;
