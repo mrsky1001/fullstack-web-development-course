@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏆 Шаг 9 — Полный слайдер! | СмартОфис</title>
+    <link rel="stylesheet" href="../../basic/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
+    <style>
+        .lesson-panel { background:#1e293b; color:#f1f5f9; padding:24px 32px; margin-top:40px; border-top:4px solid #22c55e; font-family:'Courier New',monospace; }
+        .lesson-panel h2 { color:#4ade80; margin:0 0 12px 0; font-size:18px; }
+        .step-badge { display:inline-block; background:#16a34a; color:white; padding:4px 12px; border-radius:20px; font-size:13px; margin-bottom:16px; font-family:sans-serif; }
+        .lesson-panel code { display:block; background:#0f172a; color:#a3e635; padding:16px; border-radius:8px; margin:12px 0; font-size:14px; line-height:1.8; white-space:pre; }
+        .lesson-panel p { color:#94a3b8; font-family:sans-serif; font-size:14px; margin:8px 0; }
+        .status-bar { background:#0f172a; border:1px solid #16a34a; border-radius:8px; padding:12px 20px; margin:12px 0; display:flex; gap:24px; align-items:center; font-family:sans-serif; flex-wrap:wrap; }
+        .status-item { text-align:center; }
+        .status-label { font-size:11px; color:#94a3b8; display:block; }
+        .status-value { font-size:22px; font-weight:bold; color:#4ade80; }
+        .btn-row { display:flex; gap:8px; flex-wrap:wrap; margin:12px 0; }
+        .demo-btn { border:none; padding:9px 16px; border-radius:6px; font-size:13px; cursor:pointer; color:white; }
+        .btn-green { background:#16a34a; } .btn-red { background:#dc2626; }
+        .congrats { background:linear-gradient(135deg,#14532d,#166534); border:1px solid #4ade80; border-radius:12px; padding:20px; text-align:center; margin:20px 0; }
+        .congrats h3 { color:#4ade80; font-size:20px; margin:0 0 8px 0; font-family:sans-serif; }
+        .congrats p { color:#86efac; font-family:sans-serif; font-size:14px; margin:4px 0; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="../../basic/index.html" class="logo">
+                <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
+                <span>СмартОфис</span>
+            </a>
+        </div>
+    </header>
+    <main class="main">
+        <div class="container">
+            <section id="slider-block" class="slider-section" style="margin-top:24px;">
+                <div class="slider">
+                    <div id="slide1" class="slide active"><img src="../../basic/img/slider-1.jpg" alt="Слайд 1" class="slide-img"></div>
+                    <div id="slide2" class="slide"><img src="../../basic/img/slider-2.jpg" alt="Слайд 2" class="slide-img"></div>
+                    <div id="slide3" class="slide"><img src="../../basic/img/slider-3.jpg" alt="Слайд 3" class="slide-img"></div>
+                    <div id="slide4" class="slide"><img src="../../basic/img/slider-4.jpg" alt="Слайд 4" class="slide-img"></div>
+                    <button id="leftSliderBtn" class="slider-btn slider-prev">&#8249;</button>
+                    <button id="rightSliderBtn" class="slider-btn slider-next">&#8250;</button>
+                    <div class="slider-dots">
+                        <span class="dot active"></span><span class="dot"></span>
+                        <span class="dot"></span><span class="dot"></span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <div class="lesson-panel">
+        <span class="step-badge">🏆 Шаг 9 из 9 — ФИНАЛ!</span>
+        <h2>Полный слайдер: добавляем setInterval</h2>
+
+        <p>Последний шаг — автопрокрутка! setInterval вызывает nextSlide каждые 3 секунды:</p>
+        <code>let timerId = null;
+
+function nextSlide() { showSlide(currentSlide + 1); }
+
+function startAuto() {
+    stopAuto(); // Сбрасываем старый таймер
+    timerId = setInterval(nextSlide, 3000); // ← Вот оно!
+}
+
+function stopAuto() {
+    if (timerId) clearInterval(timerId);
+}
+
+// При клике на стрелку — перейти + перезапустить таймер:
+rightBtn.addEventListener('click', () => { nextSlide(); startAuto(); });
+
+// Запускаем автопрокрутку сразу:
+startAuto();</code>
+
+        <p>🎮 Слайдер полностью работает! Смотри статус:</p>
+        <div class="status-bar">
+            <div class="status-item">
+                <span class="status-label">let currentSlide</span>
+                <span class="status-value" id="statusSlide">0</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">Таймер</span>
+                <span class="status-value" id="statusTimer">🟢 ON</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">Переключений</span>
+                <span class="status-value" id="statusCount">0</span>
+            </div>
+        </div>
+        <div class="btn-row">
+            <button class="demo-btn btn-red" onclick="stopAutoPublic()">⏹ Остановить (stopAuto)</button>
+            <button class="demo-btn btn-green" onclick="startAutoPublic()">▶ Запустить (startAuto)</button>
+        </div>
+
+        <div class="congrats">
+            <h3>🎉 Поздравляем!</h3>
+            <p>Ты прошёл путь от <code style="color:#4ade80;">console.log('Привет!')</code> до полного рабочего слайдера.</p>
+            <p>Теперь ты понимаешь <strong>каждую строку</strong> кода. Это и есть настоящее программирование!</p>
+        </div>
+    </div>
+    <script>
+        // ШАГ 9: ФИНАЛЬНАЯ ВЕРСИЯ СЛАЙДЕРА
+        // Все концепции вместе: переменные, DOM, classList, функции, события, forEach, setInterval
+
+        // Шаг 3: Находим все нужные элементы
+        const slides   = document.querySelectorAll('.slide');       // NodeList из 4 слайдов
+        const dots     = document.querySelectorAll('.dot');         // NodeList из 4 точек
+        const rightBtn = document.getElementById('rightSliderBtn'); // Кнопка «›»
+        const leftBtn  = document.getElementById('leftSliderBtn');  // Кнопка «‹»
+
+        // Шаг 8: Переменная состояния
+        let currentSlide = 0;   // Текущий индекс
+        let timerId      = null; // ID таймера (нужен чтобы остановить)
+        let switchCount  = 0;   // Счётчик переключений (для статусной панели)
+
+        // Шаг 7: Универсальная функция показа слайда
+        function showSlide(index) {
+            if (index >= slides.length) currentSlide = 0;
+            else if (index < 0)         currentSlide = slides.length - 1;
+            else                        currentSlide = index;
+
+            slides.forEach(s => s.classList.remove('active'));
+            dots.forEach(d   => d.classList.remove('active'));
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+
+            switchCount++;
+            updateStatus();
+        }
+
+        // Следующий слайд
+        function nextSlide() { showSlide(currentSlide + 1); }
+
+        // Шаг 9: АВТОПРОКРУТКА — запуск таймера
+        function startAuto() {
+            stopAuto(); // Сначала останавливаем старый (чтобы не было двух таймеров)
+            timerId = setInterval(nextSlide, 3000); // Каждые 3000 мс = 3 сек
+            document.getElementById('statusTimer').textContent = '🟢 ON';
+        }
+
+        // Остановка таймера
+        function stopAuto() {
+            if (timerId) {
+                clearInterval(timerId);
+                timerId = null;
+            }
+            document.getElementById('statusTimer').textContent = '🔴 OFF';
+        }
+
+        // Шаг 6: addEventListener — подключаем кнопки
+        // При клике → следующий слайд + перезапускаем таймер (чтобы не переключилось сразу)
+        rightBtn.addEventListener('click', function() {
+            nextSlide();
+            startAuto(); // Сброс таймера при ручном клике
+        });
+
+        leftBtn.addEventListener('click', function() {
+            showSlide(currentSlide - 1);
+            startAuto();
+        });
+
+        // Точки тоже работают!
+        dots.forEach(function(dot, index) {
+            dot.addEventListener('click', function() {
+                showSlide(index);
+                startAuto();
+            });
+        });
+
+        // Для кнопок в панели
+        function startAutoPublic() { startAuto(); }
+        function stopAutoPublic()  { stopAuto();  }
+
+        function updateStatus() {
+            document.getElementById('statusSlide').textContent = currentSlide;
+            document.getElementById('statusCount').textContent = switchCount;
+        }
+
+        // ЗАПУСКАЕМ СЛАЙДЕР!
+        startAuto();
+        console.log('✅ Полный слайдер запущен! setInterval активен.');
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вебинар 8: Шаг 4 — Сортировка .sort()</title>
+    <link rel="stylesheet" href="../../basic/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
+    <style>
+        .lesson-panel {
+            background: #1e293b; color: #f1f5f9; padding: 24px 32px; margin: 30px auto; max-width: 800px;
+            border-top: 4px solid #8b5cf6; border-radius: 8px; font-family: monospace;
+        }
+        .lesson-panel h2 { color: #a78bfa; margin-top: 0; }
+        .demo-btn { background: #8b5cf6; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; margin: 4px; font-weight: bold; }
+        .demo-btn:hover { background: #7c3aed; }
+        .list-box { background: white; border-radius: 6px; padding: 16px; color: #1e293b; font-family: sans-serif; margin-top: 12px; }
+        .room-item { padding: 8px 0; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="../../basic/index.html" class="logo">
+                <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
+                <span>СмартОфис</span>
+            </a>
+            <span style="color:#666;">Шаг 4: Сортировка по цене (.sort)</span>
+        </div>
+    </header>
+
+    <main class="container" style="margin-top: 30px;">
+        <div class="lesson-panel">
+            <h2>💰 Шаг 4: Сортировка по цене</h2>
+            <p style="font-family: sans-serif; color: #94a3b8;">
+                Нажимайте кнопки для сортировки списка комнат:
+            </p>
+
+            <div>
+                <button class="demo-btn" onclick="sortAsc()">Цена: по возрастанию ↑</button>
+                <button class="demo-btn" onclick="sortDesc()">Цена: по убыванию ↓</button>
+            </div>
+
+            <div class="list-box">
+                <div id="sortedOutput"></div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const rooms = [
+            { title: 'Мини-офис Focus', price: 450 },
+            { title: 'Конференц-зал Alpha', price: 1200 },
+            { title: 'Опенспейс Hub', price: 250 },
+            { title: 'Премиум Сьют Executive', price: 1800 }
+        ];
+
+        let currentList = [...rooms];
+        const output = document.getElementById('sortedOutput');
+
+        function render(items) {
+            output.innerHTML = items.map(r => `
+                <div class="room-item">
+                    <strong>${r.title}</strong>
+                    <span style="color: #0284c7; font-weight: bold;">${r.price} ₽/час</span>
+                </div>
+            `).join('');
+        }
+
+        function sortAsc() {
+            currentList.sort((a, b) => a.price - b.price);
+            render(currentList);
+        }
+
+        function sortDesc() {
+            currentList.sort((a, b) => b.price - a.price);
+            render(currentList);
+        }
+
+        render(currentList);
+    </script>
+</body>
+</html>

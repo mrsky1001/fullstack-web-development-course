@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вебинар 8: Шаг 2 — Метод .filter()</title>
+    <link rel="stylesheet" href="../../basic/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
+    <style>
+        .lesson-panel {
+            background: #1e293b; color: #f1f5f9; padding: 24px 32px; margin: 30px auto; max-width: 800px;
+            border-top: 4px solid #10b981; border-radius: 8px; font-family: monospace;
+        }
+        .lesson-panel h2 { color: #34d399; margin-top: 0; }
+        .search-field { width: 100%; padding: 12px; font-size: 16px; border: 1px solid #cbd5e1; border-radius: 6px; box-sizing: border-box; margin: 12px 0; }
+        .list-box { background: white; border-radius: 6px; padding: 16px; color: #1e293b; font-family: sans-serif; margin-top: 12px; }
+        .room-item { padding: 8px 0; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; }
+        .room-item:last-child { border-bottom: none; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="../../basic/index.html" class="logo">
+                <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
+                <span>СмартОфис</span>
+            </a>
+            <span style="color:#666;">Шаг 2: Метод .filter()</span>
+        </div>
+    </header>
+
+    <main class="container" style="margin-top: 30px;">
+        <div class="lesson-panel">
+            <h2>🎯 Шаг 2: Фильтрация комнат по названию</h2>
+            <p style="font-family: sans-serif; color: #94a3b8;">
+                Попробуйте напечатать <code>alpha</code>, <code>focus</code> или <code>hub</code>:
+            </p>
+
+            <input type="text" id="filterInput" class="search-field" placeholder="Поиск по названию (например, Focus)...">
+
+            <div class="list-box">
+                <div id="roomsOutput"></div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const OFFICE_ROOMS = [
+            { title: 'Мини-офис Focus', price: 450 },
+            { title: 'Конференц-зал Alpha', price: 1200 },
+            { title: 'Опенспейс Hub', price: 250 },
+            { title: 'Переговорная Solo', price: 600 }
+        ];
+
+        const input = document.getElementById('filterInput');
+        const output = document.getElementById('roomsOutput');
+
+        function render(items) {
+            if (!items.length) {
+                output.innerHTML = '<div style="color:#ef4444; padding: 8px 0;">Ничего не найдено</div>';
+                return;
+            }
+            output.innerHTML = items.map(r => `
+                <div class="room-item">
+                    <strong>${r.title}</strong>
+                    <span style="color: #0284c7; font-weight: bold;">${r.price} ₽/час</span>
+                </div>
+            `).join('');
+        }
+
+        input.addEventListener('input', () => {
+            const q = input.value.toLowerCase().trim();
+            // Метод filter:
+            const filtered = OFFICE_ROOMS.filter(r => r.title.toLowerCase().includes(q));
+            render(filtered);
+        });
+
+        render(OFFICE_ROOMS);
+    </script>
+</body>
+</html>

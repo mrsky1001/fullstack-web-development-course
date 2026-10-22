@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вебинар 6: Шаг 4 — Метод .trim()</title>
+    <link rel="stylesheet" href="../../basic/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
+    <style>
+        .lesson-panel {
+            background: #1e293b; color: #f1f5f9; padding: 24px 32px; margin: 30px auto; max-width: 800px;
+            border-top: 4px solid #f59e0b; border-radius: 8px; font-family: monospace;
+        }
+        .lesson-panel h2 { color: #fbbf24; margin-top: 0; }
+        .form-demo-box {
+            background: white; border-radius: 8px; padding: 24px; color: #1e293b; margin-top: 16px; font-family: sans-serif;
+            max-width: 400px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+        .form-input { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; margin: 8px 0 16px; box-sizing: border-box; }
+        .submit-btn { width: 100%; padding: 10px; background: #f59e0b; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; }
+        .result-box { background: #0f172a; border: 1px dashed #fbbf24; padding: 12px; border-radius: 6px; color: #fbbf24; margin-top: 12px; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="../../basic/index.html" class="logo">
+                <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
+                <span>СмартОфис</span>
+            </a>
+            <span style="color:#666;">Шаг 4: Защита от пробелов (.trim)</span>
+        </div>
+    </header>
+
+    <main class="container" style="margin-top: 30px;">
+        <div class="lesson-panel">
+            <h2>✂️ Шаг 4: Очистка пробелов через .trim()</h2>
+            <p style="font-family: sans-serif; color: #94a3b8;">
+                Попробуйте ввести <strong>только пробелы</strong> (нажмите пробел 3-4 раза) и проверьте разницу:
+            </p>
+
+            <div class="form-demo-box">
+                <label>Поле ввода:</label>
+                <input type="text" id="spaceField" class="form-input" placeholder="Введите пробелы...">
+                <button type="button" class="submit-btn" onclick="checkTrim()">Проверить с .trim()</button>
+            </div>
+
+            <div class="result-box" id="resultBox">Введите пробелы или текст и нажмите кнопку...</div>
+        </div>
+    </main>
+
+    <script>
+        function checkTrim() {
+            const rawVal = document.getElementById('spaceField').value;
+            const trimmed = rawVal.trim();
+            const box = document.getElementById('resultBox');
+
+            if (!trimmed) {
+                box.innerHTML = '❌ Поле ПУСТОЕ после .trim()!<br>' + 
+                                'Исходная длина: ' + rawVal.length + ' символов<br>' + 
+                                'Длина после .trim(): 0 символов.';
+            } else {
+                box.innerHTML = '✅ Поле заполнено правильно: "' + trimmed + '" (длина: ' + trimmed.length + ')';
+            }
+        }
+    </script>
+</body>
+</html>

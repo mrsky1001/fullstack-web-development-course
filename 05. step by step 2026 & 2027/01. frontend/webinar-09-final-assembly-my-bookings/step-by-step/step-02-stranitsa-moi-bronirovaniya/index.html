@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вебинар 9: Шаг 2 — Мои бронирования</title>
+    <link rel="stylesheet" href="../../basic/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
+    <style>
+        .lesson-panel {
+            background: #1e293b; color: #f1f5f9; padding: 24px 32px; margin: 30px auto; max-width: 800px;
+            border-top: 4px solid #10b981; border-radius: 8px; font-family: monospace;
+        }
+        .lesson-panel h2 { color: #34d399; margin-top: 0; }
+        .demo-btn { background: #10b981; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; margin: 4px; font-weight: bold; }
+        .bookings-box { background: white; border-radius: 8px; padding: 16px; color: #1e293b; margin-top: 16px; font-family: sans-serif; }
+        .b-item { display: flex; justify-content: space-between; align-items: center; padding: 12px; border-bottom: 1px solid #e2e8f0; }
+        .b-item:last-child { border-bottom: none; }
+        .empty-alert { padding: 20px; text-align: center; color: #64748b; font-style: italic; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="../../basic/index.html" class="logo">
+                <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
+                <span>СмартОфис</span>
+            </a>
+            <span style="color:#666;">Шаг 2: Обработка пустого состояния</span>
+        </div>
+    </header>
+
+    <main class="container" style="margin-top: 30px;">
+        <div class="lesson-panel">
+            <h2>📅 Шаг 2: Список заявок и заглушка Empty State</h2>
+            <p style="font-family: sans-serif; color: #94a3b8;">
+                Попробуйте переключить состояние списка — с данными и когда список пуст:
+            </p>
+
+            <div>
+                <button class="demo-btn" onclick="renderData(true)">Показать список с заявками</button>
+                <button class="demo-btn" style="background:#ef4444;" onclick="renderData(false)">Очистить список (Empty State)</button>
+            </div>
+
+            <div class="bookings-box" id="bookingsContainer"></div>
+        </div>
+    </main>
+
+    <script>
+        const MOCK = [
+            { id: '74829', roomTitle: 'Мини-офис Focus', date: '2026-09-01', hours: 3, totalPrice: 1350 },
+            { id: '74830', roomTitle: 'Конференц-зал Alpha', date: '2026-09-03', hours: 2, totalPrice: 2400 }
+        ];
+
+        const container = document.getElementById('bookingsContainer');
+
+        function renderData(hasItems) {
+            const list = hasItems ? MOCK : [];
+
+            if (!list.length) {
+                container.innerHTML = '<div class="empty-alert">У вас пока нет активных бронирований.</div>';
+                return;
+            }
+
+            container.innerHTML = list.map(item => `
+                <div class="b-item">
+                    <div>
+                        <h4 style="margin: 0 0 4px 0; color: #0f172a;">${item.roomTitle}</h4>
+                        <div style="font-size: 13px; color: #64748b;">Дата: ${item.date} | ${item.hours} ч. | Заявка №${item.id}</div>
+                    </div>
+                    <div style="text-align: right;">
+                        <div style="font-weight: bold; color: #0284c7; font-size: 16px;">${item.totalPrice} ₽</div>
+                        <span style="color: #10b981; font-size: 12px; font-weight: bold;">Подтверждено</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        renderData(true);
+    </script>
+</body>
+</html>

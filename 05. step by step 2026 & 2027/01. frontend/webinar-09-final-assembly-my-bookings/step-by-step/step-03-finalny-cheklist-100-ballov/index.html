@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вебинар 9: Шаг 3 — Финальный чек-лист на 100 баллов</title>
+    <link rel="stylesheet" href="../../basic/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
+    <style>
+        .lesson-panel {
+            background: #1e293b; color: #f1f5f9; padding: 24px 32px; margin: 30px auto; max-width: 900px;
+            border-top: 4px solid #f59e0b; border-radius: 8px; font-family: monospace;
+        }
+        .lesson-panel h2 { color: #fbbf24; margin-top: 0; }
+        .score-box { background: #0f172a; border: 2px solid #10b981; border-radius: 8px; padding: 16px; margin: 16px 0; display: flex; justify-content: space-between; align-items: center; font-family: sans-serif; }
+        .score-title { font-size: 16px; color: #cbd5e1; }
+        .score-val { font-size: 32px; font-weight: bold; color: #34d399; }
+        .checklist-item {
+            background: white; border-radius: 6px; padding: 12px 16px; color: #1e293b; margin-bottom: 8px; font-family: sans-serif;
+            display: flex; align-items: center; justify-content: space-between; border-left: 4px solid #3b82f6;
+        }
+        .chk-label { font-size: 14px; font-weight: 500; cursor: pointer; display: flex; align-items: center; gap: 8px; }
+        .points-badge { background: #e0f2fe; color: #0284c7; padding: 2px 8px; border-radius: 12px; font-weight: bold; font-size: 13px; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="../../basic/index.html" class="logo">
+                <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
+                <span>СмартОфис</span>
+            </a>
+            <span style="color:#666;">Шаг 3: Экзаменационный трекер</span>
+        </div>
+    </header>
+
+    <main class="container" style="margin-top: 30px;">
+        <div class="lesson-panel">
+            <h2>🏆 Шаг 3: Интерактивный чек-лист готовности проекта</h2>
+            <p style="font-family: sans-serif; color: #94a3b8;">
+                Отмечайте выполненные пункты и следите за набором баллов:
+            </p>
+
+            <div class="score-box">
+                <div class="score-title">Текущий результат самопроверки:</div>
+                <div class="score-val" id="totalScore">100 / 100 баллов 🎉</div>
+            </div>
+
+            <div id="checklist">
+                <div class="checklist-item">
+                    <label class="chk-label"><input type="checkbox" checked onchange="calcScore()"> 1. Файловая структура (все 7 страниц, CSS, data.js, main.js)</label>
+                    <span class="points-badge">10 б.</span>
+                </div>
+                <div class="checklist-item">
+                    <label class="chk-label"><input type="checkbox" checked onchange="calcScore()"> 2. Семантическая верстка (&lt;header&gt;, &lt;nav&gt;, &lt;main&gt;, &lt;footer&gt;)</label>
+                    <span class="points-badge">10 б.</span>
+                </div>
+                <div class="checklist-item">
+                    <label class="chk-label"><input type="checkbox" checked onchange="calcScore()"> 3. Главная страница (Hero-баннер + популярные комнаты)</label>
+                    <span class="points-badge">10 б.</span>
+                </div>
+                <div class="checklist-item">
+                    <label class="chk-label"><input type="checkbox" checked onchange="calcScore()"> 4. Интерактивный слайдер (автосмена 3с, стрелки ‹/›, точки)</label>
+                    <span class="points-badge">10 б.</span>
+                </div>
+                <div class="checklist-item">
+                    <label class="chk-label"><input type="checkbox" checked onchange="calcScore()"> 5. Динамический каталог (генерация карточек через .map())</label>
+                    <span class="points-badge">15 б.</span>
+                </div>
+                <div class="checklist-item">
+                    <label class="chk-label"><input type="checkbox" checked onchange="calcScore()"> 6. Страница описания комнаты (поиск через .find() по ?id=...)</label>
+                    <span class="points-badge">15 б.</span>
+                </div>
+                <div class="checklist-item">
+                    <label class="chk-label"><input type="checkbox" checked onchange="calcScore()"> 7. Поиск и сортировка в каталоге (по возрастанию / убыванию)</label>
+                    <span class="points-badge">10 б.</span>
+                </div>
+                <div class="checklist-item">
+                    <label class="chk-label"><input type="checkbox" checked onchange="calcScore()"> 8. Валидация форм (подсветка .is-invalid и проверка паролей)</label>
+                    <span class="points-badge">10 б.</span>
+                </div>
+                <div class="checklist-item">
+                    <label class="chk-label"><input type="checkbox" checked onchange="calcScore()"> 9. Калькулятор бронирования (тариф × часы + номер заявки)</label>
+                    <span class="points-badge">5 б.</span>
+                </div>
+                <div class="checklist-item">
+                    <label class="chk-label"><input type="checkbox" checked onchange="calcScore()"> 10. Мои бронирования и чистая консоль F12</label>
+                    <span class="points-badge">5 б.</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const weights = [10, 10, 10, 10, 15, 15, 10, 10, 5, 5];
+
+        function calcScore() {
+            const boxes = document.querySelectorAll('#checklist input[type="checkbox"]');
+            let total = 0;
+            boxes.forEach((b, i) => {
+                if (b.checked) total += weights[i];
+            });
+            document.getElementById('totalScore').textContent = total + ' / 100 баллов' + (total === 100 ? ' 🎉' : '');
+        }
+    </script>
+</body>
+</html>

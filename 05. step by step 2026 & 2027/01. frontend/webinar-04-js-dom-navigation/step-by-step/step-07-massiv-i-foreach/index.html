@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Шаг 7 — querySelectorAll + forEach | СмартОфис</title>
+    <link rel="stylesheet" href="../../basic/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
+    <style>
+        .lesson-panel { background:#1e293b; color:#f1f5f9; padding:24px 32px; margin-top:40px; border-top:4px solid #f97316; font-family:'Courier New',monospace; }
+        .lesson-panel h2 { color:#fb923c; margin:0 0 12px 0; font-size:18px; }
+        .step-badge { display:inline-block; background:#f97316; color:white; padding:4px 12px; border-radius:20px; font-size:13px; margin-bottom:16px; font-family:sans-serif; }
+        .lesson-panel code { display:block; background:#0f172a; color:#a3e635; padding:16px; border-radius:8px; margin:12px 0; font-size:14px; line-height:1.8; white-space:pre; }
+        .lesson-panel p { color:#94a3b8; font-family:sans-serif; font-size:14px; margin:8px 0; }
+        .btn-row { display:flex; gap:8px; flex-wrap:wrap; margin:12px 0; }
+        .demo-btn { border:none; padding:9px 16px; border-radius:6px; font-size:13px; cursor:pointer; color:white; background:#f97316; }
+        .demo-btn:hover { background:#ea580c; }
+        .demo-output { background:#0f172a; color:#a3e635; padding:12px 16px; border-radius:6px; font-size:13px; margin-top:8px; min-height:44px; font-family:monospace; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="../../basic/index.html" class="logo">
+                <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
+                <span>СмартОфис</span>
+            </a>
+        </div>
+    </header>
+    <main class="main">
+        <div class="container">
+            <section id="slider-block" class="slider-section" style="margin-top:24px;">
+                <div class="slider">
+                    <div id="slide1" class="slide active"><img src="../../basic/img/slider-1.jpg" alt="Слайд 1" class="slide-img"></div>
+                    <div id="slide2" class="slide"><img src="../../basic/img/slider-2.jpg" alt="Слайд 2" class="slide-img"></div>
+                    <div id="slide3" class="slide"><img src="../../basic/img/slider-3.jpg" alt="Слайд 3" class="slide-img"></div>
+                    <div id="slide4" class="slide"><img src="../../basic/img/slider-4.jpg" alt="Слайд 4" class="slide-img"></div>
+                    <button id="leftSliderBtn" class="slider-btn slider-prev">&#8249;</button>
+                    <button id="rightSliderBtn" class="slider-btn slider-next">&#8250;</button>
+                    <div class="slider-dots">
+                        <span class="dot active"></span><span class="dot"></span>
+                        <span class="dot"></span><span class="dot"></span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <div class="lesson-panel">
+        <span class="step-badge">📚 Шаг 7 из 9</span>
+        <h2>querySelectorAll + forEach = мощь!</h2>
+        <code>// Получаем ВСЕ слайды одной строкой:
+const slides = document.querySelectorAll('.slide');
+const dots   = document.querySelectorAll('.dot');
+
+// Функция showSlide — показывает слайд по индексу:
+function showSlide(index) {
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot   => dot.classList.remove('active'));
+    slides[index].classList.add('active');
+    dots[index].classList.add('active');
+}</code>
+        <p>🎮 Теперь обе кнопки работают правильно! Попробуй:</p>
+        <div class="btn-row">
+            <button class="demo-btn" onclick="showSlide(0)">showSlide(0) — Слайд 1</button>
+            <button class="demo-btn" onclick="showSlide(1)">showSlide(1) — Слайд 2</button>
+            <button class="demo-btn" onclick="showSlide(2)">showSlide(2) — Слайд 3</button>
+            <button class="demo-btn" onclick="showSlide(3)">showSlide(3) — Слайд 4</button>
+        </div>
+        <div class="demo-output" id="demoOutput">Нажми кнопку — showSlide(index) переключит слайд...</div>
+        <p style="margin-top:12px;">⚠️ Но кнопки ‹ и › слайдера пока не знают КАКОЙ слайд текущий. Это исправим в шаге 8!</p>
+    </div>
+    <script>
+        // ШАГ 7: querySelectorAll + forEach
+
+        // Получаем все слайды и точки ОДНОЙ строкой каждую!
+        const slides = document.querySelectorAll('.slide'); // NodeList из 4 слайдов
+        const dots   = document.querySelectorAll('.dot');   // NodeList из 4 точек
+
+        console.log('slides.length =', slides.length); // 4
+        console.log('dots.length =', dots.length);     // 4
+
+        // Универсальная функция: показать слайд с индексом index
+        function showSlide(index) {
+            // forEach: для каждого слайда — убрать класс active
+            slides.forEach(slide => slide.classList.remove('active'));
+            // forEach: для каждой точки — убрать класс active
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            // Обращаемся по индексу как к массиву:
+            slides[index].classList.add('active'); // Показываем нужный
+            dots[index].classList.add('active');   // Подсвечиваем точку
+
+            document.getElementById('demoOutput').textContent =
+                'showSlide(' + index + ') → слайд ' + (index+1) + ' показан!';
+            console.log('showSlide(' + index + ')');
+        }
+
+        // Стрелки слайдера пока переключают вперёд/назад но не отслеживают позицию
+        const rightBtn = document.getElementById('rightSliderBtn');
+        const leftBtn  = document.getElementById('leftSliderBtn');
+        rightBtn.addEventListener('click', function() { showSlide(1); });
+        leftBtn.addEventListener('click',  function() { showSlide(0); });
+    </script>
+</body>
+</html>

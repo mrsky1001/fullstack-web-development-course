@@ -1,9 +1,11 @@
-# Вебинар 4. Введение в JavaScript: DOM-дерево и умная навигация
+# Вебинар 4. Введение в JavaScript: DOM-дерево, умная навигация и Слайдер
 
 ## 📋 О занятии простыми словами
 Сегодня наш сайт начинает оживать! Мы впервые подключаем **JavaScript** — язык программирования, который управляет поведением веб-страницы.
 
-Мы научим JavaScript определять, на какой именно странице сейчас находится пользователь, и автоматически подсвечивать нужную ссылку в главном меню (добавлять класс `.active`).
+Мы решим сразу две крутые задачи:
+1. Научим JavaScript определять текущую страницу и автоматически подсвечивать ссылку в главном меню (класс `.active`).
+2. Оживим **интерактивный слайдер фотографий** на главной странице: настроим плавное переключение слайдов, клики по стрелочкам и точкам, а также автопрокрутку каждые 3 секунды!
 
 ---
 
@@ -11,7 +13,14 @@
 1. Создадим файл `js/main.js` и подключим его в HTML с атрибутом `defer`.
 2. Поймем, что такое DOM-дерево и почему важно событие `DOMContentLoaded`.
 3. Напишем функцию `initNavigation()`, которая находит все ссылки меню через `document.querySelectorAll('.nav-link')`.
-4. Настроим автоматическое выделение цветом активного пункта меню.
+4. Сверстаем и оживим слайдер на главной странице с помощью функции `initSlider()`.
+5. Настроим переключение слайдов вперед/назад и автоматический таймер через `setInterval()`.
+
+---
+
+> 🚀 **Новичкам в JavaScript (с нуля до слайдера):**  
+> Если вы только начинаете и код кажется сложным, начните с нашей интерактивной пошаговой базы:  
+> 👉 **[Пошаговый разбор JS со слайдером (9 мини-уроков)](step-by-step/README.md)** — здесь на основе слайдера из проекта «СмартОфис» объясняется каждый шаг: от `console.log` и переменных до живого слайдера с кнопками и таймером!
 
 ---
 
@@ -62,12 +71,16 @@ function initNavigation() {
     // Снимаем класс active со всех ссылок
     link.classList.remove('active');
 
-    // Проверяем совпадение текущего адреса со ссылкой
-    if ((current.endsWith('index.html') || current.endsWith('/') || current === '') && (href === 'index.html' || href === '../index.html')) {
-      link.classList.add('active');
-    } else if (href.includes('catalog.html') && current.includes('catalog.html')) {
-      link.classList.add('active');
-    } else if (href.includes('login.html') && current.includes('login.html')) {
+    // Проверяем совпадение адреса через понятные константы-условия
+    const isHome = (current.endsWith('index.html') || current.endsWith('/') || current === '') && (href === 'index.html' || href === '../index.html');
+    const hasCatalog = (href.includes('catalog.html') || href.includes('room-details.html')) && (current.includes('catalog.html') || current.includes('room-details.html'));
+    const isBooking = href.includes('booking.html') && current.includes('booking.html');
+    const isMyBookings = href.includes('my-bookings.html') && current.includes('my-bookings.html');
+    const isLogin = href.includes('login.html') && current.includes('login.html');
+    const isRegister = href.includes('register.html') && current.includes('register.html');
+
+    const isActive = isHome || hasCatalog || isBooking || isMyBookings || isLogin || isRegister;
+    if (isActive) {
       link.classList.add('active');
     }
   });
@@ -79,3 +92,7 @@ function initNavigation() {
 ## 🏁 Чек-лист для самопроверки
 - [x] Файл `js/main.js` подключен без ошибок (откройте консоль браузера клавишей F12 — там должно быть чисто).
 - [x] Пункт меню «Главная» подсвечивается приятным голубым фоном.
+- [x] На главной странице отображается интерактивный слайдер фотографий с 4 слайдами.
+- [x] Стрелки «‹» и «›» плавно переключают слайды вперед и назад.
+- [x] Точки-индикаторы снизу показывают активный слайд и переключают при клике.
+- [x] Слайдер автоматически меняет фото каждые 3 секунды, а при ручном клике таймер сбрасывается.

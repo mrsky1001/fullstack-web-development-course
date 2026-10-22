@@ -53,18 +53,16 @@ function initNavigation() {
     // Сначала снимаем активный класс со всех ссылок
     link.classList.remove('active');
 
-    // Проверяем, совпадает ли адрес ссылки с текущей страницей
-    if ((current.endsWith('index.html') || current.endsWith('/') || current === '') && (href === 'index.html' || href === '../index.html')) {
-      link.classList.add('active');
-    } else if ((href.includes('catalog.html') || href.includes('room-details.html')) && (current.includes('catalog.html') || current.includes('room-details.html'))) {
-      link.classList.add('active');
-    } else if (href.includes('booking.html') && current.includes('booking.html')) {
-      link.classList.add('active');
-    } else if (href.includes('my-bookings.html') && current.includes('my-bookings.html')) {
-      link.classList.add('active');
-    } else if (href.includes('login.html') && current.includes('login.html')) {
-      link.classList.add('active');
-    } else if (href.includes('register.html') && current.includes('register.html')) {
+    // [Проверяем совпадение адреса через понятные константы-условия]
+    const isHome = (current.endsWith('index.html') || current.endsWith('/') || current === '') && (href === 'index.html' || href === '../index.html');
+    const hasCatalog = (href.includes('catalog.html') || href.includes('room-details.html')) && (current.includes('catalog.html') || current.includes('room-details.html'));
+    const isBooking = href.includes('booking.html') && current.includes('booking.html');
+    const isMyBookings = href.includes('my-bookings.html') && current.includes('my-bookings.html');
+    const isLogin = href.includes('login.html') && current.includes('login.html');
+    const isRegister = href.includes('register.html') && current.includes('register.html');
+
+    const isActive = isHome || hasCatalog || isBooking || isMyBookings || isLogin || isRegister;
+    if (isActive) {
       link.classList.add('active');
     }
   });
@@ -389,7 +387,8 @@ function initRegisterForm() {
     // Проверяем совпадение пароля и подтверждения пароля
     const pass = document.getElementById('password');
     const confirm = document.getElementById('confirmPassword');
-    if (pass && confirm && pass.value && confirm.value && pass.value !== confirm.value) {
+    const isPasswordMismatch = pass && confirm && pass.value && confirm.value && pass.value !== confirm.value;
+    if (isPasswordMismatch) {
       confirm.classList.add('is-invalid');
       isValid = false;
     }
@@ -417,7 +416,8 @@ function initLoginForm() {
     const alertBox = document.getElementById('loginAlert');
 
     // Проверяем тестовые данные (admin / 12345)
-    if (login === 'admin' && pass === '12345') {
+    const isValidUser = (login === 'admin' && pass === '12345');
+    if (isValidUser) {
       // Сохраняем имя вошедшего пользователя в localStorage
       localStorage.setItem('currentUser', login);
       if (alertBox) alertBox.style.display = 'none';

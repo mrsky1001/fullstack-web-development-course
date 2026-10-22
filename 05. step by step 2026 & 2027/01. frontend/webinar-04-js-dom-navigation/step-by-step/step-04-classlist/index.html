@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Шаг 4 — classList | СмартОфис</title>
+    <link rel="stylesheet" href="../../basic/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
+    <style>
+        .lesson-panel {
+            background: #1e293b; color: #f1f5f9;
+            padding: 24px 32px; margin-top: 40px;
+            border-top: 4px solid #f59e0b;
+            font-family: 'Courier New', monospace;
+        }
+        .lesson-panel h2 { color: #fbbf24; margin: 0 0 12px 0; font-size: 18px; }
+        .step-badge { display:inline-block; background:#f59e0b; color:white; padding:4px 12px; border-radius:20px; font-size:13px; margin-bottom:16px; font-family:sans-serif; }
+        .lesson-panel code { display:block; background:#0f172a; color:#a3e635; padding:16px; border-radius:8px; margin:12px 0; font-size:14px; line-height:1.8; white-space:pre; }
+        .lesson-panel p { color:#94a3b8; font-family:sans-serif; font-size:14px; margin:8px 0; }
+        .btn-row { display:flex; gap:8px; flex-wrap:wrap; margin:12px 0; }
+        .demo-btn { border:none; padding:9px 16px; border-radius:6px; font-size:13px; cursor:pointer; color:white; font-family:monospace; }
+        .btn-red { background:#ef4444; }
+        .btn-green { background:#10b981; }
+        .btn-yellow { background:#d97706; }
+        .demo-output { background:#0f172a; color:#a3e635; padding:12px 16px; border-radius:6px; font-size:13px; margin-top:8px; min-height:44px; font-family:monospace; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="../../basic/index.html" class="logo">
+                <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
+                <span>СмартОфис</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <section id="slider-block" class="slider-section" style="margin-top:24px;">
+                <div class="slider">
+                    <div id="slide1" class="slide active"><img src="../../basic/img/slider-1.jpg" alt="Слайд 1" class="slide-img"></div>
+                    <div id="slide2" class="slide"><img src="../../basic/img/slider-2.jpg" alt="Слайд 2" class="slide-img"></div>
+                    <div id="slide3" class="slide"><img src="../../basic/img/slider-3.jpg" alt="Слайд 3" class="slide-img"></div>
+                    <div id="slide4" class="slide"><img src="../../basic/img/slider-4.jpg" alt="Слайд 4" class="slide-img"></div>
+                    <button id="leftSliderBtn" class="slider-btn slider-prev">&#8249;</button>
+                    <button id="rightSliderBtn" class="slider-btn slider-next">&#8250;</button>
+                    <div class="slider-dots">
+                        <span class="dot active"></span><span class="dot"></span>
+                        <span class="dot"></span><span class="dot"></span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div class="lesson-panel">
+        <span class="step-badge">📚 Шаг 4 из 9</span>
+        <h2>classList: добавляем и убираем классы</h2>
+
+        <p>CSS-класс <code style="display:inline;padding:2px 6px;">active</code> делает слайд видимым. JS управляет этим классом:</p>
+        <code>slide1El.classList.remove('active'); // Убрать — скрыть
+slide2El.classList.add('active');    // Добавить — показать</code>
+
+        <p>🎮 Управляй слайдером вручную — нажимай кнопки и смотри что происходит:</p>
+        <div class="btn-row">
+            <button class="demo-btn btn-green" onclick="showSlideManual(0)">Показать Слайд 1</button>
+            <button class="demo-btn btn-green" onclick="showSlideManual(1)">Показать Слайд 2</button>
+            <button class="demo-btn btn-green" onclick="showSlideManual(2)">Показать Слайд 3</button>
+            <button class="demo-btn btn-green" onclick="showSlideManual(3)">Показать Слайд 4</button>
+        </div>
+        <div class="demo-output" id="demoOutput">Нажми кнопку выше...</div>
+
+        <p style="margin-top:16px;">👇 Вот КАК это делается в коде — смотри на каждую строку:</p>
+        <code>// Убираем active со slide1 (он скрывается)
+slide1El.classList.remove('active');
+
+// Добавляем active на slide3 (он появляется)
+slide3El.classList.add('active');
+
+// Именно эти строки были в вашем main.js!</code>
+    </div>
+
+    <script>
+        // ШАГ 4: classList — управляем классами
+
+        // Находим все 4 слайда (шаг 3 — помним как искать!)
+        const slide1El = document.getElementById('slide1');
+        const slide2El = document.getElementById('slide2');
+        const slide3El = document.getElementById('slide3');
+        const slide4El = document.getElementById('slide4');
+        const slides = [slide1El, slide2El, slide3El, slide4El];
+
+        const dots = document.querySelectorAll('.dot');
+
+        // Функция: показать слайд с индексом index
+        function showSlideManual(index) {
+            // Проходим по всем слайдам
+            // У каждого убираем класс active (все скрываем)
+            slide1El.classList.remove('active');
+            slide2El.classList.remove('active');
+            slide3El.classList.remove('active');
+            slide4El.classList.remove('active');
+
+            // Добавляем active только нужному
+            slides[index].classList.add('active');
+
+            // Обновляем точки
+            dots.forEach(function(dot) { dot.classList.remove('active'); });
+            dots[index].classList.add('active');
+
+            // Выводим пояснение
+            const names = ['slide1El', 'slide2El', 'slide3El', 'slide4El'];
+            const out = document.getElementById('demoOutput');
+            out.textContent = 'Выполнено: все .remove("active"), затем ' + names[index] + '.classList.add("active") → слайд ' + (index+1) + ' виден!';
+            console.log('Показан слайд', index + 1);
+        }
+    </script>
+</body>
+</html>

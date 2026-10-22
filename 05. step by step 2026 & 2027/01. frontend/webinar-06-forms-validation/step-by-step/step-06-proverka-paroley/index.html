@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вебинар 6: Шаг 6 — Сравнение паролей</title>
+    <link rel="stylesheet" href="../../basic/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
+    <style>
+        .lesson-panel {
+            background: #1e293b; color: #f1f5f9; padding: 24px 32px; margin: 30px auto; max-width: 800px;
+            border-top: 4px solid #f97316; border-radius: 8px; font-family: monospace;
+        }
+        .lesson-panel h2 { color: #fb923c; margin-top: 0; }
+        .form-demo-box {
+            background: white; border-radius: 8px; padding: 24px; color: #1e293b; margin-top: 16px; font-family: sans-serif;
+            max-width: 400px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+        .form-control {
+            width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; margin: 6px 0 12px; box-sizing: border-box;
+        }
+        .form-control.is-invalid {
+            border-color: #dc3545 !important;
+            box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.2);
+        }
+        .error-hint { color: #dc3545; font-size: 12px; display: none; margin-bottom: 12px; }
+        .form-control.is-invalid + .error-hint { display: block; }
+        .submit-btn { width: 100%; padding: 10px; background: #f97316; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="../../basic/index.html" class="logo">
+                <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
+                <span>СмартОфис</span>
+            </a>
+            <span style="color:#666;">Шаг 6: Проверка совпадения паролей</span>
+        </div>
+    </header>
+
+    <main class="container" style="margin-top: 30px;">
+        <div class="lesson-panel">
+            <h2>🔑 Шаг 6: Сравнение pass.value !== confirm.value</h2>
+            <p style="font-family: sans-serif; color: #94a3b8;">
+                Попробуйте ввести разные пароли — поле подтверждения загорится красным!
+            </p>
+
+            <div class="form-demo-box">
+                <form id="passForm">
+                    <label>Пароль:</label>
+                    <input type="password" id="pass" class="form-control" placeholder="Придумайте пароль...">
+
+                    <label>Подтверждение пароля:</label>
+                    <input type="password" id="confirmPass" class="form-control" placeholder="Повторите пароль...">
+                    <div class="error-hint">Пароли не совпадают!</div>
+
+                    <button type="submit" class="submit-btn">Зарегистрироваться</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const form = document.getElementById('passForm');
+        const pass = document.getElementById('pass');
+        const confirmPass = document.getElementById('confirmPass');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            if (!pass.value.trim()) {
+                pass.classList.add('is-invalid');
+                return;
+            } else {
+                pass.classList.remove('is-invalid');
+            }
+
+            // Главная проверка совпадения:
+            if (pass.value !== confirmPass.value) {
+                confirmPass.classList.add('is-invalid');
+            } else {
+                confirmPass.classList.remove('is-invalid');
+                alert('🎉 Пароли совпадают! Форма валидна!');
+            }
+        });
+    </script>
+</body>
+</html>

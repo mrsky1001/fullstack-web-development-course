@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вебинар 9: Шаг 1 — Архитектура проекта</title>
+    <link rel="stylesheet" href="../../basic/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
+    <style>
+        .lesson-panel {
+            background: #1e293b; color: #f1f5f9; padding: 24px 32px; margin: 30px auto; max-width: 900px;
+            border-top: 4px solid #3b82f6; border-radius: 8px; font-family: monospace;
+        }
+        .lesson-panel h2 { color: #60a5fa; margin-top: 0; }
+        .arch-tree { background: #0f172a; padding: 20px; border-radius: 8px; color: #38bdf8; line-height: 1.8; font-size: 14px; }
+        .page-link-badge { display: inline-block; background: #1e40af; color: #bfdbfe; padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="../../basic/index.html" class="logo">
+                <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
+                <span>СмартОфис</span>
+            </a>
+            <span style="color:#666;">Шаг 1: Архитектура всего сайта</span>
+        </div>
+    </header>
+
+    <main class="container" style="margin-top: 30px;">
+        <div class="lesson-panel">
+            <h2>🗺️ Шаг 1: Единая схема проекта «СмартОфис» (7 страниц)</h2>
+            <p style="font-family: sans-serif; color: #94a3b8;">
+                Все страницы проекта объединены общим файлом стилей <code>style.css</code> и скриптами <code>data.js</code> + <code>main.js</code>:
+            </p>
+
+            <div class="arch-tree">
+📦 СмартОфис (7 страниц)<br>
+├── 🌐 index.html <a class="page-link-badge" href="../../basic/index.html">Главная</a> (Слайдер + Hero + Популярное)<br>
+├── 📁 pages/<br>
+│   ├── 🌐 catalog.html <a class="page-link-badge" href="../../basic/pages/catalog.html">Каталог</a> (Поиск + Сортировка + 6 комнат)<br>
+│   ├── 🌐 room-details.html <a class="page-link-badge" href="../../basic/pages/room-details.html?id=focus-1">Детали комнаты</a> (?id=...)<br>
+│   ├── 🌐 booking.html <a class="page-link-badge" href="../../basic/pages/booking.html">Бронирование</a> (Калькулятор тарифа)<br>
+│   ├── 🌐 my-bookings.html <a class="page-link-badge" href="../../basic/pages/my-bookings.html">Мои бронирования</a> (Личный кабинет)<br>
+│   ├── 🌐 login.html <a class="page-link-badge" href="../../basic/pages/login.html">Вход</a> (admin / 12345)<br>
+│   └── 🌐 register.html <a class="page-link-badge" href="../../basic/pages/register.html">Регистрация</a> (Валидация полей)<br>
+├── 📁 css/style.css (Дизайн, сетки Flexbox и Grid)<br>
+└── 📁 js/<br>
+&nbsp;&nbsp;&nbsp;&nbsp;├── 📄 data.js (OFFICE_ROOMS, MOCK_BOOKINGS)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;└── 📄 main.js (Инициализация всех функций сайта)
+            </div>
+        </div>
+    </main>
+</body>
+</html>

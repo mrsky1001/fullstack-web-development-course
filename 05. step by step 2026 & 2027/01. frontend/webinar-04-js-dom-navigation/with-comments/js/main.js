@@ -4,6 +4,7 @@
 // [ Мы запускаем функции только после того, как все теги загружены и готовы к работе]
 document.addEventListener('DOMContentLoaded', () => {
   initNavigation();
+  initSlider();
 });
 
 // [Всплывающие уведомления (Toast) — это элементы, которые создаются через createElement и плавно исчезают через таймер]
@@ -47,18 +48,16 @@ function initNavigation() {
     // Сначала снимаем активный класс со всех ссылок
     link.classList.remove('active');
 
-    // Проверяем, совпадает ли адрес ссылки с текущей страницей
-    if ((current.endsWith('index.html') || current.endsWith('/') || current === '') && (href === 'index.html' || href === '../index.html')) {
-      link.classList.add('active');
-    } else if ((href.includes('catalog.html') || href.includes('room-details.html')) && (current.includes('catalog.html') || current.includes('room-details.html'))) {
-      link.classList.add('active');
-    } else if (href.includes('booking.html') && current.includes('booking.html')) {
-      link.classList.add('active');
-    } else if (href.includes('my-bookings.html') && current.includes('my-bookings.html')) {
-      link.classList.add('active');
-    } else if (href.includes('login.html') && current.includes('login.html')) {
-      link.classList.add('active');
-    } else if (href.includes('register.html') && current.includes('register.html')) {
+    // [Проверяем совпадение адреса через понятные константы-условия]
+    const isHome = (current.endsWith('index.html') || current.endsWith('/') || current === '') && (href === 'index.html' || href === '../index.html');
+    const hasCatalog = (href.includes('catalog.html') || href.includes('room-details.html')) && (current.includes('catalog.html') || current.includes('room-details.html'));
+    const isBooking = href.includes('booking.html') && current.includes('booking.html');
+    const isMyBookings = href.includes('my-bookings.html') && current.includes('my-bookings.html');
+    const isLogin = href.includes('login.html') && current.includes('login.html');
+    const isRegister = href.includes('register.html') && current.includes('register.html');
+
+    const isActive = isHome || hasCatalog || isBooking || isMyBookings || isLogin || isRegister;
+    if (isActive) {
       link.classList.add('active');
     }
   });
@@ -100,3 +99,63 @@ function updateAuthNav() {
     }
   }
 }
+
+// [Функция интерактивного слайдера фотографий]
+// [Управляет показом активного слайда, переключением по стрелкам/точкам и автоматической прокруткой каждые 3 секунды]
+function initSlider() {
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+  const prevBtn = document.querySelector('.slider-prev');
+  const nextBtn = document.querySelector('.slider-next');
+
+  // [Защитная проверка: если на текущей странице нет слайдера, просто выходим без ошибок]
+  if (!slides.length) return;
+
+  let currentSlide = 0; // Индекс текущего видимого слайда (0, 1, 2, 3)
+  let timerId = null;   // Переменная для хранения таймера автопрокрутки
+
+  // [Функция переключения на конкретный слайд по его номеру-индексу]
+  function showSlide(index) {
+    // Если вышли за пределы массива вправо — переходим на первый слайд (0)
+    if (index >= slides.length) currentSlide = 0;
+    // Если вышли влево — переходим на самый последний слайд
+    else if (index < 0) currentSlide = slides.length - 1;
+    // Иначе переходим на запрошенный индекс
+    else currentSlide = index;
+
+    // [С помощью classList.toggle переключаем класс active: только слайд с индексом currentSlide получает класс active]
+    slides.forEach((s, i) => s.classList.toggle('active', i === currentSlide));
+    dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+  }
+
+  // Функции для шага вперёд и назад
+  function next() { showSlide(currentSlide + 1); }
+  function prev() { showSlide(currentSlide - 1); }
+
+  // [Запуск автоматической прокрутки каждые 3000 мс (3 секунды)]
+  function startAuto() {
+    stopAuto(); // Сначала очищаем старый таймер, чтобы они не накладывались
+    timerId = setInterval(next, 3000);
+  }
+
+  // [Остановка таймера]
+  function stopAuto() {
+    if (timerId) clearInterval(timerId);
+  }
+
+  // [Вешаем слушатели событий click на кнопки со сбросом таймера при ручном нажатии]
+  if (nextBtn) nextBtn.addEventListener('click', () => { next(); startAuto(); });
+  if (prevBtn) prevBtn.addEventListener('click', () => { prev(); startAuto(); });
+
+  // [Нажатие на точки-индикаторы снизу]
+  dots.forEach((dot, idx) => {
+    dot.addEventListener('click', () => {
+      showSlide(idx);
+      startAuto();
+    });
+  });
+
+  // Запускаем автопрокрутку при загрузке страницы!
+  startAuto();
+}
+

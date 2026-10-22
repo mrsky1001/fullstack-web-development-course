@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Шаг 3 — DOM и поиск элемента | СмартОфис</title>
+    <link rel="stylesheet" href="../../basic/css/style.css">
+    <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
+    <style>
+        .lesson-panel {
+            background: #1e293b;
+            color: #f1f5f9;
+            padding: 24px 32px;
+            margin-top: 40px;
+            border-top: 4px solid #8b5cf6;
+            font-family: 'Courier New', monospace;
+        }
+        .lesson-panel h2 { color: #a78bfa; margin: 0 0 12px 0; font-size: 18px; }
+        .step-badge {
+            display: inline-block;
+            background: #8b5cf6;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            margin-bottom: 16px;
+            font-family: sans-serif;
+        }
+        .lesson-panel code {
+            display: block;
+            background: #0f172a;
+            color: #a3e635;
+            padding: 16px;
+            border-radius: 8px;
+            margin: 12px 0;
+            font-size: 14px;
+            line-height: 1.8;
+            white-space: pre;
+        }
+        .lesson-panel p { color: #94a3b8; font-family: sans-serif; font-size: 14px; margin: 8px 0; }
+        .btn-row { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0; }
+        .demo-btn {
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            cursor: pointer;
+            color: white;
+        }
+        .btn-blue { background: #3b82f6; }
+        .btn-purple { background: #8b5cf6; }
+        .btn-green { background: #10b981; }
+        .demo-output {
+            background: #0f172a;
+            color: #a3e635;
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            margin-top: 8px;
+            min-height: 44px;
+            font-family: monospace;
+        }
+        /* Подсветка найденного элемента */
+        .highlight-found {
+            outline: 3px solid #f59e0b !important;
+            outline-offset: 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container header-container">
+            <a href="../../basic/index.html" class="logo">
+                <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
+                <span>СмартОфис</span>
+            </a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="../../basic/index.html" class="nav-link active">Главная</a></li>
+                    <li><a href="#" class="nav-link" onclick="alert('Страница Каталога появится в Вебинаре 5!'); return false;">Каталог</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <section id="slider-block" class="slider-section" style="margin-top: 24px;">
+                <div class="slider">
+                    <div id="slide1" class="slide active">
+                        <img src="../../basic/img/slider-1.jpg" alt="Слайд 1" class="slide-img">
+                    </div>
+                    <div id="slide2" class="slide">
+                        <img src="../../basic/img/slider-2.jpg" alt="Слайд 2" class="slide-img">
+                    </div>
+                    <div id="slide3" class="slide">
+                        <img src="../../basic/img/slider-3.jpg" alt="Слайд 3" class="slide-img">
+                    </div>
+                    <div id="slide4" class="slide">
+                        <img src="../../basic/img/slider-4.jpg" alt="Слайд 4" class="slide-img">
+                    </div>
+                    <button id="leftSliderBtn" class="slider-btn slider-prev">&#8249;</button>
+                    <button id="rightSliderBtn" class="slider-btn slider-next">&#8250;</button>
+                    <div class="slider-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <div class="lesson-panel">
+        <span class="step-badge">📚 Шаг 3 из 9</span>
+        <h2>DOM-дерево и поиск элемента</h2>
+
+        <p>Когда браузер загружает HTML — он строит DOM-дерево в памяти. JS работает с этим деревом!</p>
+        <code>// Найти элемент по id:
+const slide1El = document.getElementById('slide1');
+
+// Найти по CSS-селектору:
+const btn = document.querySelector('.slider-next');
+
+// Найти ВСЕ совпадающие элементы:
+const allSlides = document.querySelectorAll('.slide');</code>
+
+        <p>🎮 Нажимай кнопки — JS найдёт элемент и подсветит его жёлтой рамкой:</p>
+        <div class="btn-row">
+            <button class="demo-btn btn-blue" onclick="findById('slide1')">getElementById('slide1')</button>
+            <button class="demo-btn btn-blue" onclick="findById('slide3')">getElementById('slide3')</button>
+            <button class="demo-btn btn-purple" onclick="findByQuery('.slider-next')">querySelector('.slider-next')</button>
+            <button class="demo-btn btn-green" onclick="findAllSlides()">querySelectorAll('.slide')</button>
+        </div>
+        <div class="demo-output" id="demoOutput">Нажми кнопку выше — и увидишь результат в консоли и здесь</div>
+    </div>
+
+    <script>
+        // ШАГ 3: Находим элементы слайдера — точно как в main.js проекта!
+
+        // Находим каждый слайд по его уникальному id
+        const sliderBlockEl = document.getElementById('slider-block');
+        const slide1El = document.getElementById('slide1');
+        const slide2El = document.getElementById('slide2');
+        const slide3El = document.getElementById('slide3');
+        const slide4El = document.getElementById('slide4');
+
+        // Находим кнопки управления
+        const leftSliderBtnEl  = document.getElementById('leftSliderBtn');
+        const rightSliderBtnEl = document.getElementById('rightSliderBtn');
+
+        // Проверяем в консоли (F12)
+        console.log('slide1El:', slide1El);
+        console.log('rightSliderBtnEl:', rightSliderBtnEl);
+        console.log('Все слайды:', document.querySelectorAll('.slide'));
+
+        // Функции для кнопок демонстрации
+        let lastHighlighted = null;
+
+        function clearHighlight() {
+            if (lastHighlighted) {
+                if (Array.isArray(lastHighlighted)) {
+                    lastHighlighted.forEach(el => el.classList.remove('highlight-found'));
+                } else {
+                    lastHighlighted.classList.remove('highlight-found');
+                }
+            }
+        }
+
+        function findById(id) {
+            clearHighlight();
+            const el = document.getElementById(id); // Ищем!
+            el.classList.add('highlight-found');     // Подсвечиваем жёлтым
+            lastHighlighted = el;
+            const output = document.getElementById('demoOutput');
+            output.textContent = 'document.getElementById("' + id + '") → нашёл! Смотри жёлтую рамку. Тег: ' + el.tagName + ', className: "' + el.className + '"';
+            console.log('Найден элемент:', el);
+        }
+
+        function findByQuery(selector) {
+            clearHighlight();
+            const el = document.querySelector(selector);
+            el.classList.add('highlight-found');
+            lastHighlighted = el;
+            const output = document.getElementById('demoOutput');
+            output.textContent = 'querySelector("' + selector + '") → нашёл! Тег: ' + el.tagName + ', id: "' + el.id + '"';
+            console.log('querySelector нашёл:', el);
+        }
+
+        function findAllSlides() {
+            clearHighlight();
+            const slides = document.querySelectorAll('.slide'); // Все слайды!
+            const arr = Array.from(slides);
+            arr.forEach(el => el.classList.add('highlight-found'));
+            lastHighlighted = arr;
+            const output = document.getElementById('demoOutput');
+            output.textContent = 'querySelectorAll(".slide") → нашёл ' + slides.length + ' элементов! Все подсвечены. Это не один, а коллекция!';
+            console.log('Все слайды:', slides);
+        }
+    </script>
+
+</body>
+</html>
