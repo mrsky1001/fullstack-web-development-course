@@ -42,8 +42,13 @@
       <div class="catalog-toolbar">
         <input type="text" id="searchInput" class="search-input" placeholder="Поиск по названию офиса...">
         <div class="sort-actions">
-          <button id="sortAsc" class="btn btn-outline">Цена: по возрастанию ↑</button>
-          <button id="sortDesc" class="btn btn-outline">Цена: по убыванию ↓</button>
+          <select id="sortSelect" class="form-control" style="width: auto; padding: 6px 12px; background: #1e293b; color: white; border: 1px solid #334155; border-radius: 6px;">
+            <option value="default">По умолчанию</option>
+            <option value="price-asc">Цена: по возрастанию ↑</option>
+            <option value="price-desc">Цена: по убыванию ↓</option>
+          </select>
+          <button id="sortAsc" class="btn btn-outline">Цена ↑</button>
+          <button id="sortDesc" class="btn btn-outline">Цена ↓</button>
         </div>
       </div>
 

@@ -23,8 +23,8 @@ function initNavigation() {
 
 // 2. Функция динамической отрисовки каталога
 function renderCatalog() {
-  // Находим контейнер для карточек
-  const container = document.getElementById('catalogRooms');
+  // Находим контейнер для карточек (поддерживаем оба варианта ID: catalogContainer и catalogRooms)
+  const container = document.getElementById('catalogContainer') || document.getElementById('catalogRooms');
   // Если на этой странице нет каталога (например, мы на Главной), выходим
   if (!container || typeof OFFICE_ROOMS === 'undefined') return;
 

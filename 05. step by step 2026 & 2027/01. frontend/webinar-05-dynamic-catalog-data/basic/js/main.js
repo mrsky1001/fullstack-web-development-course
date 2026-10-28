@@ -20,7 +20,7 @@ function initNavigation() {
 
 // Рендеринг карточек комнат в каталоге
 function renderCatalog() {
-  const container = document.getElementById('catalogRooms');
+  const container = document.getElementById('catalogContainer') || document.getElementById('catalogRooms');
   if (!container || typeof OFFICE_ROOMS === 'undefined') return;
 
   const html = OFFICE_ROOMS.map(function (room) {

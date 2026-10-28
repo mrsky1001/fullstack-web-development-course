@@ -1,15 +1,19 @@
 // ==========================================================================
 // СмартОфис — Вебинар 07: Интерактивный слайдер и таймеры
-// Подробная учебная версия с комментариями к каждой строке для 1 курса
+// Подробная учебная версия с комментариями к каждой функции для 1 курса
 // ==========================================================================
 
 document.addEventListener('DOMContentLoaded', function () {
-  console.log('DOM готов. Инициализируем слайдер...');
+  console.log('DOM готов. Инициализация слайдера и компонентов...');
   initNavigation();
   initSlider();
+  renderCatalog();
+  initRoomDetails();
+  initRegisterForm();
+  initLoginForm();
 });
 
-// 1. Навигация сайта
+// 1. Навигация (из Вебинара 04)
 function initNavigation() {
   const navLinks = document.querySelectorAll('.nav-link');
   navLinks.forEach(function (link) {
@@ -20,9 +24,8 @@ function initNavigation() {
   });
 }
 
-// 2. Модуль интерактивного слайдера
+// 2. Модуль интерактивного слайдера (Тема Вебинара 07)
 function initSlider() {
-  // Находим все элементы слайдера в DOM
   const slides = document.querySelectorAll('.slide');
   const dots = document.querySelectorAll('.dot');
   const prevBtn = document.querySelector('.slider-prev');
@@ -31,25 +34,21 @@ function initSlider() {
   // Если слайдера на текущей странице нет, прерываем выполнение
   if (slides.length === 0) return;
 
-  // Переменная состояния: хранит индекс текущего активного слайда (0, 1, 2, 3)
   let currentSlide = 0;
-  // Идентификатор таймера для setInterval
   let timerId = null;
 
-  // Функция для отображения слайда с заданным индексом
+  // Функция переключения активного слайда
   function showSlide(index) {
-    // Циклическая проверка:
-    // если вышли за правый край — возвращаемся к первому слайду (индекс 0)
+    // Зацикливание слайдов: после последнего идет первый, перед первым — последний
     if (index >= slides.length) {
       currentSlide = 0;
-    // если вышли за левый край — переходим к последнему слайду
     } else if (index < 0) {
       currentSlide = slides.length - 1;
     } else {
       currentSlide = index;
     }
 
-    // Переключаем класс active у каждого слайда
+    // Переключаем класс active у всех слайдов
     slides.forEach(function (slide, idx) {
       if (idx === currentSlide) {
         slide.classList.add('active');
@@ -58,7 +57,7 @@ function initSlider() {
       }
     });
 
-    // Переключаем класс active у каждой точки-индикатора
+    // Переключаем класс active у индикаторных точек
     dots.forEach(function (dot, idx) {
       if (idx === currentSlide) {
         dot.classList.add('active');
@@ -68,38 +67,35 @@ function initSlider() {
     });
   }
 
-  // Переход к следующему слайду
   function nextSlide() {
     showSlide(currentSlide + 1);
   }
 
-  // Переход к предыдущему слайду
   function prevSlide() {
     showSlide(currentSlide - 1);
   }
 
-  // Запуск автоматического переключения
+  // Запуск автопрокрутки слайдов каждые 3.5 секунды через setInterval
   function startAutoPlay() {
-    stopAutoPlay(); // Сначала очищаем старый таймер, чтобы не накапливать дубли
-    timerId = setInterval(nextSlide, 3500); // Каждые 3.5 секунды вызываем nextSlide
+    stopAutoPlay();
+    timerId = setInterval(nextSlide, 3500);
   }
 
-  // Остановка таймера
+  // Остановка таймера через clearInterval
   function stopAutoPlay() {
     if (timerId) {
       clearInterval(timerId);
     }
   }
 
-  // Слушатель клика на кнопку «Вперёд»
+  // Слушатели клика по стрелкам слайдера
   if (nextBtn) {
     nextBtn.addEventListener('click', function () {
       nextSlide();
-      startAutoPlay(); // Сбрасываем таймер, чтобы у пользователя было полных 3.5 сек
+      startAutoPlay();
     });
   }
 
-  // Слушатель клика на кнопку «Назад»
   if (prevBtn) {
     prevBtn.addEventListener('click', function () {
       prevSlide();
@@ -107,7 +103,7 @@ function initSlider() {
     });
   }
 
-  // Слушатели кликов по круглым точкам-индикаторам
+  // Слушатель клика по точкам
   dots.forEach(function (dot, idx) {
     dot.addEventListener('click', function () {
       showSlide(idx);
@@ -117,4 +113,143 @@ function initSlider() {
 
   // Запускаем автопрокрутку при загрузке страницы
   startAutoPlay();
+}
+
+// 3. Рендеринг каталога (из Вебинара 05)
+function renderCatalog() {
+  const container = document.getElementById('catalogContainer') || document.getElementById('catalogRooms');
+  if (!container || typeof OFFICE_ROOMS === 'undefined') return;
+
+  const html = OFFICE_ROOMS.map(function (room) {
+    return `
+      <div class="room-card">
+        <div class="card-img-wrap">
+          <img src="${room.image}" alt="${room.title}" class="card-img" onerror="this.src='../img/no-image.svg'">
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">${room.title}</h3>
+          <ul class="card-equipment">
+            ${room.equipment.map(item => `<li>${item}</li>`).join('')}
+          </ul>
+          <div class="card-footer">
+            <div class="card-price">${room.pricePerHour} ₽ <span>/ час</span></div>
+            <div class="card-btns">
+              <a href="room-details.html?id=${room.id}" class="btn btn-outline">Подробнее</a>
+              <a href="catalog.html" class="btn btn-primary">Забронировать</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  container.innerHTML = html;
+}
+
+// 4. Детальная страница комнаты (из Вебинара 05)
+function initRoomDetails() {
+  const container = document.getElementById('roomDetailsContainer');
+  if (!container || typeof OFFICE_ROOMS === 'undefined') return;
+
+  const params = new URLSearchParams(window.location.search);
+  const roomId = params.get('id');
+  const room = OFFICE_ROOMS.find(function (item) {
+    return item.id === roomId;
+  });
+
+  if (!room) return;
+
+  container.innerHTML = `
+    <div class="room-details-card">
+      <img src="${room.image}" alt="${room.title}" class="room-details-img" onerror="this.src='../img/no-image.svg'">
+      <div class="room-details-info">
+        <h1>${room.title}</h1>
+        <p class="room-desc">${room.description}</p>
+        <p><strong>Вместимость:</strong> ${room.capacity}</p>
+        <p><strong>Площадь:</strong> ${room.area}</p>
+        <div class="room-price-large">${room.pricePerHour} ₽ / час</div>
+        <a href="catalog.html" class="btn btn-outline">← Назад в каталог</a>
+      </div>
+    </div>
+  `;
+}
+
+// 5. Валидация формы регистрации (из Вебинара 06)
+function initRegisterForm() {
+  const form = document.getElementById('registerForm');
+  if (!form) return;
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const loginInput = document.getElementById('login') || document.getElementById('regName');
+    const passInput = document.getElementById('password') || document.getElementById('regPassword');
+    const confirmInput = document.getElementById('confirmPassword') || document.getElementById('regConfirmPassword');
+    const emailInput = document.getElementById('email') || document.getElementById('regEmail');
+    const nameInput = document.getElementById('fullName');
+
+    let isValid = true;
+    const requiredInputs = [loginInput, passInput, confirmInput, emailInput, nameInput].filter(Boolean);
+
+    requiredInputs.forEach(function (input) {
+      input.classList.remove('is-invalid');
+      if (!input.value.trim()) {
+        input.classList.add('is-invalid');
+        isValid = false;
+      }
+    });
+
+    if (passInput && confirmInput && passInput.value !== confirmInput.value) {
+      confirmInput.classList.add('is-invalid');
+      isValid = false;
+    }
+
+    if (isValid) {
+      const displayName = (nameInput && nameInput.value.trim()) || (loginInput && loginInput.value.trim()) || 'Пользователь';
+      const newUser = {
+        login: loginInput ? loginInput.value.trim() : '',
+        name: displayName,
+        email: emailInput ? emailInput.value.trim() : ''
+      };
+      localStorage.setItem('currentUser', JSON.stringify(newUser));
+      alert('Регистрация успешна! Добро пожаловать, ' + displayName);
+      window.location.href = '../index.html';
+    }
+  });
+}
+
+// 6. Валидация формы входа (из Вебинара 06)
+function initLoginForm() {
+  const form = document.getElementById('loginForm');
+  if (!form) return;
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const loginInput = document.getElementById('login') || document.getElementById('loginEmail');
+    const passInput = document.getElementById('password') || document.getElementById('loginPassword');
+    const alertBox = document.getElementById('loginAlert');
+
+    let isValid = true;
+    const inputs = [loginInput, passInput].filter(Boolean);
+
+    inputs.forEach(function (input) {
+      input.classList.remove('is-invalid');
+      if (!input.value.trim()) {
+        input.classList.add('is-invalid');
+        isValid = false;
+      }
+    });
+
+    if (isValid) {
+      const user = { login: loginInput ? loginInput.value.trim() : '' };
+      localStorage.setItem('currentUser', JSON.stringify(user));
+      if (alertBox) {
+        alertBox.textContent = 'Вход выполнен успешно!';
+        alertBox.style.color = '#10b981';
+      }
+      alert('Вход выполнен успешно!');
+      window.location.href = '../index.html';
+    }
+  });
 }
