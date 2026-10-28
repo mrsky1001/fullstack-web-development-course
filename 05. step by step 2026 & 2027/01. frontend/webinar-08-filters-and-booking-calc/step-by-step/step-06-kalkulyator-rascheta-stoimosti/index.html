@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Шаг 6 — Калькулятор расчёта стоимости бронирования | СмартОфис</title>
+  <title>Шаг 6: Калькулятор стоимости бронирования — СмартОфис</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../basic/css/style.css">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
@@ -14,13 +17,14 @@
   <header class="header">
     <div class="container header-container">
       <a href="../../basic/index.html" class="logo">
-        <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
+        <img src="../../basic/img/logo.svg" alt="Логотип" class="logo-icon">
         <span>СмартОфис</span>
       </a>
       <nav class="nav">
         <ul class="nav-list">
           <li><a href="../../basic/index.html" class="nav-link">Главная</a></li>
-          <li><a href="#" class="nav-link active">Каталог</a></li>
+          <li><a href="../../basic/pages/catalog.html" class="nav-link active">Каталог</a></li>
+          <li><a href="../../basic/pages/login.html" class="nav-link nav-btn">Войти</a></li>
         </ul>
       </nav>
     </div>
@@ -28,38 +32,56 @@
 
   <main class="main">
     <div class="container">
-      <section class="hero-section"><h1 class="hero-title">Фильтры и калькулятор <span class="brand-highlight">«СмартОфис»</span></h1><p class="hero-subtitle">Учебный шаг 6 из 6: живой поиск и вычисления</p></section><div class="calc-demo-card">
-          <h3>Калькулятор бронирования (Мини-офис Focus: 450 ₽/час)</h3>
-          <label for="calcHours" style="display:block; margin-top:12px;">Количество часов:</label>
-          <input type="number" id="calcHours" value="3" min="1" max="24">
-          <div>Итого к оплате: <span id="calcTotal" class="calc-total">1350 ₽</span></div>
-        </div>
+      <h1 class="page-title">Оформление бронирования</h1>
+      <p class="page-subtitle">Заполните параметры аренды для мгновенного бронирования</p>
 
-      <div class="lesson-panel">
-        <span class="step-badge"> Шаг 6 из 6</span>
-        <h2>Калькулятор расчёта стоимости бронирования</h2>
-        <p>Умножаем количество введённых часов на почасовую ставку комнаты и выводим итоговую сумму в рублях.</p>
-        <p>Код, который выполняется в этом шаге (откройте <code>main.js</code>):</p>
-        <pre><code>// Шаг 6: Калькулятор бронирования
-const hoursInput = document.getElementById('calcHours');
-const totalOut = document.getElementById('calcTotal');
-const PRICE_PER_HOUR = 450; // Стоимость комнаты «Фокус»
+      <div class="form-card">
+        <form id="bookingForm">
+          <div class="form-group">
+            <label class="form-label" for="roomSelect">Выберите комнату</label>
+            <select id="roomSelect" class="form-control" required></select>
+          </div>
 
-function updateCalculation() {
-  const hours = parseInt(hoursInput.value) || 0;
-  const total = hours * PRICE_PER_HOUR;
-  totalOut.textContent = total + ' ₽';
-  console.log('Рассчитано:', hours, 'ч. *', PRICE_PER_HOUR, '=', total);
-}
+          <div class="form-group">
+            <label class="form-label" for="bookingDate">Дата бронирования</label>
+            <input type="date" id="bookingDate" class="form-control" required>
+          </div>
 
-if (hoursInput &amp;&amp; totalOut) {
-  hoursInput.addEventListener('input', updateCalculation);
-  updateCalculation();
-}
-</code></pre>
-        <p><em>Совет: введите поисковый запрос в поле выше и проверьте мгновенную фильтрацию.</em></p>
+          <div class="form-group">
+            <label class="form-label" for="hoursInput">Количество часов</label>
+            <input type="number" id="hoursInput" class="form-control" min="1" max="24" value="2" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="commentInput">Комментарий (необязательно)</label>
+            <textarea id="commentInput" class="form-control" rows="3" placeholder="Пожелания к рассадке, оборудованию..."></textarea>
+          </div>
+
+          <div class="calc-summary">
+            <div>
+              <div>Тариф: <span id="pricePerHour">0 ₽</span>/час</div>
+              <div style="font-size: 12px; color: #666;">Без скрытых комиссий</div>
+            </div>
+            <div class="calc-total" id="totalPrice">0 ₽</div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Забронировать</button>
+        </form>
       </div>
     </div>
   </main>
+
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-info">
+        <p><strong>СмартОфис</strong> — Сервис бронирования офисных комнат</p>
+        <p>© 2026 СмартОфис. Все права защищены.</p>
+      </div>
+      <div class="footer-contacts">
+        <p>Email: <a href="mailto:info@smartoffice.ru">info@smartoffice.ru</a></p>
+        <p>Телефон: <a href="tel:+78005553535">+7 (800) 555-35-35</a></p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

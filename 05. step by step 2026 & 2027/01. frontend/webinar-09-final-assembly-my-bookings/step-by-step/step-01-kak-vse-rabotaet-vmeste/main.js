@@ -1,10 +1,18 @@
-// Шаг 1: Связь всех страниц через localStorage
+// Шаг 1: Проверка сессии пользователя из localStorage
 // Теория по этой теме подробно описана в файле README.md в этой папке.
 
-console.log('Проверка сохраненных данных проекта:');
+document.addEventListener('DOMContentLoaded', function () {
+  checkUserSession();
+});
 
-const savedUser = localStorage.getItem('currentUser');
-const savedBookings = localStorage.getItem('myBookings');
+function checkUserSession() {
+  const user = JSON.parse(localStorage.getItem('currentUser') || 'null');
+  const loginBtn = document.querySelector('.nav-btn');
 
-console.log('Текущий пользователь:', savedUser ? JSON.parse(savedUser) : 'не вошел');
-console.log('Список бронирований:', savedBookings ? JSON.parse(savedBookings) : 'пусто');
+  if (user && loginBtn) {
+    loginBtn.textContent = user.login || 'Личный кабинет';
+    console.log('Пользователь авторизован:', user.login);
+  } else {
+    console.log('Пользователь не авторизован (гостевой режим).');
+  }
+}

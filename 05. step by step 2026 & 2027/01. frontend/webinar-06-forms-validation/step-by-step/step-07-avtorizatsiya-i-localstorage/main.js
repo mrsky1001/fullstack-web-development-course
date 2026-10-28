@@ -1,22 +1,28 @@
-// Шаг 7: Авторизация и сохранение в localStorage
+// Шаг 7: Сохранение данных пользователя в localStorage
 // Теория по этой теме подробно описана в файле README.md в этой папке.
 
-const form = document.getElementById('demoForm');
+const registerForm = document.getElementById('registerForm');
 
-if (form) {
-  form.addEventListener('submit', function (event) {
+if (registerForm) {
+  registerForm.addEventListener('submit', function (event) {
     event.preventDefault();
 
-    const email = document.getElementById('userEmail').value.trim();
+    const login = document.getElementById('login').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const fullName = document.getElementById('fullName').value.trim();
+    const phone = document.getElementById('phone').value.trim();
 
-    if (email) {
-      const user = { email: email };
-
-      // localStorage хранит только строки, поэтому превращаем объект в JSON-строку:
-      localStorage.setItem('currentUser', JSON.stringify(user));
-
-      console.log('Пользователь сохранен в память браузера:', user);
-      alert('Успешный вход: ' + email);
+    if (!login || !email) {
+      alert('Пожалуйста, заполните обязательные поля.');
+      return;
     }
+
+    const userData = { login, email, fullName, phone };
+
+    // Превращаем объект в строку и сохраняем в память браузера:
+    localStorage.setItem('currentUser', JSON.stringify(userData));
+
+    console.log('Пользователь сохранен в localStorage:', userData);
+    alert('Регистрация прошла успешно! Вы вошли как: ' + login);
   });
 }

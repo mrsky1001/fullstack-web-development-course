@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Шаг 4 — Очистка от пробелов: метод .trim() | СмартОфис</title>
+  <title>Шаг 4: Удаление пробелов через .trim() — СмартОфис</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../basic/css/style.css">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
@@ -13,13 +16,14 @@
   <header class="header">
     <div class="container header-container">
       <a href="../../basic/index.html" class="logo">
-        <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
+        <img src="../../basic/img/logo.svg" alt="Логотип" class="logo-icon">
         <span>СмартОфис</span>
       </a>
       <nav class="nav">
         <ul class="nav-list">
           <li><a href="../../basic/index.html" class="nav-link">Главная</a></li>
           <li><a href="../../basic/pages/catalog.html" class="nav-link">Каталог</a></li>
+          <li><a href="#" class="nav-link nav-btn active">Войти</a></li>
         </ul>
       </nav>
     </div>
@@ -27,40 +31,64 @@
 
   <main class="main">
     <div class="container">
-      <section class="hero-section"><h1 class="hero-title">Формы и валидация <span class="brand-highlight">«СмартОфис»</span></h1><p class="hero-subtitle">Учебный шаг 4 из 7: проверка ввода данных</p></section><div class="demo-form-card">
-      <h3 style="color: #f8fafc; margin-bottom: 16px;">Тестовая форма (Шаг 4)</h3>
-      <form id="demoForm">
-        <label for="userEmail">Электронная почта:</label><input type="text" id="userEmail" placeholder="example@mail.ru">
-        <button type="submit" class="btn">Отправить форму</button>
-      </form>
-    </div>
+      <h1 class="page-title">Регистрация в СмартОфис</h1>
+      <p class="page-subtitle">Создайте аккаунт для быстрого бронирования рабочих мест</p>
 
-      <div class="lesson-panel">
-        <span class="step-badge"> Шаг 4 из 7</span>
-        <h2>Очистка от пробелов: метод .trim()</h2>
-        <p>Метод .trim() удаляет случайные пробелы в начале и в конце строки. Если пользователь ввёл только пробелы, ' '.trim() вернёт пустую строку ''.</p>
-        <p>Код, который выполняется в этом шаге (откройте <code>main.js</code>):</p>
-        <pre><code>// Шаг 4: Очистка строки методом .trim()
-const form = document.getElementById('demoForm');
+      <div class="form-card">
+        <form id="registerForm" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="login">Логин</label>
+            <input type="text" id="login" class="form-control" placeholder="Введите логин" required>
+            <div class="error-text">Поле обязательно для заполнения</div>
+          </div>
 
-if (form) {
-  form.addEventListener('submit', function (event) {
-    event.preventDefault();
+          <div class="form-group">
+            <label class="form-label" for="password">Пароль</label>
+            <input type="password" id="password" class="form-control" placeholder="Минимум 6 символов" required>
+            <div class="error-text">Поле обязательно для заполнения</div>
+          </div>
 
-    const rawEmail = document.getElementById('userEmail').value;
-    const cleanEmail = rawEmail.trim();
+          <div class="form-group">
+            <label class="form-label" for="confirmPassword">Подтверждение пароля</label>
+            <input type="password" id="confirmPassword" class="form-control" placeholder="Повторите пароль" required>
+            <div class="error-text">Пароли не совпадают</div>
+          </div>
 
-    if (cleanEmail === '') {
-      console.log('Ошибка: поле заполнено только пробелами или пустое!');
-    } else {
-      console.log('Очищенный email:', cleanEmail);
-    }
-  });
-}
-</code></pre>
-        <p><em>Совет: проверьте работу формы в браузере и откройте консоль F12.</em></p>
+          <div class="form-group">
+            <label class="form-label" for="fullName">ФИО</label>
+            <input type="text" id="fullName" class="form-control" placeholder="Иванов Иван Иванович" required>
+            <div class="error-text">Поле обязательно для заполнения</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="email">Email</label>
+            <input type="email" id="email" class="form-control" placeholder="example@mail.ru" required>
+            <div class="error-text">Введите корректный email</div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="phone">Телефон</label>
+            <input type="tel" id="phone" class="form-control" placeholder="+7 (999) 000-00-00" required>
+            <div class="error-text">Поле обязательно для заполнения</div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Зарегистрироваться</button>
+        </form>
       </div>
     </div>
   </main>
+
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-info">
+        <p><strong>СмартОфис</strong> — Сервис бронирования офисных комнат</p>
+        <p>© 2026 СмартОфис. Все права защищены.</p>
+      </div>
+      <div class="footer-contacts">
+        <p>Email: <a href="mailto:info@smartoffice.ru">info@smartoffice.ru</a></p>
+        <p>Телефон: <a href="tel:+78005553535">+7 (800) 555-35-35</a></p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

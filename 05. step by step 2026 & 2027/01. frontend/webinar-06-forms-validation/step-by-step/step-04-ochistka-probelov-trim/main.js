@@ -1,20 +1,23 @@
-// Шаг 4: Очистка строки методом .trim()
+// Шаг 4: Удаление лишних пробелов с помощью метода .trim()
 // Теория по этой теме подробно описана в файле README.md в этой папке.
 
-const form = document.getElementById('demoForm');
+const registerForm = document.getElementById('registerForm');
 
-if (form) {
-  form.addEventListener('submit', function (event) {
+if (registerForm) {
+  registerForm.addEventListener('submit', function (event) {
     event.preventDefault();
 
-    const emailInput = document.getElementById('userEmail');
-    // Метод .trim() отрезает пробелы с краев строки:
-    const cleanValue = emailInput.value.trim();
+    const loginInput = document.getElementById('login');
+    const emailInput = document.getElementById('email');
 
-    if (cleanValue === '') {
-      console.log('Поле заполнено одними пробелами или пустое.');
+    // Метод .trim() удаляет случайные пробелы в начале и в конце строки:
+    const cleanLogin = loginInput.value.trim();
+    const cleanEmail = emailInput.value.trim();
+
+    if (cleanLogin === '') {
+      console.log('Ошибка: поле логина не может быть пустым!');
     } else {
-      console.log('Очищенный текст:', cleanValue);
+      console.log('Корректно очищенный логин:', cleanLogin);
     }
   });
 }

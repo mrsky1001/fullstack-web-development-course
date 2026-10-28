@@ -1,27 +1,31 @@
 // Шаг 6: Проверка совпадения паролей
 // Теория по этой теме подробно описана в файле README.md в этой папке.
 
-const form = document.getElementById('demoForm');
+const registerForm = document.getElementById('registerForm');
 
-if (form) {
-  form.addEventListener('submit', function (event) {
+if (registerForm) {
+  registerForm.addEventListener('submit', function (event) {
     event.preventDefault();
 
-    const pass = document.getElementById('userPass');
-    const confirm = document.getElementById('userConfirm');
+    const passwordInput = document.getElementById('password');
+    const confirmInput = document.getElementById('confirmPassword');
 
-    pass.classList.remove('is-invalid');
-    confirm.classList.remove('is-invalid');
-
-    if (!pass.value.trim()) {
-      pass.classList.add('is-invalid');
-      console.log('Пароль не может быть пустым');
-    } else if (pass.value !== confirm.value) {
-      // Пароли не равны
-      confirm.classList.add('is-invalid');
-      console.log('Пароли не совпадают');
+    // Проверяем длину основного пароля:
+    if (passwordInput.value.length < 6) {
+      passwordInput.classList.add('is-invalid');
+      console.log('Ошибка: пароль должен содержать не менее 6 символов!');
+      return;
     } else {
-      console.log('Пароли успешно совпали');
+      passwordInput.classList.remove('is-invalid');
+    }
+
+    // Проверяем совпадение с полем подтверждения:
+    if (passwordInput.value !== confirmInput.value) {
+      confirmInput.classList.add('is-invalid');
+      console.log('Ошибка: введенные пароли не совпадают!');
+    } else {
+      confirmInput.classList.remove('is-invalid');
+      console.log('Пароли успешно совпали!');
     }
   });
 }

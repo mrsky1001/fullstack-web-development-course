@@ -1,13 +1,16 @@
 // Шаг 4: Управление классами через classList
 // Теория по этой теме подробно описана в файле README.md в этой папке.
 
-// Находим первую ссылку в меню
 const firstLink = document.querySelector('.nav-link');
 
-// Добавляем класс active (синий цвет и жирный шрифт из style.css)
-firstLink.classList.add('active');
-console.log('Класс active добавлен к первой ссылке');
+if (firstLink) {
+  console.log('Есть ли класс active у первой ссылки?', firstLink.classList.contains('active'));
 
-// Проверяем, есть ли класс у элемента (вернет true или false)
-const isLinkActive = firstLink.classList.contains('active');
-console.log('Активна ли ссылка сейчас:', isLinkActive);
+  // Удаляем класс:
+  firstLink.classList.remove('active');
+  console.log('Удалили класс active:', firstLink.classList.contains('active'));
+
+  // Добавляем класс обратно:
+  firstLink.classList.add('active');
+  console.log('Добавили класс active:', firstLink.classList.contains('active'));
+}

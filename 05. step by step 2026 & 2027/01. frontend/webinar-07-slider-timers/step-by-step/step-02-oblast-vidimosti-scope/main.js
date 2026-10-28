@@ -1,10 +1,9 @@
-// Шаг 2: Переменная состояния слайдера
+// Шаг 2: Область видимости и переменная состояния
 // Теория по этой теме подробно описана в файле README.md в этой папке.
 
-// Переменная currentSlide хранит индекс открытого сейчас слайда (от 0 до 3)
-let currentSlide = 0;
-console.log('Изначальный номер слайда (индекс с нуля):', currentSlide);
+// Переменная currentIndex хранит номер текущего слайда (0, 1, 2, ...):
+let currentIndex = 0;
+const totalSlides = 4;
 
-// Имитируем переход к следующему слайду:
-currentSlide = currentSlide + 1;
-console.log('Номер после переключения вперед:', currentSlide);
+console.log('Текущий слайд:', currentIndex);
+console.log('Всего слайдов в карусели:', totalSlides);

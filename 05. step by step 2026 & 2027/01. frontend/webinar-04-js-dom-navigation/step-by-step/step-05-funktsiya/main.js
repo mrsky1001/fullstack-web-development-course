@@ -1,18 +1,13 @@
 // Шаг 5: Функции в JavaScript
 // Теория по этой теме подробно описана в файле README.md в этой папке.
 
-// Объявление функции, которая принимает элемент в качестве параметра:
-function highlightLink(linkElement) {
-  if (!linkElement) return;
-
-  linkElement.classList.add('active');
-  console.log('Подсвечен пункт меню:', linkElement.textContent.trim());
+// Объявляем функцию, которая принимает элемент ссылки и выводит ее текст:
+function printLinkText(linkElement) {
+  const text = linkElement.textContent.trim();
+  console.log('Пункт навигации:', text);
 }
 
-// Находим ссылки меню
-const allLinks = document.querySelectorAll('.nav-link');
-
-// Вызываем функцию для второй ссылки («Каталог» с индексом 1):
-if (allLinks.length > 1) {
-  highlightLink(allLinks[1]);
+const firstLink = document.querySelector('.nav-link');
+if (firstLink) {
+  printLinkText(firstLink);
 }

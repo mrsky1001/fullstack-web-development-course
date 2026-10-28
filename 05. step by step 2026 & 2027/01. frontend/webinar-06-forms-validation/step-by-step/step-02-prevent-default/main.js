@@ -1,13 +1,12 @@
-// Шаг 2: Отмена перезагрузки страницы через preventDefault
+// Шаг 2: Отмена перезагрузки страницы (event.preventDefault)
 // Теория по этой теме подробно описана в файле README.md в этой папке.
 
-const form = document.getElementById('demoForm');
+const registerForm = document.getElementById('registerForm');
 
-if (form) {
-  form.addEventListener('submit', function (event) {
-    // Отменяем стандартное поведение браузера (перезагрузку страницы)
+if (registerForm) {
+  registerForm.addEventListener('submit', function (event) {
+    // Останавливаем стандартную отправку и перезагрузку страницы браузером:
     event.preventDefault();
-
-    console.log('Перезагрузка отменена, данные на экране сохранены.');
+    console.log('Перезагрузка страницы успешно отменена через event.preventDefault()!');
   });
 }

@@ -1,89 +1,16 @@
-/* Стили для учебного шага (Вебинар 06: Формы и Валидация) */
-.lesson-panel {
-  background: #1e293b;
-  color: #f1f5f9;
-  padding: 24px 32px;
-  margin-top: 40px;
-  border-top: 4px solid #f59e0b;
-  border-radius: 8px;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+/* Стили для валидации формы регистрации */
+.form-control.is-invalid {
+  border-color: #ef4444 !important;
+  background-color: rgba(239, 68, 68, 0.05);
 }
 
-.step-badge {
-  display: inline-block;
-  background: #f59e0b;
-  color: #ffffff;
-  padding: 4px 12px;
-  border-radius: 20px;
+.error-text {
+  display: none;
+  color: #ef4444;
   font-size: 13px;
-  font-weight: 600;
-  margin-bottom: 12px;
+  margin-top: 4px;
 }
 
-.lesson-panel h2 {
-  color: #fbbf24;
-  margin: 0 0 10px 0;
-  font-size: 18px;
-}
-
-.lesson-panel p {
-  color: #94a3b8;
-  font-size: 14px;
-  line-height: 1.6;
-  margin: 8px 0;
-}
-
-.lesson-panel pre {
-  background: #0f172a;
-  color: #a3e635;
-  padding: 14px;
-  border-radius: 6px;
-  font-size: 13px;
-  overflow-x: auto;
-  margin: 12px 0;
-  font-family: 'JetBrains Mono', 'Courier New', monospace;
-}
-
-.demo-form-card {
-  max-width: 420px;
-  margin: 24px auto;
-  background: #1e293b;
-  padding: 28px;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-}
-
-.demo-form-card label {
+.form-control.is-invalid ~ .error-text {
   display: block;
-  font-size: 14px;
-  color: #cbd5e1;
-  margin-bottom: 6px;
-}
-
-.demo-form-card input {
-  width: 100%;
-  padding: 10px 14px;
-  background: #0f172a;
-  border: 1px solid #334155;
-  border-radius: 6px;
-  color: white;
-  font-size: 14px;
-  margin-bottom: 14px;
-  box-sizing: border-box;
-}
-
-.demo-form-card input.is-invalid {
-  border-color: #ef4444;
-  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
-}
-
-.demo-form-card .btn {
-  width: 100%;
-  padding: 12px;
-  background: #3b82f6;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-weight: 600;
-  cursor: pointer;
 }

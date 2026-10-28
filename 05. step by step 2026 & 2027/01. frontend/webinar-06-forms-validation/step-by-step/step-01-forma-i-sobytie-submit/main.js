@@ -1,10 +1,10 @@
 // Шаг 1: Событие submit формы
 // Теория по этой теме подробно описана в файле README.md в этой папке.
 
-const form = document.getElementById('demoForm');
+const registerForm = document.getElementById('registerForm');
 
-if (form) {
-  form.addEventListener('submit', function (event) {
-    console.log('Событие submit сработало!');
+if (registerForm) {
+  registerForm.addEventListener('submit', function (event) {
+    console.log('Событие submit сработало на форме регистрации!');
   });
 }

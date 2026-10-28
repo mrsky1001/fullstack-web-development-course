@@ -1,20 +1,30 @@
-// Шаг 6: Калькулятор бронирования
+// Шаг 6: Калькулятор стоимости бронирования
 // Теория по этой теме подробно описана в файле README.md в этой папке.
 
-const hoursInput = document.getElementById('calcHours');
-const totalOut = document.getElementById('calcTotal');
-const PRICE_PER_HOUR = 450; // Цена комнаты в час
+const roomSelect = document.getElementById('roomSelect');
+const hoursInput = document.getElementById('hoursInput');
+const pricePerHourEl = document.getElementById('pricePerHour');
+const totalPriceEl = document.getElementById('totalPrice');
 
-function updateCalculation() {
-  // Превращаем текст из поля ввода в целое число:
-  const hours = parseInt(hoursInput.value) || 0;
-  const total = hours * PRICE_PER_HOUR;
+if (typeof OFFICE_ROOMS !== 'undefined' && roomSelect) {
+  // Заполняем выпадающий список комнатами:
+  roomSelect.innerHTML = OFFICE_ROOMS.map(room => `
+    <option value="${room.id}">${room.title} — ${room.pricePerHour} ₽/час</option>
+  `).join('');
 
-  totalOut.textContent = total + ' руб';
-  console.log('Итог расчета:', hours, 'часов *', PRICE_PER_HOUR, '=', total);
-}
+  function calculate() {
+    const selectedRoom = OFFICE_ROOMS.find(r => r.id === roomSelect.value) || OFFICE_ROOMS[0];
+    const hours = parseInt(hoursInput.value, 10) || 1;
+    const total = selectedRoom.pricePerHour * hours;
 
-if (hoursInput && totalOut) {
-  hoursInput.addEventListener('input', updateCalculation);
-  updateCalculation();
+    if (pricePerHourEl) pricePerHourEl.textContent = `${selectedRoom.pricePerHour} ₽`;
+    if (totalPriceEl) totalPriceEl.textContent = `${total} ₽`;
+
+    console.log('Пересчет стоимости:', hours, 'ч *', selectedRoom.pricePerHour, '₽ =', total, '₽');
+  }
+
+  roomSelect.addEventListener('change', calculate);
+  hoursInput.addEventListener('input', calculate);
+
+  calculate();
 }

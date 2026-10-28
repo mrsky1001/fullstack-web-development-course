@@ -1,16 +1,16 @@
-// Шаг 3: Чтение значения поля input.value
+// Шаг 3: Чтение значений полей ввода через свойство .value
 // Теория по этой теме подробно описана в файле README.md в этой папке.
 
-const form = document.getElementById('demoForm');
+const registerForm = document.getElementById('registerForm');
 
-if (form) {
-  form.addEventListener('submit', function (event) {
+if (registerForm) {
+  registerForm.addEventListener('submit', function (event) {
     event.preventDefault();
 
-    const emailInput = document.getElementById('userEmail');
-    // Свойство .value содержит введённый текст:
-    const userText = emailInput.value;
+    const loginInput = document.getElementById('login');
+    const emailInput = document.getElementById('email');
 
-    console.log('Пользователь ввел:', userText);
+    console.log('Введенный логин:', loginInput.value);
+    console.log('Введенный email:', emailInput.value);
   });
 }

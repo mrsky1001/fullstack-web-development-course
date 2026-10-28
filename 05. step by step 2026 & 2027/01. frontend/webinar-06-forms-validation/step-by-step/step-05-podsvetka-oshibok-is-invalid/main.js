@@ -1,23 +1,21 @@
 // Шаг 5: Подсветка ошибок через класс is-invalid
 // Теория по этой теме подробно описана в файле README.md в этой папке.
 
-const form = document.getElementById('demoForm');
+const registerForm = document.getElementById('registerForm');
 
-if (form) {
-  form.addEventListener('submit', function (event) {
+if (registerForm) {
+  registerForm.addEventListener('submit', function (event) {
     event.preventDefault();
 
-    const input = document.getElementById('userEmail');
+    const emailInput = document.getElementById('email');
+    const cleanEmail = emailInput.value.trim();
 
-    // 1. Сначала обязательно убираем старую подсветку ошибки:
-    input.classList.remove('is-invalid');
-
-    // 2. Если поле пустое, добавляем класс ошибки:
-    if (input.value.trim() === '') {
-      input.classList.add('is-invalid');
-      console.log('Поле не заполнено: показана красная рамка');
+    if (!cleanEmail.includes('@')) {
+      emailInput.classList.add('is-invalid');
+      console.log('Ошибка: email должен содержать знак @. Добавлен класс is-invalid.');
     } else {
-      console.log('Поле заполнено корректно.');
+      emailInput.classList.remove('is-invalid');
+      console.log('Email валиден! Класс is-invalid удален.');
     }
   });
 }

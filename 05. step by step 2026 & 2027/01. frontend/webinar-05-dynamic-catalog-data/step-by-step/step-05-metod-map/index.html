@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Шаг 5 — Метод .map(): рендеринг всего каталога | СмартОфис</title>
+  <title>Шаг 5: Отрисовка каталога через .map() — СмартОфис</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../basic/css/style.css">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
@@ -14,13 +17,14 @@
   <header class="header">
     <div class="container header-container">
       <a href="../../basic/index.html" class="logo">
-        <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
+        <img src="../../basic/img/logo.svg" alt="Логотип" class="logo-icon">
         <span>СмартОфис</span>
       </a>
       <nav class="nav">
         <ul class="nav-list">
           <li><a href="../../basic/index.html" class="nav-link">Главная</a></li>
           <li><a href="#" class="nav-link active">Каталог</a></li>
+          <li><a href="../../basic/pages/login.html" class="nav-link nav-btn">Войти</a></li>
         </ul>
       </nav>
     </div>
@@ -28,41 +32,24 @@
 
   <main class="main">
     <div class="container">
-      <section class="hero-section"><h1 class="hero-title">Динамический каталог <span class="brand-highlight">«СмартОфис»</span></h1><p class="hero-subtitle">Учебный шаг 5 из 7: работа с объектами и массивами</p></section><div id="demoContainer" class="rooms-demo-grid"></div>
+      <h1 class="page-title">Каталог офисных пространств</h1>
+      <p class="page-subtitle">Выберите подходящее помещение для индивидуальной работы или командных встреч</p>
 
-      <div class="lesson-panel">
-        <span class="step-badge"> Шаг 5 из 7</span>
-        <h2>Метод .map(): рендеринг всего каталога</h2>
-        <p>Метод .map() превращает массив данных в массив строк HTML. Метод .join('') склеивает их, а innerHTML вставляет на страницу.</p>
-        <p>Код, который выполняется в этом шаге (откройте <code>main.js</code>):</p>
-        <pre><code>// Шаг 5: Генерация всего каталога через .map()
-const container = document.getElementById('demoContainer');
-
-if (container &amp;&amp; typeof OFFICE_ROOMS !== 'undefined') {
-  const cardsHtml = OFFICE_ROOMS.map(function (room) {
-    return `
-      &lt;div class="room-card"&gt;
-        &lt;div class="card-img-wrap"&gt;
-          &lt;img src="${room.image}" alt="${room.title}" class="card-img"&gt;
-        &lt;/div&gt;
-        &lt;div class="card-content"&gt;
-          &lt;h3 class="card-title"&gt;${room.title}&lt;/h3&gt;
-          &lt;div class="card-footer"&gt;
-            &lt;div class="card-price"&gt;${room.pricePerHour} ₽ &lt;span&gt;/ час&lt;/span&gt;&lt;/div&gt;
-            &lt;a href="?id=${room.id}" class="btn btn-primary"&gt;Выбрать&lt;/a&gt;
-          &lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    `;
-  }).join('');
-
-  container.innerHTML = cardsHtml;
-  console.log('Каталог успешно отрисован!');
-}
-</code></pre>
-        <p><em>Совет: откройте консоль браузера (F12 → Console), чтобы увидеть результат работы скрипта.</em></p>
-      </div>
+      <div class="rooms-grid" id="catalogContainer"></div>
     </div>
   </main>
+
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-info">
+        <p><strong>СмартОфис</strong> — Сервис бронирования офисных комнат</p>
+        <p>© 2026 СмартОфис. Все права защищены.</p>
+      </div>
+      <div class="footer-contacts">
+        <p>Email: <a href="mailto:info@smartoffice.ru">info@smartoffice.ru</a></p>
+        <p>Телефон: <a href="tel:+78005553535">+7 (800) 555-35-35</a></p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

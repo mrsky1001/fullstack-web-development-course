@@ -3,20 +3,17 @@
 
 const slides = document.querySelectorAll('.slide');
 const dots = document.querySelectorAll('.dot');
-let currentSlide = 0;
+let currentIndex = 0;
 
-function showSlide(index) {
-  if (index >= slides.length) currentSlide = 0;
-  else if (index < 0) currentSlide = slides.length - 1;
-  else currentSlide = index;
+function nextSlide() {
+  currentIndex = (currentIndex + 1) % slides.length;
+  slides.forEach(slide => slide.classList.remove('active'));
+  dots.forEach(dot => dot.classList.remove('active'));
 
-  slides.forEach((s, i) => s.classList.toggle('active', i === currentSlide));
-  dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+  slides[currentIndex].classList.add('active');
+  if (dots[currentIndex]) dots[currentIndex].classList.add('active');
+  console.log('Автоматически переключен слайд:', currentIndex + 1);
 }
 
-// setInterval запускает переключение каждые 3500 миллисекунд (3.5 секунды)
-const timerId = setInterval(function () {
-  showSlide(currentSlide + 1);
-}, 3500);
-
-console.log('Автопрокрутка включена, номер таймера:', timerId);
+// Запускаем таймер смены слайдов каждые 3500 миллисекунд (3.5 секунды):
+const timerId = setInterval(nextSlide, 3500);

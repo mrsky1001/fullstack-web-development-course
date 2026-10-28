@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Шаг 2 — Отрисовка списка бронирований и отмена | СмартОфис</title>
+  <title>Шаг 2: Список «Мои бронирования» — СмартОфис</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../basic/css/style.css">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
@@ -13,7 +16,7 @@
   <header class="header">
     <div class="container header-container">
       <a href="../../basic/index.html" class="logo">
-        <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
+        <img src="../../basic/img/logo.svg" alt="Логотип" class="logo-icon">
         <span>СмартОфис</span>
       </a>
       <nav class="nav">
@@ -21,6 +24,7 @@
           <li><a href="../../basic/index.html" class="nav-link">Главная</a></li>
           <li><a href="../../basic/pages/catalog.html" class="nav-link">Каталог</a></li>
           <li><a href="#" class="nav-link active">Мои бронирования</a></li>
+          <li><a href="../../basic/pages/login.html" class="nav-link nav-btn">Войти</a></li>
         </ul>
       </nav>
     </div>
@@ -28,55 +32,24 @@
 
   <main class="main">
     <div class="container">
-      <section class="hero-section"><h1 class="hero-title">Финальная сборка <span class="brand-highlight">«СмартОфис»</span></h1><p class="hero-subtitle">Учебный шаг 2 из 3: Мои бронирования и итоги курса</p></section><div id="demoBookings" class="bookings-demo-list"></div>
+      <h1 class="page-title">Мои бронирования</h1>
+      <p class="page-subtitle">История ваших заявок на аренду рабочих пространств</p>
 
-      <div class="lesson-panel">
-        <span class="step-badge"> Шаг 2 из 3</span>
-        <h2>Отрисовка списка бронирований и отмена</h2>
-        <p>Считываем массив myBookings из localStorage, отрисовываем карточки и добавляем возможность отмены через метод .filter().</p>
-        <p>Код, который выполняется в этом шаге (откройте <code>main.js</code>):</p>
-        <pre><code>// Шаг 2: Список бронирований
-const container = document.getElementById('demoBookings');
-
-function loadAndRender() {
-  const list = JSON.parse(localStorage.getItem('demoBookingsList') || '[]');
-
-  if (list.length === 0) {
-    container.innerHTML = '&lt;p style="color: #94a3b8; text-align: center; padding: 24px;"&gt;Нет сохранённых бронирований.&lt;/p&gt;';
-    return;
-  }
-
-  container.innerHTML = list.map(b =&gt; `
-    &lt;div class="booking-item-card"&gt;
-      &lt;div&gt;
-        &lt;h4 style="color:#38bdf8; margin:0 0 6px;"&gt;${b.title}&lt;/h4&gt;
-        &lt;p style="margin:0; font-size:13px; color:#cbd5e1;"&gt;Часов: ${b.hours} | Итого: &lt;strong&gt;${b.price} ₽&lt;/strong&gt;&lt;/p&gt;
-      &lt;/div&gt;
-      &lt;button onclick="removeBooking('${b.id}')" style="background:#ef4444; color:white; border:none; padding:6px 12px; border-radius:6px; cursor:pointer;"&gt;Отменить&lt;/button&gt;
-    &lt;/div&gt;
-  `).join('');
-}
-
-window.removeBooking = function (id) {
-  let list = JSON.parse(localStorage.getItem('demoBookingsList') || '[]');
-  list = list.filter(item =&gt; item.id !== id);
-  localStorage.setItem('demoBookingsList', JSON.stringify(list));
-  loadAndRender();
-};
-
-// Добавим тестовую бронь, если пусто
-if (!localStorage.getItem('demoBookingsList')) {
-  localStorage.setItem('demoBookingsList', JSON.stringify([
-    { id: '1', title: 'Мини-офис Focus', hours: 3, price: 1350 },
-    { id: '2', title: 'Конференц-зал Alpha', hours: 2, price: 2400 }
-  ]));
-}
-
-loadAndRender();
-</code></pre>
-        <p><em>Совет: проверьте добавление и удаление записей в панели Application → Local Storage (F12).</em></p>
-      </div>
+      <div class="bookings-list" id="myBookingsList"></div>
     </div>
   </main>
+
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-info">
+        <p><strong>СмартОфис</strong> — Сервис бронирования офисных комнат</p>
+        <p>© 2026 СмартОфис. Все права защищены.</p>
+      </div>
+      <div class="footer-contacts">
+        <p>Email: <a href="mailto:info@smartoffice.ru">info@smartoffice.ru</a></p>
+        <p>Телефон: <a href="tel:+78005553535">+7 (800) 555-35-35</a></p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

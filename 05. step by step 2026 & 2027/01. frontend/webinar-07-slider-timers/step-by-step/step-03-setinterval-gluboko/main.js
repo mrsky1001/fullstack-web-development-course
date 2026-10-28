@@ -1,36 +1,28 @@
-// Шаг 3: Функция переключения слайдов showSlide(index)
+// Шаг 3: Функция переключения слайда showSlide(index)
 // Теория по этой теме подробно описана в файле README.md в этой папке.
 
 const slides = document.querySelectorAll('.slide');
 const dots = document.querySelectorAll('.dot');
-let currentSlide = 0;
+let currentIndex = 0;
 
 function showSlide(index) {
-  // Циклическая проверка: если вышли за край, идем в начало или в конец
-  if (index >= slides.length) currentSlide = 0;
-  else if (index < 0) currentSlide = slides.length - 1;
-  else currentSlide = index;
+  // Зацикливаем показ: если дошли до конца, возвращаемся в начало
+  if (index >= slides.length) currentIndex = 0;
+  else if (index < 0) currentIndex = slides.length - 1;
+  else currentIndex = index;
 
-  // Вешаем класс active только выбранному слайду:
-  slides.forEach(function (slide, idx) {
-    if (idx === currentSlide) {
-      slide.classList.add('active');
-    } else {
-      slide.classList.remove('active');
-    }
-  });
+  // 1. Снимаем класс active со всех слайдов и точек:
+  slides.forEach(slide => slide.classList.remove('active'));
+  dots.forEach(dot => dot.classList.remove('active'));
 
-  // Переключаем точки:
-  dots.forEach(function (dot, idx) {
-    if (idx === currentSlide) {
-      dot.classList.add('active');
-    } else {
-      dot.classList.remove('active');
-    }
-  });
+  // 2. Активируем нужный слайд и точку:
+  slides[currentIndex].classList.add('active');
+  if (dots[currentIndex]) {
+    dots[currentIndex].classList.add('active');
+  }
 
-  console.log('Показан слайд номер:', currentSlide + 1);
+  console.log('Показан слайд №:', currentIndex + 1);
 }
 
-// Проверяем: переключаем на второй слайд (индекс 1)
+// Тестируем переключение:
 showSlide(1);

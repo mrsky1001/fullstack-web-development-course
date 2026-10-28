@@ -1,4 +1,4 @@
-// Шаг 6: Финальная сборка модуля слайдера
+// Шаг 6: Финальная сборка модуля слайдера initSlider
 // Теория по этой теме подробно описана в файле README.md в этой папке.
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -10,34 +10,63 @@ function initSlider() {
   const dots = document.querySelectorAll('.dot');
   const prevBtn = document.querySelector('.slider-prev');
   const nextBtn = document.querySelector('.slider-next');
+  const sliderElem = document.querySelector('.slider');
+
   if (!slides.length) return;
 
-  let currentSlide = 0;
+  let currentIndex = 0;
   let timerId = null;
 
   function showSlide(index) {
-    if (index >= slides.length) currentSlide = 0;
-    else if (index < 0) currentSlide = slides.length - 1;
-    else currentSlide = index;
+    if (index >= slides.length) currentIndex = 0;
+    else if (index < 0) currentIndex = slides.length - 1;
+    else currentIndex = index;
 
-    slides.forEach((s, i) => s.classList.toggle('active', i === currentSlide));
-    dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+
+    slides[currentIndex].classList.add('active');
+    if (dots[currentIndex]) dots[currentIndex].classList.add('active');
   }
 
-  function startAuto() {
-    // Сначала останавливаем старый таймер, чтобы они не накладывались друг на друга:
-    clearInterval(timerId);
-    timerId = setInterval(() => showSlide(currentSlide + 1), 3500);
+  function startAutoplay() {
+    stopAutoplay();
+    timerId = setInterval(() => showSlide(currentIndex + 1), 3500);
   }
 
-  // При ручных кликах сбрасываем таймер:
-  if (nextBtn) nextBtn.addEventListener('click', () => { showSlide(currentSlide + 1); startAuto(); });
-  if (prevBtn) prevBtn.addEventListener('click', () => { showSlide(currentSlide - 1); startAuto(); });
+  function stopAutoplay() {
+    if (timerId) {
+      clearInterval(timerId);
+      timerId = null;
+    }
+  }
 
-  dots.forEach((dot, idx) => {
-    dot.addEventListener('click', () => { showSlide(idx); startAuto(); });
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      showSlide(currentIndex + 1);
+      startAutoplay();
+    });
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      showSlide(currentIndex - 1);
+      startAutoplay();
+    });
+  }
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      showSlide(index);
+      startAutoplay();
+    });
   });
 
-  startAuto();
-  console.log('Слайдер полностью готов и запущен.');
+  if (sliderElem) {
+    sliderElem.addEventListener('mouseenter', stopAutoplay);
+    sliderElem.addEventListener('mouseleave', startAutoplay);
+  }
+
+  startAutoplay();
+  console.log('Слайдер СмартОфис успешно запущен.');
 }

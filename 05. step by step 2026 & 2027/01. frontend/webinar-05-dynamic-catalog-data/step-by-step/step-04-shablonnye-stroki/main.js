@@ -1,20 +1,32 @@
-// Шаг 4: Шаблонные строки (обратные кавычки)
+// Шаг 4: Шаблонные строки для создания HTML-карточки
 // Теория по этой теме подробно описана в файле README.md в этой папке.
 
 const room = OFFICE_ROOMS[0];
 
-// Создаем HTML-разметку с помощью обратных кавычек `
+// Создаем настоящую HTML-карточку СмартОфис с помощью обратных кавычек `:
 const cardHTML = `
-  <div class="room-card" style="max-width: 340px; background: #1e293b; padding: 20px; border-radius: 8px; color: white;">
-    <h3 style="color: #38bdf8; margin-top: 0;">${room.title}</h3>
-    <p style="color: #cbd5e1; font-size: 14px;">${room.description}</p>
-    <div style="margin-top: 14px; font-weight: bold; color: #10b981;">
-      Цена: ${room.pricePerHour} руб / час
+  <div class="room-card">
+    <div class="card-img-wrap">
+      <img src="${room.image}" alt="${room.title}" class="card-img" onerror="this.src='../../basic/img/no-image.svg'">
+    </div>
+    <div class="card-content">
+      <h3 class="card-title">${room.title}</h3>
+      <ul class="card-equipment">
+        ${room.equipment.map(item => `<li>${item}</li>`).join('')}
+      </ul>
+      <div class="card-footer">
+        <div class="card-price">${room.pricePerHour} ₽ <span>/ час</span></div>
+        <div class="card-btns">
+          <a href="room-details.html?id=${room.id}" class="btn btn-outline">Подробнее</a>
+          <a href="../../basic/pages/booking.html?id=${room.id}" class="btn btn-primary">Забронировать</a>
+        </div>
+      </div>
     </div>
   </div>
 `;
 
-const container = document.getElementById('demoContainer');
+const container = document.getElementById('catalogContainer');
 if (container) {
   container.innerHTML = cardHTML;
+  console.log('Первая карточка успешно отрисована через шаблонную строку.');
 }
