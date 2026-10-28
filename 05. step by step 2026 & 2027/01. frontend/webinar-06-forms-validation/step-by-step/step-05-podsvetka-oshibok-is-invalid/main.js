@@ -1,4 +1,6 @@
-// Шаг 5: Подсветка ошибок
+// Шаг 5: Подсветка ошибок через класс is-invalid
+// Теория по этой теме подробно описана в файле README.md в этой папке.
+
 const form = document.getElementById('demoForm');
 
 if (form) {
@@ -6,11 +8,14 @@ if (form) {
     event.preventDefault();
 
     const input = document.getElementById('userEmail');
-    input.classList.remove('is-invalid'); // сброс
 
+    // 1. Сначала обязательно убираем старую подсветку ошибки:
+    input.classList.remove('is-invalid');
+
+    // 2. Если поле пустое, добавляем класс ошибки:
     if (input.value.trim() === '') {
       input.classList.add('is-invalid');
-      console.log('Поле подсвечено красным: ошибка валидации!');
+      console.log('Поле не заполнено: показана красная рамка');
     } else {
       console.log('Поле заполнено корректно.');
     }

@@ -1,7 +1,10 @@
-// Шаг 1: Связка всех страниц через localStorage
-console.log('Проверяем текущие сохранённые данные в системе:');
-const user = localStorage.getItem('currentUser');
-const bookings = localStorage.getItem('myBookings');
+// Шаг 1: Связь всех страниц через localStorage
+// Теория по этой теме подробно описана в файле README.md в этой папке.
 
-console.log('Авторизованный пользователь:', user ? JSON.parse(user) : 'Не авторизован');
-console.log('Бронирования в памяти:', bookings ? JSON.parse(bookings) : 'Список пуст');
+console.log('Проверка сохраненных данных проекта:');
+
+const savedUser = localStorage.getItem('currentUser');
+const savedBookings = localStorage.getItem('myBookings');
+
+console.log('Текущий пользователь:', savedUser ? JSON.parse(savedUser) : 'не вошел');
+console.log('Список бронирований:', savedBookings ? JSON.parse(savedBookings) : 'пусто');

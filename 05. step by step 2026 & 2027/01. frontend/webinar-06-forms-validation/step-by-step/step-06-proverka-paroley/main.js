@@ -1,4 +1,6 @@
 // Шаг 6: Проверка совпадения паролей
+// Теория по этой теме подробно описана в файле README.md в этой папке.
+
 const form = document.getElementById('demoForm');
 
 if (form) {
@@ -13,11 +15,13 @@ if (form) {
 
     if (!pass.value.trim()) {
       pass.classList.add('is-invalid');
+      console.log('Пароль не может быть пустым');
     } else if (pass.value !== confirm.value) {
+      // Пароли не равны
       confirm.classList.add('is-invalid');
-      console.log('Ошибка: пароли не совпадают!');
+      console.log('Пароли не совпадают');
     } else {
-      console.log('Пароли успешно совпали!');
+      console.log('Пароли успешно совпали');
     }
   });
 }

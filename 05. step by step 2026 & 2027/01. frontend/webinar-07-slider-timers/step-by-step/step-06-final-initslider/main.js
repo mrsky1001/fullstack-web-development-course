@@ -1,4 +1,6 @@
-// Шаг 6: Финальная сборка слайдера
+// Шаг 6: Финальная сборка модуля слайдера
+// Теория по этой теме подробно описана в файле README.md в этой папке.
+
 document.addEventListener('DOMContentLoaded', function () {
   initSlider();
 });
@@ -23,10 +25,12 @@ function initSlider() {
   }
 
   function startAuto() {
+    // Сначала останавливаем старый таймер, чтобы они не накладывались друг на друга:
     clearInterval(timerId);
     timerId = setInterval(() => showSlide(currentSlide + 1), 3500);
   }
 
+  // При ручных кликах сбрасываем таймер:
   if (nextBtn) nextBtn.addEventListener('click', () => { showSlide(currentSlide + 1); startAuto(); });
   if (prevBtn) prevBtn.addEventListener('click', () => { showSlide(currentSlide - 1); startAuto(); });
 
@@ -35,5 +39,5 @@ function initSlider() {
   });
 
   startAuto();
-  console.log('Слайдер полностью готов и запущен!');
+  console.log('Слайдер полностью готов и запущен.');
 }

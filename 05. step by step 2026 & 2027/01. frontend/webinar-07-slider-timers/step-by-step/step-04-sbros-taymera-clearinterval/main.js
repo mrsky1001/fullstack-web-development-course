@@ -1,4 +1,6 @@
-// Шаг 4: Кнопки навигации слайдера
+// Шаг 4: Кнопки переключения слайдов вперед и назад
+// Теория по этой теме подробно описана в файле README.md в этой папке.
+
 const slides = document.querySelectorAll('.slide');
 const dots = document.querySelectorAll('.dot');
 const prevBtn = document.querySelector('.slider-prev');
@@ -14,12 +16,14 @@ function showSlide(index) {
   dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
 }
 
+// Клик по кнопке «Вперед»:
 if (nextBtn) {
   nextBtn.addEventListener('click', function () {
     showSlide(currentSlide + 1);
   });
 }
 
+// Клик по кнопке «Назад»:
 if (prevBtn) {
   prevBtn.addEventListener('click', function () {
     showSlide(currentSlide - 1);

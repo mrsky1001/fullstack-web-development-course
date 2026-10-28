@@ -1,12 +1,16 @@
-// Шаг 4: Шаблонные строки (Template Literals)
-const firstRoom = OFFICE_ROOMS[0];
+// Шаг 4: Шаблонные строки (обратные кавычки)
+// Теория по этой теме подробно описана в файле README.md в этой папке.
 
-// Создаём фрагмент HTML для одной карточки
+const room = OFFICE_ROOMS[0];
+
+// Создаем HTML-разметку с помощью обратных кавычек `
 const cardHTML = `
-  <div class="room-card" style="max-width: 320px; border: 1px solid #334155; padding: 16px; border-radius: 8px;">
-    <h3>${firstRoom.title}</h3>
-    <p>Цена: <strong>${firstRoom.pricePerHour} ₽ / час</strong></p>
-    <p>Вместимость: ${firstRoom.capacity}</p>
+  <div class="room-card" style="max-width: 340px; background: #1e293b; padding: 20px; border-radius: 8px; color: white;">
+    <h3 style="color: #38bdf8; margin-top: 0;">${room.title}</h3>
+    <p style="color: #cbd5e1; font-size: 14px;">${room.description}</p>
+    <div style="margin-top: 14px; font-weight: bold; color: #10b981;">
+      Цена: ${room.pricePerHour} руб / час
+    </div>
   </div>
 `;
 
@@ -14,4 +18,3 @@ const container = document.getElementById('demoContainer');
 if (container) {
   container.innerHTML = cardHTML;
 }
-console.log('HTML сгенерирован успешно!');

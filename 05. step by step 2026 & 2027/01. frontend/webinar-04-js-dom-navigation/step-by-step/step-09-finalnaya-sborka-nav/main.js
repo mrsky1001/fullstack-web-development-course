@@ -1,12 +1,13 @@
-// Шаг 9: Финальная сборка скрипта навигации Вебинара 04
+// Шаг 9: Финальная сборка модуля навигации
+// Теория по этой теме подробно описана в файле README.md в этой папке.
 
-// 1. Ждём загрузки страницы
+// Ждем полной загрузки структуры документа браузером
 document.addEventListener('DOMContentLoaded', function () {
-  console.log('DOM готов. Инициализируем навигацию...');
+  console.log('Страница готова. Запускаем навигацию...');
   initNavigation();
 });
 
-// 2. Функция настройки навигации
+// Функция настройки меню
 function initNavigation() {
   const navLinks = document.querySelectorAll('.nav-link');
 
@@ -14,15 +15,15 @@ function initNavigation() {
     link.addEventListener('click', function (event) {
       event.preventDefault();
 
-      // Убираем active у всех
+      // Сброс активности у всех пунктов
       navLinks.forEach(function (item) {
         item.classList.remove('active');
       });
 
-      // Ставим active текущей ссылке
+      // Включение активности у нажатого пункта
       link.classList.add('active');
     });
   });
 
-  console.log('Навигация успешно настроена!');
+  console.log('Навигация готова к работе.');
 }
