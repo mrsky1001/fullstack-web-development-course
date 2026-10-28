@@ -1,85 +1,67 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вебинар 6: Шаг 5 — Класс .is-invalid</title>
-    <link rel="stylesheet" href="../../basic/css/style.css">
-    <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
-    <style>
-        .lesson-panel {
-            background: #1e293b; color: #f1f5f9; padding: 24px 32px; margin: 30px auto; max-width: 800px;
-            border-top: 4px solid #ef4444; border-radius: 8px; font-family: monospace;
-        }
-        .lesson-panel h2 { color: #f87171; margin-top: 0; }
-        .form-demo-box {
-            background: white; border-radius: 8px; padding: 24px; color: #1e293b; margin-top: 16px; font-family: sans-serif;
-            max-width: 400px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-        }
-        .form-control {
-            width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; margin: 8px 0 6px; box-sizing: border-box;
-            transition: border-color 0.2s ease;
-        }
-        .form-control.is-invalid {
-            border-color: #dc3545 !important;
-            box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.2);
-        }
-        .error-hint { color: #dc3545; font-size: 12px; display: none; margin-bottom: 12px; }
-        .form-control.is-invalid + .error-hint { display: block; }
-        .submit-btn { width: 100%; padding: 10px; background: #ef4444; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шаг 5 — Подсветка ошибок: класс .is-invalid | СмартОфис</title>
+  <link rel="stylesheet" href="../../basic/css/style.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
+  <script src="main.js" defer></script>
 </head>
 <body>
-    <header class="header">
-        <div class="container header-container">
-            <a href="../../basic/index.html" class="logo">
-                <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
-                <span>СмартОфис</span>
-            </a>
-            <span style="color:#666;">Шаг 5: Подсветка ошибок (.is-invalid)</span>
-        </div>
-    </header>
+  <header class="header">
+    <div class="container header-container">
+      <a href="../../basic/index.html" class="logo">
+        <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
+        <span>СмартОфис</span>
+      </a>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="../../basic/index.html" class="nav-link">Главная</a></li>
+          <li><a href="../../basic/pages/catalog.html" class="nav-link">Каталог</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <main class="container" style="margin-top: 30px;">
-        <div class="lesson-panel">
-            <h2>🚨 Шаг 5: Добавление и удаление .is-invalid</h2>
-            <p style="font-family: sans-serif; color: #94a3b8;">
-                Попробуйте нажать кнопку, оставив поле пустым — рамка загорится красным! Введите текст — красная рамка исчезнет.
-            </p>
+  <main class="main">
+    <div class="container">
+      <section class="hero-section"><h1 class="hero-title">Формы и валидация <span class="brand-highlight">«СмартОфис»</span></h1><p class="hero-subtitle">Учебный шаг 5 из 7: проверка ввода данных</p></section><div class="demo-form-card">
+      <h3 style="color: #f8fafc; margin-bottom: 16px;">Тестовая форма (Шаг 5)</h3>
+      <form id="demoForm">
+        <label for="userEmail">Электронная почта:</label><input type="text" id="userEmail" placeholder="example@mail.ru">
+        <button type="submit" class="btn">Отправить форму</button>
+      </form>
+    </div>
 
-            <div class="form-demo-box">
-                <form id="validateForm">
-                    <label>Email или Телефон:</label>
-                    <input type="text" id="targetInput" class="form-control" placeholder="Обязательное поле...">
-                    <div class="error-hint">Пожалуйста, заполните это поле!</div>
-                    <button type="submit" class="submit-btn">Проверить поле</button>
-                </form>
-            </div>
-        </div>
-    </main>
+      <div class="lesson-panel">
+        <span class="step-badge">📚 Шаг 5 из 7</span>
+        <h2>Подсветка ошибок: класс .is-invalid</h2>
+        <p>Если поле не заполнено, мы добавляем ему CSS-класс is-invalid (красная рамка). При исправлении ошибки — убираем его.</p>
+        <p>Код, который выполняется в этом шаге (откройте <code>main.js</code>):</p>
+        <pre><code>// Шаг 5: Подсветка ошибок
+const form = document.getElementById('demoForm');
 
-    <script>
-        const form = document.getElementById('validateForm');
-        const input = document.getElementById('targetInput');
+if (form) {
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
 
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
+    const input = document.getElementById('userEmail');
+    input.classList.remove('is-invalid'); // сброс
 
-            // Проверка на пустоту с trim():
-            if (!input.value.trim()) {
-                input.classList.add('is-invalid'); // Зажигаем красную рамку!
-            } else {
-                input.classList.remove('is-invalid'); // Убираем ошибку!
-                alert('Успех! Поле заполнено: ' + input.value);
-            }
-        });
-
-        // Снимаем ошибку при начале ввода:
-        input.addEventListener('input', () => {
-            if (input.value.trim()) {
-                input.classList.remove('is-invalid');
-            }
-        });
-    </script>
+    if (input.value.trim() === '') {
+      input.classList.add('is-invalid');
+      console.log('Поле подсвечено красным: ошибка валидации!');
+    } else {
+      console.log('Поле заполнено корректно.');
+    }
+  });
+}
+</code></pre>
+        <p><em>Совет: проверьте работу формы в браузере и откройте консоль F12.</em></p>
+      </div>
+    </div>
+  </main>
 </body>
 </html>

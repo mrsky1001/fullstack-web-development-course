@@ -1,55 +1,51 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вебинар 9: Шаг 1 — Архитектура проекта</title>
-    <link rel="stylesheet" href="../../basic/css/style.css">
-    <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
-    <style>
-        .lesson-panel {
-            background: #1e293b; color: #f1f5f9; padding: 24px 32px; margin: 30px auto; max-width: 900px;
-            border-top: 4px solid #3b82f6; border-radius: 8px; font-family: monospace;
-        }
-        .lesson-panel h2 { color: #60a5fa; margin-top: 0; }
-        .arch-tree { background: #0f172a; padding: 20px; border-radius: 8px; color: #38bdf8; line-height: 1.8; font-size: 14px; }
-        .page-link-badge { display: inline-block; background: #1e40af; color: #bfdbfe; padding: 2px 8px; border-radius: 4px; font-size: 12px; margin-left: 8px; text-decoration: none; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шаг 1 — Архитектура проекта: как все страницы связаны | СмартОфис</title>
+  <link rel="stylesheet" href="../../basic/css/style.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
+  <script src="main.js" defer></script>
 </head>
 <body>
-    <header class="header">
-        <div class="container header-container">
-            <a href="../../basic/index.html" class="logo">
-                <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
-                <span>СмартОфис</span>
-            </a>
-            <span style="color:#666;">Шаг 1: Архитектура всего сайта</span>
-        </div>
-    </header>
+  <header class="header">
+    <div class="container header-container">
+      <a href="../../basic/index.html" class="logo">
+        <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
+        <span>СмартОфис</span>
+      </a>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="../../basic/index.html" class="nav-link">Главная</a></li>
+          <li><a href="../../basic/pages/catalog.html" class="nav-link">Каталог</a></li>
+          <li><a href="#" class="nav-link active">Мои бронирования</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <main class="container" style="margin-top: 30px;">
-        <div class="lesson-panel">
-            <h2>🗺️ Шаг 1: Единая схема проекта «СмартОфис» (7 страниц)</h2>
-            <p style="font-family: sans-serif; color: #94a3b8;">
-                Все страницы проекта объединены общим файлом стилей <code>style.css</code> и скриптами <code>data.js</code> + <code>main.js</code>:
-            </p>
+  <main class="main">
+    <div class="container">
+      <section class="hero-section"><h1 class="hero-title">Финальная сборка <span class="brand-highlight">«СмартОфис»</span></h1><p class="hero-subtitle">Учебный шаг 1 из 3: Мои бронирования и итоги курса</p></section><div style="background: #1e293b; padding: 24px; border-radius: 8px; margin-top: 20px;"><h3 style="color:#f472b6;">Проект «СмартОфис» успешно собран!</h3><p style="color:#cbd5e1; margin-top:8px;">Откройте консоль браузера (F12) для просмотра статуса проверки модулей.</p></div>
 
-            <div class="arch-tree">
-📦 СмартОфис (7 страниц)<br>
-├── 🌐 index.html <a class="page-link-badge" href="../../basic/index.html">Главная</a> (Слайдер + Hero + Популярное)<br>
-├── 📁 pages/<br>
-│   ├── 🌐 catalog.html <a class="page-link-badge" href="../../basic/pages/catalog.html">Каталог</a> (Поиск + Сортировка + 6 комнат)<br>
-│   ├── 🌐 room-details.html <a class="page-link-badge" href="../../basic/pages/room-details.html?id=focus-1">Детали комнаты</a> (?id=...)<br>
-│   ├── 🌐 booking.html <a class="page-link-badge" href="../../basic/pages/booking.html">Бронирование</a> (Калькулятор тарифа)<br>
-│   ├── 🌐 my-bookings.html <a class="page-link-badge" href="../../basic/pages/my-bookings.html">Мои бронирования</a> (Личный кабинет)<br>
-│   ├── 🌐 login.html <a class="page-link-badge" href="../../basic/pages/login.html">Вход</a> (admin / 12345)<br>
-│   └── 🌐 register.html <a class="page-link-badge" href="../../basic/pages/register.html">Регистрация</a> (Валидация полей)<br>
-├── 📁 css/style.css (Дизайн, сетки Flexbox и Grid)<br>
-└── 📁 js/<br>
-&nbsp;&nbsp;&nbsp;&nbsp;├── 📄 data.js (OFFICE_ROOMS, MOCK_BOOKINGS)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;└── 📄 main.js (Инициализация всех функций сайта)
-            </div>
-        </div>
-    </main>
+      <div class="lesson-panel">
+        <span class="step-badge">📚 Шаг 1 из 3</span>
+        <h2>Архитектура проекта: как все страницы связаны</h2>
+        <p>Все страницы сайта (Главная, Каталог, Бронирование, Мои бронирования) связаны общим файлом data.js и хранилищем localStorage.</p>
+        <p>Код, который выполняется в этом шаге (откройте <code>main.js</code>):</p>
+        <pre><code>// Шаг 1: Связка всех страниц через localStorage
+console.log('Проверяем текущие сохранённые данные в системе:');
+const user = localStorage.getItem('currentUser');
+const bookings = localStorage.getItem('myBookings');
+
+console.log('Авторизованный пользователь:', user ? JSON.parse(user) : 'Не авторизован');
+console.log('Бронирования в памяти:', bookings ? JSON.parse(bookings) : 'Список пуст');
+</code></pre>
+        <p><em>Совет: проверьте добавление и удаление записей в панели Application → Local Storage (F12).</em></p>
+      </div>
+    </div>
+  </main>
 </body>
 </html>

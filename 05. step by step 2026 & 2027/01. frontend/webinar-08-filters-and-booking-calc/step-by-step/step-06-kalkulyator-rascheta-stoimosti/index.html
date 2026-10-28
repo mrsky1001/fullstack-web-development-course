@@ -1,94 +1,65 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вебинар 8: Шаг 6 — Калькулятор стоимости</title>
-    <link rel="stylesheet" href="../../basic/css/style.css">
-    <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
-    <style>
-        .lesson-panel {
-            background: #1e293b; color: #f1f5f9; padding: 24px 32px; margin: 30px auto; max-width: 800px;
-            border-top: 4px solid #14b8a6; border-radius: 8px; font-family: monospace;
-        }
-        .lesson-panel h2 { color: #2dd4bf; margin-top: 0; }
-        .calc-card { background: white; border-radius: 8px; padding: 24px; color: #1e293b; margin-top: 16px; font-family: sans-serif; max-width: 450px; }
-        .form-control { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; margin: 6px 0 14px; box-sizing: border-box; }
-        .calc-total { font-size: 26px; font-weight: bold; color: #0284c7; }
-        .submit-btn { width: 100%; padding: 12px; background: #0284c7; color: white; border: none; border-radius: 6px; font-size: 15px; font-weight: bold; cursor: pointer; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шаг 6 — Калькулятор расчёта стоимости бронирования | СмартОфис</title>
+  <link rel="stylesheet" href="../../basic/css/style.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
+  <script src="data.js" defer></script>
+  <script src="main.js" defer></script>
 </head>
 <body>
-    <header class="header">
-        <div class="container header-container">
-            <a href="../../basic/index.html" class="logo">
-                <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
-                <span>СмартОфис</span>
-            </a>
-            <span style="color:#666;">Шаг 6: Финал 8-го вебинара (Калькулятор)</span>
+  <header class="header">
+    <div class="container header-container">
+      <a href="../../basic/index.html" class="logo">
+        <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
+        <span>СмартОфис</span>
+      </a>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="../../basic/index.html" class="nav-link">Главная</a></li>
+          <li><a href="#" class="nav-link active">Каталог</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="container">
+      <section class="hero-section"><h1 class="hero-title">Фильтры и калькулятор <span class="brand-highlight">«СмартОфис»</span></h1><p class="hero-subtitle">Учебный шаг 6 из 6: живой поиск и вычисления</p></section><div class="calc-demo-card">
+          <h3>Калькулятор бронирования (Мини-офис Focus: 450 ₽/час)</h3>
+          <label for="calcHours" style="display:block; margin-top:12px;">Количество часов:</label>
+          <input type="number" id="calcHours" value="3" min="1" max="24">
+          <div>Итого к оплате: <span id="calcTotal" class="calc-total">1350 ₽</span></div>
         </div>
-    </header>
 
-    <main class="container" style="margin-top: 30px;">
-        <div class="lesson-panel">
-            <h2>🧮 Шаг 6: Живой пересчёт стоимости бронирования</h2>
-            <p style="font-family: sans-serif; color: #94a3b8;">
-                Меняйте комнату или количество часов — сумма пересчитывается мгновенно!
-            </p>
+      <div class="lesson-panel">
+        <span class="step-badge">📚 Шаг 6 из 6</span>
+        <h2>Калькулятор расчёта стоимости бронирования</h2>
+        <p>Умножаем количество введённых часов на почасовую ставку комнаты и выводим итоговую сумму в рублях.</p>
+        <p>Код, который выполняется в этом шаге (откройте <code>main.js</code>):</p>
+        <pre><code>// Шаг 6: Калькулятор бронирования
+const hoursInput = document.getElementById('calcHours');
+const totalOut = document.getElementById('calcTotal');
+const PRICE_PER_HOUR = 450; // Стоимость комнаты «Фокус»
 
-            <div class="calc-card">
-                <form id="bookingCalcForm">
-                    <label>Выберите комнату:</label>
-                    <select id="roomSelect" class="form-control">
-                        <option value="focus-1" data-price="450">Мини-офис Focus (450 ₽/час)</option>
-                        <option value="alpha-2" data-price="1200">Конференц-зал Alpha (1200 ₽/час)</option>
-                        <option value="hub-3" data-price="250">Опенспейс Hub (250 ₽/час)</option>
-                    </select>
+function updateCalculation() {
+  const hours = parseInt(hoursInput.value) || 0;
+  const total = hours * PRICE_PER_HOUR;
+  totalOut.textContent = total + ' ₽';
+  console.log('Рассчитано:', hours, 'ч. *', PRICE_PER_HOUR, '=', total);
+}
 
-                    <label>Количество часов (1-24):</label>
-                    <input type="number" id="hoursInput" class="form-control" min="1" max="24" value="2">
-
-                    <div style="display:flex; justify-content:space-between; align-items:center; border-top: 1px solid #e2e8f0; padding-top: 14px; margin-bottom: 16px;">
-                        <div>
-                            <div>Тариф: <span id="pricePerHour" style="font-weight:bold;">450 ₽</span></div>
-                            <small style="color:#64748b;">Без скрытых доплат</small>
-                        </div>
-                        <div class="calc-total" id="totalPrice">900 ₽</div>
-                    </div>
-
-                    <button type="submit" class="submit-btn">Забронировать комнату</button>
-                </form>
-            </div>
-        </div>
-    </main>
-
-    <script>
-        const roomSelect = document.getElementById('roomSelect');
-        const hoursInput = document.getElementById('hoursInput');
-        const priceSpan = document.getElementById('pricePerHour');
-        const totalSpan = document.getElementById('totalPrice');
-        const form = document.getElementById('bookingCalcForm');
-
-        function update() {
-            const opt = roomSelect.options[roomSelect.selectedIndex];
-            const price = Number(opt.dataset.price);
-            const hours = Math.max(1, Number(hoursInput.value || 1));
-            const total = price * hours;
-
-            priceSpan.textContent = price + ' ₽';
-            totalSpan.textContent = total + ' ₽';
-        }
-
-        roomSelect.addEventListener('change', update);
-        hoursInput.addEventListener('input', update);
-
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const appNumber = Math.floor(10000 + Math.random() * 90000);
-            alert('🎉 Бронирование успешно создано!\nНомер заявки: №' + appNumber + '\nИтого к оплате: ' + totalSpan.textContent);
-        });
-
-        update();
-    </script>
+if (hoursInput &amp;&amp; totalOut) {
+  hoursInput.addEventListener('input', updateCalculation);
+  updateCalculation();
+}
+</code></pre>
+        <p><em>Совет: введите поисковый запрос в поле выше и проверьте мгновенную фильтрацию.</em></p>
+      </div>
+    </div>
+  </main>
 </body>
 </html>

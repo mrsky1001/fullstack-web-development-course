@@ -1,62 +1,60 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вебинар 6: Шаг 3 — Свойство .value</title>
-    <link rel="stylesheet" href="../../basic/css/style.css">
-    <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
-    <style>
-        .lesson-panel {
-            background: #1e293b; color: #f1f5f9; padding: 24px 32px; margin: 30px auto; max-width: 800px;
-            border-top: 4px solid #8b5cf6; border-radius: 8px; font-family: monospace;
-        }
-        .lesson-panel h2 { color: #a78bfa; margin-top: 0; }
-        .form-demo-box {
-            background: white; border-radius: 8px; padding: 24px; color: #1e293b; margin-top: 16px; font-family: sans-serif;
-            max-width: 400px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-        }
-        .form-input { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; margin: 8px 0 16px; box-sizing: border-box; }
-        .submit-btn { width: 100%; padding: 10px; background: #8b5cf6; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; }
-        .result-box { background: #0f172a; border: 1px dashed #a78bfa; padding: 12px; border-radius: 6px; color: #a78bfa; margin-top: 12px; font-size: 14px; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шаг 3 — Чтение введённого текста: input.value | СмартОфис</title>
+  <link rel="stylesheet" href="../../basic/css/style.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
+  <script src="main.js" defer></script>
 </head>
 <body>
-    <header class="header">
-        <div class="container header-container">
-            <a href="../../basic/index.html" class="logo">
-                <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
-                <span>СмартОфис</span>
-            </a>
-            <span style="color:#666;">Шаг 3: Свойство .value у полей ввода</span>
-        </div>
-    </header>
+  <header class="header">
+    <div class="container header-container">
+      <a href="../../basic/index.html" class="logo">
+        <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
+        <span>СмартОфис</span>
+      </a>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="../../basic/index.html" class="nav-link">Главная</a></li>
+          <li><a href="../../basic/pages/catalog.html" class="nav-link">Каталог</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <main class="container" style="margin-top: 30px;">
-        <div class="lesson-panel">
-            <h2>⌨️ Шаг 3: Читаем ввод пользователя через input.value</h2>
-            <p style="font-family: sans-serif; color: #94a3b8;">
-                Введите любой текст в поле и нажмите кнопку. JS прочитает свойство <code>.value</code>:
-            </p>
+  <main class="main">
+    <div class="container">
+      <section class="hero-section"><h1 class="hero-title">Формы и валидация <span class="brand-highlight">«СмартОфис»</span></h1><p class="hero-subtitle">Учебный шаг 3 из 7: проверка ввода данных</p></section><div class="demo-form-card">
+      <h3 style="color: #f8fafc; margin-bottom: 16px;">Тестовая форма (Шаг 3)</h3>
+      <form id="demoForm">
+        <label for="userEmail">Электронная почта:</label><input type="text" id="userEmail" placeholder="example@mail.ru">
+        <button type="submit" class="btn">Отправить форму</button>
+      </form>
+    </div>
 
-            <div class="form-demo-box">
-                <label>Имя пользователя:</label>
-                <input type="text" id="nameField" class="form-input" placeholder="Например: Иван Иванов">
-                <button type="button" class="submit-btn" onclick="readValue()">Прочитать .value</button>
-            </div>
+      <div class="lesson-panel">
+        <span class="step-badge">📚 Шаг 3 из 7</span>
+        <h2>Чтение введённого текста: input.value</h2>
+        <p>Свойство .value содержит текст, который пользователь ввёл в поле инпута.</p>
+        <p>Код, который выполняется в этом шаге (откройте <code>main.js</code>):</p>
+        <pre><code>// Шаг 3: Чтение значения полей
+const form = document.getElementById('demoForm');
 
-            <div class="result-box" id="resultBox">Введите текст выше и нажмите кнопку...</div>
-        </div>
-    </main>
+if (form) {
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
 
-    <script>
-        function readValue() {
-            const input = document.getElementById('nameField');
-            const val = input.value;
-            const box = document.getElementById('resultBox');
-            box.textContent = 'input.value -> "' + val + '" (длина строки: ' + val.length + ' символов)';
-            console.log('Прочитано значение:', val);
-        }
-    </script>
+    const email = document.getElementById('userEmail').value;
+    console.log('Пользователь ввёл email:', email);
+  });
+}
+</code></pre>
+        <p><em>Совет: проверьте работу формы в браузере и откройте консоль F12.</em></p>
+      </div>
+    </div>
+  </main>
 </body>
 </html>

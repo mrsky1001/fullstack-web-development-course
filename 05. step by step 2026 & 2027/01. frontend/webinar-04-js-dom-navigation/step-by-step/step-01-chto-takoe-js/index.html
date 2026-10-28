@@ -1,136 +1,48 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Шаг 1 — Что такое JavaScript? | СмартОфис</title>
-    <link rel="stylesheet" href="../../basic/css/style.css">
-    <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
-    <style>
-        /* Стили для учебной панели внизу страницы */
-        .lesson-panel {
-            background: #1e293b;
-            color: #f1f5f9;
-            padding: 24px 32px;
-            margin-top: 40px;
-            border-top: 4px solid #3b82f6;
-            font-family: 'Courier New', monospace;
-        }
-        .lesson-panel h2 { color: #60a5fa; margin: 0 0 12px 0; font-size: 18px; }
-        .lesson-panel .step-badge {
-            display: inline-block;
-            background: #3b82f6;
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 13px;
-            margin-bottom: 16px;
-            font-family: sans-serif;
-        }
-        .lesson-panel code {
-            display: block;
-            background: #0f172a;
-            color: #a3e635;
-            padding: 16px;
-            border-radius: 8px;
-            margin: 12px 0;
-            font-size: 14px;
-            line-height: 1.8;
-            white-space: pre;
-        }
-        .lesson-panel p { color: #94a3b8; font-family: sans-serif; font-size: 14px; margin: 8px 0; }
-        .demo-btn {
-            background: #3b82f6;
-            color: white;
-            border: none;
-            padding: 10px 24px;
-            border-radius: 8px;
-            font-size: 15px;
-            cursor: pointer;
-            margin-top: 12px;
-        }
-        .demo-btn:hover { background: #2563eb; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шаг 1 — Что такое JavaScript и как его подключить | СмартОфис</title>
+  <link rel="stylesheet" href="../../basic/css/style.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
+  <script src="main.js" defer></script>
 </head>
 <body>
-
-    <header class="header">
-        <div class="container header-container">
-            <a href="../../basic/index.html" class="logo">
-                <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
-                <span>СмартОфис</span>
-            </a>
-            <nav class="nav">
-                <ul class="nav-list">
-                    <li><a href="../../basic/index.html" class="nav-link active">Главная</a></li>
-                    <li><a href="#" class="nav-link" onclick="alert('Страница Каталога появится в Вебинаре 5!'); return false;">Каталог</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main class="main">
-        <div class="container">
-
-            <!-- Слайдер — точно как в проекте студентов -->
-            <section id="slider-block" class="slider-section" style="margin-top: 24px;">
-                <div class="slider">
-                    <div id="slide1" class="slide active">
-                        <img src="../../basic/img/slider-1.jpg" alt="Слайд 1" class="slide-img">
-                    </div>
-                    <div id="slide2" class="slide">
-                        <img src="../../basic/img/slider-2.jpg" alt="Слайд 2" class="slide-img">
-                    </div>
-                    <div id="slide3" class="slide">
-                        <img src="../../basic/img/slider-3.jpg" alt="Слайд 3" class="slide-img">
-                    </div>
-                    <div id="slide4" class="slide">
-                        <img src="../../basic/img/slider-4.jpg" alt="Слайд 4" class="slide-img">
-                    </div>
-                    <button id="leftSliderBtn" class="slider-btn slider-prev">&#8249;</button>
-                    <button id="rightSliderBtn" class="slider-btn slider-next">&#8250;</button>
-                    <div class="slider-dots">
-                        <span class="dot active"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                        <span class="dot"></span>
-                    </div>
-                </div>
-            </section>
-
-        </div>
-    </main>
-
-    <!-- ====================================================
-         УЧЕБНАЯ ПАНЕЛЬ: Шаг 1 — Что такое JavaScript?
-         ==================================================== -->
-    <div class="lesson-panel">
-        <span class="step-badge">📚 Шаг 1 из 9</span>
-        <h2>Что такое JavaScript?</h2>
-        <p>JS подключается в конце &lt;body&gt; вот так:</p>
-        <code>&lt;script src="js/main.js"&gt;&lt;/script&gt;</code>
-        <p>Первые две команды которые должен знать каждый:</p>
-        <code>// Вывести в консоль браузера (F12 → Console)
-console.log('Привет от JavaScript! 👋');
-
-// Показать всплывающее окно
-alert('Страница загружена!');</code>
-        <p>👆 Нажми F12 → вкладка Console — и увидишь сообщение от JS!</p>
-        <button class="demo-btn" onclick="alert('Я — JavaScript! 🚀 Привет, ' + prompt('Как тебя зовут?') + '!')">🎯 Показать alert с именем</button>
+  <header class="header">
+    <div class="container header-container">
+      <a href="../../basic/index.html" class="logo">
+        <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
+        <span>СмартОфис</span>
+      </a>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="#" class="nav-link active">Главная</a></li>
+          <li><a href="#" class="nav-link">Каталог</a></li>
+          <li><a href="#" class="nav-link">О нас</a></li>
+          <li><a href="#" class="nav-link nav-btn">Войти</a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-    <!-- Подключение JS — в самом конце body!
-         Это наш файл со скриптом. -->
-    <script>
-        // ШАГ 1: Первые строки JavaScript
-        // Команда console.log выводит сообщение в консоль браузера
-        // Открой F12 → вкладка Console — и увидишь это сообщение!
-        console.log('✅ Шаг 1: JavaScript успешно загружен!');
-        console.log('Сейчас: ' + new Date().toLocaleTimeString());
+  <main class="main">
+    <div class="container">
+      <section class="hero-section"><h1 class="hero-title">Портал бронирования офисных комнат <span class="brand-highlight">«СмартОфис»</span></h1><p class="hero-subtitle">Тестируем работу скрипта навигации в шапке сайта выше 👆</p></section>
 
-        // Всё! Пока больше ничего.
-        // В следующем шаге мы научимся создавать ПЕРЕМЕННЫЕ.
-    </script>
-
+      <div class="lesson-panel">
+        <span class="step-badge">📚 Шаг 1 из 9</span>
+        <h2>Что такое JavaScript и как его подключить</h2>
+        <p>JavaScript оживляет страницу. Мы подключаем файл main.js через тег &lt;script src="main.js" defer&gt;&lt;/script&gt; в теге &lt;head&gt;.</p>
+        <p>Код, который выполняется в этом шаге (откройте <code>main.js</code>):</p>
+        <pre><code>// Шаг 1: Первое знакомство с JavaScript
+// Команда console.log выводит сообщение в консоль разработчика (F12)
+console.log('Привет, мир! Скрипт main.js успешно подключён.');
+</code></pre>
+        <p><em>Совет: откройте консоль браузера (F12 → Вкладка Console), чтобы увидеть результат работы скрипта.</em></p>
+      </div>
+    </div>
+  </main>
 </body>
 </html>

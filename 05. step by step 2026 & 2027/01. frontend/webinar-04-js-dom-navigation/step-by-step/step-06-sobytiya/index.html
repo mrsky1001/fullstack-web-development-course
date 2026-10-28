@@ -1,132 +1,55 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Шаг 6 — События | СмартОфис</title>
-    <link rel="stylesheet" href="../../basic/css/style.css">
-    <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
-    <style>
-        .lesson-panel { background:#1e293b; color:#f1f5f9; padding:24px 32px; margin-top:40px; border-top:4px solid #06b6d4; font-family:'Courier New',monospace; }
-        .lesson-panel h2 { color:#22d3ee; margin:0 0 12px 0; font-size:18px; }
-        .step-badge { display:inline-block; background:#06b6d4; color:white; padding:4px 12px; border-radius:20px; font-size:13px; margin-bottom:16px; font-family:sans-serif; }
-        .lesson-panel code { display:block; background:#0f172a; color:#a3e635; padding:16px; border-radius:8px; margin:12px 0; font-size:14px; line-height:1.8; white-space:pre; }
-        .lesson-panel p { color:#94a3b8; font-family:sans-serif; font-size:14px; margin:8px 0; }
-        .event-log { background:#0f172a; border:1px solid #1e40af; border-radius:8px; padding:12px; max-height:120px; overflow-y:auto; font-size:12px; margin:12px 0; }
-        .log-entry { color:#60a5fa; margin:2px 0; font-family:monospace; }
-        .log-entry.click { color:#34d399; }
-        .demo-note { background:#1e3a5f; border-left:3px solid #06b6d4; padding:12px; border-radius:0 6px 6px 0; margin:12px 0; font-family:sans-serif; font-size:13px; color:#bae6fd; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шаг 6 — События и клики (addEventListener) | СмартОфис</title>
+  <link rel="stylesheet" href="../../basic/css/style.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
+  <script src="main.js" defer></script>
 </head>
 <body>
-    <header class="header">
-        <div class="container header-container">
-            <a href="../../basic/index.html" class="logo">
-                <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
-                <span>СмартОфис</span>
-            </a>
-        </div>
-    </header>
-
-    <main class="main">
-        <div class="container">
-            <section id="slider-block" class="slider-section" style="margin-top:24px;">
-                <div class="slider">
-                    <div id="slide1" class="slide active"><img src="../../basic/img/slider-1.jpg" alt="Слайд 1" class="slide-img"></div>
-                    <div id="slide2" class="slide"><img src="../../basic/img/slider-2.jpg" alt="Слайд 2" class="slide-img"></div>
-                    <div id="slide3" class="slide"><img src="../../basic/img/slider-3.jpg" alt="Слайд 3" class="slide-img"></div>
-                    <div id="slide4" class="slide"><img src="../../basic/img/slider-4.jpg" alt="Слайд 4" class="slide-img"></div>
-                    <button id="leftSliderBtn" class="slider-btn slider-prev">&#8249;</button>
-                    <button id="rightSliderBtn" class="slider-btn slider-next">&#8250;</button>
-                    <div class="slider-dots">
-                        <span class="dot active"></span><span class="dot"></span>
-                        <span class="dot"></span><span class="dot"></span>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </main>
-
-    <div class="lesson-panel">
-        <span class="step-badge">📚 Шаг 6 из 9</span>
-        <h2>События: addEventListener('click', функция)</h2>
-
-        <code>// ТОЧНЫЙ КОД из вашего main.js:
-const rightSliderBtnEl = document.getElementById('rightSliderBtn');
-
-function sliderClick() {
-    slide1El.classList.remove('active');
-    slide3El.classList.add('active');
-}
-
-// Подписка: при клике → вызвать sliderClick
-rightSliderBtnEl.addEventListener('click', sliderClick);</code>
-
-        <p>🎮 Кнопка "›" теперь работает! Нажимай — смотри лог событий:</p>
-        <div class="event-log" id="eventLog">
-            <div class="log-entry">📋 Лог событий. Нажимай кнопки слайдера...</div>
-        </div>
-        <div class="demo-note">
-            ⚠️ Заметь: кнопка переключает всегда на слайд 3, даже если нажать несколько раз.
-            Это потому что функция жёстко прописывает slide1 → slide3.
-            В шагах 7 и 8 мы это исправим!
-        </div>
+  <header class="header">
+    <div class="container header-container">
+      <a href="../../basic/index.html" class="logo">
+        <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
+        <span>СмартОфис</span>
+      </a>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="#" class="nav-link active">Главная</a></li>
+          <li><a href="#" class="nav-link">Каталог</a></li>
+          <li><a href="#" class="nav-link">О нас</a></li>
+          <li><a href="#" class="nav-link nav-btn">Войти</a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-    <script>
-        // ШАГ 6: События — addEventListener
-        // Это ТОЧНЫЙ код из вашего main.js, только с добавленным логом!
+  <main class="main">
+    <div class="container">
+      <section class="hero-section"><h1 class="hero-title">Портал бронирования офисных комнат <span class="brand-highlight">«СмартОфис»</span></h1><p class="hero-subtitle">Тестируем работу скрипта навигации в шапке сайта выше 👆</p></section>
 
-        // Шаг 3: находим элементы
-        const slide1El = document.getElementById('slide1');
-        const slide2El = document.getElementById('slide2');
-        const slide3El = document.getElementById('slide3');
-        const slide4El = document.getElementById('slide4');
-        const rightSliderBtnEl = document.getElementById('rightSliderBtn');
-        const leftSliderBtnEl  = document.getElementById('leftSliderBtn');
-        const dots = document.querySelectorAll('.dot');
+      <div class="lesson-panel">
+        <span class="step-badge">📚 Шаг 6 из 9</span>
+        <h2>События и клики (addEventListener)</h2>
+        <p>Метод <code>addEventListener('click', ...)</code> позволяет реагировать на действия пользователя (клик мыши, нажатие клавиши).</p>
+        <p>Код, который выполняется в этом шаге (откройте <code>main.js</code>):</p>
+        <pre><code>// Шаг 6: События и клики
+const loginBtn = document.querySelector('.nav-btn');
 
-        let clickCount = 0;
-
-        // Шаг 5: функция-обработчик
-        function sliderClick() {
-            clickCount++;
-            // Прячем слайд 1, показываем слайд 3
-            slide1El.classList.remove('active');
-            slide2El.classList.remove('active');
-            slide3El.classList.add('active');
-            slide4El.classList.remove('active');
-
-            dots.forEach(function(d) { d.classList.remove('active'); });
-            dots[2].classList.add('active');
-
-            addLog('🖱️ Click #' + clickCount + ' → sliderClick() вызвана → показан слайд 3', 'click');
-            console.log('sliderClick() вызвана, клик #' + clickCount);
-        }
-
-        function resetClick() {
-            [slide1El, slide2El, slide3El, slide4El].forEach(s => s.classList.remove('active'));
-            slide1El.classList.add('active');
-            dots.forEach(d => d.classList.remove('active'));
-            dots[0].classList.add('active');
-            addLog('🔄 Сброс → слайд 1 активен');
-        }
-
-        // ШАГ 6: Подписываемся на событие 'click' кнопки!
-        // Когда пользователь нажмёт ›, браузер вызовет sliderClick()
-        rightSliderBtnEl.addEventListener('click', sliderClick);
-        leftSliderBtnEl.addEventListener('click', resetClick);
-
-        function addLog(msg, type) {
-            const log = document.getElementById('eventLog');
-            const div = document.createElement('div');
-            div.className = 'log-entry ' + (type || '');
-            div.textContent = new Date().toLocaleTimeString() + ' | ' + msg;
-            log.appendChild(div);
-            log.scrollTop = log.scrollHeight;
-        }
-
-        addLog('addEventListener подключён! Нажимай › на слайдере.');
-    </script>
+if (loginBtn) {
+  loginBtn.addEventListener('click', function (event) {
+    event.preventDefault(); // предотвращаем переход по пустой ссылке #
+    alert('Вы нажали на кнопку «Войти»!');
+    console.log('Клик по кнопке входа зафиксирован!');
+  });
+}
+</code></pre>
+        <p><em>Совет: откройте консоль браузера (F12 → Вкладка Console), чтобы увидеть результат работы скрипта.</em></p>
+      </div>
+    </div>
+  </main>
 </body>
 </html>

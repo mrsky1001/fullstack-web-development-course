@@ -1,73 +1,58 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вебинар 6: Шаг 2 — e.preventDefault()</title>
-    <link rel="stylesheet" href="../../basic/css/style.css">
-    <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
-    <style>
-        .lesson-panel {
-            background: #1e293b; color: #f1f5f9; padding: 24px 32px; margin: 30px auto; max-width: 800px;
-            border-top: 4px solid #10b981; border-radius: 8px; font-family: monospace;
-        }
-        .lesson-panel h2 { color: #34d399; margin-top: 0; }
-        .code-block { background: #0f172a; color: #a3e635; padding: 14px; border-radius: 6px; line-height: 1.6; white-space: pre-wrap; margin: 12px 0; }
-        .form-demo-box {
-            background: white; border-radius: 8px; padding: 24px; color: #1e293b; margin-top: 16px; font-family: sans-serif;
-            max-width: 400px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-        }
-        .form-input { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; margin: 8px 0 16px; box-sizing: border-box; }
-        .submit-btn { width: 100%; padding: 10px; background: #10b981; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; }
-        .status-msg { background: #064e3b; border: 1px solid #059669; color: #6ee7b7; padding: 12px; border-radius: 6px; margin-top: 12px; font-size: 14px; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шаг 2 — Отмена перезагрузки: event.preventDefault() | СмартОфис</title>
+  <link rel="stylesheet" href="../../basic/css/style.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
+  <script src="main.js" defer></script>
 </head>
 <body>
-    <header class="header">
-        <div class="container header-container">
-            <a href="../../basic/index.html" class="logo">
-                <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
-                <span>СмартОфис</span>
-            </a>
-            <span style="color:#666;">Шаг 2: e.preventDefault()</span>
-        </div>
-    </header>
+  <header class="header">
+    <div class="container header-container">
+      <a href="../../basic/index.html" class="logo">
+        <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
+        <span>СмартОфис</span>
+      </a>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="../../basic/index.html" class="nav-link">Главная</a></li>
+          <li><a href="../../basic/pages/catalog.html" class="nav-link">Каталог</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <main class="container" style="margin-top: 30px;">
-        <div class="lesson-panel">
-            <h2>🛑 Шаг 2: Отменяем перезагрузку через e.preventDefault()</h2>
-            <p style="font-family: sans-serif; color: #94a3b8;">
-                Теперь форма перехвачена JavaScript! Нажмите «Отправить» — страница останется на месте, а внизу появится сообщение.
-            </p>
+  <main class="main">
+    <div class="container">
+      <section class="hero-section"><h1 class="hero-title">Формы и валидация <span class="brand-highlight">«СмартОфис»</span></h1><p class="hero-subtitle">Учебный шаг 2 из 7: проверка ввода данных</p></section><div class="demo-form-card">
+      <h3 style="color: #f8fafc; margin-bottom: 16px;">Тестовая форма (Шаг 2)</h3>
+      <form id="demoForm">
+        <label for="userEmail">Электронная почта:</label><input type="text" id="userEmail" placeholder="example@mail.ru">
+        <button type="submit" class="btn">Отправить форму</button>
+      </form>
+    </div>
 
-            <div class="code-block">form.addEventListener('submit', (e) => {
-    e.preventDefault(); // Останавливаем перезагрузку!
-});</div>
+      <div class="lesson-panel">
+        <span class="step-badge">📚 Шаг 2 из 7</span>
+        <h2>Отмена перезагрузки: event.preventDefault()</h2>
+        <p>По умолчанию отправка формы перезагружает страницу. Метод event.preventDefault() отменяет это, позволяя обработать данные с помощью JS.</p>
+        <p>Код, который выполняется в этом шаге (откройте <code>main.js</code>):</p>
+        <pre><code>// Шаг 2: Отмена перезагрузки через event.preventDefault()
+const form = document.getElementById('demoForm');
 
-            <div class="form-demo-box">
-                <form id="safeForm">
-                    <label>Логин:</label>
-                    <input type="text" id="userLogin" class="form-input" placeholder="Введите логин...">
-                    <button type="submit" class="submit-btn">Отправить без перезагрузки</button>
-                </form>
-            </div>
-
-            <div id="statusBox" style="display:none;" class="status-msg"></div>
-        </div>
-    </main>
-
-    <script>
-        const form = document.getElementById('safeForm');
-        let counter = 0;
-
-        form.addEventListener('submit', (e) => {
-            e.preventDefault(); // Останавливаем браузер
-            counter++;
-            const status = document.getElementById('statusBox');
-            status.style.display = 'block';
-            status.textContent = '✅ Форма перехвачена JS! Попыток отправки: ' + counter + '. Страница НЕ перезагрузилась!';
-            console.log('e.preventDefault сработал успешно!');
-        });
-    </script>
+if (form) {
+  form.addEventListener('submit', function (event) {
+    event.preventDefault(); // Страница больше НЕ перезагружается!
+    console.log('Отправка отменена, данные остаются на экране!');
+  });
+}
+</code></pre>
+        <p><em>Совет: проверьте работу формы в браузере и откройте консоль F12.</em></p>
+      </div>
+    </div>
+  </main>
 </body>
 </html>

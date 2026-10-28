@@ -1,82 +1,82 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вебинар 9: Шаг 2 — Мои бронирования</title>
-    <link rel="stylesheet" href="../../basic/css/style.css">
-    <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
-    <style>
-        .lesson-panel {
-            background: #1e293b; color: #f1f5f9; padding: 24px 32px; margin: 30px auto; max-width: 800px;
-            border-top: 4px solid #10b981; border-radius: 8px; font-family: monospace;
-        }
-        .lesson-panel h2 { color: #34d399; margin-top: 0; }
-        .demo-btn { background: #10b981; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; margin: 4px; font-weight: bold; }
-        .bookings-box { background: white; border-radius: 8px; padding: 16px; color: #1e293b; margin-top: 16px; font-family: sans-serif; }
-        .b-item { display: flex; justify-content: space-between; align-items: center; padding: 12px; border-bottom: 1px solid #e2e8f0; }
-        .b-item:last-child { border-bottom: none; }
-        .empty-alert { padding: 20px; text-align: center; color: #64748b; font-style: italic; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шаг 2 — Отрисовка списка бронирований и отмена | СмартОфис</title>
+  <link rel="stylesheet" href="../../basic/css/style.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
+  <script src="main.js" defer></script>
 </head>
 <body>
-    <header class="header">
-        <div class="container header-container">
-            <a href="../../basic/index.html" class="logo">
-                <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
-                <span>СмартОфис</span>
-            </a>
-            <span style="color:#666;">Шаг 2: Обработка пустого состояния</span>
-        </div>
-    </header>
+  <header class="header">
+    <div class="container header-container">
+      <a href="../../basic/index.html" class="logo">
+        <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
+        <span>СмартОфис</span>
+      </a>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="../../basic/index.html" class="nav-link">Главная</a></li>
+          <li><a href="../../basic/pages/catalog.html" class="nav-link">Каталог</a></li>
+          <li><a href="#" class="nav-link active">Мои бронирования</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <main class="container" style="margin-top: 30px;">
-        <div class="lesson-panel">
-            <h2>📅 Шаг 2: Список заявок и заглушка Empty State</h2>
-            <p style="font-family: sans-serif; color: #94a3b8;">
-                Попробуйте переключить состояние списка — с данными и когда список пуст:
-            </p>
+  <main class="main">
+    <div class="container">
+      <section class="hero-section"><h1 class="hero-title">Финальная сборка <span class="brand-highlight">«СмартОфис»</span></h1><p class="hero-subtitle">Учебный шаг 2 из 3: Мои бронирования и итоги курса</p></section><div id="demoBookings" class="bookings-demo-list"></div>
 
-            <div>
-                <button class="demo-btn" onclick="renderData(true)">Показать список с заявками</button>
-                <button class="demo-btn" style="background:#ef4444;" onclick="renderData(false)">Очистить список (Empty State)</button>
-            </div>
+      <div class="lesson-panel">
+        <span class="step-badge">📚 Шаг 2 из 3</span>
+        <h2>Отрисовка списка бронирований и отмена</h2>
+        <p>Считываем массив myBookings из localStorage, отрисовываем карточки и добавляем возможность отмены через метод .filter().</p>
+        <p>Код, который выполняется в этом шаге (откройте <code>main.js</code>):</p>
+        <pre><code>// Шаг 2: Список бронирований
+const container = document.getElementById('demoBookings');
 
-            <div class="bookings-box" id="bookingsContainer"></div>
-        </div>
-    </main>
+function loadAndRender() {
+  const list = JSON.parse(localStorage.getItem('demoBookingsList') || '[]');
 
-    <script>
-        const MOCK = [
-            { id: '74829', roomTitle: 'Мини-офис Focus', date: '2026-09-01', hours: 3, totalPrice: 1350 },
-            { id: '74830', roomTitle: 'Конференц-зал Alpha', date: '2026-09-03', hours: 2, totalPrice: 2400 }
-        ];
+  if (list.length === 0) {
+    container.innerHTML = '&lt;p style="color: #94a3b8; text-align: center; padding: 24px;"&gt;Нет сохранённых бронирований.&lt;/p&gt;';
+    return;
+  }
 
-        const container = document.getElementById('bookingsContainer');
+  container.innerHTML = list.map(b =&gt; `
+    &lt;div class="booking-item-card"&gt;
+      &lt;div&gt;
+        &lt;h4 style="color:#38bdf8; margin:0 0 6px;"&gt;${b.title}&lt;/h4&gt;
+        &lt;p style="margin:0; font-size:13px; color:#cbd5e1;"&gt;Часов: ${b.hours} | Итого: &lt;strong&gt;${b.price} ₽&lt;/strong&gt;&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;button onclick="removeBooking('${b.id}')" style="background:#ef4444; color:white; border:none; padding:6px 12px; border-radius:6px; cursor:pointer;"&gt;Отменить&lt;/button&gt;
+    &lt;/div&gt;
+  `).join('');
+}
 
-        function renderData(hasItems) {
-            const list = hasItems ? MOCK : [];
+window.removeBooking = function (id) {
+  let list = JSON.parse(localStorage.getItem('demoBookingsList') || '[]');
+  list = list.filter(item =&gt; item.id !== id);
+  localStorage.setItem('demoBookingsList', JSON.stringify(list));
+  loadAndRender();
+};
 
-            if (!list.length) {
-                container.innerHTML = '<div class="empty-alert">У вас пока нет активных бронирований.</div>';
-                return;
-            }
+// Добавим тестовую бронь, если пусто
+if (!localStorage.getItem('demoBookingsList')) {
+  localStorage.setItem('demoBookingsList', JSON.stringify([
+    { id: '1', title: 'Мини-офис Focus', hours: 3, price: 1350 },
+    { id: '2', title: 'Конференц-зал Alpha', hours: 2, price: 2400 }
+  ]));
+}
 
-            container.innerHTML = list.map(item => `
-                <div class="b-item">
-                    <div>
-                        <h4 style="margin: 0 0 4px 0; color: #0f172a;">${item.roomTitle}</h4>
-                        <div style="font-size: 13px; color: #64748b;">Дата: ${item.date} | ${item.hours} ч. | Заявка №${item.id}</div>
-                    </div>
-                    <div style="text-align: right;">
-                        <div style="font-weight: bold; color: #0284c7; font-size: 16px;">${item.totalPrice} ₽</div>
-                        <span style="color: #10b981; font-size: 12px; font-weight: bold;">Подтверждено</span>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        renderData(true);
-    </script>
+loadAndRender();
+</code></pre>
+        <p><em>Совет: проверьте добавление и удаление записей в панели Application → Local Storage (F12).</em></p>
+      </div>
+    </div>
+  </main>
 </body>
 </html>

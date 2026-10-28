@@ -1,61 +1,66 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вебинар 7: Шаг 1 — Защита функции initSlider()</title>
-    <link rel="stylesheet" href="../../basic/css/style.css">
-    <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
-    <style>
-        .lesson-panel {
-            background: #1e293b; color: #f1f5f9; padding: 24px 32px; margin: 30px auto; max-width: 800px;
-            border-top: 4px solid #3b82f6; border-radius: 8px; font-family: monospace;
-        }
-        .lesson-panel h2 { color: #60a5fa; margin-top: 0; }
-        .code-block { background: #0f172a; color: #a3e635; padding: 14px; border-radius: 6px; line-height: 1.6; white-space: pre-wrap; margin: 12px 0; }
-        .demo-btn { background: #3b82f6; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; margin: 4px; font-weight: bold; }
-        .result-box { background: #0f172a; border: 1px dashed #60a5fa; padding: 12px; border-radius: 6px; color: #60a5fa; margin-top: 10px; font-size: 14px; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шаг 1 — Поиск элементов слайдера в DOM | СмартОфис</title>
+  <link rel="stylesheet" href="../../basic/css/style.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
+  <script src="main.js" defer></script>
 </head>
 <body>
-    <header class="header">
-        <div class="container header-container">
-            <a href="../../basic/index.html" class="logo">
-                <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
-                <span>СмартОфис</span>
-            </a>
-            <span style="color:#666;">Шаг 1: Защита initSlider() от ошибок</span>
-        </div>
-    </header>
+  <header class="header">
+    <div class="container header-container">
+      <a href="../../basic/index.html" class="logo">
+        <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
+        <span>СмартОфис</span>
+      </a>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="../../basic/index.html" class="nav-link active">Главная</a></li>
+          <li><a href="../../basic/pages/catalog.html" class="nav-link">Каталог</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <main class="container" style="margin-top: 30px;">
-        <div class="lesson-panel">
-            <h2>🛡️ Шаг 1: Проверка наличия слайдера на странице</h2>
-            <p style="font-family: sans-serif; color: #94a3b8;">
-                На страницах вроде <code>catalog.html</code> или <code>login.html</code> слайдера нет. Чтобы код не падал с ошибкой, мы делаем проверку:
-            </p>
+  <main class="main">
+    <div class="container">
+      <section class="hero-section"><h1 class="hero-title">Интерактивный слайдер <span class="brand-highlight">«СмартОфис»</span></h1><p class="hero-subtitle">Учебный шаг 1 из 6: таймеры и состояние программы</p></section><div class="slider-demo-wrap">
+  <div class="slider-container">
+    <div class="slide active"><img src="../../basic/img/slider-1.jpg" alt="Слайд 1" class="slide-img"></div>
+    <div class="slide"><img src="../../basic/img/slider-2.jpg" alt="Слайд 2" class="slide-img"></div>
+    <div class="slide"><img src="../../basic/img/slider-3.jpg" alt="Слайд 3" class="slide-img"></div>
+    <div class="slide"><img src="../../basic/img/slider-4.jpg" alt="Слайд 4" class="slide-img"></div>
+    <button class="slider-btn slider-prev">‹</button>
+    <button class="slider-btn slider-next">›</button>
+    <div class="slider-dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+</div>
 
-            <div class="code-block">const slides = document.querySelectorAll('.slide');
-if (!slides.length) return; // Мягкий выход без ошибок!</div>
+      <div class="lesson-panel">
+        <span class="step-badge">📚 Шаг 1 из 6</span>
+        <h2>Поиск элементов слайдера в DOM</h2>
+        <p>Слайдер состоит из массива слайдов (.slide), точек (.dot) и кнопок навигации (.slider-prev, .slider-next). Находим их через querySelector.</p>
+        <p>Код, который выполняется в этом шаге (откройте <code>main.js</code>):</p>
+        <pre><code>// Шаг 1: Находим элементы слайдера
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+const prevBtn = document.querySelector('.slider-prev');
+const nextBtn = document.querySelector('.slider-next');
 
-            <p style="font-family: sans-serif; color: #e2e8f0; margin-top: 16px;">🎮 Проверьте, как работает защитная проверка:</p>
-            <button class="demo-btn" onclick="testOnPageWithNoSlider()">Запустить на странице без слайдера</button>
-
-            <div class="result-box" id="resultBox">Нажмите кнопку, чтобы протестировать...</div>
-        </div>
-    </main>
-
-    <script>
-        function testOnPageWithNoSlider() {
-            // Ищем слайды (которых на этой странице сейчас нет):
-            const slides = document.querySelectorAll('.fake-slide');
-            const box = document.getElementById('resultBox');
-
-            if (!slides.length) {
-                box.innerHTML = '✅ Проверка <code>if (!slides.length) return</code> сработала! ' + 
-                                'Слайды не найдены, функция тихо завершилась без падения сайта.';
-            }
-        }
-    </script>
+console.log('Найдено слайдов:', slides.length);
+console.log('Найдено точек-индикаторов:', dots.length);
+</code></pre>
+        <p><em>Совет: протестируйте клики и наблюдайте за сменой классов в панели Elements (F12).</em></p>
+      </div>
+    </div>
+  </main>
 </body>
 </html>

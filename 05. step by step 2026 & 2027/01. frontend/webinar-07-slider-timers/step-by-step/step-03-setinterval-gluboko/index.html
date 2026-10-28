@@ -1,72 +1,84 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вебинар 7: Шаг 3 — Таймер setInterval</title>
-    <link rel="stylesheet" href="../../basic/css/style.css">
-    <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
-    <style>
-        .lesson-panel {
-            background: #1e293b; color: #f1f5f9; padding: 24px 32px; margin: 30px auto; max-width: 800px;
-            border-top: 4px solid #f59e0b; border-radius: 8px; font-family: monospace;
-        }
-        .lesson-panel h2 { color: #fbbf24; margin-top: 0; }
-        .code-block { background: #0f172a; color: #a3e635; padding: 14px; border-radius: 6px; line-height: 1.6; white-space: pre-wrap; margin: 12px 0; }
-        .timer-display { font-size: 36px; font-weight: bold; color: #fbbf24; margin: 16px 0; font-family: sans-serif; }
-        .demo-btn { background: #f59e0b; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; margin: 4px; font-weight: bold; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шаг 3 — Функция showSlide(index) | СмартОфис</title>
+  <link rel="stylesheet" href="../../basic/css/style.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
+  <script src="main.js" defer></script>
 </head>
 <body>
-    <header class="header">
-        <div class="container header-container">
-            <a href="../../basic/index.html" class="logo">
-                <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
-                <span>СмартОфис</span>
-            </a>
-            <span style="color:#666;">Шаг 3: Таймер setInterval</span>
-        </div>
-    </header>
+  <header class="header">
+    <div class="container header-container">
+      <a href="../../basic/index.html" class="logo">
+        <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
+        <span>СмартОфис</span>
+      </a>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="../../basic/index.html" class="nav-link active">Главная</a></li>
+          <li><a href="../../basic/pages/catalog.html" class="nav-link">Каталог</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <main class="container" style="margin-top: 30px;">
-        <div class="lesson-panel">
-            <h2>⏱️ Шаг 3: Автопереключение через setInterval</h2>
-            <p style="font-family: sans-serif; color: #94a3b8;">
-                Каждые 1000 миллисекунд (1 секунду) таймер выполняет функцию и увеличивает счётчик:
-            </p>
+  <main class="main">
+    <div class="container">
+      <section class="hero-section"><h1 class="hero-title">Интерактивный слайдер <span class="brand-highlight">«СмартОфис»</span></h1><p class="hero-subtitle">Учебный шаг 3 из 6: таймеры и состояние программы</p></section><div class="slider-demo-wrap">
+  <div class="slider-container">
+    <div class="slide active"><img src="../../basic/img/slider-1.jpg" alt="Слайд 1" class="slide-img"></div>
+    <div class="slide"><img src="../../basic/img/slider-2.jpg" alt="Слайд 2" class="slide-img"></div>
+    <div class="slide"><img src="../../basic/img/slider-3.jpg" alt="Слайд 3" class="slide-img"></div>
+    <div class="slide"><img src="../../basic/img/slider-4.jpg" alt="Слайд 4" class="slide-img"></div>
+    <button class="slider-btn slider-prev">‹</button>
+    <button class="slider-btn slider-next">›</button>
+    <div class="slider-dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+</div>
 
-            <div class="code-block">let count = 0;
-const timerId = setInterval(() => {
-    count++;
-}, 1000);</div>
+      <div class="lesson-panel">
+        <span class="step-badge">📚 Шаг 3 из 6</span>
+        <h2>Функция showSlide(index)</h2>
+        <p>Функция showSlide убирает класс active у всех слайдов и точек, а затем ставит active только нужному индексу.</p>
+        <p>Код, который выполняется в этом шаге (откройте <code>main.js</code>):</p>
+        <pre><code>// Шаг 3: Функция showSlide(index)
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+let currentSlide = 0;
 
-            <div class="timer-display" id="timerBox">0 сек</div>
+function showSlide(index) {
+  // Циклическая проверка границ
+  if (index &gt;= slides.length) currentSlide = 0;
+  else if (index &lt; 0) currentSlide = slides.length - 1;
+  else currentSlide = index;
 
-            <div>
-                <button class="demo-btn" onclick="startTimer()">Запустить (start)</button>
-                <button class="demo-btn" style="background:#ef4444;" onclick="stopTimer()">Остановить (stop)</button>
-            </div>
-        </div>
-    </main>
+  // Переключаем слайды
+  slides.forEach((slide, idx) =&gt; {
+    slide.classList.toggle('active', idx === currentSlide);
+  });
 
-    <script>
-        let counter = 0;
-        let id = null;
+  // Переключаем точки
+  dots.forEach((dot, idx) =&gt; {
+    dot.classList.toggle('active', idx === currentSlide);
+  });
 
-        function startTimer() {
-            if (id) clearInterval(id); // Защита от дублей
-            id = setInterval(() => {
-                counter++;
-                document.getElementById('timerBox').textContent = counter + ' сек';
-            }, 1000);
-        }
+  console.log('Показан слайд №', currentSlide + 1);
+}
 
-        function stopTimer() {
-            clearInterval(id);
-            id = null;
-        }
-
-        startTimer();
-    </script>
+// Попробуем показать второй слайд (индекс 1)
+showSlide(1);
+</code></pre>
+        <p><em>Совет: протестируйте клики и наблюдайте за сменой классов в панели Elements (F12).</em></p>
+      </div>
+    </div>
+  </main>
 </body>
 </html>

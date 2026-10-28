@@ -1,93 +1,68 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вебинар 5: Шаг 5 — Метод .map()</title>
-    <link rel="stylesheet" href="../../basic/css/style.css">
-    <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
-    <style>
-        .lesson-panel {
-            background: #1e293b; color: #f1f5f9; padding: 24px 32px; margin: 30px auto; max-width: 1000px;
-            border-top: 4px solid #0284c7; border-radius: 8px; font-family: monospace;
-        }
-        .lesson-panel h2 { color: #38bdf8; margin-top: 0; }
-        .code-block { background: #0f172a; color: #a3e635; padding: 14px; border-radius: 6px; line-height: 1.6; white-space: pre-wrap; margin: 12px 0; }
-        .demo-btn { background: #0284c7; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; margin: 4px; font-weight: bold; font-size: 14px; }
-        .demo-btn:hover { background: #0369a1; }
-        .catalog-grid-demo {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; margin-top: 20px;
-        }
-        .mini-card {
-            background: white; border-radius: 8px; padding: 16px; color: #1e293b; font-family: sans-serif;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); border: 1px solid #e2e8f0;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шаг 5 — Метод .map(): рендеринг всего каталога | СмартОфис</title>
+  <link rel="stylesheet" href="../../basic/css/style.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
+  <script src="data.js" defer></script>
+  <script src="main.js" defer></script>
 </head>
 <body>
-    <header class="header">
-        <div class="container header-container">
-            <a href="../../basic/index.html" class="logo">
-                <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
-                <span>СмартОфис</span>
-            </a>
-            <span style="color:#666;">Шаг 5: Отрисовка каталога через .map()</span>
-        </div>
-    </header>
+  <header class="header">
+    <div class="container header-container">
+      <a href="../../basic/index.html" class="logo">
+        <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
+        <span>СмартОфис</span>
+      </a>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="../../basic/index.html" class="nav-link">Главная</a></li>
+          <li><a href="#" class="nav-link active">Каталог</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <main class="container" style="margin-top: 30px;">
-        <div class="lesson-panel">
-            <h2>⚡ Шаг 5: Генерация каталога функцией renderCatalog()</h2>
-            <p style="font-family: sans-serif; color: #94a3b8;">
-                Вот точная строка из <code>main.js</code> 5-го вебинара. Метод <code>.map()</code> берёт каждую комнату и возвращает HTML-код:
-            </p>
+  <main class="main">
+    <div class="container">
+      <section class="hero-section"><h1 class="hero-title">Динамический каталог <span class="brand-highlight">«СмартОфис»</span></h1><p class="hero-subtitle">Учебный шаг 5 из 7: работа с объектами и массивами</p></section><div id="demoContainer" class="rooms-demo-grid"></div>
 
-            <div class="code-block">function renderCatalog() {
-  const container = document.getElementById('catalogContainer');
-  container.innerHTML = OFFICE_ROOMS.map(room => `
-    &lt;div class="room-card"&gt;
-      &lt;h3&gt;${room.title}&lt;/h3&gt;
-      &lt;div class="card-price"&gt;${room.pricePerHour} ₽ / час&lt;/div&gt;
-    &lt;/div&gt;
-  `).join('');
-}</div>
+      <div class="lesson-panel">
+        <span class="step-badge">📚 Шаг 5 из 7</span>
+        <h2>Метод .map(): рендеринг всего каталога</h2>
+        <p>Метод .map() превращает массив данных в массив строк HTML. Метод .join('') склеивает их, а innerHTML вставляет на страницу.</p>
+        <p>Код, который выполняется в этом шаге (откройте <code>main.js</code>):</p>
+        <pre><code>// Шаг 5: Генерация всего каталога через .map()
+const container = document.getElementById('demoContainer');
 
-            <button class="demo-btn" onclick="runRenderCatalog()">🚀 Запустить renderCatalog()</button>
+if (container &amp;&amp; typeof OFFICE_ROOMS !== 'undefined') {
+  const cardsHtml = OFFICE_ROOMS.map(function (room) {
+    return `
+      &lt;div class="room-card"&gt;
+        &lt;div class="card-img-wrap"&gt;
+          &lt;img src="${room.image}" alt="${room.title}" class="card-img"&gt;
+        &lt;/div&gt;
+        &lt;div class="card-content"&gt;
+          &lt;h3 class="card-title"&gt;${room.title}&lt;/h3&gt;
+          &lt;div class="card-footer"&gt;
+            &lt;div class="card-price"&gt;${room.pricePerHour} ₽ &lt;span&gt;/ час&lt;/span&gt;&lt;/div&gt;
+            &lt;a href="?id=${room.id}" class="btn btn-primary"&gt;Выбрать&lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    `;
+  }).join('');
 
-            <!-- Контейнер, куда JS вставит карточки -->
-            <div id="catalogContainer" class="catalog-grid-demo">
-                <div style="color: #64748b; font-family: sans-serif; grid-column: 1 / -1; padding: 20px; text-align: center; border: 2px dashed #475569; border-radius: 8px;">
-                    Контейнер &lt;div id="catalogContainer"&gt; пока пуст. Нажмите кнопку выше!
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <script>
-        const OFFICE_ROOMS = [
-            { id: 'focus-1', title: 'Мини-офис Focus', pricePerHour: 450, area: '12 м²' },
-            { id: 'alpha-2', title: 'Конференц-зал Alpha', pricePerHour: 1200, area: '45 м²' },
-            { id: 'hub-3',   title: 'Опенспейс Hub',       pricePerHour: 250,  area: 'Рабочее место' },
-            { id: 'solo-4',  title: 'Переговорная Solo',   pricePerHour: 600,  area: '16 м²' }
-        ];
-
-        function runRenderCatalog() {
-            const container = document.getElementById('catalogContainer');
-            
-            // Ключевая магия JS: map + join
-            container.innerHTML = OFFICE_ROOMS.map(room => `
-                <div class="mini-card">
-                    <h3 style="margin: 0 0 8px 0; font-size: 17px; color: #0f172a;">${room.title}</h3>
-                    <div style="color: #0284c7; font-weight: bold; font-size: 16px;">${room.pricePerHour} ₽ <span style="font-size: 12px; color: #64748b;">/ час</span></div>
-                    <div style="font-size: 13px; color: #64748b; margin-top: 6px;">Площадь: ${room.area}</div>
-                    <a href="../step-06-url-params/index.html?id=${room.id}" style="display: inline-block; margin-top: 10px; color: #3b82f6; text-decoration: none; font-size: 13px; font-weight: 500;">
-                        Перейти к комнате →
-                    </a>
-                </div>
-            `).join('');
-
-            console.log('Отрисовано комнат через .map():', OFFICE_ROOMS.length);
-        }
-    </script>
+  container.innerHTML = cardsHtml;
+  console.log('Каталог успешно отрисован!');
+}
+</code></pre>
+        <p><em>Совет: откройте консоль браузера (F12 → Console), чтобы увидеть результат работы скрипта.</em></p>
+      </div>
+    </div>
+  </main>
 </body>
 </html>

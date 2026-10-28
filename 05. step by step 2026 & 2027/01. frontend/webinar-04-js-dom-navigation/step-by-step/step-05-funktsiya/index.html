@@ -1,116 +1,57 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Шаг 5 — Функции | СмартОфис</title>
-    <link rel="stylesheet" href="../../basic/css/style.css">
-    <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
-    <style>
-        .lesson-panel { background:#1e293b; color:#f1f5f9; padding:24px 32px; margin-top:40px; border-top:4px solid #ec4899; font-family:'Courier New',monospace; }
-        .lesson-panel h2 { color:#f472b6; margin:0 0 12px 0; font-size:18px; }
-        .step-badge { display:inline-block; background:#ec4899; color:white; padding:4px 12px; border-radius:20px; font-size:13px; margin-bottom:16px; font-family:sans-serif; }
-        .lesson-panel code { display:block; background:#0f172a; color:#a3e635; padding:16px; border-radius:8px; margin:12px 0; font-size:14px; line-height:1.8; white-space:pre; }
-        .lesson-panel p { color:#94a3b8; font-family:sans-serif; font-size:14px; margin:8px 0; }
-        .btn-row { display:flex; gap:8px; flex-wrap:wrap; margin:12px 0; }
-        .demo-btn { border:none; padding:9px 18px; border-radius:6px; font-size:13px; cursor:pointer; color:white; }
-        .btn-pink { background:#ec4899; } .btn-pink:hover { background:#be185d; }
-        .demo-output { background:#0f172a; color:#a3e635; padding:12px 16px; border-radius:6px; font-size:13px; margin-top:8px; min-height:44px; font-family:monospace; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шаг 5 — Функции в JavaScript | СмартОфис</title>
+  <link rel="stylesheet" href="../../basic/css/style.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
+  <script src="main.js" defer></script>
 </head>
 <body>
-    <header class="header">
-        <div class="container header-container">
-            <a href="../../basic/index.html" class="logo">
-                <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
-                <span>СмартОфис</span>
-            </a>
-        </div>
-    </header>
+  <header class="header">
+    <div class="container header-container">
+      <a href="../../basic/index.html" class="logo">
+        <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
+        <span>СмартОфис</span>
+      </a>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="#" class="nav-link active">Главная</a></li>
+          <li><a href="#" class="nav-link">Каталог</a></li>
+          <li><a href="#" class="nav-link">О нас</a></li>
+          <li><a href="#" class="nav-link nav-btn">Войти</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <main class="main">
-        <div class="container">
-            <section id="slider-block" class="slider-section" style="margin-top:24px;">
-                <div class="slider">
-                    <div id="slide1" class="slide active"><img src="../../basic/img/slider-1.jpg" alt="Слайд 1" class="slide-img"></div>
-                    <div id="slide2" class="slide"><img src="../../basic/img/slider-2.jpg" alt="Слайд 2" class="slide-img"></div>
-                    <div id="slide3" class="slide"><img src="../../basic/img/slider-3.jpg" alt="Слайд 3" class="slide-img"></div>
-                    <div id="slide4" class="slide"><img src="../../basic/img/slider-4.jpg" alt="Слайд 4" class="slide-img"></div>
-                    <button id="leftSliderBtn" class="slider-btn slider-prev">&#8249;</button>
-                    <button id="rightSliderBtn" class="slider-btn slider-next">&#8250;</button>
-                    <div class="slider-dots">
-                        <span class="dot active"></span><span class="dot"></span>
-                        <span class="dot"></span><span class="dot"></span>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </main>
+  <main class="main">
+    <div class="container">
+      <section class="hero-section"><h1 class="hero-title">Портал бронирования офисных комнат <span class="brand-highlight">«СмартОфис»</span></h1><p class="hero-subtitle">Тестируем работу скрипта навигации в шапке сайта выше 👆</p></section>
 
-    <div class="lesson-panel">
+      <div class="lesson-panel">
         <span class="step-badge">📚 Шаг 5 из 9</span>
-        <h2>Функции — именованные блоки кода</h2>
-
-        <p>Функция — записанный «рецепт». Можно вызывать сколько угодно раз:</p>
-        <code>function sliderClick() {
-    slide1El.classList.remove('active'); // Прячем слайд 1
-    slide3El.classList.add('active');    // Показываем слайд 3
+        <h2>Функции в JavaScript</h2>
+        <p>Функция — это именованный блок кода, который можно вызывать сколько угодно раз. Она помогает не дублировать код.</p>
+        <p>Код, который выполняется в этом шаге (откройте <code>main.js</code>):</p>
+        <pre><code>// Шаг 5: Функции
+// Объявляем функцию
+function highlightLink(linkElement) {
+  linkElement.classList.add('active');
+  console.log('Ссылка успешно подсвечена:', linkElement.textContent.trim());
 }
 
-// Вызвать функцию:
-sliderClick(); // Запускаем рецепт!</code>
-
-        <p>🎮 Нажми кнопку — вызовется функция sliderClick():</p>
-        <div class="btn-row">
-            <button class="demo-btn btn-pink" onclick="sliderClickDemo()">Вызвать sliderClick()</button>
-            <button class="demo-btn btn-pink" onclick="resetSlider()">Сброс (слайд 1)</button>
-        </div>
-        <div class="demo-output" id="demoOutput">Нажми кнопку — функция переключит на слайд 3...</div>
-
-        <p style="margin-top:16px;">⚠️ Пока функция несовершенна — всегда показывает слайд 3. Исправим в шаге 8!</p>
+// Находим вторую ссылку («Каталог») и вызываем функцию
+const allLinks = document.querySelectorAll('.nav-link');
+if (allLinks.length &gt; 1) {
+  highlightLink(allLinks[1]);
+}
+</code></pre>
+        <p><em>Совет: откройте консоль браузера (F12 → Вкладка Console), чтобы увидеть результат работы скрипта.</em></p>
+      </div>
     </div>
-
-    <script>
-        // ШАГ 5: Функции
-
-        // Находим элементы (шаг 3)
-        const slide1El = document.getElementById('slide1');
-        const slide2El = document.getElementById('slide2');
-        const slide3El = document.getElementById('slide3');
-        const slide4El = document.getElementById('slide4');
-        const dots = document.querySelectorAll('.dot');
-
-        // ======================================================
-        // ВОТ ОНА — функция из вашего main.js!
-        // Объявляем функцию (она пока не выполняется, просто записана)
-        // ======================================================
-        function sliderClickDemo() {
-            // Тело функции — выполнится когда вызовем sliderClickDemo()
-            slide1El.classList.remove('active'); // Прячем слайд 1
-            slide3El.classList.add('active');    // Показываем слайд 3
-
-            // Обновляем точки
-            dots.forEach(function(d) { d.classList.remove('active'); });
-            dots[2].classList.add('active');
-
-            document.getElementById('demoOutput').textContent =
-                'sliderClick() выполнилась! slide1.classList.remove("active") + slide3.classList.add("active")';
-            console.log('sliderClick() вызвана!');
-        }
-
-        function resetSlider() {
-            // Убираем active у всех слайдов
-            [slide1El, slide2El, slide3El, slide4El].forEach(function(s) {
-                s.classList.remove('active');
-            });
-            // Добавляем на первый
-            slide1El.classList.add('active');
-            dots.forEach(function(d) { d.classList.remove('active'); });
-            dots[0].classList.add('active');
-            document.getElementById('demoOutput').textContent = 'Сброс! Слайд 1 снова активен.';
-        }
-
-        console.log('Функции объявлены! Нажми кнопку чтобы вызвать sliderClickDemo()');
-    </script>
+  </main>
 </body>
 </html>

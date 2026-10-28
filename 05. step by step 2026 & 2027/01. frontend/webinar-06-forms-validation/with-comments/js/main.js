@@ -1,322 +1,114 @@
-// СмартОфис — Скрипт веб-приложения (Вебинар 6)
+// ==========================================================================
+// СмартОфис — Вебинар 06: Формы и валидация данных
+// Подробная учебная версия с комментариями к каждой строке для 1 курса
+// ==========================================================================
 
-// [Событие 'DOMContentLoaded' срабатывает, когда браузер полностью построил HTML-дерево страницы]
-// [ Мы запускаем функции только после того, как все теги загружены и готовы к работе]
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function () {
+  console.log('DOM готов. Запускаем обработку форм...');
   initNavigation();
-  initSlider();
-  renderCatalog();
-  initRoomDetails();
   initRegisterForm();
   initLoginForm();
 });
 
-// [Всплывающие уведомления (Toast) — это элементы, которые создаются через createElement и плавно исчезают через таймер]
-// [ Показываем красивое всплывающее сообщение в правом нижнем углу вместо устаревшего alert()]
-function showNotification(message, type = 'success') {
-  let container = document.getElementById('toastContainer');
-  if (!container) {
-    container = document.createElement('div');
-    container.id = 'toastContainer';
-    container.className = 'toast-container';
-    document.body.appendChild(container);
-  }
-
-  const toast = document.createElement('div');
-  toast.className = 'toast toast-' + type;
-  toast.textContent = message;
-
-  container.appendChild(toast);
-
-  // [setTimeout выполняет действие через указанное время (3500 мс = 3.5 секунды)]
-  setTimeout(() => {
-    toast.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-    toast.style.opacity = '0';
-    toast.style.transform = 'translateY(10px)';
-    setTimeout(() => toast.remove(), 300); // Удаляем из DOM после плавного угасания
-  }, 3500);
-}
-
-// [Функция — это многократно используемый блок кода, решающий одну понятную задачу]
-// [ Функция подсвечивает пункт меню той страницы, на которой сейчас находится пользователь]
+// 1. Навигация сайта
 function initNavigation() {
-  // [document.querySelectorAll находит ВСЕ элементы с указанным CSS-классом]
-  const links = document.querySelectorAll('.nav-link');
-  // [window.location.pathname возвращает путь текущей страницы в строке браузера]
-  const current = window.location.pathname;
-
-  links.forEach(link => {
-    const href = link.getAttribute('href');
-    if (!href) return;
-    
-    // Сначала снимаем активный класс со всех ссылок
-    link.classList.remove('active');
-
-    // [Проверяем совпадение адреса через понятные константы-условия]
-    const isHome = (current.endsWith('index.html') || current.endsWith('/') || current === '') && (href === 'index.html' || href === '../index.html');
-    const hasCatalog = (href.includes('catalog.html') || href.includes('room-details.html')) && (current.includes('catalog.html') || current.includes('room-details.html'));
-    const isBooking = href.includes('booking.html') && current.includes('booking.html');
-    const isMyBookings = href.includes('my-bookings.html') && current.includes('my-bookings.html');
-    const isLogin = href.includes('login.html') && current.includes('login.html');
-    const isRegister = href.includes('register.html') && current.includes('register.html');
-
-    const isActive = isHome || hasCatalog || isBooking || isMyBookings || isLogin || isRegister;
-    if (isActive) {
+  const navLinks = document.querySelectorAll('.nav-link');
+  navLinks.forEach(function (link) {
+    link.addEventListener('click', function () {
+      navLinks.forEach(function (item) { item.classList.remove('active'); });
       link.classList.add('active');
-    }
+    });
   });
-
-  updateAuthNav();
 }
 
-// [localStorage — встроенное хранилище браузера, позволяющее сохранять данные между страницами]
-// [ Обновляем меню в зависимости от того, вошел ли пользователь в систему]
-function updateAuthNav() {
-  const currentUser = localStorage.getItem('currentUser');
-  const myBookingsNavItem = document.getElementById('myBookingsNavItem');
-  const authNavBtn = document.getElementById('authNavBtn');
-
-  if (currentUser) {
-    // Если пользователь вошел — показываем пункт «Мои бронирования» и меняем кнопку на «Выйти»
-    if (myBookingsNavItem) myBookingsNavItem.style.display = 'block';
-    if (authNavBtn) {
-      authNavBtn.textContent = 'Выйти';
-      authNavBtn.href = '#';
-      authNavBtn.onclick = (e) => {
-        e.preventDefault();
-        localStorage.removeItem('currentUser'); // Удаляем сохраненную авторизацию
-        showNotification('Вы вышли из системы', 'info');
-        const isPages = window.location.pathname.includes('/pages/');
-        setTimeout(() => {
-          window.location.href = isPages ? '../index.html' : 'index.html';
-        }, 1000);
-      };
-    }
-  } else {
-    // Если пользователь не вошел — скрываем «Мои бронирования» и показываем кнопку «Войти»
-    if (myBookingsNavItem) myBookingsNavItem.style.display = 'none';
-    if (authNavBtn) {
-      authNavBtn.textContent = 'Войти';
-      const isPages = window.location.pathname.includes('/pages/');
-      authNavBtn.href = isPages ? 'login.html' : 'pages/login.html';
-      authNavBtn.onclick = null;
-    }
-  }
-}
-
-
-// [Динамическая отрисовка (рендеринг) — это создание HTML-разметки из данных массива прямо в браузере]
-// [ Проходим по массиву OFFICE_ROOMS и создаем карточки комнат в каталоге]
-function renderCatalog() {
-  const container = document.getElementById('catalogContainer');
-  if (!container || typeof OFFICE_ROOMS === 'undefined') return;
-
-  // [Метод map() трансформирует каждый объект комнаты в кусок HTML-кода]
-  // [Метод join('') склеивает массив получившихся строк в одну большую строку]
-  container.innerHTML = OFFICE_ROOMS.map(room => `
-    <div class="room-card">
-      <div class="card-img-wrap">
-        <a href="room-details.html?id=${room.id}">
-          <img src="${room.image}" alt="${room.title}" class="card-img" onerror="this.src='../img/no-image.svg'">
-        </a>
-      </div>
-      <div class="card-content">
-        <h3 class="card-title">
-          <a href="room-details.html?id=${room.id}" style="text-decoration: none; color: inherit;">${room.title}</a>
-        </h3>
-        <ul class="card-equipment">
-          ${room.equipment.map(item => `<li>${item}</li>`).join('')}
-        </ul>
-        <div class="card-footer">
-          <div class="card-price">${room.pricePerHour} ₽ <span>/ час</span></div>
-          <div class="card-btns">
-            <!-- Кнопка-иконка для перехода на страницу детального описания -->
-            <a href="room-details.html?id=${room.id}" class="btn-icon" title="Подробнее о комнате" aria-label="Подробнее"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
-            <a href="booking.html?room=${room.id}" class="btn btn-primary">Забронировать</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  `).join('');
-}
-
-
-// [ Отображение подробной информации о комнате на странице room-details.html]
-function initRoomDetails() {
-  const container = document.getElementById('roomDetailsContainer');
-  if (!container || typeof OFFICE_ROOMS === 'undefined') return;
-
-  // [Считываем параметр ?id=... из адресной строки]
-  const urlParams = new URLSearchParams(window.location.search);
-  const roomId = urlParams.get('id') || urlParams.get('room');
-  
-  // [Метод find() ищет первый элемент массива, удовлетворяющий условию]
-  const room = OFFICE_ROOMS.find(r => r.id === roomId);
-
-  if (!room) {
-    container.innerHTML = `
-      <div class="empty-message">
-        <h2>Комната не найдена</h2>
-        <p style="margin: 10px 0 20px 0;">Возможно, ссылка устарела или комната была удалена.</p>
-        <a href="catalog.html" class="btn btn-primary">Вернуться в каталог</a>
-      </div>
-    `;
-    return;
-  }
-
-  // Формируем подробную карточку выбранной комнаты
-  container.innerHTML = `
-    <div class="room-details-card">
-      <div class="room-details-gallery">
-        <img src="${room.image}" alt="${room.title}" class="room-details-img" onerror="this.src='../img/no-image.svg'">
-      </div>
-      <div class="room-details-info">
-        <div class="room-details-header">
-          <h1 class="room-details-title">${room.title}</h1>
-          <div class="room-details-price">${room.pricePerHour} ₽ <span>/ час</span></div>
-        </div>
-
-        <div class="room-badges">
-          <span class="room-badge">${room.capacity}</span>
-          <span class="room-badge">${room.area}</span>
-          ${room.isPopular ? '<span class="room-badge badge-popular">Популярное</span>' : ''}
-        </div>
-
-        <p class="room-description">${room.description}</p>
-
-        <div class="room-specs">
-          <h3>Оснащение и удобства:</h3>
-          <ul class="card-equipment">
-            ${room.equipment.map(item => `<li>${item}</li>`).join('')}
-          </ul>
-        </div>
-
-        <div class="room-details-actions">
-          <a href="booking.html?room=${room.id}" class="btn btn-primary" style="padding: 10px 20px; font-size: 15px;">Забронировать эту комнату</a>
-          <a href="catalog.html" class="btn btn-outline" style="padding: 10px 18px; font-size: 15px;">← Назад в каталог</a>
-        </div>
-      </div>
-    </div>
-  `;
-}
-
-
-// [ Валидация полей формы регистрации]
+// 2. Обработка и валидация формы регистрации
 function initRegisterForm() {
   const form = document.getElementById('registerForm');
   if (!form) return;
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault(); // Запрещаем стандартную отправку
+  form.addEventListener('submit', function (event) {
+    // Обязательно отменяем стандартное поведение формы:
+    // по умолчанию браузер пытается отправить запрос на сервер и перезагрузить страницу
+    event.preventDefault();
+
+    // Находим поля ввода
+    const nameInput = document.getElementById('regName');
+    const emailInput = document.getElementById('regEmail');
+    const passInput = document.getElementById('regPassword');
+    const confirmInput = document.getElementById('regConfirmPassword');
+
+    // Флаг успешности проверки
     let isValid = true;
-    const fields = ['login', 'password', 'confirmPassword', 'fullName', 'email', 'phone'];
-    
-    // Проверяем каждое поле на заполненность
-    fields.forEach(id => {
-      const input = document.getElementById(id);
-      if (!input) return;
-      if (!input.value.trim()) {
-        input.classList.add('is-invalid');
-        isValid = false;
-      } else {
-        input.classList.remove('is-invalid');
-      }
+
+    // Сначала удаляем класс ошибки у всех полей
+    [nameInput, emailInput, passInput, confirmInput].forEach(function (input) {
+      if (input) input.classList.remove('is-invalid');
     });
 
-    // Проверяем совпадение пароля и подтверждения пароля
-    const pass = document.getElementById('password');
-    const confirm = document.getElementById('confirmPassword');
-    const isPasswordMismatch = pass && confirm && pass.value && confirm.value && pass.value !== confirm.value;
-    if (isPasswordMismatch) {
-      confirm.classList.add('is-invalid');
+    // Метод .trim() удаляет случайные пробелы в начале и в конце строки
+    if (!nameInput.value.trim()) {
+      nameInput.classList.add('is-invalid');
+      isValid = false;
+    }
+    if (!emailInput.value.trim()) {
+      emailInput.classList.add('is-invalid');
+      isValid = false;
+    }
+    if (!passInput.value.trim()) {
+      passInput.classList.add('is-invalid');
       isValid = false;
     }
 
-    // Если все поля заполнены корректно — сообщаем об успехе всплывающим уведомлением
+    // Проверяем, совпадают ли пароль и его подтверждение
+    if (passInput.value !== confirmInput.value) {
+      confirmInput.classList.add('is-invalid');
+      isValid = false;
+    }
+
+    // Если все поля заполнены верно:
     if (isValid) {
-      showNotification('Пользователь зарегистрирован успешно!', 'success');
-      form.reset();
-      setTimeout(() => {
-        window.location.href = 'login.html';
-      }, 1200);
+      const newUser = {
+        name: nameInput.value.trim(),
+        email: emailInput.value.trim()
+      };
+      // Сохраняем пользователя в localStorage в виде JSON-строки
+      localStorage.setItem('currentUser', JSON.stringify(newUser));
+      alert('Регистрация успешна! Добро пожаловать, ' + newUser.name);
+      window.location.href = '../index.html';
     }
   });
 }
 
-// [ Проверка авторизации на форме входа и сохранение в localStorage]
+// 3. Обработка формы входа
 function initLoginForm() {
   const form = document.getElementById('loginForm');
   if (!form) return;
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const login = document.getElementById('login').value.trim();
-    const pass = document.getElementById('password').value.trim();
-    const alertBox = document.getElementById('loginAlert');
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
 
-    // Проверяем тестовые данные (admin / 12345)
-    const isValidUser = (login === 'admin' && pass === '12345');
-    if (isValidUser) {
-      // Сохраняем имя вошедшего пользователя в localStorage
-      localStorage.setItem('currentUser', login);
-      if (alertBox) alertBox.style.display = 'none';
-      showNotification('Успешный вход в систему!', 'success');
-      setTimeout(() => {
-        window.location.href = 'my-bookings.html';
-      }, 1000);
-    } else {
-      if (alertBox) {
-        alertBox.textContent = 'Неверный логин или пароль';
-        alertBox.className = 'form-alert alert-danger';
-        alertBox.style.display = 'block';
-      }
-      showNotification('Неверный логин или пароль', 'danger');
+    const emailInput = document.getElementById('loginEmail');
+    const passInput = document.getElementById('loginPassword');
+
+    let isValid = true;
+    [emailInput, passInput].forEach(function (input) {
+      if (input) input.classList.remove('is-invalid');
+    });
+
+    if (!emailInput.value.trim()) {
+      emailInput.classList.add('is-invalid');
+      isValid = false;
+    }
+    if (!passInput.value.trim()) {
+      passInput.classList.add('is-invalid');
+      isValid = false;
+    }
+
+    if (isValid) {
+      const user = { email: emailInput.value.trim() };
+      localStorage.setItem('currentUser', JSON.stringify(user));
+      alert('Вход выполнен успешно!');
+      window.location.href = '../index.html';
     }
   });
 }
-
-// [Функция интерактивного слайдера фотографий]
-function initSlider() {
-  const slides = document.querySelectorAll('.slide');
-  const dots = document.querySelectorAll('.dot');
-  const prevBtn = document.querySelector('.slider-prev');
-  const nextBtn = document.querySelector('.slider-next');
-  if (!slides.length) return;
-
-  let currentSlide = 0;
-  let timerId = null;
-
-  function showSlide(index) {
-    if (index >= slides.length) currentSlide = 0;
-    else if (index < 0) currentSlide = slides.length - 1;
-    else currentSlide = index;
-
-    slides.forEach((s, i) => s.classList.toggle('active', i === currentSlide));
-    dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
-  }
-
-  function next() { showSlide(currentSlide + 1); }
-  function prev() { showSlide(currentSlide - 1); }
-
-  function startAuto() {
-    stopAuto();
-    timerId = setInterval(next, 3000);
-  }
-
-  function stopAuto() {
-    if (timerId) clearInterval(timerId);
-  }
-
-  if (nextBtn) nextBtn.addEventListener('click', () => { next(); startAuto(); });
-  if (prevBtn) prevBtn.addEventListener('click', () => { prev(); startAuto(); });
-
-  dots.forEach((dot, idx) => {
-    dot.addEventListener('click', () => {
-      showSlide(idx);
-      startAuto();
-    });
-  });
-
-  startAuto();
-}
-

@@ -1,101 +1,66 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вебинар 6: Шаг 7 — Авторизация и localStorage</title>
-    <link rel="stylesheet" href="../../basic/css/style.css">
-    <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
-    <style>
-        .lesson-panel {
-            background: #1e293b; color: #f1f5f9; padding: 24px 32px; margin: 30px auto; max-width: 800px;
-            border-top: 4px solid #06b6d4; border-radius: 8px; font-family: monospace;
-        }
-        .lesson-panel h2 { color: #22d3ee; margin-top: 0; }
-        .form-demo-box {
-            background: white; border-radius: 8px; padding: 24px; color: #1e293b; margin-top: 16px; font-family: sans-serif;
-            max-width: 400px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-        }
-        .form-control { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; margin: 6px 0 12px; box-sizing: border-box; }
-        .submit-btn { width: 100%; padding: 10px; background: #06b6d4; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; }
-        .auth-status { background: #0f172a; border: 1px dashed #22d3ee; padding: 16px; border-radius: 6px; color: #22d3ee; margin-top: 16px; font-size: 15px; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шаг 7 — Сохранение пользователя в localStorage | СмартОфис</title>
+  <link rel="stylesheet" href="../../basic/css/style.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
+  <script src="main.js" defer></script>
 </head>
 <body>
-    <header class="header">
-        <div class="container header-container">
-            <a href="../../basic/index.html" class="logo">
-                <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
-                <span>СмартОфис</span>
-            </a>
-            <span style="color:#666;">Шаг 7: Финал 6-го вебинара (localStorage)</span>
-        </div>
-    </header>
+  <header class="header">
+    <div class="container header-container">
+      <a href="../../basic/index.html" class="logo">
+        <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
+        <span>СмартОфис</span>
+      </a>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="../../basic/index.html" class="nav-link">Главная</a></li>
+          <li><a href="../../basic/pages/catalog.html" class="nav-link">Каталог</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <main class="container" style="margin-top: 30px;">
-        <div class="lesson-panel">
-            <h2>🔐 Шаг 7: Вход в систему и сохранение в localStorage</h2>
-            <p style="font-family: sans-serif; color: #94a3b8;">
-                Тестовые данные для входа: логин: <code>admin</code>, пароль: <code>12345</code>.
-            </p>
+  <main class="main">
+    <div class="container">
+      <section class="hero-section"><h1 class="hero-title">Формы и валидация <span class="brand-highlight">«СмартОфис»</span></h1><p class="hero-subtitle">Учебный шаг 7 из 7: проверка ввода данных</p></section><div class="demo-form-card">
+      <h3 style="color: #f8fafc; margin-bottom: 16px;">Тестовая форма (Шаг 7)</h3>
+      <form id="demoForm">
+        <label for="userEmail">Электронная почта:</label><input type="text" id="userEmail" placeholder="example@mail.ru">
+        <button type="submit" class="btn">Отправить форму</button>
+      </form>
+    </div>
 
-            <div class="form-demo-box">
-                <form id="loginForm">
-                    <label>Логин:</label>
-                    <input type="text" id="login" class="form-control" placeholder="admin">
+      <div class="lesson-panel">
+        <span class="step-badge">📚 Шаг 7 из 7</span>
+        <h2>Сохранение пользователя в localStorage</h2>
+        <p>localStorage позволяет сохранять данные в браузере даже после закрытия вкладки. Объекты сохраняются через JSON.stringify().</p>
+        <p>Код, который выполняется в этом шаге (откройте <code>main.js</code>):</p>
+        <pre><code>// Шаг 7: Авторизация и localStorage
+const form = document.getElementById('demoForm');
 
-                    <label>Пароль:</label>
-                    <input type="password" id="password" class="form-control" placeholder="12345">
+if (form) {
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
 
-                    <button type="submit" class="submit-btn">Войти в СмартОфис</button>
-                </form>
-            </div>
+    const email = document.getElementById('userEmail').value.trim();
+    if (email) {
+      const user = { email: email, loginTime: new Date().toLocaleTimeString() };
+      localStorage.setItem('currentUser', JSON.stringify(user));
 
-            <div class="auth-status" id="authBox">
-                Статус авторизации: <strong id="userLabel">Гость (не авторизован)</strong>
-                <div style="margin-top: 8px;">
-                    <button onclick="logout()" style="background:#ef4444; color:white; border:none; padding:6px 12px; border-radius:4px; cursor:pointer;">Выйти (localStorage.removeItem)</button>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <script>
-        const form = document.getElementById('loginForm');
-        const userLabel = document.getElementById('userLabel');
-
-        function updateUI() {
-            const user = localStorage.getItem('currentUser');
-            if (user) {
-                userLabel.textContent = 'Авторизован как "' + user + '"! 🎉';
-                userLabel.style.color = '#4ade80';
-            } else {
-                userLabel.textContent = 'Гость (не авторизован)';
-                userLabel.style.color = '#94a3b8';
-            }
-        }
-
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const log = document.getElementById('login').value.trim();
-            const pass = document.getElementById('password').value.trim();
-
-            if (log === 'admin' && pass === '12345') {
-                localStorage.setItem('currentUser', log);
-                alert('Успешный вход в систему!');
-                updateUI();
-            } else {
-                alert('Неверный логин или пароль! Используйте admin / 12345');
-            }
-        });
-
-        function logout() {
-            localStorage.removeItem('currentUser');
-            alert('Вы вышли из системы!');
-            updateUI();
-        }
-
-        updateUI();
-    </script>
+      alert('Добро пожаловать! Вы авторизованы как ' + email);
+      console.log('Сохранено в localStorage:', user);
+    }
+  });
+}
+</code></pre>
+        <p><em>Совет: проверьте работу формы в браузере и откройте консоль F12.</em></p>
+      </div>
+    </div>
+  </main>
 </body>
 </html>

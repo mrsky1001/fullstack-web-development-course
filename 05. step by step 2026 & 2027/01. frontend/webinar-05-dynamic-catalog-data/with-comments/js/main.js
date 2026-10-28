@@ -1,245 +1,94 @@
-// СмартОфис — Скрипт веб-приложения (Вебинар 5)
+// ==========================================================================
+// СмартОфис — Вебинар 05: Динамический каталог и данные
+// Подробная учебная версия с комментариями к каждой строке для 1 курса
+// ==========================================================================
 
-// [Событие 'DOMContentLoaded' срабатывает, когда браузер полностью построил HTML-дерево страницы]
-// [ Мы запускаем функции только после того, как все теги загружены и готовы к работе]
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function () {
+  console.log('DOM готов. Запускаем инициализацию...');
   initNavigation();
-  initSlider();
   renderCatalog();
   initRoomDetails();
 });
 
-// [Всплывающие уведомления (Toast) — это элементы, которые создаются через createElement и плавно исчезают через таймер]
-// [ Показываем красивое всплывающее сообщение в правом нижнем углу вместо устаревшего alert()]
-function showNotification(message, type = 'success') {
-  let container = document.getElementById('toastContainer');
-  if (!container) {
-    container = document.createElement('div');
-    container.id = 'toastContainer';
-    container.className = 'toast-container';
-    document.body.appendChild(container);
-  }
-
-  const toast = document.createElement('div');
-  toast.className = 'toast toast-' + type;
-  toast.textContent = message;
-
-  container.appendChild(toast);
-
-  // [setTimeout выполняет действие через указанное время (3500 мс = 3.5 секунды)]
-  setTimeout(() => {
-    toast.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-    toast.style.opacity = '0';
-    toast.style.transform = 'translateY(10px)';
-    setTimeout(() => toast.remove(), 300); // Удаляем из DOM после плавного угасания
-  }, 3500);
-}
-
-// [Функция — это многократно используемый блок кода, решающий одну понятную задачу]
-// [ Функция подсвечивает пункт меню той страницы, на которой сейчас находится пользователь]
+// 1. Навигация сайта
 function initNavigation() {
-  // [document.querySelectorAll находит ВСЕ элементы с указанным CSS-классом]
-  const links = document.querySelectorAll('.nav-link');
-  // [window.location.pathname возвращает путь текущей страницы в строке браузера]
-  const current = window.location.pathname;
-
-  links.forEach(link => {
-    const href = link.getAttribute('href');
-    if (!href) return;
-    
-    // Сначала снимаем активный класс со всех ссылок
-    link.classList.remove('active');
-
-    // [Проверяем совпадение адреса через понятные константы-условия]
-    const isHome = (current.endsWith('index.html') || current.endsWith('/') || current === '') && (href === 'index.html' || href === '../index.html');
-    const hasCatalog = (href.includes('catalog.html') || href.includes('room-details.html')) && (current.includes('catalog.html') || current.includes('room-details.html'));
-    const isBooking = href.includes('booking.html') && current.includes('booking.html');
-    const isMyBookings = href.includes('my-bookings.html') && current.includes('my-bookings.html');
-    const isLogin = href.includes('login.html') && current.includes('login.html');
-    const isRegister = href.includes('register.html') && current.includes('register.html');
-
-    const isActive = isHome || hasCatalog || isBooking || isMyBookings || isLogin || isRegister;
-    if (isActive) {
+  const navLinks = document.querySelectorAll('.nav-link');
+  navLinks.forEach(function (link) {
+    link.addEventListener('click', function () {
+      navLinks.forEach(function (item) { item.classList.remove('active'); });
       link.classList.add('active');
-    }
+    });
   });
-
-  updateAuthNav();
 }
 
-// [localStorage — встроенное хранилище браузера, позволяющее сохранять данные между страницами]
-// [ Обновляем меню в зависимости от того, вошел ли пользователь в систему]
-function updateAuthNav() {
-  const currentUser = localStorage.getItem('currentUser');
-  const myBookingsNavItem = document.getElementById('myBookingsNavItem');
-  const authNavBtn = document.getElementById('authNavBtn');
-
-  if (currentUser) {
-    // Если пользователь вошел — показываем пункт «Мои бронирования» и меняем кнопку на «Выйти»
-    if (myBookingsNavItem) myBookingsNavItem.style.display = 'block';
-    if (authNavBtn) {
-      authNavBtn.textContent = 'Выйти';
-      authNavBtn.href = '#';
-      authNavBtn.onclick = (e) => {
-        e.preventDefault();
-        localStorage.removeItem('currentUser'); // Удаляем сохраненную авторизацию
-        showNotification('Вы вышли из системы', 'info');
-        const isPages = window.location.pathname.includes('/pages/');
-        setTimeout(() => {
-          window.location.href = isPages ? '../index.html' : 'index.html';
-        }, 1000);
-      };
-    }
-  } else {
-    // Если пользователь не вошел — скрываем «Мои бронирования» и показываем кнопку «Войти»
-    if (myBookingsNavItem) myBookingsNavItem.style.display = 'none';
-    if (authNavBtn) {
-      authNavBtn.textContent = 'Войти';
-      const isPages = window.location.pathname.includes('/pages/');
-      authNavBtn.href = isPages ? 'login.html' : 'pages/login.html';
-      authNavBtn.onclick = null;
-    }
-  }
-}
-
-
-// [Динамическая отрисовка (рендеринг) — это создание HTML-разметки из данных массива прямо в браузере]
-// [ Проходим по массиву OFFICE_ROOMS и создаем карточки комнат в каталоге]
+// 2. Функция динамической отрисовки каталога
 function renderCatalog() {
-  const container = document.getElementById('catalogContainer');
+  // Находим контейнер для карточек
+  const container = document.getElementById('catalogRooms');
+  // Если на этой странице нет каталога (например, мы на Главной), выходим
   if (!container || typeof OFFICE_ROOMS === 'undefined') return;
 
-  // [Метод map() трансформирует каждый объект комнаты в кусок HTML-кода]
-  // [Метод join('') склеивает массив получившихся строк в одну большую строку]
-  container.innerHTML = OFFICE_ROOMS.map(room => `
-    <div class="room-card">
-      <div class="card-img-wrap">
-        <a href="room-details.html?id=${room.id}">
+  // Метод .map() проходит по каждому объекту room в массиве OFFICE_ROOMS
+  // и превращает его в строку с HTML-разметкой карточки
+  const htmlCards = OFFICE_ROOMS.map(function (room) {
+    return `
+      <div class="room-card">
+        <div class="card-img-wrap">
           <img src="${room.image}" alt="${room.title}" class="card-img" onerror="this.src='../img/no-image.svg'">
-        </a>
-      </div>
-      <div class="card-content">
-        <h3 class="card-title">
-          <a href="room-details.html?id=${room.id}" style="text-decoration: none; color: inherit;">${room.title}</a>
-        </h3>
-        <ul class="card-equipment">
-          ${room.equipment.map(item => `<li>${item}</li>`).join('')}
-        </ul>
-        <div class="card-footer">
-          <div class="card-price">${room.pricePerHour} ₽ <span>/ час</span></div>
-          <div class="card-btns">
-            <!-- Кнопка-иконка для перехода на страницу детального описания -->
-            <a href="room-details.html?id=${room.id}" class="btn-icon" title="Подробнее о комнате" aria-label="Подробнее"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>
-            <a href="booking.html?room=${room.id}" class="btn btn-primary">Забронировать</a>
+        </div>
+        <div class="card-content">
+          <h3 class="card-title">${room.title}</h3>
+          <ul class="card-equipment">
+            ${room.equipment.map(item => `<li>${item}</li>`).join('')}
+          </ul>
+          <div class="card-footer">
+            <div class="card-price">${room.pricePerHour} ₽ <span>/ час</span></div>
+            <div class="card-btns">
+              <a href="room-details.html?id=${room.id}" class="btn btn-outline">Подробнее</a>
+              <a href="booking.html?id=${room.id}" class="btn btn-primary">Забронировать</a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  `).join('');
+    `;
+  }).join(''); // Метод .join('') склеивает массив строк в один сплошной HTML
+
+  // Вставляем сгенерированный HTML внутрь контейнера
+  container.innerHTML = htmlCards;
+  console.log('Отрисовано карточек комнат:', OFFICE_ROOMS.length);
 }
 
-
-// [ Отображение подробной информации о комнате на странице room-details.html]
+// 3. Функция показа детальной страницы комнаты
 function initRoomDetails() {
   const container = document.getElementById('roomDetailsContainer');
   if (!container || typeof OFFICE_ROOMS === 'undefined') return;
 
-  // [Считываем параметр ?id=... из адресной строки]
-  const urlParams = new URLSearchParams(window.location.search);
-  const roomId = urlParams.get('id') || urlParams.get('room');
-  
-  // [Метод find() ищет первый элемент массива, удовлетворяющий условию]
-  const room = OFFICE_ROOMS.find(r => r.id === roomId);
+  // Считываем параметр id из адреса: например, room-details.html?id=focus-1
+  const params = new URLSearchParams(window.location.search);
+  const roomId = params.get('id');
+
+  // Ищем нужную комнату в массиве методом .find()
+  const room = OFFICE_ROOMS.find(function (item) {
+    return item.id === roomId;
+  });
 
   if (!room) {
-    container.innerHTML = `
-      <div class="empty-message">
-        <h2>Комната не найдена</h2>
-        <p style="margin: 10px 0 20px 0;">Возможно, ссылка устарела или комната была удалена.</p>
-        <a href="catalog.html" class="btn btn-primary">Вернуться в каталог</a>
-      </div>
-    `;
+    container.innerHTML = '<h2>Комната не найдена</h2><p>Пожалуйста, вернитесь в каталог.</p>';
     return;
   }
 
-  // Формируем подробную карточку выбранной комнаты
+  // Отрисовываем подробную карточку выбранной комнаты
   container.innerHTML = `
     <div class="room-details-card">
-      <div class="room-details-gallery">
-        <img src="${room.image}" alt="${room.title}" class="room-details-img" onerror="this.src='../img/no-image.svg'">
-      </div>
+      <img src="${room.image}" alt="${room.title}" class="room-details-img">
       <div class="room-details-info">
-        <div class="room-details-header">
-          <h1 class="room-details-title">${room.title}</h1>
-          <div class="room-details-price">${room.pricePerHour} ₽ <span>/ час</span></div>
-        </div>
-
-        <div class="room-badges">
-          <span class="room-badge">${room.capacity}</span>
-          <span class="room-badge">${room.area}</span>
-          ${room.isPopular ? '<span class="room-badge badge-popular">Популярное</span>' : ''}
-        </div>
-
-        <p class="room-description">${room.description}</p>
-
-        <div class="room-specs">
-          <h3>Оснащение и удобства:</h3>
-          <ul class="card-equipment">
-            ${room.equipment.map(item => `<li>${item}</li>`).join('')}
-          </ul>
-        </div>
-
-        <div class="room-details-actions">
-          <a href="booking.html?room=${room.id}" class="btn btn-primary" style="padding: 10px 20px; font-size: 15px;">Забронировать эту комнату</a>
-          <a href="catalog.html" class="btn btn-outline" style="padding: 10px 18px; font-size: 15px;">← Назад в каталог</a>
-        </div>
+        <h1>${room.title}</h1>
+        <p class="room-desc">${room.description}</p>
+        <p><strong>Вместимость:</strong> ${room.capacity}</p>
+        <p><strong>Площадь:</strong> ${room.area}</p>
+        <div class="room-price-large">${room.pricePerHour} ₽ / час</div>
+        <a href="booking.html?id=${room.id}" class="btn btn-primary btn-large">Забронировать эту комнату</a>
       </div>
     </div>
   `;
 }
-
-// [Функция интерактивного слайдера фотографий]
-function initSlider() {
-  const slides = document.querySelectorAll('.slide');
-  const dots = document.querySelectorAll('.dot');
-  const prevBtn = document.querySelector('.slider-prev');
-  const nextBtn = document.querySelector('.slider-next');
-  if (!slides.length) return;
-
-  let currentSlide = 0;
-  let timerId = null;
-
-  function showSlide(index) {
-    if (index >= slides.length) currentSlide = 0;
-    else if (index < 0) currentSlide = slides.length - 1;
-    else currentSlide = index;
-
-    slides.forEach((s, i) => s.classList.toggle('active', i === currentSlide));
-    dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
-  }
-
-  function next() { showSlide(currentSlide + 1); }
-  function prev() { showSlide(currentSlide - 1); }
-
-  function startAuto() {
-    stopAuto();
-    timerId = setInterval(next, 3000);
-  }
-
-  function stopAuto() {
-    if (timerId) clearInterval(timerId);
-  }
-
-  if (nextBtn) nextBtn.addEventListener('click', () => { next(); startAuto(); });
-  if (prevBtn) prevBtn.addEventListener('click', () => { prev(); startAuto(); });
-
-  dots.forEach((dot, idx) => {
-    dot.addEventListener('click', () => {
-      showSlide(idx);
-      startAuto();
-    });
-  });
-
-  startAuto();
-}
-

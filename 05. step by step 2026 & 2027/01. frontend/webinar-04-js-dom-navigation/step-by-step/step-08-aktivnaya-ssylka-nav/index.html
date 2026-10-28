@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шаг 8 — Переключение активного пункта меню | СмартОфис</title>
+  <link rel="stylesheet" href="../../basic/css/style.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-container">
+      <a href="../../basic/index.html" class="logo">
+        <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
+        <span>СмартОфис</span>
+      </a>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="#" class="nav-link active">Главная</a></li>
+          <li><a href="#" class="nav-link">Каталог</a></li>
+          <li><a href="#" class="nav-link">О нас</a></li>
+          <li><a href="#" class="nav-link nav-btn">Войти</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="container">
+      <section class="hero-section"><h1 class="hero-title">Портал бронирования офисных комнат <span class="brand-highlight">«СмартОфис»</span></h1><p class="hero-subtitle">Тестируем работу скрипта навигации в шапке сайта выше 👆</p></section>
+
+      <div class="lesson-panel">
+        <span class="step-badge">📚 Шаг 8 из 9</span>
+        <h2>Переключение активного пункта меню</h2>
+        <p>Объединяем знания: при клике на любую ссылку меню снимаем класс <code>active</code> со всех остальных и добавляем только нажатой.</p>
+        <p>Код, который выполняется в этом шаге (откройте <code>main.js</code>):</p>
+        <pre><code>// Шаг 8: Переключение активной ссылки при клике
+const navLinks = document.querySelectorAll('.nav-link');
+
+navLinks.forEach(function (link) {
+  link.addEventListener('click', function (event) {
+    event.preventDefault();
+
+    // 1. Снимаем active со всех ссылок
+    navLinks.forEach(function (item) {
+      item.classList.remove('active');
+    });
+
+    // 2. Добавляем active только текущей
+    link.classList.add('active');
+    console.log('Активным стал пункт:', link.textContent.trim());
+  });
+});
+</code></pre>
+        <p><em>Совет: откройте консоль браузера (F12 → Вкладка Console), чтобы увидеть результат работы скрипта.</em></p>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

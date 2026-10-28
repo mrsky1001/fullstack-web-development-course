@@ -1,69 +1,59 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вебинар 8: Шаг 5 — Выпадающий список</title>
-    <link rel="stylesheet" href="../../basic/css/style.css">
-    <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
-    <style>
-        .lesson-panel {
-            background: #1e293b; color: #f1f5f9; padding: 24px 32px; margin: 30px auto; max-width: 800px;
-            border-top: 4px solid #ec4899; border-radius: 8px; font-family: monospace;
-        }
-        .lesson-panel h2 { color: #f472b6; margin-top: 0; }
-        .select-field { width: 100%; padding: 12px; font-size: 15px; border-radius: 6px; border: 1px solid #cbd5e1; margin: 12px 0; }
-        .result-box { background: #0f172a; border: 1px dashed #ec4899; padding: 14px; border-radius: 6px; color: #f472b6; margin-top: 10px; font-size: 15px; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шаг 5 — Выпадающий список <select> и событие change | СмартОфис</title>
+  <link rel="stylesheet" href="../../basic/css/style.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
+  <script src="data.js" defer></script>
+  <script src="main.js" defer></script>
 </head>
 <body>
-    <header class="header">
-        <div class="container header-container">
-            <a href="../../basic/index.html" class="logo">
-                <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
-                <span>СмартОфис</span>
-            </a>
-            <span style="color:#666;">Шаг 5: Генерация &lt;select&gt;</span>
+  <header class="header">
+    <div class="container header-container">
+      <a href="../../basic/index.html" class="logo">
+        <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
+        <span>СмартОфис</span>
+      </a>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="../../basic/index.html" class="nav-link">Главная</a></li>
+          <li><a href="#" class="nav-link active">Каталог</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="container">
+      <section class="hero-section"><h1 class="hero-title">Фильтры и калькулятор <span class="brand-highlight">«СмартОфис»</span></h1><p class="hero-subtitle">Учебный шаг 5 из 6: живой поиск и вычисления</p></section><div class="toolbar-demo">
+          <label style="color:#cbd5e1;">Сортировка:</label>
+          <select id="demoSort">
+            <option value="default">По умолчанию</option>
+            <option value="price-asc">Сначала дешёвые (по возрастанию)</option>
+            <option value="price-desc">Сначала дорогие (по убыванию)</option>
+          </select>
         </div>
-    </header>
 
-    <main class="container" style="margin-top: 30px;">
-        <div class="lesson-panel">
-            <h2>🔽 Шаг 5: Динамический список комнат</h2>
-            <p style="font-family: sans-serif; color: #94a3b8;">
-                Выберите комнату из списка — JS моментально считает её тариф из <code>data-price</code>:
-            </p>
+      <div class="lesson-panel">
+        <span class="step-badge">📚 Шаг 5 из 6</span>
+        <h2>Выпадающий список <select> и событие change</h2>
+        <p>При смене пункта в выпадающем списке срабатывает событие change, и мы считываем выбранное значение через select.value.</p>
+        <p>Код, который выполняется в этом шаге (откройте <code>main.js</code>):</p>
+        <pre><code>// Шаг 5: Выпадающий список select
+const sortSelect = document.getElementById('demoSort');
 
-            <select id="roomSelect" class="select-field"></select>
-
-            <div class="result-box" id="resultBox">Выберите комнату...</div>
-        </div>
-    </main>
-
-    <script>
-        const OFFICE_ROOMS = [
-            { id: 'focus-1', title: 'Мини-офис Focus', pricePerHour: 450 },
-            { id: 'alpha-2', title: 'Конференц-зал Alpha', pricePerHour: 1200 },
-            { id: 'hub-3',   title: 'Опенспейс Hub',       pricePerHour: 250 }
-        ];
-
-        const select = document.getElementById('roomSelect');
-        const box = document.getElementById('resultBox');
-
-        // Генерируем опции через map:
-        select.innerHTML = OFFICE_ROOMS.map(r => `
-            <option value="${r.id}" data-price="${r.pricePerHour}">
-                ${r.title} (${r.pricePerHour} ₽/час)
-            </option>
-        `).join('');
-
-        select.addEventListener('change', () => {
-            const opt = select.options[select.selectedIndex];
-            box.textContent = 'Выбрано: ' + opt.text + ' -> data-price = ' + opt.dataset.price + ' ₽';
-        });
-
-        // Первый вызов:
-        select.dispatchEvent(new Event('change'));
-    </script>
+if (sortSelect) {
+  sortSelect.addEventListener('change', function () {
+    console.log('Выбран режим сортировки:', sortSelect.value);
+  });
+}
+</code></pre>
+        <p><em>Совет: введите поисковый запрос в поле выше и проверьте мгновенную фильтрацию.</em></p>
+      </div>
+    </div>
+  </main>
 </body>
 </html>

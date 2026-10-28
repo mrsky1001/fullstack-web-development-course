@@ -1,104 +1,97 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вебинар 7: Шаг 6 — Финал слайдера</title>
-    <link rel="stylesheet" href="../../basic/css/style.css">
-    <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
-    <style>
-        .lesson-panel {
-            background: #1e293b; color: #f1f5f9; padding: 24px 32px; margin: 30px auto; max-width: 900px;
-            border-top: 4px solid #10b981; border-radius: 8px; font-family: monospace;
-        }
-        .lesson-panel h2 { color: #34d399; margin-top: 0; }
-        .badge { background: #059669; color: white; padding: 4px 10px; border-radius: 20px; font-size: 13px; font-family: sans-serif; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шаг 6 — Финальная сборка модуля слайдера | СмартОфис</title>
+  <link rel="stylesheet" href="../../basic/css/style.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
+  <script src="main.js" defer></script>
 </head>
 <body>
-    <header class="header">
-        <div class="container header-container">
-            <a href="../../basic/index.html" class="logo">
-                <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
-                <span>СмартОфис</span>
-            </a>
-            <span class="badge">Вебинар 7: Финал initSlider()</span>
-        </div>
-    </header>
+  <header class="header">
+    <div class="container header-container">
+      <a href="../../basic/index.html" class="logo">
+        <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
+        <span>СмартОфис</span>
+      </a>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="../../basic/index.html" class="nav-link active">Главная</a></li>
+          <li><a href="../../basic/pages/catalog.html" class="nav-link">Каталог</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <main class="container" style="margin-top: 20px;">
-        <!-- Тот самый блок слайдера из СмартОфиса -->
-        <section class="slider-section">
-            <div class="slider">
-                <div class="slide active"><img src="../../basic/img/slider-1.jpg" alt="Слайд 1" class="slide-img"></div>
-                <div class="slide"><img src="../../basic/img/slider-2.jpg" alt="Слайд 2" class="slide-img"></div>
-                <div class="slide"><img src="../../basic/img/slider-3.jpg" alt="Слайд 3" class="slide-img"></div>
-                <div class="slide"><img src="../../basic/img/slider-4.jpg" alt="Слайд 4" class="slide-img"></div>
-                <button class="slider-btn slider-prev">‹</button>
-                <button class="slider-btn slider-next">›</button>
-                <div class="slider-dots">
-                    <span class="dot active"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                </div>
-            </div>
-        </section>
+  <main class="main">
+    <div class="container">
+      <section class="hero-section"><h1 class="hero-title">Интерактивный слайдер <span class="brand-highlight">«СмартОфис»</span></h1><p class="hero-subtitle">Учебный шаг 6 из 6: таймеры и состояние программы</p></section><div class="slider-demo-wrap">
+  <div class="slider-container">
+    <div class="slide active"><img src="../../basic/img/slider-1.jpg" alt="Слайд 1" class="slide-img"></div>
+    <div class="slide"><img src="../../basic/img/slider-2.jpg" alt="Слайд 2" class="slide-img"></div>
+    <div class="slide"><img src="../../basic/img/slider-3.jpg" alt="Слайд 3" class="slide-img"></div>
+    <div class="slide"><img src="../../basic/img/slider-4.jpg" alt="Слайд 4" class="slide-img"></div>
+    <button class="slider-btn slider-prev">‹</button>
+    <button class="slider-btn slider-next">›</button>
+    <div class="slider-dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+</div>
 
-        <div class="lesson-panel">
-            <h2>🏆 Финал 7-го вебинара: Модульный слайдер работает!</h2>
-            <p style="font-family: sans-serif; color: #94a3b8;">
-                Этот слайдер теперь полностью автономен: работает автосмена 3 сек, стрелки, точки, сброс таймера и защита от ошибок.
-            </p>
-        </div>
-    </main>
+      <div class="lesson-panel">
+        <span class="step-badge">📚 Шаг 6 из 6</span>
+        <h2>Финальная сборка модуля слайдера</h2>
+        <p>Объединяем стрелки, точки, автопрокрутку и сброс таймера через clearInterval при ручном клике.</p>
+        <p>Код, который выполняется в этом шаге (откройте <code>main.js</code>):</p>
+        <pre><code>// Шаг 6: Финальная сборка слайдера
+document.addEventListener('DOMContentLoaded', function () {
+  initSlider();
+});
 
-    <script>
-        function initSlider() {
-            const slides = document.querySelectorAll('.slide');
-            const dots = document.querySelectorAll('.dot');
-            const prevBtn = document.querySelector('.slider-prev');
-            const nextBtn = document.querySelector('.slider-next');
-            if (!slides.length) return;
+function initSlider() {
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+  const prevBtn = document.querySelector('.slider-prev');
+  const nextBtn = document.querySelector('.slider-next');
+  if (!slides.length) return;
 
-            let currentSlide = 0;
-            let timerId = null;
+  let currentSlide = 0;
+  let timerId = null;
 
-            function showSlide(index) {
-                if (index >= slides.length) currentSlide = 0;
-                else if (index < 0) currentSlide = slides.length - 1;
-                else currentSlide = index;
+  function showSlide(index) {
+    if (index &gt;= slides.length) currentSlide = 0;
+    else if (index &lt; 0) currentSlide = slides.length - 1;
+    else currentSlide = index;
 
-                slides.forEach((s, i) => s.classList.toggle('active', i === currentSlide));
-                dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
-            }
+    slides.forEach((s, i) =&gt; s.classList.toggle('active', i === currentSlide));
+    dots.forEach((d, i) =&gt; d.classList.toggle('active', i === currentSlide));
+  }
 
-            function next() { showSlide(currentSlide + 1); }
-            function prev() { showSlide(currentSlide - 1); }
+  function startAuto() {
+    clearInterval(timerId);
+    timerId = setInterval(() =&gt; showSlide(currentSlide + 1), 3500);
+  }
 
-            function startAuto() {
-                stopAuto();
-                timerId = setInterval(next, 3000);
-            }
+  if (nextBtn) nextBtn.addEventListener('click', () =&gt; { showSlide(currentSlide + 1); startAuto(); });
+  if (prevBtn) prevBtn.addEventListener('click', () =&gt; { showSlide(currentSlide - 1); startAuto(); });
 
-            function stopAuto() {
-                if (timerId) clearInterval(timerId);
-            }
+  dots.forEach((dot, idx) =&gt; {
+    dot.addEventListener('click', () =&gt; { showSlide(idx); startAuto(); });
+  });
 
-            if (nextBtn) nextBtn.addEventListener('click', () => { next(); startAuto(); });
-            if (prevBtn) prevBtn.addEventListener('click', () => { prev(); startAuto(); });
-
-            dots.forEach((dot, idx) => {
-                dot.addEventListener('click', () => {
-                    showSlide(idx);
-                    startAuto();
-                });
-            });
-
-            startAuto();
-        }
-
-        document.addEventListener('DOMContentLoaded', initSlider);
-    </script>
+  startAuto();
+  console.log('Слайдер полностью готов и запущен!');
+}
+</code></pre>
+        <p><em>Совет: протестируйте клики и наблюдайте за сменой классов в панели Elements (F12).</em></p>
+      </div>
+    </div>
+  </main>
 </body>
 </html>

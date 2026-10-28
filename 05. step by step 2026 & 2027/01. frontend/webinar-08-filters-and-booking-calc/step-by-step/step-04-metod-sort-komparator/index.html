@@ -1,83 +1,61 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Вебинар 8: Шаг 4 — Сортировка .sort()</title>
-    <link rel="stylesheet" href="../../basic/css/style.css">
-    <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
-    <style>
-        .lesson-panel {
-            background: #1e293b; color: #f1f5f9; padding: 24px 32px; margin: 30px auto; max-width: 800px;
-            border-top: 4px solid #8b5cf6; border-radius: 8px; font-family: monospace;
-        }
-        .lesson-panel h2 { color: #a78bfa; margin-top: 0; }
-        .demo-btn { background: #8b5cf6; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; margin: 4px; font-weight: bold; }
-        .demo-btn:hover { background: #7c3aed; }
-        .list-box { background: white; border-radius: 6px; padding: 16px; color: #1e293b; font-family: sans-serif; margin-top: 12px; }
-        .room-item { padding: 8px 0; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шаг 4 — Метод .sort(): сортировка по цене | СмартОфис</title>
+  <link rel="stylesheet" href="../../basic/css/style.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="../../basic/img/logo.svg">
+  <script src="data.js" defer></script>
+  <script src="main.js" defer></script>
 </head>
 <body>
-    <header class="header">
-        <div class="container header-container">
-            <a href="../../basic/index.html" class="logo">
-                <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
-                <span>СмартОфис</span>
-            </a>
-            <span style="color:#666;">Шаг 4: Сортировка по цене (.sort)</span>
+  <header class="header">
+    <div class="container header-container">
+      <a href="../../basic/index.html" class="logo">
+        <img src="../../basic/img/logo.svg" alt="logo" class="logo-icon">
+        <span>СмартОфис</span>
+      </a>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="../../basic/index.html" class="nav-link">Главная</a></li>
+          <li><a href="#" class="nav-link active">Каталог</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="container">
+      <section class="hero-section"><h1 class="hero-title">Фильтры и калькулятор <span class="brand-highlight">«СмартОфис»</span></h1><p class="hero-subtitle">Учебный шаг 4 из 6: живой поиск и вычисления</p></section><div class="toolbar-demo">
+          <label style="color:#cbd5e1;">Сортировка:</label>
+          <select id="demoSort">
+            <option value="default">По умолчанию</option>
+            <option value="price-asc">Сначала дешёвые (по возрастанию)</option>
+            <option value="price-desc">Сначала дорогие (по убыванию)</option>
+          </select>
         </div>
-    </header>
 
-    <main class="container" style="margin-top: 30px;">
-        <div class="lesson-panel">
-            <h2>💰 Шаг 4: Сортировка по цене</h2>
-            <p style="font-family: sans-serif; color: #94a3b8;">
-                Нажимайте кнопки для сортировки списка комнат:
-            </p>
+      <div class="lesson-panel">
+        <span class="step-badge">📚 Шаг 4 из 6</span>
+        <h2>Метод .sort(): сортировка по цене</h2>
+        <p>Метод .sort((a, b) => a.price - b.price) сравнивает элементы: разность меньше нуля ставит a перед b (по возрастанию).</p>
+        <p>Код, который выполняется в этом шаге (откройте <code>main.js</code>):</p>
+        <pre><code>// Шаг 4: Сортировка по цене
+const roomsCopy = [...OFFICE_ROOMS];
 
-            <div>
-                <button class="demo-btn" onclick="sortAsc()">Цена: по возрастанию ↑</button>
-                <button class="demo-btn" onclick="sortDesc()">Цена: по убыванию ↓</button>
-            </div>
+// Сортировка от дешёвых к дорогим:
+roomsCopy.sort((a, b) =&gt; a.pricePerHour - b.pricePerHour);
+console.log('По возрастанию цены:', roomsCopy.map(r =&gt; r.title + ': ' + r.pricePerHour));
 
-            <div class="list-box">
-                <div id="sortedOutput"></div>
-            </div>
-        </div>
-    </main>
-
-    <script>
-        const rooms = [
-            { title: 'Мини-офис Focus', price: 450 },
-            { title: 'Конференц-зал Alpha', price: 1200 },
-            { title: 'Опенспейс Hub', price: 250 },
-            { title: 'Премиум Сьют Executive', price: 1800 }
-        ];
-
-        let currentList = [...rooms];
-        const output = document.getElementById('sortedOutput');
-
-        function render(items) {
-            output.innerHTML = items.map(r => `
-                <div class="room-item">
-                    <strong>${r.title}</strong>
-                    <span style="color: #0284c7; font-weight: bold;">${r.price} ₽/час</span>
-                </div>
-            `).join('');
-        }
-
-        function sortAsc() {
-            currentList.sort((a, b) => a.price - b.price);
-            render(currentList);
-        }
-
-        function sortDesc() {
-            currentList.sort((a, b) => b.price - a.price);
-            render(currentList);
-        }
-
-        render(currentList);
-    </script>
+// Сортировка от дорогих к дешёвым:
+roomsCopy.sort((a, b) =&gt; b.pricePerHour - a.pricePerHour);
+console.log('По убыванию цены:', roomsCopy.map(r =&gt; r.title + ': ' + r.pricePerHour));
+</code></pre>
+        <p><em>Совет: введите поисковый запрос в поле выше и проверьте мгновенную фильтрацию.</em></p>
+      </div>
+    </div>
+  </main>
 </body>
 </html>
