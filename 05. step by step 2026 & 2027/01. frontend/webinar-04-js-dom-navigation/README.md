@@ -1,6 +1,6 @@
 # Вебинар 4. Введение в JavaScript: DOM-дерево и интерактивная навигация
 
-## 📋 О занятии простыми словами
+## О занятии простыми словами
 Сегодня наш сайт начинает оживать! Мы впервые подключаем **JavaScript** — язык программирования, который управляет поведением веб-страницы.
 
 Мы решим ключевую задачу 4-го вебинара:
@@ -8,7 +8,7 @@
 
 ---
 
-## 🎯 Что мы сегодня сделаем:
+## Что мы сегодня сделаем:
 1. Создадим файл `js/main.js` и подключим его в HTML с атрибутом `defer`.
 2. Поймём, что такое DOM-дерево и почему важно событие `DOMContentLoaded`.
 3. Узнаем, как работают переменные `const` и `let`.
@@ -17,15 +17,15 @@
 
 ---
 
-> 🚀 **Пошаговое обучение (шаг за шагом):**  
+> **Пошаговое обучение (шаг за шагом):** 
 > В папке **[step-by-step/](step-by-step/README.md)** подготовлены 9 мини-уроков: в каждом шаге есть отдельные файлы `index.html`, `style.css`, `main.js` и `README.md`.
 
 ---
 
-## 💡 Теория простыми словами
+## Теория простыми словами
 
 ### 1. Что такое DOM (Document Object Model)?
-Когда браузер читает HTML-файл, он строит в памяти структуру — **DOM-дерево**.  
+Когда браузер читает HTML-файл, он строит в памяти структуру — **DOM-дерево**. 
 Каждый тег (`<div>`, `<a>`, `<h1>`) становится JavaScript-объектом. JavaScript может находить эти объекты, менять их текст, цвет, стили и классы!
 
 ### 2. Зачем нужен атрибут `defer`?
@@ -36,37 +36,37 @@
 
 ---
 
-## 📝 Код скрипта `js/main.js`
+## Код скрипта `js/main.js`
 
 ```javascript
 // СмартОфис — Вебинар 04: Основы JavaScript, DOM и Навигация
 
 document.addEventListener('DOMContentLoaded', function () {
-  console.log('Скрипт подключён. DOM загружен!');
-  initNavigation();
+ console.log('Скрипт подключён. DOM загружен!');
+ initNavigation();
 });
 
 // Функция управления активной ссылкой в меню
 function initNavigation() {
-  const navLinks = document.querySelectorAll('.nav-link');
+ const navLinks = document.querySelectorAll('.nav-link');
 
-  navLinks.forEach(function (link) {
-    link.addEventListener('click', function () {
-      // Снимаем класс active со всех ссылок
-      navLinks.forEach(function (item) {
-        item.classList.remove('active');
-      });
+ navLinks.forEach(function (link) {
+ link.addEventListener('click', function () {
+ // Снимаем класс active со всех ссылок
+ navLinks.forEach(function (item) {
+ item.classList.remove('active');
+ });
 
-      // Добавляем класс active нажатой ссылке
-      link.classList.add('active');
-    });
-  });
+ // Добавляем класс active нажатой ссылке
+ link.classList.add('active');
+ });
+ });
 }
 ```
 
 ---
 
-## 📂 Структура файлов проекта
+## Структура файлов проекта
 - `basic/` — базовый проект без лишних комментариев
 - `with-comments/` — подробная версия с комментариями к каждой строке
 - `step-by-step/` — 9 пошаговых мини-уроков с плоской структурой файлов

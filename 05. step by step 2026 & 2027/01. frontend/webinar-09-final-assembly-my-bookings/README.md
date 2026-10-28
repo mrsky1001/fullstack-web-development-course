@@ -1,6 +1,6 @@
 # Вебинар 9. Итоговая сборка и ревью проекта: Страница «Мои бронирования» и финальная приемка
 
-## 📋 О занятии простыми словами
+## О занятии простыми словами
 Поздравляем! Мы вышли на финишную прямую! 
 
 Сегодня мы:
@@ -10,7 +10,7 @@
 
 ---
 
-## 🎯 Что мы сегодня сделаем:
+## Что мы сегодня сделаем:
 1. Создадим страницу `pages/my-bookings.html`.
 2. Напишем функцию `initMyBookings()` в `js/main.js`, которая отображает список заявок из `MOCK_BOOKINGS`.
 3. Добавим обработку «пустого состояния» (если список пуст, показывается красивый блок «У вас пока нет бронирований»).
@@ -18,38 +18,38 @@
 
 ---
 
-> 🚀 **Пошаговый разбор (финальное обобщение проекта):**  
-> Пошаговый разбор архитектуры сайта, пустого состояния и чек-лист для проверки:  
-> 👉 **[Пошаговый разбор финальной сборки и интерактивный чек-лист (3 мини-урока)](step-by-step/README.md)** — архитектура связей всех 7 страниц, обработка Empty State и интерактивный экзаменационный чек-лист на 100 баллов!
+> **Пошаговый разбор (финальное обобщение проекта):** 
+> Пошаговый разбор архитектуры сайта, пустого состояния и чек-лист для проверки: 
+> **[Пошаговый разбор финальной сборки и интерактивный чек-лист (3 мини-урока)](step-by-step/README.md)** — архитектура связей всех 7 страниц, обработка Empty State и интерактивный экзаменационный чек-лист на 100 баллов!
 
 ---
 
-## 📝 Пошаговая инструкция выполнения
+## Пошаговая инструкция выполнения
 
 ### Шаг 1. Создаем `pages/my-bookings.html`
 ```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Мои бронирования — СмартОфис</title>
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="icon" type="image/svg+xml" href="../img/logo.svg">
-  <script src="../js/data.js" defer></script>
-  <script src="../js/main.js" defer></script>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Мои бронирования — СмартОфис</title>
+ <link rel="stylesheet" href="../css/style.css">
+ <link rel="icon" type="image/svg+xml" href="../img/logo.svg">
+ <script src="../js/data.js" defer></script>
+ <script src="../js/main.js" defer></script>
 </head>
 <body>
-  <!-- Шапка с пунктом «Мои бронирования» -->
-  <main class="main">
-    <div class="container">
-      <h1 class="page-title">Мои бронирования</h1>
-      <p class="page-subtitle">История ваших заявок на аренду рабочих пространств</p>
+ <!-- Шапка с пунктом «Мои бронирования» -->
+ <main class="main">
+ <div class="container">
+ <h1 class="page-title">Мои бронирования</h1>
+ <p class="page-subtitle">История ваших заявок на аренду рабочих пространств</p>
 
-      <div class="bookings-list" id="myBookingsList"></div>
-    </div>
-  </main>
-  <!-- Подвал -->
+ <div class="bookings-list" id="myBookingsList"></div>
+ </div>
+ </main>
+ <!-- Подвал -->
 </body>
 </html>
 ```
@@ -57,34 +57,34 @@
 ### Шаг 2. Добавляем функцию `initMyBookings()` в `js/main.js`
 ```javascript
 function initMyBookings() {
-  const container = document.getElementById('myBookingsList');
-  if (!container || typeof MOCK_BOOKINGS === 'undefined') return;
+ const container = document.getElementById('myBookingsList');
+ if (!container || typeof MOCK_BOOKINGS === 'undefined') return;
 
-  if (!MOCK_BOOKINGS || MOCK_BOOKINGS.length === 0) {
-    container.innerHTML = '<div class="empty-message">У вас пока нет бронирований</div>';
-    return;
-  }
+ if (!MOCK_BOOKINGS || MOCK_BOOKINGS.length === 0) {
+ container.innerHTML = '<div class="empty-message">У вас пока нет бронирований</div>';
+ return;
+ }
 
-  container.innerHTML = MOCK_BOOKINGS.map(item => `
-    <div class="booking-item">
-      <div>
-        <h3 style="font-size: 16px; margin-bottom: 5px;">${item.roomTitle}</h3>
-        <div style="font-size: 13px; color: #666;">
-          Дата: <strong>${item.date}</strong> | Длительность: <strong>${item.hours} ч.</strong> | Заявка №${item.id}
-        </div>
-      </div>
-      <div style="text-align: right;">
-        <div style="font-size: 16px; font-weight: 700; color: #007bff;">${item.totalPrice} ₽</div>
-        <span style="font-size: 12px; color: #28a745;">Подтверждено</span>
-      </div>
-    </div>
-  `).join('');
+ container.innerHTML = MOCK_BOOKINGS.map(item => `
+ <div class="booking-item">
+ <div>
+ <h3 style="font-size: 16px; margin-bottom: 5px;">${item.roomTitle}</h3>
+ <div style="font-size: 13px; color: #666;">
+ Дата: <strong>${item.date}</strong> | Длительность: <strong>${item.hours} ч.</strong> | Заявка №${item.id}
+ </div>
+ </div>
+ <div style="text-align: right;">
+ <div style="font-size: 16px; font-weight: 700; color: #007bff;">${item.totalPrice} ₽</div>
+ <span style="font-size: 12px; color: #28a745;">Подтверждено</span>
+ </div>
+ </div>
+ `).join('');
 }
 ```
 
 ---
 
-## 📋 Финальный экзаменационный чек-лист (100 из 100 баллов)
+## Финальный экзаменационный чек-лист (100 из 100 баллов)
 
 | Критерий проверки | Что проверяется | Оценка |
 |---|---|:---:|
@@ -101,5 +101,5 @@ function initMyBookings() {
 
 ---
 
-## 🏁 Финал курса
-Поздравляем! Вы полностью собрали проект интернет-портала «СмартОфис» из 7 полноценных страниц. Вы освоили весь базовый стек фронтенд-разработчика: HTML5, CSS3 и чистый JavaScript! 🚀
+## Финал курса
+Поздравляем! Вы полностью собрали проект интернет-портала «СмартОфис» из 7 полноценных страниц. Вы освоили весь базовый стек фронтенд-разработчика: HTML5, CSS3 и чистый JavaScript! 
