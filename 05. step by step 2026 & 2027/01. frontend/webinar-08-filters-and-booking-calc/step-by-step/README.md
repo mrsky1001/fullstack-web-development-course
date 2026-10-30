@@ -17,9 +17,9 @@
 
 | Шаг | Тема | Что узнаем |
 |-----|------|------------|
-| [step-01](step-01-sobytie-input-zhivoy-poisk/) | Живой поиск | Событие `input` для мгновенной реакции на ввод |
-| [step-02](step-02-metod-filter/) | Метод .filter() | Фильтрация массива по подстроке `.includes()` |
-| [step-03](step-03-spread-operator-kopiya-massiva/) | Спред-оператор | Копирование массива `[...array]` перед сортировкой |
-| [step-04](step-04-metod-sort-komparator/) | Сортировка .sort() | Компаратор `(a, b) => a.price - b.price` |
-| [step-05](step-05-vypadayushchiy-spisok-select/) | Список select | Событие `change` выпадающего списка |
-| [step-06](step-06-kalkulyator-rascheta-stoimosti/) | Калькулятор | Формула `часы * цена` и вывод результата |
+| [step-01](step-01-input-event-live-search/) | Живой поиск | Событие `input` для мгновенной реакции на ввод |
+| [step-02](step-02-filter-method/) | Метод .filter() | Фильтрация массива по подстроке `.includes()` |
+| [step-03](step-03-spread-operator-array-copy/) | Спред-оператор | Копирование массива `[...array]` перед сортировкой |
+| [step-04](step-04-sort-method-comparator/) | Сортировка .sort() | Компаратор `(a, b) => a.price - b.price` |
+| [step-05](step-05-select-dropdown/) | Список select | Событие `change` выпадающего списка |
+| [step-06](step-06-booking-cost-calculator/) | Калькулятор | Формула `часы * цена` и вывод результата |

@@ -1,26 +1,46 @@
 // СмартОфис — Вебинар 09: Финальная сборка веб-приложения
 
-document.addEventListener('DOMContentLoaded', function () {
-  console.log('СмартОфис: запуск финальной сборки приложения...');
-  initNavigation();
-  initSlider();
-  renderCatalog(typeof OFFICE_ROOMS !== 'undefined' ? OFFICE_ROOMS : []);
-  initRoomDetails();
-  initFilters();
-  initBookingForm();
-  initMyBookings();
-  initAuthForms();
-});
+console.log('СмартОфис: запуск финальной сборки приложения...');
+initNavigation();
+initSlider();
+renderCatalog(typeof OFFICE_ROOMS !== 'undefined' ? OFFICE_ROOMS : []);
+initRoomDetails();
+initFilters();
+initBookingForm();
+initMyBookings();
+initAuthForms();
 
 // 1. Навигация
 function initNavigation() {
   const navLinks = document.querySelectorAll('.nav-link');
+  const currentPath = window.location.pathname.toLowerCase();
+
   navLinks.forEach(function (link) {
+    link.classList.remove('active');
+
+    const href = link.getAttribute('href');
+    if (href) {
+      const pageName = href.split('/').pop().toLowerCase();
+      if (pageName && currentPath.endsWith(pageName)) {
+        link.classList.add('active');
+      } else if (currentPath.includes('room-details') && pageName.includes('catalog')) {
+        link.classList.add('active');
+      }
+    }
+
     link.addEventListener('click', function () {
       navLinks.forEach(function (item) { item.classList.remove('active'); });
       link.classList.add('active');
     });
   });
+
+  const hasActive = document.querySelector('.nav-link.active');
+  if (!hasActive && navLinks.length > 0) {
+    navLinks[0].classList.add('active');
+  }
+
+  // Обновляем кнопку в шапке, если пользователь авторизован
+  updateAuthStatus();
 
   // В вебинаре 09 раздел «Мои бронирования» открыт для просмотра
   const myBookingsNav = document.getElementById('myBookingsNavItem');
@@ -309,5 +329,27 @@ function initAuthForms() {
         window.location.href = '../index.html';
       }
     });
+  }
+}
+
+// Отображение статуса авторизации в шапке
+function updateAuthStatus() {
+  const authBtn = document.getElementById('authNavBtn');
+  if (!authBtn) return;
+
+  const userJson = localStorage.getItem('currentUser');
+  if (userJson) {
+    try {
+      const user = JSON.parse(userJson);
+      const name = user.name || user.login || 'Пользователь';
+      authBtn.textContent = 'Выйти (' + name + ')';
+      authBtn.href = '#';
+      authBtn.onclick = function (e) {
+        e.preventDefault();
+        localStorage.removeItem('currentUser');
+        alert('Вы вышли из системы.');
+        window.location.reload();
+      };
+    } catch (e) {}
   }
 }

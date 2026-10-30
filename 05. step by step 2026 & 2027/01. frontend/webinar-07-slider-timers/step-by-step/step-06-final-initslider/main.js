@@ -1,9 +1,7 @@
 // Шаг 6: Финальная сборка модуля слайдера initSlider
 // Теория по этой теме подробно описана в файле README.md в этой папке.
 
-document.addEventListener('DOMContentLoaded', function () {
-  initSlider();
-});
+initSlider();
 
 function initSlider() {
   const slides = document.querySelectorAll('.slide');

@@ -358,25 +358,35 @@ body {
   align-items: center;
   border-top: 1px solid #eeeeee;
   padding-top: 10px;
-  gap: 10px;
+  gap: 8px;
 }
 
 .card-price {
   font-size: 18px;
   font-weight: 700;
   color: #222222;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .card-price span {
   font-size: 13px;
   font-weight: 400;
   color: #666666;
+  white-space: nowrap;
 }
 
 .card-btns {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.card-btns .btn {
+  padding: 6px 10px;
+  font-size: 13px;
+  white-space: nowrap;
 }
 
 .center-action {

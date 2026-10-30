@@ -1,23 +1,65 @@
 // СмартОфис — Вебинар 06: Формы и валидация данных
 
-document.addEventListener('DOMContentLoaded', function () {
-  console.log('DOM готов. Инициализация каталога и форм...');
-  initNavigation();
-  renderCatalog();
-  initRoomDetails();
-  initRegisterForm();
-  initLoginForm();
-});
+console.log('Инициализация каталога и форм...');
+initNavigation();
+renderCatalog();
+initRoomDetails();
+initRegisterForm();
+initLoginForm();
 
 // 1. Навигация
 function initNavigation() {
   const navLinks = document.querySelectorAll('.nav-link');
+  const currentPath = window.location.pathname.toLowerCase();
+
   navLinks.forEach(function (link) {
+    link.classList.remove('active');
+
+    const href = link.getAttribute('href');
+    if (href) {
+      const pageName = href.split('/').pop().toLowerCase();
+      if (pageName && currentPath.endsWith(pageName)) {
+        link.classList.add('active');
+      } else if (currentPath.includes('room-details') && pageName.includes('catalog')) {
+        link.classList.add('active');
+      }
+    }
+
     link.addEventListener('click', function () {
       navLinks.forEach(function (item) { item.classList.remove('active'); });
       link.classList.add('active');
     });
   });
+
+  const hasActive = document.querySelector('.nav-link.active');
+  if (!hasActive && navLinks.length > 0) {
+    navLinks[0].classList.add('active');
+  }
+
+  // Обновляем кнопку в шапке, если пользователь авторизован
+  updateAuthStatus();
+}
+
+// Отображение статуса авторизации в шапке
+function updateAuthStatus() {
+  const authBtn = document.getElementById('authNavBtn');
+  if (!authBtn) return;
+
+  const userJson = localStorage.getItem('currentUser');
+  if (userJson) {
+    try {
+      const user = JSON.parse(userJson);
+      const name = user.name || user.login || 'Пользователь';
+      authBtn.textContent = 'Выйти (' + name + ')';
+      authBtn.href = '#';
+      authBtn.onclick = function (e) {
+        e.preventDefault();
+        localStorage.removeItem('currentUser');
+        alert('Вы вышли из системы.');
+        window.location.reload();
+      };
+    } catch (e) {}
+  }
 }
 
 // 2. Рендеринг каталога (из Вебинара 05)

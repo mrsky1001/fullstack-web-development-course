@@ -17,10 +17,10 @@
 
 | Шаг | Тема | Что узнаем |
 |-----|------|------------|
-| [step-01](step-01-chto-takoe-massiv/) | Массивы (Array) | `[]`, индексы, свойство `.length` |
-| [step-02](step-02-chto-takoe-object/) | Объекты (Object) | `{ key: value }`, свойства и чтение через точку |
-| [step-03](step-03-massiv-objectov-data/) | Массив объектов | Структура базы данных комнат `OFFICE_ROOMS` |
-| [step-04](step-04-shablonnye-stroki/) | Шаблонные строки | Обратные кавычки `` ` `` и подстановка `${room.title}` |
-| [step-05](step-05-metod-map/) | Метод .map() | Рендеринг всех карточек каталога одной функцией |
+| [step-01](step-01-what-is-array/) | Массивы (Array) | `[]`, индексы, свойство `.length` |
+| [step-02](step-02-what-is-object/) | Объекты (Object) | `{ key: value }`, свойства и чтение через точку |
+| [step-03](step-03-array-of-objects-data/) | Массив объектов | Структура базы данных комнат `OFFICE_ROOMS` |
+| [step-04](step-04-template-strings/) | Шаблонные строки | Обратные кавычки `` ` `` и подстановка `${room.title}` |
+| [step-05](step-05-map-method/) | Метод .map() | Рендеринг всех карточек каталога одной функцией |
 | [step-06](step-06-url-params/) | URLSearchParams | Чтение параметров адресной строки `?id=...` |
-| [step-07](step-07-metod-find-room-details/) | Метод .find() | Поиск комнаты и показ подробной страницы |
+| [step-07](step-07-find-method-room-details/) | Метод .find() | Поиск комнаты и показ подробной страницы |

@@ -3,22 +3,44 @@
 // Подробная учебная версия с комментариями к каждой строке для 1 курса
 // ==========================================================================
 
-document.addEventListener('DOMContentLoaded', function () {
-  console.log('DOM готов. Запускаем инициализацию...');
-  initNavigation();
-  renderCatalog();
-  initRoomDetails();
-});
+console.log('Запускаем инициализацию...');
+initNavigation();
+renderCatalog();
+initRoomDetails();
 
-// 1. Навигация сайта
+// 1. Навигация сайта: автоматическая подсветка открытой страницы
 function initNavigation() {
   const navLinks = document.querySelectorAll('.nav-link');
+  // Получаем путь текущей страницы в браузере
+  const currentPath = window.location.pathname.toLowerCase();
+
   navLinks.forEach(function (link) {
+    // Снимаем подсветку со всех
+    link.classList.remove('active');
+
+    const href = link.getAttribute('href');
+    if (href) {
+      const pageName = href.split('/').pop().toLowerCase();
+      // Если имя файла из ссылки совпадает с адресом — подсвечиваем
+      if (pageName && currentPath.endsWith(pageName)) {
+        link.classList.add('active');
+      } else if (currentPath.includes('room-details') && pageName.includes('catalog')) {
+        link.classList.add('active');
+      }
+    }
+
+    // Реакция на клик
     link.addEventListener('click', function () {
       navLinks.forEach(function (item) { item.classList.remove('active'); });
       link.classList.add('active');
     });
   });
+
+  // Если открыта Главная или ни одна ссылка не совпала — подсвечиваем первую
+  const hasActive = document.querySelector('.nav-link.active');
+  if (!hasActive && navLinks.length > 0) {
+    navLinks[0].classList.add('active');
+  }
 }
 
 // 2. Функция динамической отрисовки каталога

@@ -16,15 +16,15 @@
 
 | Шаг | Тема | Что узнаем |
 |-----|------|------------|
-| [step-01](step-01-chto-takoe-js/) | Что такое JavaScript? | Как подключается `<script>`, консоль браузера `console.log` |
-| [step-02](step-02-peremennye/) | Переменные | `const` и `let`, строки и числа |
-| [step-03](step-03-dom-i-naiti-element/) | DOM и поиск элементов | `document.querySelector`, `querySelectorAll` |
+| [step-01](step-01-what-is-javascript/) | Что такое JavaScript? | Как подключается `<script>`, консоль браузера `console.log` |
+| [step-02](step-02-variables/) | Переменные | `const` и `let`, строки и числа |
+| [step-03](step-03-dom-and-finding-elements/) | DOM и поиск элементов | `document.querySelector`, `querySelectorAll` |
 | [step-04](step-04-classlist/) | Управление классами | `classList.add`, `classList.remove`, `contains` |
-| [step-05](step-05-funktsiya/) | Функции | `function`, параметры, повторное использование кода |
-| [step-06](step-06-sobytiya/) | События | `addEventListener('click', ...)` |
-| [step-07](step-07-massiv-i-foreach/) | Коллекции и forEach | Обход элементов навигации циклом `forEach` |
-| [step-08](step-08-aktivnaya-ssylka-nav/) | Активная ссылка в меню | Снятие активности у всех и подсветка выбранного пункта |
-| [step-09](step-09-finalnaya-sborka-nav/) |  Модуль навигации | Функция `initNavigation()`, `DOMContentLoaded` |
+| [step-05](step-05-functions/) | Функции | `function`, параметры, повторное использование кода |
+| [step-06](step-06-events/) | События | `addEventListener('click', ...)` |
+| [step-07](step-07-arrays-and-foreach/) | Коллекции и forEach | Обход элементов навигации циклом `forEach` |
+| [step-08](step-08-active-nav-link/) | Активная ссылка в меню | Снятие активности у всех и подсветка выбранного пункта |
+| [step-09](step-09-final-nav-assembly/) |  Модуль навигации | Функция `initNavigation()`, вызов при наличии `defer` |
 
 ---
 

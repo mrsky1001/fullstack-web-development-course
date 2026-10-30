@@ -16,9 +16,9 @@
 
 | Шаг | Тема | Что узнаем |
 |-----|------|------------|
-| [step-01](step-01-funktsionalniy-modul/) | Поиск элементов | Слайды, стрелки, точки-индикаторы |
-| [step-02](step-02-oblast-vidimosti-scope/) | Переменная состояния | Хранение текущего индекса `currentSlide` |
-| [step-03](step-03-setinterval-gluboko/) | Функция showSlide() | Переключение класса `.active` у слайдов |
-| [step-04](step-04-sbros-taymera-clearinterval/) | Стрелки навигации | Кнопки «Вперёд» и «Назад» |
-| [step-05](step-05-toggle-s-usloviem/) | Автопрокрутка | Таймер `setInterval(nextSlide, 3500)` |
+| [step-01](step-01-functional-module/) | Поиск элементов | Слайды, стрелки, точки-индикаторы |
+| [step-02](step-02-scope-and-state/) | Переменная состояния | Хранение текущего индекса `currentSlide` |
+| [step-03](step-03-setinterval-deep-dive/) | Функция showSlide() | Переключение класса `.active` у слайдов |
+| [step-04](step-04-clearinterval-reset-timer/) | Стрелки навигации | Кнопки «Вперёд» и «Назад» |
+| [step-05](step-05-conditional-toggle/) | Автопрокрутка | Таймер `setInterval(nextSlide, 3500)` |
 | [step-06](step-06-final-initslider/) |  Финал слайдера | Сброс таймера при кликах, запуск модуля |

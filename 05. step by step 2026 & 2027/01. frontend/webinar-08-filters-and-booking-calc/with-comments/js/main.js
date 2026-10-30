@@ -3,27 +3,47 @@
 // Подробная учебная версия с комментариями к каждой функции для 1 курса
 // ==========================================================================
 
-document.addEventListener('DOMContentLoaded', function () {
-  console.log('DOM готов. Запускаем поиск комнат и калькулятор...');
-  initNavigation();
-  initSlider();
-  renderCatalog(typeof OFFICE_ROOMS !== 'undefined' ? OFFICE_ROOMS : []);
-  initRoomDetails();
-  initFilters();
-  initBookingCalc();
-  initRegisterForm();
-  initLoginForm();
-});
+console.log('Запускаем поиск комнат и калькулятор...');
+initNavigation();
+initSlider();
+renderCatalog(typeof OFFICE_ROOMS !== 'undefined' ? OFFICE_ROOMS : []);
+initRoomDetails();
+initFilters();
+initBookingCalc();
+initRegisterForm();
+initLoginForm();
 
-// 1. Навигация (из Вебинара 04)
+// 1. Навигация (из Вебинара 04: автоматическая подсветка открытой страницы)
 function initNavigation() {
   const navLinks = document.querySelectorAll('.nav-link');
+  const currentPath = window.location.pathname.toLowerCase();
+
   navLinks.forEach(function (link) {
+    link.classList.remove('active');
+
+    const href = link.getAttribute('href');
+    if (href) {
+      const pageName = href.split('/').pop().toLowerCase();
+      if (pageName && currentPath.endsWith(pageName)) {
+        link.classList.add('active');
+      } else if (currentPath.includes('room-details') && pageName.includes('catalog')) {
+        link.classList.add('active');
+      }
+    }
+
     link.addEventListener('click', function () {
       navLinks.forEach(function (item) { item.classList.remove('active'); });
       link.classList.add('active');
     });
   });
+
+  const hasActive = document.querySelector('.nav-link.active');
+  if (!hasActive && navLinks.length > 0) {
+    navLinks[0].classList.add('active');
+  }
+
+  // Обновляем кнопку в шапке, если пользователь авторизован
+  updateAuthStatus();
 }
 
 // 2. Слайдер на главной (из Вебинара 07)
@@ -271,4 +291,26 @@ function initLoginForm() {
     alert('Вход выполнен успешно!');
     window.location.href = '../index.html';
   });
+}
+
+// Отображение статуса авторизации в шапке
+function updateAuthStatus() {
+  const authBtn = document.getElementById('authNavBtn');
+  if (!authBtn) return;
+
+  const userJson = localStorage.getItem('currentUser');
+  if (userJson) {
+    try {
+      const user = JSON.parse(userJson);
+      const name = user.name || user.login || 'Пользователь';
+      authBtn.textContent = 'Выйти (' + name + ')';
+      authBtn.href = '#';
+      authBtn.onclick = function (e) {
+        e.preventDefault();
+        localStorage.removeItem('currentUser');
+        alert('Вы вышли из системы.');
+        window.location.reload();
+      };
+    } catch (e) {}
+  }
 }
