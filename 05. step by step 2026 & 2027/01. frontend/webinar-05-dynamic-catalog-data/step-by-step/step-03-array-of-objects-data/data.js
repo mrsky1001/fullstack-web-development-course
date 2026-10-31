@@ -1,4 +1,4 @@
-// База данных офисных комнат для учебного шага
+﻿// База данных офисных комнат для учебного шага
 const OFFICE_ROOMS = [
   {
     id: 'focus-1',
@@ -8,7 +8,7 @@ const OFFICE_ROOMS = [
     area: '12 м²',
     description: 'Тихое пространство для индивидуальной работы и звонков.',
     equipment: ['Wi-Fi 500 Мбит/с', '4K Монитор', 'Эргономичное кресло'],
-    image: '../../basic/img/room-1.jpg'
+    image: '../../site/img/room-1.jpg'
   },
   {
     id: 'alpha-2',
@@ -18,7 +18,7 @@ const OFFICE_ROOMS = [
     area: '45 м²',
     description: 'Просторный зал для проведения презентаций и совещаний.',
     equipment: ['Проектор 4K', 'Спикерфон', 'Флипчарт'],
-    image: '../../basic/img/room-2.jpg'
+    image: '../../site/img/room-2.jpg'
   },
   {
     id: 'hub-3',
@@ -28,6 +28,6 @@ const OFFICE_ROOMS = [
     area: 'Рабочее место',
     description: 'Удобное выделенное рабочее место в современном открытом пространстве.',
     equipment: ['Личный стол', 'Wi-Fi 500 Мбит/с', 'Розетки 220V'],
-    image: '../../basic/img/room-3.jpg'
+    image: '../../site/img/room-3.jpg'
   }
 ];

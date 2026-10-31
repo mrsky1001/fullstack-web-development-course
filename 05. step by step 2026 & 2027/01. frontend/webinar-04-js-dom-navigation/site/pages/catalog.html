@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Каталог — СмартОфис</title>
+  <!-- Подключение шрифта Inter через Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" type="image/svg+xml" href="../img/logo.svg">
+</head>
+
+<body>
+  <!-- Шапка сайта с навигацией (используется скриптом main.js для подсветки активного пункта) -->
+  <header class="header">
+    <div class="container header-container">
+      <a href="../index.html" class="logo">
+        <img src="../img/logo.svg" alt="Логотип" class="logo-icon">
+        <span>СмартОфис</span>
+      </a>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="../index.html" class="nav-link">Главная</a></li>
+          <li><a href="../pages/catalog.html" class="nav-link">Каталог</a></li>
+          <li><a href="../pages/login.html" class="nav-link nav-btn" id="authNavBtn">Войти</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Каркас основного содержимого со страницей-временной -->
+  <main class="main" style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 80px 0;">
+    <div class="container" style="text-align: center;">
+      <h1 style="font-size: 32px; font-weight: 800; margin-bottom: 16px;">Каталог офисных пространств</h1>
+      <p style="font-size: 18px; color: #555555; max-width: 620px; margin: 0 auto 24px; line-height: 1.6;">
+        Данная страница является <strong>временной</strong>. Полноценный каталог рабочих комнат с динамической
+        отрисовкой карточек и фильтрами будет разработан на следующих этапах (Вебинар 05).
+      </p>
+      <a href="../index.html"
+        style="display: inline-block; padding: 10px 22px; background-color: #007bff; color: #ffffff; border-radius: 8px; text-decoration: none; font-weight: 600;">←
+        На главную</a>
+    </div>
+  </main>
+
+  <!-- Скрипт main.js: при загрузке автоматически определит catalog.html и подсветит пункт «Каталог» -->
+  <script src="../js/navigation.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+
+</html>

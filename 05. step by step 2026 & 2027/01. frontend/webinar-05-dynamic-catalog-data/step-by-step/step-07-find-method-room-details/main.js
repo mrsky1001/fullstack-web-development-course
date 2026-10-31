@@ -20,14 +20,16 @@ if (container && typeof OFFICE_ROOMS !== 'undefined') {
   } else {
     container.innerHTML = `
       <div class="room-details-card">
-        <img src="${room.image}" alt="${room.title}" class="room-details-img">
+        <div class="room-details-gallery">
+          <img src="${room.image}" alt="${room.title}" class="room-details-img">
+        </div>
         <div class="room-details-info">
           <h1 class="page-title">${room.title}</h1>
           <p class="room-desc">${room.description}</p>
           <p><strong>Вместимость:</strong> ${room.capacity}</p>
           <p><strong>Площадь:</strong> ${room.area}</p>
           <div class="room-price-large">${room.pricePerHour} ₽ / час</div>
-          <a href="../../basic/pages/booking.html?id=${room.id}" class="btn btn-primary btn-large">Забронировать эту комнату</a>
+          <a href="../../site/pages/booking.html?id=${room.id}" class="btn btn-primary btn-large">Забронировать эту комнату</a>
         </div>
       </div>
     `;

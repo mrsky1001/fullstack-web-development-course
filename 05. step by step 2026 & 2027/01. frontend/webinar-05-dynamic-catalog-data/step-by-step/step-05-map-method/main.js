@@ -1,4 +1,4 @@
-// Шаг 5: Отрисовка каталога через метод .map()
+﻿// Шаг 5: Отрисовка каталога через метод .map()
 // Теория по этой теме подробно описана в файле README.md в этой папке.
 
 const container = document.getElementById('catalogContainer');
@@ -9,7 +9,7 @@ if (container && typeof OFFICE_ROOMS !== 'undefined') {
     return `
       <div class="room-card">
         <div class="card-img-wrap">
-          <img src="${room.image}" alt="${room.title}" class="card-img" onerror="this.src='../../basic/img/no-image.svg'">
+          <img src="${room.image}" alt="${room.title}" class="card-img" onerror="this.src='../../site/img/no-image.svg'">
         </div>
         <div class="card-content">
           <h3 class="card-title">${room.title}</h3>
@@ -20,7 +20,7 @@ if (container && typeof OFFICE_ROOMS !== 'undefined') {
             <div class="card-price">${room.pricePerHour} ₽ <span>/ час</span></div>
             <div class="card-btns">
               <a href="room-details.html?id=${room.id}" class="btn btn-outline">Подробнее</a>
-              <a href="../../basic/pages/booking.html?id=${room.id}" class="btn btn-primary">Забронировать</a>
+              <a href="../../site/pages/booking.html?id=${room.id}" class="btn btn-primary">Забронировать</a>
             </div>
           </div>
         </div>

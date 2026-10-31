@@ -1,4 +1,4 @@
-// Шаг 2: Метод массива .filter()
+﻿// Шаг 2: Метод массива .filter()
 // Теория по этой теме подробно описана в файле README.md в этой папке.
 
 const searchInput = document.getElementById('searchInput');
@@ -9,7 +9,7 @@ function render(list) {
   container.innerHTML = list.map(room => `
     <div class="room-card">
       <div class="card-img-wrap">
-        <img src="${room.image}" alt="${room.title}" class="card-img" onerror="this.src='../../basic/img/no-image.svg'">
+        <img src="${room.image}" alt="${room.title}" class="card-img" onerror="this.src='../../site/img/no-image.svg'">
       </div>
       <div class="card-content">
         <h3 class="card-title">${room.title}</h3>
@@ -19,8 +19,8 @@ function render(list) {
         <div class="card-footer">
           <div class="card-price">${room.pricePerHour} ₽ <span>/ час</span></div>
           <div class="card-btns">
-            <a href="../../basic/pages/catalog.html" class="btn btn-outline">Подробнее</a>
-            <a href="../../basic/pages/catalog.html" class="btn btn-primary">Забронировать</a>
+            <a href="../../site/pages/catalog.html" class="btn btn-outline">Подробнее</a>
+            <a href="../../site/pages/catalog.html" class="btn btn-primary">Забронировать</a>
           </div>
         </div>
       </div>

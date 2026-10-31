@@ -1,4 +1,4 @@
-// Шаг 4: Сортировка массива через метод .sort()
+﻿// Шаг 4: Сортировка массива через метод .sort()
 // Теория по этой теме подробно описана в файле README.md в этой папке.
 
 const sortAscBtn = document.getElementById('sortAsc');
@@ -10,7 +10,7 @@ function render(list) {
   container.innerHTML = list.map(room => `
     <div class="room-card">
       <div class="card-img-wrap">
-        <img src="${room.image}" alt="${room.title}" class="card-img" onerror="this.src='../../basic/img/no-image.svg'">
+        <img src="${room.image}" alt="${room.title}" class="card-img" onerror="this.src='../../site/img/no-image.svg'">
       </div>
       <div class="card-content">
         <h3 class="card-title">${room.title}</h3>

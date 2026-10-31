@@ -13,12 +13,12 @@ function renderBookings() {
   }
 
   container.innerHTML = list.map(b => `
-    <div class="booking-card" style="display: flex; justify-content: space-between; align-items: center; background: #1e293b; padding: 20px; border-radius: 8px; margin-bottom: 16px; border: 1px solid #334155;">
+    <div class="booking-card" style="display: flex; justify-content: space-between; align-items: center; background: #ffffff; padding: 18px 24px; border-radius: 8px; margin-bottom: 12px; border: 1px solid #dddddd;">
       <div>
-        <h3 style="color: #38bdf8; margin: 0 0 8px;">${b.roomTitle || 'Офисная комната'}</h3>
-        <p style="margin: 0; color: #94a3b8; font-size: 14px;">Дата: ${b.date} | Часов: ${b.hours} | Итого: <strong style="color: white;">${b.totalPrice} ₽</strong></p>
+        <h3 style="color: #222222; margin: 0 0 6px;">${b.roomTitle || 'Офисная комната'}</h3>
+        <p style="margin: 0; color: #666666; font-size: 14px;">Дата: ${b.date} | Часов: ${b.hours} | Итого: <strong style="color: #007bff;">${b.totalPrice} ₽</strong></p>
       </div>
-      <button class="btn btn-danger" onclick="cancelBooking('${b.id}')" style="background: #ef4444; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer;">Отменить</button>
+      <button class="btn btn-danger" onclick="cancelBooking('${b.id}')" style="background: #ffffff; color: #dc3545; border: 1px solid #dc3545; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-weight: 600;">Отменить</button>
     </div>
   `).join('');
 }
