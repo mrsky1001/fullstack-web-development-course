@@ -36,25 +36,34 @@ function renderCatalog(roomsList) {
   }).join('');
 }
 
+// ==========================================================================
 // Страница детального описания комнаты
+// ==========================================================================
 function initRoomDetails() {
   const container = document.getElementById('roomDetailsContainer');
   if (!container || typeof OFFICE_ROOMS === 'undefined') return;
 
+  // [URLSearchParams] Читаем параметр ?id=... из адресной строки (по умолчанию focus-1)
   const roomId = new URLSearchParams(window.location.search).get('id') || 'focus-1';
+
+  // [Метод .find()] Ищем выбранную комнату среди данных
   const room = OFFICE_ROOMS.find(r => r.id === roomId) || OFFICE_ROOMS[0];
 
+  // Двухколоночная карточка: фото слева (50%), характеристики и кнопки справа (50%)
   container.innerHTML = `
     <div class="room-details-card">
+      <!-- Галерея с фото фиксированного размера -->
       <div class="room-details-gallery">
         <img src="${room.image}" alt="${room.title}" class="room-details-img">
       </div>
+      <!-- Блок описания, характеристик и кнопок действий -->
       <div class="room-details-info">
         <h1>${room.title}</h1>
         <p class="room-desc">${room.description}</p>
         <p><strong>Вместимость:</strong> ${room.capacity}</p>
         <p><strong>Площадь:</strong> ${room.area}</p>
         <div class="room-price-large">${room.pricePerHour} ₽ / час</div>
+        <!-- Кнопка бронирования с передачей id комнаты и кнопка возврата -->
         <div class="room-details-actions">
           <a href="booking.html?id=${room.id}" class="btn btn-primary">Забронировать</a>
           <a href="catalog.html" class="btn btn-outline">← В каталог</a>
