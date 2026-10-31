@@ -52,9 +52,11 @@ function initRegisterForm() {
       };
       // Сохраняем пользователя в localStorage в виде JSON-строки
       localStorage.setItem('currentUser', JSON.stringify(newUser));
+      // [Toast-уведомление] Показываем всплывающее сообщение об успешной регистрации
       if (typeof showToast === 'function') {
         showToast('Регистрация успешна! Добро пожаловать, ' + displayName);
       }
+      // Переходим на главную страницу после показа уведомления
       setTimeout(function () {
         window.location.href = '../index.html';
       }, 1200);
@@ -92,9 +94,11 @@ function initLoginForm() {
         alertBox.textContent = 'Вход выполнен успешно!';
         alertBox.style.color = '#10b981';
       }
+      // [Toast-уведомление] Сообщаем об успешном входе
       if (typeof showToast === 'function') {
         showToast('Вход выполнен успешно!');
       }
+      // Переходим на главную страницу после показа уведомления
       setTimeout(function () {
         window.location.href = '../index.html';
       }, 1200);

@@ -41,18 +41,23 @@ function initBookingForm() {
   if (roomSelect) roomSelect.addEventListener('change', updateTotal);
   updateTotal();
 
+  // Обработка отправки формы бронирования (Вебинар 09)
   form.addEventListener('submit', function (event) {
+    // Отменяем стандартную перезагрузку страницы браузером
     event.preventDefault();
 
+    // Определяем выбранную комнату и количество часов
     const selectedId = roomSelect ? roomSelect.value : (new URLSearchParams(window.location.search).get('id') || 'focus-1');
     const room = OFFICE_ROOMS.find(r => r.id === selectedId) || OFFICE_ROOMS[0];
     const hours = parseInt(hoursInput.value) || 1;
 
+    // Считываем выбранную дату или берем текущую
     const dateInput = document.getElementById('bookingDate') || document.getElementById('date');
     const bookingDate = (dateInput && dateInput.value) ? dateInput.value : new Date().toLocaleDateString('ru-RU');
 
+    // [Теория: создание объекта] Формируем новую запись бронирования
     const newBooking = {
-      id: 'book-' + Date.now(),
+      id: 'book-' + Date.now(), // Уникальный ID на основе текущего времени в миллисекундах
       roomId: room.id,
       roomTitle: room.title,
       hours: hours,
@@ -61,13 +66,17 @@ function initBookingForm() {
       createdAt: bookingDate
     };
 
+    // [Теория: localStorage] Получаем массив существующих заявок, добавляем новую и сохраняем
     const bookings = JSON.parse(localStorage.getItem('myBookings') || '[]');
     bookings.push(newBooking);
     localStorage.setItem('myBookings', JSON.stringify(bookings));
 
+    // [Toast-уведомление] Показываем красивое всплывающее окно сверху справа
     if (typeof showToast === 'function') {
       showToast('Бронирование оформлено! Переходим в раздел «Мои бронирования».');
     }
+
+    // Через 1.2 секунды (после показа уведомления) перенаправляем на страницу «Мои бронирования»
     setTimeout(function () {
       window.location.href = 'my-bookings.html';
     }, 1200);

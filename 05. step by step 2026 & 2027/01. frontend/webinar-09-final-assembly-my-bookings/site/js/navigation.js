@@ -65,26 +65,36 @@ function updateAuthStatus() {
 }
 
 // ==========================================================================
-// Всплывающее уведомление (Toast) сверху справа
+// Всплывающее уведомление (Toast) сверху справа вместо alert()
 // ==========================================================================
+// [Теория: работа с DOM] Функция создает красивую всплывающую плашку уведомления
 function showToast(message) {
+  // Проверяем, существует ли уже плашка на странице
   let toast = document.getElementById('toastNotification');
   if (!toast) {
+    // Если плашки еще нет — создаем тег <div> и прикрепляем его в <body>
     toast = document.createElement('div');
     toast.id = 'toastNotification';
     toast.className = 'toast-notification';
     document.body.appendChild(toast);
   }
+
+  // Задаем текст уведомления
   toast.textContent = message;
+
+  // Добавляем класс .show для отображения плашки
   toast.classList.add('show');
 
+  // Сбрасываем старый таймер, если вызвано новое уведомление
   if (window._toastTimeout) {
     clearTimeout(window._toastTimeout);
   }
+
+  // [Теория: setTimeout] Через 2.8 секунды скрываем плашку
   window._toastTimeout = setTimeout(function () {
     toast.classList.remove('show');
   }, 2800);
 }
 
-// Экспортируем функцию в window, чтобы другие модули могли её вызывать
+// Экспортируем функцию в глобальный объект window для доступа из всех модулей
 window.showToast = showToast;

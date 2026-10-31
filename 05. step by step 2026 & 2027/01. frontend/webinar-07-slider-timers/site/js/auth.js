@@ -40,6 +40,7 @@ function initRegisterForm() {
         email: emailInput ? emailInput.value.trim() : ''
       };
       localStorage.setItem('currentUser', JSON.stringify(newUser));
+      // [Toast-уведомление] Показываем сообщение об успешной регистрации
       if (typeof showToast === 'function') {
         showToast('Регистрация успешна! Добро пожаловать, ' + displayName);
       }
@@ -80,6 +81,7 @@ function initLoginForm() {
         alertBox.textContent = 'Вход выполнен успешно!';
         alertBox.style.color = '#10b981';
       }
+      // [Toast-уведомление] Сообщаем об успешном входе
       if (typeof showToast === 'function') {
         showToast('Вход выполнен успешно!');
       }
